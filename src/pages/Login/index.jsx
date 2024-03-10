@@ -154,7 +154,10 @@ export default function LoginPage() {
             >
               Please enter your credential Details.
             </Text>
-            <Text as="p" className="mt-7 !text-black-900_99 opacity-0.7">
+            <Text
+              as="p"
+              className="mt-7 text-left !text-black-900_99 opacity-0.7"
+            >
               Enter Your Full Name
             </Text>
             <div className="flex flex-col items-start justify-start w-full mt-2">
