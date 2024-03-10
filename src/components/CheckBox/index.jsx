@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const shapes = {
-  round: "rounded-sm",
+  round: "rounded-md",
 };
 const variants = {
   fill: {
