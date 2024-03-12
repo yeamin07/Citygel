@@ -37,6 +37,11 @@ const Home = () => {
             PostAdTwo
           </Link>
         </li>
+        <li style={{ marginBottom: "10px" }}>
+          <Link to="/products" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Products
+          </Link>
+        </li>
       </ul>
     </div>
   );

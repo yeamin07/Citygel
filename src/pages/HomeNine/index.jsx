@@ -4,7 +4,7 @@ import { Text, Img, Heading, Button } from "../../components";
 import Footer from "../../components/Footer";
 import Header5 from "../../components/Header5";
 
-export default function HomeNinePage() {
+export default function HomePage() {
   return (
     <>
       <Helmet>
@@ -12,8 +12,8 @@ export default function HomeNinePage() {
         <meta name="description" content="Web site created using create-react-app" />
       </Helmet>
       <div className="flex flex-row justify-center w-full bg-gray-50">
-        <div className="flex flex-col items-center justify-start w-full">
-          <div className="h-[970px] w-full relative">
+        <div className="flex flex-col items-center justify-start w-full ">
+          <div className="h-[970px] w-full relative ">
             <div className="justify-center h-[970px] w-full left-0 bottom-0 right-0 top-0 m-auto bg-teal-900 absolute" />
             <div className="justify-center h-[970px] w-full left-0 bottom-0 right-0 top-0 m-auto absolute">
               <Img
@@ -31,7 +31,7 @@ export default function HomeNinePage() {
                           color="red_A400_01"
                           size="4xl"
                           variant="fill"
-                          className="font-aleo font-bold min-w-[242px]"
+                          className="font-aleo font-bold min-w-[242px] h-[60px]"
                         >
                           Past an ad
                         </Button>
@@ -61,12 +61,12 @@ export default function HomeNinePage() {
                 </div>
                 <div className="h-[262px] w-[262px] mt-[-57px] ml-[674px] bg-light_blue-400 backdrop-opacity-[0.5] blur-[430.00px] rounded-[50%]" />
               </div>
-              <div className="flex flex-row justify-center w-[21%] bottom-[2%] left-[6%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-[20px]">
+              <div className="flex flex-row justify-center w-[21%] h-[214px] bottom-[2%] left-[6%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-full">
                 <Text size="7xl" as="p" className="mb-1.5 !text-black-900_03 !font-aleo">
                   Dubai
                 </Text>
               </div>
-              <div className="flex flex-row justify-center w-[21%] bottom-[2%] left-[28%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-[20px]">
+              <div className="flex flex-row justify-center w-[21%] h-[214px] bottom-[2%] left-[28%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-[20px]">
                 <Text size="7xl" as="p" className="mb-1.5 !text-black-900_03 !font-aleo">
                   Abu Dhabi
                 </Text>
@@ -83,23 +83,24 @@ export default function HomeNinePage() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row justify-start w-full mt-[22px] gap-10 max-w-[1700px]">
-            <div className="flex flex-row justify-center w-[24%] px-14 py-[81px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
+
+          <div className="flex flex-row justify-start w-full pl-[5%] mt-[22px] gap-10 max-w-[1700px]">
+            <div className="flex flex-row justify-center w-[21%] h-[214px] px-14 py-[81px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
               <Text size="7xl" as="p" className="mb-1.5 !text-black-900_03 !font-aleo">
                 Al Ain
               </Text>
             </div>
-            <div className="flex flex-row justify-center w-[24%] px-14 py-[66px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
+            <div className="flex flex-row justify-center w-[21%] h-[214px] px-14 py-[66px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
               <Text size="7xl" as="p" className="mt-[15px] mb-[22px] !text-black-900_03 !font-aleo">
                 Ras Al Khaimah
               </Text>
             </div>
-            <div className="flex flex-row justify-center w-[24%] px-14 py-[84px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
+            <div className="flex flex-row justify-center w-[21%] h-[214px] px-14 py-[84px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
               <Text size="7xl" as="p" className="!text-black-900_03 !font-aleo">
                 Fujairah
               </Text>
             </div>
-            <div className="flex flex-row justify-center w-[24%] px-14 py-[59px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
+            <div className="flex flex-row justify-center w-[21%] h-[214px] px-14 py-[59px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
               <Text size="7xl" as="p" className="mt-[25px] mb-[26px] !text-black-900_03 !font-aleo">
                 Umm Al Quwain
               </Text>

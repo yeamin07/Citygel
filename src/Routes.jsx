@@ -8,6 +8,7 @@ import HomeNine from "pages/HomeNine";
 import PostAdEleven from "pages/PostAdEleven";
 import PostAdTwo from "pages/PostAdTwo";
 import SignUpPage from "pages/SignUp";
+import Products from './pages/Products/index';
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -32,6 +33,10 @@ const ProjectRoutes = () => {
     {
       path: "postadtwo",
       element: <PostAdTwo />,
+    },
+    {
+      path: "products",
+      element: <Products/>,
     },
   ]);
 
