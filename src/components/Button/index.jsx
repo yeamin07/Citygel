@@ -50,7 +50,11 @@ const Button = ({
 }) => {
   return (
     <button
-      className={`${className} flex items-center justify-center text-center cursor-pointer ${(shape && shapes[shape]) || ""} ${(size && sizes[size]) || ""} ${(variant && variants[variant]?.[color]) || ""}`}
+      className={`${className} hover:#FA0037 flex items-center justify-center text-center cursor-pointer ${
+        (shape && shapes[shape]) || ""
+      } ${(size && sizes[size]) || ""} ${
+        (variant && variants[variant]?.[color]) || ""
+      }`}
       {...restProps}
     >
       {!!leftIcon && leftIcon}
@@ -66,7 +70,19 @@ Button.propTypes = {
   leftIcon: PropTypes.node,
   rightIcon: PropTypes.node,
   shape: PropTypes.oneOf(["circle", "round"]),
-  size: PropTypes.oneOf(["sm", "7xl", "5xl", "3xl", "2xl", "md", "xs", "4xl", "6xl", "xl", "lg"]),
+  size: PropTypes.oneOf([
+    "sm",
+    "7xl",
+    "5xl",
+    "3xl",
+    "2xl",
+    "md",
+    "xs",
+    "4xl",
+    "6xl",
+    "xl",
+    "lg",
+  ]),
   variant: PropTypes.oneOf(["fill", "outline", "gradient"]),
   color: PropTypes.oneOf([
     "white_A700",

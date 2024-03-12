@@ -1,23 +1,33 @@
-import React from "react";
 import { Helmet } from "react-helmet";
-import {
-  Text,
-  Img,
-  CheckBox,
-  Input,
-  Button,
-  SelectBox,
-} from "../../components";
+import { Text, Img, Input, Button } from "../../components";
 import Footer from "../../components/Footer";
 import Header1 from "../../components/Header1";
-
-const dropDownOptions = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
+import PinInputfunc from "components/PinInput";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import PinInput from "react-pin-input";
+import { SignInFormValidationSchemas } from "./SignInFormValidationSchemas";
+import SocialLogin from "components/Button/SocialLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const {
+    handleSubmit,
+    register,
+    getFieldState,
+    getValues,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: yupResolver(SignInFormValidationSchemas),
+    mode: "onChange",
+  });
+  console.log(errors);
+  const onSubmit = (e) => {
+    console.log(e);
+  };
+  const navigate = useNavigate();
+
   return (
     <>
       <Helmet>
@@ -29,8 +39,8 @@ export default function LoginPage() {
       </Helmet>
       <div className="flex flex-col items-center justify-start w-full bg-gray-50">
         <Header1 className="flex flex-col justify-center items-center w-full" />
-        <div className="flex flex-col items-center justify-start w-[32%] ">
-          <div className="h-[372px] w-full  relative max-w-[372px]">
+        <div className="flex flex-col items-center justify-start w-[32%] mt-[50px] gap-3.5">
+          <div className="h-[372px] w-full py-10 relative max-w-[372px]">
             <div className="flex flex-col items-start justify-start w-full top-[11%] right-0 left-0 m-auto absolute">
               <div className="h-[257px] w-full relative">
                 <Img
@@ -141,143 +151,145 @@ export default function LoginPage() {
               </div>
             </div>
           </div>
-          <a href="#" className="mt-[9px] z-[1]">
-            <Text size="8xl" as="p" className="!text-black-900_03 text-center">
-              Create an Account
-            </Text>
-          </a>
-          <div className="flex flex-col items-center justify-start w-full mt-[-3px]">
-            <Text
-              size="4xl"
-              as="p"
-              className="!text-black-900_7e text-center opacity-0.4"
-            >
-              Please enter your credential Details.
-            </Text>
-            <Text
-              as="p"
-              className="mt-7 text-left !text-black-900_99 opacity-0.7"
-            >
-              Enter Your Full Name
-            </Text>
-            <div className="flex flex-col items-start justify-start w-full mt-2">
-              <Input
-                size="lg"
-                name="fullName"
-                placeholder="johnsm"
-                className="w-full border-cyan-700_01 border border-solid"
-              />
-              <Text
-                as="p"
-                className="mt-5 ml-1.5 !text-black-900_99 opacity-0.7"
-              >
-                Enter Your Phone number
-              </Text>
-              <div className="flex flex-row justify-start mt-2 gap-2.5">
-                <SelectBox
-                  indicator={
-                    <Img
-                      src="images/img_arrowdown_black_900.svg"
-                      alt="arrow_down"
-                    />
-                  }
-                  name="phoneNumber"
-                  placeholder="+1"
-                  options={dropDownOptions}
-                  className="w-[24%] gap-px"
-                />
-                <Text />
-              </div>
-              <Text
-                as="p"
-                className="mt-[19px] ml-1.5 !text-black-900_99 opacity-0.7"
-              >
-                Enter Your Email
-              </Text>
-              <div className="h-[80px] w-full mt-[9px] relative">
-                <Input
-                  size="2xl"
-                  type="email"
-                  name="email"
-                  placeholder="mail@email.com"
-                  className="w-full left-0 bottom-0 right-0 top-0 m-auto !text-black-900_6f absolute"
-                />
-                <Button
-                  color="cyan_700_01"
-                  size="5xl"
-                  variant="fill"
-                  className="right-[1%] bottom-0 top-0 m-auto min-w-[170px] absolute rounded-[15px]"
-                >
-                  Send OTP
-                </Button>
-              </div>
-              <div className="flex flex-row justify-start w-full mt-10 gap-[18px]">
-                <div className="h-[80px] w-[15%] border-cyan-700_01 border border-solid bg-blue_gray-100_33 rounded-[15px]" />
-                <Input size="3xl" name="edittext" className="w-[15%]" />
-                <Input size="3xl" name="edittext_one" className="w-[15%]" />
-                <Input size="3xl" name="edittext_two" className="w-[15%]" />
-                <Input size="3xl" name="edittext_three" className="w-[15%]" />
-                <Input size="3xl" name="edittext_four" className="w-[15%]" />
-              </div>
-              <div className="flex flex-row justify-start w-full mt-[15px] mx-auto max-w-[490px]">
-                <div className="flex flex-col items-start justify-start w-full gap-3">
-                  <div className="flex flex-row justify-start w-[70%] gap-2.5">
-                    <div className="h-[24px] w-[24px] mb-0.5 bg-blue_gray-100_03 rounded-md" />
-                    <Text as="p" className="!text-gray-800">
-                      <span className="text-gray-800">I am accepting all </span>
-                      <span className="text-cyan-700_01">Terms</span>
-                      <span className="text-gray-800">& </span>
-                      <span className="text-cyan-700_01">Conditions</span>
-                    </Text>
-                  </div>
-                  <CheckBox
-                    color="blue_gray_100_03"
-                    name="areyouintereste"
-                    label="Are you interested to receive marketing communications"
-                    className="gap-2.5 text-left rounded-md"
-                  />
+          <div className="flex flex-col items-center justify-start w-full gap-[31px]">
+            <div className="flex flex-col items-center justify-start w-full">
+              <div className="flex flex-col items-center justify-start w-full gap-px max-w-[438px]">
+                <div className="">
+                  <h3 className="w-[438px] h-[66px] font-poppins font-medium text-[44px]">
+                    Login to post an ad!
+                  </h3>
+                  <p className="w-[428px] h-[36px] opacity-[40%] font-poppins font-normal text-[23px] align-middle pl-[8px]">
+                    Please enter your credential Details.
+                  </p>
                 </div>
               </div>
-              <a href="#" className="mt-8">
-                <Text />
-              </a>
-              <div className="flex flex-row justify-start w-full mt-[31px]">
-                <div className="flex flex-col items-center justify-start w-full">
-                  <div className="flex flex-row justify-start items-start w-full gap-[19px]">
-                    <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
-                    <Text
-                      size="2xl"
-                      as="p"
-                      className="!text-black-900_75 text-center opacity-0.3"
-                    >
-                      or
-                    </Text>
-                    <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
-                  </div>
-                  <div className="flex flex-col items-center justify-start h-[80px] w-[80px] mt-[18px] p-[22px] bg-blue_gray-100_19 rounded-[50%]">
-                    <Img
-                      src="images/img_group_red_500_01.svg"
-                      alt="image_three"
-                      className="h-[36px] w-[36px]"
+              <Text as="p" className="mt-7 !text-black-900_99 opacity-0.7">
+                Enter Your Email
+              </Text>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex flex-col items-start justify-start w-full mt-[9px]">
+                  <div className="h-[80px] w-full relative">
+                    <Input
+                      register={register}
+                      size="lg"
+                      name="email"
+                      placeholder="name@mail.com"
+                      className={`w-full left-0 bottom-0 right-0 top-0 m-auto ${
+                        errors.email?.message
+                          ? "border-red-800 "
+                          : "border-cyan-700_01"
+                      }  border border-solid absolute`}
                     />
+                    <Button
+                      type="btn"
+                      color="cyan_700_01"
+                      size="5xl"
+                      variant="fill"
+                      className="right-[1%] bottom-0 top-0 m-auto min-w-[170px] absolute rounded-[15px]"
+                    >
+                      Send OTP
+                    </Button>
                   </div>
+                  <div className="relative">
+                    {errors.email?.message ? (
+                      <p className="w-[428px] h-[36px] opacity-[40%] font-poppins font-normal text-[18px] text-red-A700 ">
+                        {errors.email?.message}
+                      </p>
+                    ) : (
+                      <p className="w-[428px] h-[36px] opacity-[40%] font-poppins font-normal text-[18px] text-red-500">
+                        Please enter your credential Details.
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="relative">
+                    <Controller
+                      name="code"
+                      control={control}
+                      defaultValue=""
+                      render={({ field }) => (
+                        <div>
+                          <PinInput
+                            length={6}
+                            initialValue=""
+                            secret
+                            secretDelay={100}
+                            onChange={(value, index) => {}}
+                            type="numeric"
+                            inputMode="number"
+                            style={{ padding: "15px", paddingLeft: "40px" }}
+                            inputStyle={{
+                              borderColor: "#0B90AF",
+                              borderRadius: "10px",
+                            }}
+                            inputFocusStyle={{ borderColor: "blue" }}
+                            onComplete={(value, index) => {}}
+                            autoSelect={true}
+                            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+                          />
+                        </div>
+                      )}
+                    />
+                    {errors.code?.message && (
+                      <Text
+                        className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                        fontSize="xs"
+                        bottom="-19px"
+                        position="absolute"
+                        color="#E85A2D"
+                      >
+                        <>Please enter valid Code</>
+                      </Text>
+                    )}
+                  </div>
+                  <a href="#" className="mt-[25px]">
+                    <Text />
+                  </a>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    style={{ backgroundColor: "#0B90AF" }}
+                    className="w-[430px] h-[80px] rounded-[15px] text-white-A700 font-poppins font-normal text-[24px]"
+                  >
+                    Sign in
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div className="flex flex-row justify-center w-full">
+              <div className="flex flex-col items-center justify-start w-full">
+                <div className="flex flex-row justify-start items-start w-full gap-[19px]">
+                  <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
                   <Text
                     size="2xl"
                     as="p"
-                    className="mt-[35px] !text-red-500 text-center"
+                    className="!text-black-900_75 text-center opacity-0.3"
                   >
-                    <span className="text-gray_500">
-                      Already have an account?
-                    </span>
-                    <span className="text-red-500"></span>
-                    <span className="text-cyan-700_01">Sin in</span>
+                    or
                   </Text>
+                  <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
                 </div>
+                <SocialLogin />
+                <Text
+                  size="2xl"
+                  as="p"
+                  className="mt-[33px] !text-red-500 text-center"
+                >
+                  <span className="text-gray_500">Don’t have an account?</span>
+                  <span className="text-red-500"></span>
+                  <span
+                    className="text-cyan-700_01 ml-2 cursor-pointer"
+                    onClick={() => navigate("/signup")}
+                  >
+                    Create Account
+                  </span>
+                </Text>
               </div>
             </div>
           </div>
         </div>
-        <Footer className="flex justify-center items-center w-full mt-[120px] p-[34px] bg-gray-100_01" />
+        <Footer className="flex justify-center items-center w-full mt-[118px] p-[34px] bg-gray-100_01" />
       </div>
     </>
   );
