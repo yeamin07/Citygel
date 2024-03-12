@@ -41,9 +41,10 @@ const Input = React.forwardRef(
       variant = "fill",
       size = "md",
       color = "blue_gray_100_33",
+      register, // Add register prop
       ...restProps
     },
-    ref,
+    ref
   ) => {
     const handleChange = (e) => {
       if (onChange) onChange(e?.target?.value);
@@ -52,16 +53,28 @@ const Input = React.forwardRef(
     return (
       <>
         <div
-          className={`${className} flex items-center justify-center bg-blue_gray-100_33 rounded-[15px] ${shapes[shape] || ""} ${variants[variant]?.[color] || variants[variant] || ""} ${sizes[size] || ""}`}
+          className={`${className} flex items-center justify-center bg-blue_gray-100_33 rounded-[15px] ${
+            shapes[shape] || ""
+          } ${variants[variant]?.[color] || variants[variant] || ""} ${
+            sizes[size] || ""
+          }`}
         >
           {!!label && label}
           {!!prefix && prefix}
-          <input ref={ref} type={type} name={name} onChange={handleChange} placeholder={placeholder} {...restProps} />
+          <input
+            ref={ref} // Forward the ref to the input element
+            type={type}
+            name={name}
+            onChange={handleChange}
+            placeholder={placeholder}
+            {...register(name)} // Use register function to register the input field
+            {...restProps}
+          />
           {!!suffix && suffix}
         </div>
       </>
     );
-  },
+  }
 );
 
 Input.propTypes = {
@@ -75,7 +88,13 @@ Input.propTypes = {
   shape: PropTypes.oneOf(["round"]),
   size: PropTypes.oneOf(["2xl", "sm", "lg", "xl", "xs", "3xl", "md"]),
   variant: PropTypes.oneOf(["fill", "outline"]),
-  color: PropTypes.oneOf(["blue_gray_100_33", "white_A700", "gray_50_01", "gray_50", "black_900_03"]),
+  color: PropTypes.oneOf([
+    "blue_gray_100_33",
+    "white_A700",
+    "gray_50_01",
+    "gray_50",
+    "black_900_03",
+  ]),
 };
 
 export { Input };

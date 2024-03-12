@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, Text, Img } from "./..";
-
 export default function Header1({ ...props }) {
   return (
     <header
       {...props}
-      className="bg-[url('images/img_frame_3923.svg')] w-full h-[200px]  "
+      className={` w-full h-200 head bg-[url(images/header.webp)]`}
+      style={{ backgroundImage: "header.webp" }}
     >
       <div className="pl-24 pr-24 mr-auto ">
         <div className="flex  justify-between items-center w-full py-3 mx-auto max-w-[1427px]">

@@ -7,7 +7,8 @@ const shapes = {
 const variants = {
   fill: {
     blue_gray_100_03: "bg-blue_gray-100_03 text-gray-800",
-    white_A700: "border-black-900_33 border border-solid bg-white-A700 text-black-900_90_01",
+    white_A700:
+      "border-black-900_33 border border-solid bg-white-A700 text-black-900_90_01",
   },
   outline: {
     gray_900: "border-gray-900 border-2 border-solid text-gray-900",
@@ -23,6 +24,7 @@ const CheckBox = React.forwardRef(
       className = "",
       name = "",
       children,
+      register,
       label = "",
       id = "checkbox_id",
       onChange,
@@ -32,7 +34,7 @@ const CheckBox = React.forwardRef(
       color = "white_A700",
       ...restProps
     },
-    ref,
+    ref
   ) => {
     const handleChange = (e) => {
       if (onChange) onChange(e?.target?.checked);
@@ -40,9 +42,17 @@ const CheckBox = React.forwardRef(
 
     return (
       <>
-        <div className={className + " flex items-center justify-center gap-[5px] cursor-pointer"}>
+        <div
+          className={
+            className +
+            " flex items-center justify-center gap-[5px] cursor-pointer"
+          }
+        >
           <input
-            className={` ${(shape && shapes[shape]) || ""} ${(size && sizes[size]) || ""} ${(variant && variants[variant]?.[color]) || ""}`}
+            {...register(name)}
+            className={` ${(shape && shapes[shape]) || ""} ${
+              (size && sizes[size]) || ""
+            } ${(variant && variants[variant]?.[color]) || ""}`}
             ref={ref}
             type="checkbox"
             name={name}
@@ -55,7 +65,7 @@ const CheckBox = React.forwardRef(
         {children}
       </>
     );
-  },
+  }
 );
 
 CheckBox.propTypes = {

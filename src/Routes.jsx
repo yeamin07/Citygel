@@ -4,11 +4,10 @@ import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import LoginThree from "pages/Login";
 import Login from "pages/SignUp";
-import HomeNine from "pages/HomeNine";
+
 import PostAdEleven from "pages/PostAdEleven";
 import PostAdTwo from "pages/PostAdTwo";
 import SignUpPage from "pages/SignUp";
-import Products from './pages/Products/index';
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -20,7 +19,7 @@ const ProjectRoutes = () => {
     },
     {
       path: "signup",
-      element: <SignUpPage/>,
+      element: <SignUpPage />,
     },
     {
       path: "homenine",
@@ -33,10 +32,6 @@ const ProjectRoutes = () => {
     {
       path: "postadtwo",
       element: <PostAdTwo />,
-    },
-    {
-      path: "products",
-      element: <Products/>,
     },
   ]);
 

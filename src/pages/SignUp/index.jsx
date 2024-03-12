@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import PhoneInputfunc from "components/PhoneInput";
-import PinInputfunc from "components/PinInput";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import {
   Text,
   Img,
@@ -12,14 +12,31 @@ import {
 } from "../../components";
 import Footer from "../../components/Footer";
 import Header1 from "../../components/Header1";
-
-// const dropDownOptions = [
-//   { label: "Option1", value: "option1" },
-//   { label: "Option2", value: "option2" },
-//   { label: "Option3", value: "option3" },
-// ];
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Controller, useForm } from "react-hook-form";
+import { SignUpFormValidationSchemas } from "./SignUpFormValidationSchemas";
+import PinInputfunc from "components/PinInput";
+import PinInput from "react-pin-input";
+import SocialLogin from "components/Button/SocialLogin";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage() {
+  const {
+    handleSubmit,
+    register,
+    getFieldState,
+    getValues,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: yupResolver(SignUpFormValidationSchemas),
+    mode: "onChange",
+  });
+  console.log(errors);
+  const onSubmit = (e) => {
+    console.log(e);
+  };
+  const navigate = useNavigate();
   return (
     <>
       <Helmet>
@@ -30,7 +47,7 @@ export default function SignUpPage() {
         />
       </Helmet>
       <div className="flex flex-col items-center justify-start w-full bg-gray-50">
-        <Header1 className="flex flex-col justify-center items-center w-full" />
+        <Header1 />
         <div className="flex flex-col items-center justify-start w-[32%] ">
           <div className="h-[372px] w-full  relative max-w-[372px]">
             <div className="flex flex-col items-start justify-start w-full top-[11%] right-0 left-0 m-auto absolute">
@@ -156,118 +173,252 @@ export default function SignUpPage() {
             >
               Please enter your credential Details.
             </Text>
-            <Text as="p" className="mt-7 !text-black-900_99 opacity-0.7">
-              Enter Your Full Name
-            </Text>
-            <div className="flex flex-col items-start justify-start w-full mt-2">
-              <Input
-                size="lg"
-                name="fullName"
-                placeholder="johnsm"
-                className="w-full border-cyan-700_01 border border-solid"
-              />
-              <Text
-                as="p"
-                className="mt-5 ml-1.5 !text-black-900_99 opacity-0.7"
-              >
-                Enter Your Phone number
-              </Text>
-              <div className="flex flex-row justify-start mt-2 gap-2.5">
-                <PhoneInputfunc className="w-[140px] h-[80px]" />
-                <input
-                  className="w-[450px] h-[80px] bg-neutral-100 rounded-xl pl-5"
-                ></input>
-              </div>
-              <Text
-                as="p"
-                className="mt-[19px] ml-1.5 !text-black-900_99 opacity-0.7"
-              >
-                Enter Your Email
-              </Text>
-              <div className="h-[80px] w-full mt-[9px] relative">
-                <Input
-                  size="2xl"
-                  type="email"
-                  name="email"
-                  placeholder="mail@email.com"
-                  className="w-full left-0 bottom-0 right-0 top-0 m-auto !text-black-900_6f absolute"
-                />
-                <Button
-                  color="cyan_700_01"
-                  size="5xl"
-                  variant="fill"
-                  className="right-[1%] bottom-0 top-0 m-auto min-w-[170px] absolute rounded-[15px]"
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="flex flex-col items-start justify-start w-full mt-2">
+                <Text
+                  as="p"
+                  className="mt-7 ml-1.5 !text-black-900_99 opacity-0.7"
                 >
-                  Send OTP
-                </Button>
-              </div>
-              <PinInputfunc length={6}/>
-              <div className="flex flex-row justify-start w-full mt-[15px] mx-auto max-w-[490px]">
-                <div className="flex flex-col items-start justify-start w-full gap-3">
-                  <CheckBox 
-                    color="blue_gray_100_03"
-                    name="Iamaccept"
-                    label={
-                      <span>
-                        I am accepting all 
-                        <span style={{ color: '#00e4e4' }}> Terms</span>
-                        <span> &amp; </span>
-                        <span style={{ color: '#00e4e4' }}>Conditions</span>
-                      </span>
-                    }
-                    className="gap-2.5 text-left rounded-md text-[13px]"
+                  Enter Your Full Name
+                </Text>
+                <div className="relative">
+                  <Input
+                    register={register}
+                    size="lg"
+                    name="fullName"
+                    placeholder="your name"
+                    className={`w-full border-cyan-700_01 border border-solid ${
+                      errors.fullName?.message
+                        ? "border-red-600"
+                        : "border-cyan-700_01"
+                    }`}
                   />
-                  <CheckBox
-                    color="blue_gray_100_03"
-                    name="areyouintereste"
-                    label="Are you interested to receive marketing communications"
-                    className="gap-2.5 text-left rounded-md text-[13px]"
-                  />
+                  {errors.fullName?.message && (
+                    <Text
+                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                      fontSize="xs"
+                      bottom="-19px"
+                      position="absolute"
+                      color="#E85A2D"
+                    >
+                      <>{errors.fullName?.message}</>
+                    </Text>
+                  )}
                 </div>
-              </div>
-              <div>
-                <button type="submit"
-                style={{backgroundColor:'#0B90AF'}}
-                className="w-[430px] h-[80px] rounded-[15px] mt-7 text-white-A700 font-poppins font-normal text-[24px]"
-                >Create Account</button>
-              </div>
-              <a href="#" className="mt-8">
-                <Text />
-              </a>
-              <div className="flex flex-row justify-start w-full mt-[31px]">
-                <div className="flex flex-col items-center justify-start w-full">
-                  <div className="flex flex-row justify-start items-start w-full gap-[19px]">
-                    <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
+                <Text
+                  as="p"
+                  className="mt-8 ml-1.5 !text-black-900_99 opacity-0.7"
+                >
+                  Enter Your Phone number
+                </Text>
+                <div className="relative mt-[5px] block md:flex gap-[25px] w-full ">
+                  <Controller
+                    control={control}
+                    name="phoneNumber"
+                    render={({
+                      field: { onChange, onBlur, value, name, ref },
+                      fieldState: { error },
+                    }) => (
+                      <PhoneInput
+                        country={"us"}
+                        value={value}
+                        className={
+                          value && error === undefined
+                            ? "is-valid w-full "
+                            : error
+                            ? "has-error w-full "
+                            : value && "is-valid w-full "
+                        }
+                        placeholder="Phone Number"
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+
+                  {errors.phoneNumber?.message && (
+                    <Text
+                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                      fontSize="xs"
+                      bottom="-19px"
+                      position="absolute"
+                      color="#E85A2D"
+                    >
+                      <>Please enter valid phone number</>
+                    </Text>
+                  )}
+                </div>
+                <Text
+                  as="p"
+                  className="mt-[40px] ml-1.5 !text-black-900_99 opacity-0.7"
+                >
+                  Enter Your Email
+                </Text>
+                <div
+                  className={`h-[80px] w-full mt-[15px] relative border border-solid rounded-[15px] ${
+                    errors.email?.message
+                      ? "border-red-600"
+                      : "border-cyan-700_01"
+                  } `}
+                >
+                  <Input
+                    register={register}
+                    size="2xl"
+                    type="email"
+                    name="email"
+                    placeholder="mail@email.com"
+                    className="w-full left-0 bottom-0 right-0 top-0 m-auto !text-black-900_6f absolute"
+                  />
+                  <Button
+                    color="cyan_700_01"
+                    size="5xl"
+                    variant="fill"
+                    className="right-[1%] bottom-0 top-0 m-auto min-w-[170px] absolute rounded-[15px]"
+                  >
+                    Send OTP
+                  </Button>
+                  {errors.email?.message && (
+                    <Text
+                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                      fontSize="xs"
+                      bottom="-19px"
+                      position="absolute"
+                      color="#E85A2D"
+                    >
+                      <>Please enter valid Email</>
+                    </Text>
+                  )}
+                </div>
+
+                <div className="relative mt-9">
+                  <Controller
+                    name="code"
+                    control={control}
+                    defaultValue=""
+                    render={({
+                      field: { onChange, onBlur, value, name, ref },
+                      fieldState: { error },
+                    }) => (
+                      <div>
+                        <PinInput
+                          length={6}
+                          initialValue=""
+                          secret
+                          secretDelay={100}
+                          value={value}
+                          onChange={onChange}
+                          type="numeric"
+                          inputMode="number"
+                          style={{ padding: "15px", paddingLeft: "40px" }}
+                          inputStyle={{
+                            borderColor: "#0B90AF",
+                            borderRadius: "10px",
+                          }}
+                          inputFocusStyle={{ borderColor: "blue" }}
+                          onComplete={(value, index) => {}}
+                          autoSelect={true}
+                          regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+                        />
+                      </div>
+                    )}
+                  />
+                  {errors.code?.message && (
+                    <Text
+                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                      fontSize="xs"
+                      bottom="-19px"
+                      position="absolute"
+                      color="#E85A2D"
+                    >
+                      <>Please enter valid Code</>
+                    </Text>
+                  )}
+                </div>
+
+                <div className="flex flex-row justify-start w-full mt-[20px] mx-auto max-w-[490px]">
+                  <div className="flex flex-col items-start justify-start w-full gap-3">
+                    <div className="relative mb-3">
+                      <CheckBox
+                        color="blue_gray_100_03"
+                        name="terms"
+                        register={register}
+                        label={
+                          <span>
+                            I am accepting all
+                            <span style={{ color: "#00e4e4" }}> Terms</span>
+                            <span> &amp; </span>
+                            <span style={{ color: "#00e4e4" }}>Conditions</span>
+                          </span>
+                        }
+                        className="gap-2.5 text-left rounded-md text-[13px]"
+                      />
+                      {errors.code?.message && (
+                        <Text
+                          className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                          fontSize="xs"
+                          bottom="-19px"
+                          position="absolute"
+                          color="#E85A2D"
+                        >
+                          <>You need to agree with terms</>
+                        </Text>
+                      )}
+                    </div>
+                    <CheckBox
+                      register={register}
+                      color="blue_gray_100_03"
+                      name="marketing"
+                      label="Are you interested to receive marketing communications"
+                      className="gap-2.5 text-left rounded-md text-[13px]"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    style={{ backgroundColor: "#0B90AF" }}
+                    className="w-[430px] h-[80px] rounded-[15px] mt-7 text-white-A700 font-poppins font-normal text-[24px]"
+                  >
+                    Create Account
+                  </button>
+                </div>
+                <a href="#" className="mt-8">
+                  <Text />
+                </a>
+                <div className="flex flex-row justify-start w-full mt-[31px]">
+                  <div className="flex flex-col items-center justify-start w-full">
+                    <div className="flex flex-row justify-start items-start w-full gap-[19px]">
+                      <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
+                      <Text
+                        size="2xl"
+                        as="p"
+                        className="!text-black-900_75 text-center opacity-0.3"
+                      >
+                        or
+                      </Text>
+                      <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
+                    </div>
+                    <SocialLogin />
                     <Text
                       size="2xl"
                       as="p"
-                      className="!text-black-900_75 text-center opacity-0.3"
+                      className="mt-[35px] !text-red-500 text-center"
                     >
-                      or
+                      <span className="text-gray_500">
+                        Already have an account?
+                      </span>
+                      <span className="text-red-500"></span>
+                      <span
+                        className="text-cyan-700_01 ml-2 cursor-pointer"
+                        onClick={() => navigate("/login")}
+                      >
+                        Sign in
+                      </span>
                     </Text>
-                    <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
                   </div>
-                  <div className="flex flex-col items-center justify-start h-[80px] w-[80px] mt-[18px] p-[22px] bg-blue_gray-100_19 rounded-[50%]">
-                    <Img
-                      src="images/img_group_red_500_01.svg"
-                      alt="image_three"
-                      className="h-[36px] w-[36px]"
-                    />
-                  </div>
-                  <Text
-                    size="2xl"
-                    as="p"
-                    className="mt-[35px] !text-red-500 text-center"
-                  >
-                    <span className="text-gray_500">
-                      Already have an account?
-                    </span>
-                    <span className="text-red-500"></span>
-                    <span className="text-cyan-700_01">Sin in</span>
-                  </Text>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
         <Footer className="flex justify-center items-center w-full mt-[120px] p-[34px] bg-gray-100_01" />

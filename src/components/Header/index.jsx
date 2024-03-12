@@ -4,7 +4,7 @@ import { Button, Text, Img } from "./..";
 export default function Header({ ...props }) {
   return (
     <header {...props}>
-      <Img src="images/img_frame_3923.svg" alt="image" className="h-[210px]" />
+      <Img src="" alt="image" className="h-[210px]" />
       <Text as="p" className="mt-[55px] mr-[141px]">
         Change Location
       </Text>
@@ -12,10 +12,18 @@ export default function Header({ ...props }) {
         <div className="flex flex-col items-center justify-start h-[44px] w-[44px] p-2.5 border-white-A700 border border-solid bg-white-A700 rounded-[50%]">
           <div className="flex justify-center h-[24px] w-[24px]" />
         </div>
-        <Img src="images/img_arrow_down.svg" alt="arrowdown_one" className="h-[5px] mr-2.5" />
+        <Img
+          src="images/img_arrow_down.svg"
+          alt="arrowdown_one"
+          className="h-[5px] mr-2.5"
+        />
       </div>
       <div className="flex flex-row justify-between items-start w-full mt-5 mx-auto max-w-[1427px]">
-        <Img src="images/img_citygel_2_white.png" alt="citygel2white" className="w-[15%] object-cover" />
+        <Img
+          src="images/img_citygel_2_white.png"
+          alt="citygel2white"
+          className="w-[15%] object-cover"
+        />
         <Text size="5xl" as="p" className="mt-7 !text-gray-50 text-center">
           Login or Sign up
         </Text>
@@ -43,7 +51,12 @@ export default function Header({ ...props }) {
             </Text>
           </a>
         </div>
-        <Button color="red_A400_01" size="4xl" variant="fill" className="font-aleo font-bold min-w-[242px]">
+        <Button
+          color="red_A400_01"
+          size="4xl"
+          variant="fill"
+          className="font-aleo font-bold min-w-[242px]"
+        >
           Past an ad
         </Button>
       </div>
