@@ -67,6 +67,11 @@ const Home = () => {
             Products
           </Link>
         </li>
+        <li style={{ marginBottom: "10px" }}>
+          <Link to="/categories" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Categories
+          </Link>
+        </li>
       </ul>
     </div>
   );

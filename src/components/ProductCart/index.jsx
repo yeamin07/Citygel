@@ -1,7 +1,5 @@
 import React from "react";
 import ai from '../../assets/images/ai.jpg'
-import ai2 from '../../assets/images/ai2.jpg'
-import laptop from '../../assets/images/laptop.jpg'
 import placeholder from '../../assets/images/placeholder.png'
 
 
