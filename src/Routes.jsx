@@ -8,6 +8,8 @@ import PostAdTwo from "pages/PostAdTwo";
 import SignUpPage from "pages/SignUp";
 import HomePage from "pages/HomeNine";
 import Products from "./pages/Products/index";
+import CategoriesPage from "./pages/Categories/index";
+
 const ProjectRoutes = () => {
   let element = useRoutes([
     // { path: "/", element: <Home /> },
@@ -35,6 +37,10 @@ const ProjectRoutes = () => {
     {
       path: "products",
       element: <Products />,
+    },
+    {
+      path: "categories",
+      element: <CategoriesPage />,
     },
   ]);
 

@@ -30,13 +30,20 @@ const Products = () => {
                         <div>
                             <DropdownButton2 text="Filter: default" />
                         </div>
-                        <div className='w-[65%] h-[70px] border border-solid border-black-900_87 pt-3 mr-4 space relative'>
+                        {/* <div className='w-[65%] h-[70px] border border-solid border-black-900_87 pt-3 mr-4 space relative'>
                             <p>categories</p>
                             <p>price</p>
                         </div>
                         <div className='w-[65%] h-[70px] rounded-b-2xl border border-solid border-black-900_87 pt-3 mr-4 relative'>
                             <p>subcategories</p>
                             <p>cities</p>
+                        </div> */}
+                        <div className='w-[65%] h-[120px] border border-solid border-black-900_87 mr-4 
+                         grid grid-rows-2 grid-cols-2 rounded-b-4xl'>
+                            <p className='border border-solid border-black-900_87'>Categories</p>
+                            <p className='border border-solid border-black-900_87'>Price</p>
+                            <p className='border border-solid border-black-900_87'>Subcategories</p>
+                            <p className='border border-solid border-black-900_87'>cities</p>
                         </div>
                     </div>
                     <div className='flex flex-wrap mt-3 ml-20'>
