@@ -1,19 +1,16 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
-import Home from "pages/Home";
+// import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import LoginThree from "pages/Login";
-import Login from "pages/SignUp";
-
 import PostAdEleven from "pages/PostAdEleven";
 import PostAdTwo from "pages/PostAdTwo";
 import SignUpPage from "pages/SignUp";
 import HomePage from "pages/HomeNine";
-import Products from './pages/Products/index';
-
+import Products from "./pages/Products/index";
 const ProjectRoutes = () => {
   let element = useRoutes([
-    { path: "/", element: <Home /> },
+    // { path: "/", element: <Home /> },
     { path: "*", element: <NotFound /> },
     {
       path: "login",
@@ -25,7 +22,7 @@ const ProjectRoutes = () => {
     },
     {
       path: "homenine",
-      element: <HomePage/>
+      element: <HomePage />,
     },
     {
       path: "postadeleven",
@@ -37,8 +34,8 @@ const ProjectRoutes = () => {
     },
     {
       path: "products",
-      element: <Products/>,
-    }
+      element: <Products />,
+    },
   ]);
 
   return element;

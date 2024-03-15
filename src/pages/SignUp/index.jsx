@@ -18,7 +18,14 @@ import { SignUpFormValidationSchemas } from "./SignUpFormValidationSchemas";
 import PinInputfunc from "components/PinInput";
 import PinInput from "react-pin-input";
 import SocialLogin from "components/Button/SocialLogin";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+} from "react-firebase-hooks/auth/dist/index.cjs";
+import auth from "firebase.init";
+import { password } from "config/password";
+import axios from "axios";
 
 export default function SignUpPage() {
   const {
@@ -32,11 +39,41 @@ export default function SignUpPage() {
     resolver: yupResolver(SignUpFormValidationSchemas),
     mode: "onChange",
   });
+
+  const [createUserWithEmailAndPassword, cuser, loading, hookerror] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: false });
   console.log(errors);
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     console.log(e);
+    const email = e.email;
+    try {
+      const createUser = await createUserWithEmailAndPassword(
+        e.email,
+        password
+      );
+      if (createUser) {
+        const response = await axios.post(
+          "http://localhost:5001/api/v1/user/register",
+          {
+            email,
+            password,
+            name: e.fullName,
+          }
+        );
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  if (user) {
+    navigate(from);
+  }
   return (
     <>
       <Helmet>

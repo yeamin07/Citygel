@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import citiesData from "../assets/Cities.json";
+import citiesData from "./SignUp/Cities.json";
 function FlightSearch() {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
@@ -10,14 +10,14 @@ function FlightSearch() {
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
-    // Set cities data when component mounts
+    // console.log(cities[0][0]);
     setCities(Object.entries(citiesData));
   }, []);
 
   const handleSearch = async () => {
+    console.log(origin, destination, date);
     try {
-      let url =
-        "http://ec2-16-16-169-211.eu-north-1.compute.amazonaws.com:8000/flights?";
+      let url = `http://ec2-16-16-169-211.eu-north-1.compute.amazonaws.com:8000/flights?ori=${origin}&dest=${destination}&dd=${date}`;
 
       const response = await axios.get(url);
       if (response.status === 200) {
@@ -56,26 +56,40 @@ function FlightSearch() {
         >
           From:
         </label>
-        <input
-          style={{
-            width: "100%",
-            padding: "8px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "3px",
-          }}
-          type="text"
-          value={origin}
-          onChange={(e) => setOrigin(e.target.value)}
-          list="citiesList"
-        />
-        <datalist id="citiesList">
-          <option value="">All Cities</option>
-          {cities.map(([code, name]) => (
-            <option key={code} value={name}></option>
-          ))}
-        </datalist>
+        <div style={{ position: "relative" }}>
+          {/* <input
+            style={{
+              width: "100%",
+              padding: "8px",
+              fontSize: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "3px",
+            }}
+            type="text"
+            value={origin}
+            onChange={(e) => setOrigin(e.target.value)}
+            list="citiesList"
+          /> */}
+          <select
+            style={{
+              width: "100%",
+              padding: "8px",
+              fontSize: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "3px",
+            }}
+            defaultValue={origin}
+          >
+            <option value="name">Select City</option>
+            {cities.map(([code, name]) => (
+              <option onClick={(e) => setOrigin(code)} key={code} value={name}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+
       <div style={{ marginBottom: "10px" }}>
         <label
           style={{
@@ -87,25 +101,42 @@ function FlightSearch() {
         >
           To:
         </label>
-        <input
-          style={{
-            width: "100%",
-            padding: "8px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "3px",
-          }}
-          type="text"
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-          list="citiesList"
-        />
-        <datalist id="citiesList">
-          <option value="">All Cities</option>
-          {cities.map(([code, name]) => (
-            <option key={code} value={name}></option>
-          ))}
-        </datalist>
+        <div style={{ position: "relative" }}>
+          {/* <input
+            style={{
+              width: "100%",
+              padding: "8px",
+              fontSize: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "3px",
+            }}
+            type="text"
+            value={origin}
+            onChange={(e) => setOrigin(e.target.value)}
+            list="citiesList"
+          /> */}
+          <select
+            style={{
+              width: "100%",
+              padding: "8px",
+              fontSize: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "3px",
+            }}
+            defaultValue={destination}
+          >
+            <option value="name">Select City</option>
+            {cities.map(([code, name]) => (
+              <option
+                onClick={(e) => setDestination(code)}
+                key={code}
+                value={name}
+              >
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <div style={{ marginBottom: "10px" }}>
         <label
