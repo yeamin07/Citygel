@@ -9,6 +9,11 @@ import SignUpPage from "pages/SignUp";
 import HomePage from "pages/HomeNine";
 import Products from "./pages/Products/index";
 import CategoriesPage from "./pages/Categories/index";
+import Description from "components/ai-5pages/Description";
+import PostAd from "components/ai-5pages/PostAd";
+import PostAd1 from "components/ai-5pages/PostAd1";
+import PostAd2 from "components/ai-5pages/PostAd2";
+import Profile from "components/ai-5pages/Profile";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -41,6 +46,26 @@ const ProjectRoutes = () => {
     {
       path: "categories",
       element: <CategoriesPage />,
+    },
+    {
+      path: "description",
+      element: <Description />,
+    },
+    {
+      path: "postad",
+      element: <PostAd />,
+    },
+    {
+      path: "postad1",
+      element: <PostAd1 />,
+    },
+    {
+      path: "postad2",
+      element: <PostAd2 />,
+    },
+    {
+      path: "Profile",
+      element: <Profile />,
     },
   ]);
 

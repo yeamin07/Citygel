@@ -72,6 +72,31 @@ const Home = () => {
             Categories
           </Link>
         </li>
+        <li>
+          <Link to="/description" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Description
+          </Link>
+        </li>
+        <li>
+          <Link to="/postad" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Post Ad
+          </Link>
+        </li>
+        <li>
+          <Link to="/postad1" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Post Ad1
+          </Link>
+        </li>
+        <li>
+          <Link to="/postad2" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Post Ad2
+          </Link>
+        </li>
+        <li>
+          <Link to="/profile" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Profile
+          </Link>
+        </li>
       </ul>
     </div>
   );

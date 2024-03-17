@@ -9,7 +9,7 @@ export default function Header5({ ...props }) {
         {/* <Text size="5xl" as="p" className="!text-gray-50 text-center">
           Login or Sign up
         </Text> */}
-        <p className="w-[206px] h-[39px] text-white-A700 pl-5">Login or Sign up</p>
+        <p className="w-[206px] h-[39px] text-white-A700 pl-5 cursor-pointer">Login or Sign up</p>
         <div className="h-[50px] w-[223px] relative">
           <Text as="p" className="bottom-[22%] right-[16%] m-auto absolute font-poppins text-[16px] font-normal">
             Change Country
