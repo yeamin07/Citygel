@@ -1,6 +1,6 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
-// import Home from "pages/Home";
+import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import LoginThree from "pages/Login";
 import PostAdEleven from "pages/PostAdEleven";
@@ -14,7 +14,7 @@ import PostAd from "components/ai-5pages/PostAd";
 import PostAd1 from "components/ai-5pages/PostAd1";
 import PostAd2 from "components/ai-5pages/PostAd2";
 import Profile from "components/ai-5pages/Profile";
-import Home from "pages/Home";
+import Fullheader from "components/Fullheader";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -65,9 +65,13 @@ const ProjectRoutes = () => {
       element: <PostAd2 />,
     },
     {
-      path: "Profile",
-      element: <Profile />,
+      path:"Profile",
+      element:<Profile/>
     },
+    {
+      path:"fullheader",
+      element:<Fullheader/>
+    }
   ]);
 
   return element;
