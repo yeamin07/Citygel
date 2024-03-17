@@ -8,9 +8,14 @@ import Login from "pages/SignUp";
 import PostAdEleven from "pages/PostAdEleven";
 import PostAdTwo from "pages/PostAdTwo";
 import SignUpPage from "pages/SignUp";
-import HomeNine from "pages/HomeNine";
-import FlightSearch from "pages/Flight";
-import Description from "components/Description";
+import HomePage from "pages/HomeNine";
+import Products from './pages/Products/index';
+import CategoriesPage from './pages/Categories/index';
+import Description from "components/ai-5pages/Description";
+import PostAd from "components/ai-5pages/PostAd";
+import PostAd1 from "components/ai-5pages/PostAd1";
+import PostAd2 from "components/ai-5pages/PostAd2";
+import Profile from "components/ai-5pages/Profile";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -26,7 +31,7 @@ const ProjectRoutes = () => {
     },
     {
       path: "homenine",
-      element: <HomeNine />,
+      element: <HomePage/>
     },
     {
       path: "postadeleven",
@@ -37,9 +42,33 @@ const ProjectRoutes = () => {
       element: <PostAdTwo />,
     },
     {
-      path: "flight",
-      element: <FlightSearch />,
+      path: "products",
+      element: <Products/>,
     },
+    {
+      path: "categories",
+      element: <CategoriesPage/>,
+    },
+    {
+      path:"description",
+      element:<Description/>
+    },
+    {
+      path:"postad",
+      element:<PostAd/>
+    },
+    {
+      path:"postad1",
+      element:<PostAd1/>
+    },
+    {
+      path:"postad2",
+      element:<PostAd2/>
+    },
+    {
+      path:"Profile",
+      element:<Profile/>
+    }
   ]);
 
   return element;
