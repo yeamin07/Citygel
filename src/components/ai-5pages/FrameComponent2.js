@@ -1,6 +1,6 @@
 const FrameComponent2 = () => {
   return (
-    <header className="absolute top-[0px] left-[0px] w-full h-[140px] flex flex-row items-start justify-center py-5 pr-5 pl-[769px] box-border gap-[519px] max-w-full z-[5] text-left text-3xl text-white font-poppins lg:gap-[519px_259px] lg:pl-96 lg:box-border mq450:gap-[519px_65px] mq450:pl-5 mq450:box-border mq750:gap-[519px_130px] mq750:pl-48 mq750:box-border">
+    <header className="absolute top-[0px] w-screen h-[140px] flex flex-row items-start justify-center py-5 pr-5 pl-[769px] box-border gap-[519px] max-w-full z-[5] text-left text-3xl text-white font-poppins lg:gap-[519px_259px] lg:pl-96 lg:box-border mq450:gap-[519px_65px] mq450:pl-5 mq450:box-border mq750:gap-[519px_130px] mq750:pl-48 mq750:box-border">
       <img
         className="h-full w-full absolute !m-[0] top-[0px] right-[0px] bottom-[0px] left-[0px] max-w-full overflow-hidden max-h-full"
         alt=""

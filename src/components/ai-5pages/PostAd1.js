@@ -3,9 +3,10 @@ import CitygelLogo from "./CitygelLogo";
 
 const PostAd1 = () => {
   return (
-    <div className="w-[1920px] h-[1781px] rounded-31xl bg-gray-200 overflow-hidden tracking-[normal] mq750:h-auto mq750:min-h-[1781]">
-      <FrameComponent2 />
-      <main className="absolute top-[366px] left-[0px] w-full flex flex-col items-start justify-start gap-[83px] max-w-full text-left text-25xl text-black font-poppins mq750:gap-[21px_83px] mq1050:gap-[41px_83px]">
+    <div  className="w-screen h-auto">
+    <FrameComponent2 />
+      <div className="w-screen h-[1781px] rounded-31xl bg-gray-200 overflow-visible tracking-[normal] mq750:h-auto mq750:min-h-[1781]">
+      <main className="absolute top-[330px] left-[0px] w-full flex flex-col items-start justify-start gap-[83px] max-w-full text-left text-25xl text-black font-poppins mq750:gap-[21px_83px] mq1050:gap-[41px_83px]">
         <div className="w-[1090px] flex flex-row items-start justify-center pt-0 px-5 pb-[37px] box-border max-w-full">
           <div className="w-[870px] flex flex-col items-start justify-start gap-[20px] max-w-full">
             <h1 className="m-0 relative text-inherit font-medium font-inherit inline-block max-w-full z-[4] mq450:text-7xl mq1050:text-16xl">{`Pricing & Plans`}</h1>
@@ -290,6 +291,7 @@ const PostAd1 = () => {
           src="/image-31@2x.png"
         />
       </div>
+    </div>
     </div>
   );
 };

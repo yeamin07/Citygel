@@ -97,6 +97,11 @@ const Home = () => {
             Profile
           </Link>
         </li>
+        <li>
+          <Link to="/fullheader" style={{ color: "#87CEFA", textDecoration: "none" }}>
+            Full Header
+          </Link>
+        </li>
       </ul>
     </div>
   );
