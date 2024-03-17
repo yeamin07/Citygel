@@ -14,10 +14,11 @@ import PostAd from "components/ai-5pages/PostAd";
 import PostAd1 from "components/ai-5pages/PostAd1";
 import PostAd2 from "components/ai-5pages/PostAd2";
 import Profile from "components/ai-5pages/Profile";
+import Home from "pages/Home";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
-    // { path: "/", element: <Home /> },
+    { path: "/", element: <Home /> },
     { path: "*", element: <NotFound /> },
     {
       path: "login",
