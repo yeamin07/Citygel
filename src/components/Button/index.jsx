@@ -39,6 +39,7 @@ const sizes = {
 
 const Button = ({
   children,
+  type,
   className = "",
   leftIcon,
   rightIcon,
@@ -50,6 +51,7 @@ const Button = ({
 }) => {
   return (
     <button
+      type={type}
       className={`${className} hover:#FA0037 flex items-center justify-center text-center cursor-pointer ${
         (shape && shapes[shape]) || ""
       } ${(size && sizes[size]) || ""} ${

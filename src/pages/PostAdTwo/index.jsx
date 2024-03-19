@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Text, Button, Input, TextArea, Img } from "../../components";
-import Footer1 from "../../components/Footer1";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpFormValidationSchemas } from "pages/SignUp/SignUpFormValidationSchemas";
@@ -156,7 +156,6 @@ export default function PostAdTwoPage() {
                 AD
               </Text>
             </div>
-            <Footer1 className="flex justify-center items-center w-full mt-[-90px]" />
           </div>
         </div>
         <div className="flex flex-col items-start justify-start w-[95%] right-0 top-0 m-auto absolute">

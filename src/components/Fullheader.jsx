@@ -13,7 +13,7 @@ const Fullheader = ({ children }) => {
   return (
     <div className="overflow-hidden">
       <header className=" bg-gradient-to-r from-[rgb(16,56,76)] to-[rgb(21,60,77)] w-screen h-[100px] mq800:h-[80px] flex justify-between absolute overflow-hidden">
-        <div className="flex justify-center items-center flex-grow">
+        <div className="pl-2 flex justify-start items-start flex-grow">
           <img src={logo} className="h-full mq800:h-[56px]" />
         </div>
         <div className="flex justify-center items-center h-[70px] mq750:h-[60px] mt-2 mq800:space-x-0 space-x-4 flex-grow-0 ">

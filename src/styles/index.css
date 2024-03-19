@@ -43,13 +43,28 @@ input:focus {
   outline: none;
 }
 .gray_50_02_red_A400_border {
-
-  border-image: linear-gradient(135deg, #fafafa, #f90e3a) 1;
-
-  /* Border radius */
-  border-radius: 20px; /* Adjust the value as per your preference */
+  
+  background: linear-gradient(to top right, #ffffff, #ffffff),
+  linear-gradient(to bottom right, #FBFBFB, #F90E3A);
+background-clip: padding-box, border-box;
+background-origin: padding-box, border-box;
+border: 3px solid transparent;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 20px; 
+  font-size: 36px;
 }
-.gray_50_02_red_A400_border::before {
+.gray_50_02_red_A400_border:hover {
+  
+  background: linear-gradient(to top right, #ffffff, #ffffff),
+  linear-gradient(to top left, #FBFBFB, #F90E3A);
+background-clip: padding-box, border-box;
+background-origin: padding-box, border-box;
+border: 3px solid transparent;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+cursor: pointer;
+
+}
+/* .gray_50_02_red_A400_border::before {
   content: '';
   position: absolute;
   top: -20px;
@@ -59,7 +74,7 @@ input:focus {
   z-index: -1;
   background: linear-gradient(135deg, #fafafa, #f90e3a);
   border-radius: 20px; /* Same border radius as the main element */
-}
+
 .has-error{
   border: 1px solid red;
 }
@@ -76,6 +91,9 @@ input:focus {
   height: 71px;
   margin-left: 2px;
 
+}
+button{
+  cursor: pointer !important;
 }
 .react-tel-input .selected-flag {
   position: absolute;

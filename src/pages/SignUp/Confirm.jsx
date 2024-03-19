@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -26,12 +26,13 @@ import {
 import auth from "firebase.init";
 import { password } from "config/password";
 import axios from "axios";
-import Loading from "components/Loading/Loading";
-import { toast } from "react-toastify";
+import { ConfirmValidation } from "./ConfirmValidation";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
-
-export default function SignUpPage() {
+export default function Confirm() {
   const {
     handleSubmit,
     register,
@@ -40,88 +41,66 @@ export default function SignUpPage() {
     formState: { errors },
     control,
   } = useForm({
-    resolver: yupResolver(SignUpFormValidationSchemas),
+    resolver: yupResolver(ConfirmValidation),
     mode: "onChange",
   });
-  const navigate = useNavigate();
   const [user] = useAuthState(auth);
-  let { setAuthToken, setTUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   const location = useLocation();
-  const [loading, setLoading] = useState(false);
   let from = location.state?.from?.pathname || "/";
-  const [createUserWithEmailAndPassword, cuser, gloading, hookerror] =
-    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: false });
+  // const fetchUser = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `http://localhost:5000/api/v1/users/${user?.email}`,
+  //     );
+  //     if (response.data) {
+  //       navigate(from);
+  //     }
+  //   } catch (error) {}
+  // };
+  // useEffect(() => {
+  //   fetchUser();
+  // }, [user, tuser]);
+
   console.log(errors);
   const onSubmit = async (e) => {
     console.log(e);
-    const email = e.email;
 
+    const email = e.email;
     try {
-      setLoading(true);
-      const Verifyresponse = await axios.post(
-        "http://localhost:5000/api/v1/auth/verify-code",
-        {
-          email: e.email,
-          code: e.code,
-        },
-      );
-      if (Verifyresponse.data) {
+      if (e) {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/users/create-user",
+          "http://localhost:5000/api/v1/users/create-user-confirm",
           {
-            fullName: e.fullName,
-            email: e.email,
+            email,
             phoneNumber: e.phoneNumber,
+            marketing: e.marketing,
+            fullName: e.fullName,
+            terms: true,
           },
         );
-        const createUser = await createUserWithEmailAndPassword(
-          e.email,
-          password,
-        );
-        setLoading(false);
-        if (response.data && createUser) {
+        console.log(response.data);
+        if (response.data) {
           setAuthToken(response.data.data.accessToken);
           setTUser(jwtDecode(response.data.data.accessToken));
           console.log(response.data.data.accessToken);
           localStorage.setItem("authToken", response.data.data.accessToken);
-          toast.success("Login Successfully");
-
+          toast.success("You Account Created Successfully!", {
+            position: "top-right",
+          });
           navigate(from);
         }
-        console.log(response.data);
-      } else {
-        toast.error("Wrong Code Entered");
       }
     } catch (error) {
-      setLoading(false);
       console.log(error);
-      toast.error(error.errorMessages.message);
     }
   };
-  if (gloading || loading) {
-    return <Loading />;
-  }
-  const { email } = getValues();
-  const handleSendCode = async () => {
-    console.log(email);
-    try {
-      if (email) {
-        const response = await axios.post(
-          `http://localhost:5000/api/v1/auth/send-code`,
-          {
-            email: email,
-          },
-        );
-        if (response.data) {
-          toast.success("Otp code sent into your email");
-        }
-      } else {
-        toast.error("please enter your email");
-      }
-    } catch (error) {}
-  };
+
   return (
     <>
+      <ToastContainer />
       <Helmet>
         <title>Citygel</title>
         <meta
@@ -245,7 +224,7 @@ export default function SignUpPage() {
           </div>
           <div className="mt-[9px] z-[1]">
             <Text size="8xl" as="p" className="!text-black-900_03 text-center">
-              Create an Account
+              Confirm Details
             </Text>
           </div>
           <div className="flex flex-col items-center justify-start w-full mt-[-3px]">
@@ -265,12 +244,12 @@ export default function SignUpPage() {
                 >
                   Enter Your Full Name
                 </Text>
-                <div className="h-[80px] w-full mt-[15px] relative  rounded-[15px]">
+                <div className="h-[80px] w-full mt-[15px] relative rounded-[15px]">
                   <Input
                     register={register}
                     size="lg"
                     name="fullName"
-                    placeholder="your name"
+                    placeholder="Please Type Full Name"
                     className={`w-full border-cyan-700_01 border border-solid ${
                       errors.fullName?.message
                         ? "border-red-600"
@@ -349,19 +328,11 @@ export default function SignUpPage() {
                     size="2xl"
                     type="email"
                     name="email"
+                    value={user?.email}
                     placeholder="mail@email.com"
                     className="w-full left-0 bottom-0 right-0 top-0 m-auto !text-black-900_6f absolute"
                   />
-                  <Button
-                    type={"button"}
-                    onClick={handleSendCode}
-                    color="cyan_700_01"
-                    size="5xl"
-                    variant="fill"
-                    className="right-[1%] bottom-0 top-0 m-auto min-w-[170px] absolute rounded-[15px]"
-                  >
-                    Send OTP
-                  </Button>
+
                   {errors.email?.message && (
                     <Text
                       className="xs absolute bottom-[-20px] text-[#ef4c4c] "
@@ -371,51 +342,6 @@ export default function SignUpPage() {
                       color="#E85A2D"
                     >
                       <>Please enter valid Email</>
-                    </Text>
-                  )}
-                </div>
-
-                <div className="relative mt-9">
-                  <Controller
-                    name="code"
-                    control={control}
-                    defaultValue=""
-                    render={({
-                      field: { onChange, onBlur, value, name, ref },
-                      fieldState: { error },
-                    }) => (
-                      <div>
-                        <PinInput
-                          length={6}
-                          initialValue=""
-                          secret
-                          secretDelay={100}
-                          value={value}
-                          onChange={onChange}
-                          type="numeric"
-                          inputMode="number"
-                          style={{ padding: "15px", paddingLeft: "40px" }}
-                          inputStyle={{
-                            borderColor: "#0B90AF",
-                            borderRadius: "10px",
-                          }}
-                          inputFocusStyle={{ borderColor: "blue" }}
-                          onComplete={(value, index) => {}}
-                          autoSelect={true}
-                          regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
-                        />
-                      </div>
-                    )}
-                  />
-                  {errors.code?.message && (
-                    <Text
-                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
-                      fontSize="xs"
-                      bottom="-19px"
-                      position="absolute"
-                      color="#E85A2D"
-                    >
-                      <>Please enter valid Code</>
                     </Text>
                   )}
                 </div>
@@ -437,7 +363,7 @@ export default function SignUpPage() {
                         }
                         className="gap-2.5 text-left rounded-md text-[13px]"
                       />
-                      {errors.code?.message && (
+                      {errors.terms?.message && (
                         <Text
                           className="xs absolute bottom-[-20px] text-[#ef4c4c] "
                           fontSize="xs"

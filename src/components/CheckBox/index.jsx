@@ -34,7 +34,7 @@ const CheckBox = React.forwardRef(
       color = "white_A700",
       ...restProps
     },
-    ref
+    ref,
   ) => {
     const handleChange = (e) => {
       if (onChange) onChange(e?.target?.checked);
@@ -48,16 +48,26 @@ const CheckBox = React.forwardRef(
             " flex items-center justify-center gap-[5px] cursor-pointer"
           }
         >
-          <input
+          {/* <input
+            name={name}
             {...register(name)}
             className={` ${(shape && shapes[shape]) || ""} ${
               (size && sizes[size]) || ""
             } ${(variant && variants[variant]?.[color]) || ""}`}
             ref={ref}
             type="checkbox"
+            id={name}
+            {...restProps}
+          /> */}
+          <input
+            className={` ${(shape && shapes[shape]) || ""} ${
+              (size && sizes[size]) || ""
+            } ${(variant && variants[variant]?.[color]) || ""}`}
+            ref={ref} // Forward the ref to the input element
+            type="checkbox"
             name={name}
             onChange={handleChange}
-            id={id}
+            {...register(name)} // Use register function to register the input field
             {...restProps}
           />
           <label htmlFor={id}>{label}</label>
@@ -65,7 +75,7 @@ const CheckBox = React.forwardRef(
         {children}
       </>
     );
-  }
+  },
 );
 
 CheckBox.propTypes = {

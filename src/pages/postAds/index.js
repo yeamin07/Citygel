@@ -3,10 +3,10 @@ import { Input, Button } from "antd";
 import TransmissionPicker1 from "./TransmissionPicker1";
 import TransmissionPicker from "./TransmissionPicker";
 import FrameComponent1 from "./FrameComponent1";
+import Fullheader from "components/Fullheader";
 const PostAds = () => {
   return (
-    <div className="w-full rounded-31xl bg-gray-200 overflow-hidden flex flex-col items-start justify-start relative gap-[5px] tracking-[normal] mq800:gap-[21px_83px] mq1125:gap-[41px_83px]">
-      {/* <FrameComponent1 /> */}
+    <Fullheader>
       <main className="self-stretch flex flex-row items-start justify-center py-0 px-5 box-border max-w-full">
         <section className="w-full flex flex-col items-start justify-start gap-[9px] max-w-full text-left text-25xl text-black font-poppins">
           <div className="w-[880px] flex flex-col items-start justify-start gap-[50px] max-w-full mq450:gap-[25px_50px]">
@@ -212,37 +212,7 @@ const PostAds = () => {
           </div>
         </section>
       </main>
-      {/* <CitygelLogo /> */}
-      <div className="w-full h-[1485.2px] absolute !m-[0] top-[0px] right-[0px] left-[0px]">
-        <img
-          className="absolute top-[-373px] left-[-1100px] w-[2178.5px] h-[1848.2px] object-contain"
-          alt=""
-          src="/vector-19.svg"
-        />
-        <img
-          className="absolute top-[-363px] left-[-1120px] w-[2178.5px] h-[1848.2px] object-contain z-[1]"
-          alt=""
-          src="/vector-21.svg"
-        />
-        <img
-          className="absolute top-[-85px] left-[166px] w-[1967.9px] h-[1105.9px] object-contain z-[2]"
-          alt=""
-          src="/vector-18.svg"
-        />
-        <img
-          className="absolute top-[-95px] left-[166px] w-[1967.9px] h-[1105.9px] object-contain z-[3]"
-          alt=""
-          src="/vector-20.svg"
-        />
-        <div className="absolute top-[80px] left-[1257px] rounded-[50%] bg-nd [filter:blur(430px)] w-[364px] h-[364px] z-[4]" />
-        <img
-          className="absolute top-[229px] left-[1035px] w-[744px] h-[774px] object-contain z-[5]"
-          loading="lazy"
-          alt=""
-          src="/image-31@2x.png"
-        />
-      </div>
-    </div>
+    </Fullheader>
   );
 };
 

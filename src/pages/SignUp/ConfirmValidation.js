@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const SignUpFormValidationSchemas = yup.object().shape({
+export const ConfirmValidation = yup.object().shape({
   fullName: yup.string().required("First Name is required"),
   phoneNumber: yup
     .string()
@@ -16,13 +16,10 @@ export const SignUpFormValidationSchemas = yup.object().shape({
       /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/,
       "Enter a valid email address",
     ),
-  code: yup.number().required("Code is required"),
   terms: yup
     .boolean()
+    .required("Terms is required")
     .oneOf([true], "You must accept the terms and conditions"),
-  marketing: yup
-    .boolean()
-    .oneOf([true], "You must agree to receive marketing communications"),
 
   // Custom validation for email/phone
   // emailOrPhone: yup

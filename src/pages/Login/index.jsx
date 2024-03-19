@@ -7,9 +7,17 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PinInput from "react-pin-input";
 import { SignInFormValidationSchemas } from "./SignInFormValidationSchemas";
-import SocialLogin from "components/Button/SocialLogin";
-import { useNavigate } from "react-router-dom";
-
+import SocialLogin from "components/SocialLogin/SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import AuthContext from "context/AuthContext";
+import { jwtDecode } from "jwt-decode";
+import Loading from "components/Loading/Loading";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "firebase.init";
+import { password } from "config/password";
 export default function LoginPage() {
   const {
     handleSubmit,
@@ -22,12 +30,73 @@ export default function LoginPage() {
     resolver: yupResolver(SignInFormValidationSchemas),
     mode: "onChange",
   });
-  console.log(errors);
-  const onSubmit = (e) => {
-    console.log(e);
-  };
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
+  const [signInWithEmailAndPassword, user, gloading, error] =
+    useSignInWithEmailAndPassword(auth);
+  let { setAuthToken, setTUser } = useContext(AuthContext);
+  let from = location.state?.from?.pathname || "/";
+  const { email } = getValues();
+  console.log(email);
+  if (loading) {
+    return <Loading />;
+  }
+  const onSubmit = async (e) => {
+    setLoading(true);
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/auth/login`,
+        {
+          email: e.email,
+          code: e.code,
+        },
+      );
+      if (response.data) {
+        const firebaseSignin = signInWithEmailAndPassword(e.email, password);
+        setLoading(false);
+        if (firebaseSignin) {
+          console.log(response.data.data);
+          setAuthToken(response.data.data.accessToken);
+          setTUser(jwtDecode(response.data.data.accessToken));
+          console.log(response.data.data.accessToken);
+          localStorage.setItem("authToken", response.data.data.accessToken);
+          toast.success("Login Successfully");
 
+          navigate(from);
+        } else {
+          toast.error("please create your account first");
+        }
+      } else {
+        alert("Something went wrong!");
+      }
+    } catch (error) {
+      setLoading(false);
+      toast("Please Enter Correct Code");
+      console.log(error);
+    }
+  };
+  console.log(email);
+
+  const handleSendCode = async () => {
+    console.log(email);
+    try {
+      if (email) {
+        const response = await axios.post(
+          `http://localhost:5000/api/v1/auth/send-code`,
+          {
+            email: email,
+          },
+        );
+        if (response.data) {
+          toast.success("Otp code sent into your email");
+        }
+      } else {
+        toast.error("please enter your email");
+      }
+    } catch (error) {}
+  };
   return (
     <>
       <Helmet>
@@ -181,7 +250,8 @@ export default function LoginPage() {
                       }  border border-solid absolute`}
                     />
                     <Button
-                      type="btn"
+                      type="button"
+                      onClick={handleSendCode}
                       color="cyan_700_01"
                       size="5xl"
                       variant="fill"
@@ -207,14 +277,18 @@ export default function LoginPage() {
                       name="code"
                       control={control}
                       defaultValue=""
-                      render={({ field }) => (
+                      render={({
+                        field: { onChange, onBlur, value, name, ref },
+                        fieldState: { error },
+                      }) => (
                         <div>
                           <PinInput
                             length={6}
                             initialValue=""
                             secret
                             secretDelay={100}
-                            onChange={(value, index) => {}}
+                            value={value}
+                            onChange={onChange}
                             type="numeric"
                             inputMode="number"
                             style={{ padding: "15px", paddingLeft: "40px" }}

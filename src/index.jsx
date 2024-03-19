@@ -4,8 +4,14 @@ import App from "./App";
 import "./styles/tailwind.css";
 import "./styles/index.css";
 import "./styles/font.css";
-
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+);

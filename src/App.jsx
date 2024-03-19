@@ -1,7 +1,9 @@
 import React from "react";
 import Routes from "./Routes";
 import { BrowserRouter as Router } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthProvider } from "context/AuthContext";
 // import { useEffect } from "react";
 // import {
 //   Route,
@@ -10,8 +12,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 // } from "react-router-dom";
 
 function App() {
-
-  {/**This is from ai-5 component */}
+  {
+    /**This is from ai-5 component */
+  }
 
   // const action = useNavigationType();
   // const location = useLocation();
@@ -48,14 +51,11 @@ function App() {
   //   }
   // }, [pathname]);
 
-
-
-
-
   return (
-    <Router>
+    <AuthProvider>
       <Routes />
-    </Router>
+      <ToastContainer />
+    </AuthProvider>
   );
 }
 

@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Text, Img } from "./..";
 import { signOut } from "firebase/auth";
 import auth from "firebase.init";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
+import AuthContext from "context/AuthContext";
+
 export default function Header1({ ...props }) {
   const navigate = useNavigate();
-  const user = useAuthState(auth);
+  let { logoutUser, tuser } = useContext(AuthContext);
+  const [user] = useAuthState(auth);
+
   const handleSignOut = async () => {
     try {
+      logoutUser();
       await signOut(auth);
       console.log("signout", user);
       navigate("/");
@@ -16,7 +21,7 @@ export default function Header1({ ...props }) {
       console.error("Error signing out:", error.message);
     }
   };
-
+  console.log(user);
   return (
     <header
       {...props}
@@ -30,7 +35,7 @@ export default function Header1({ ...props }) {
             className="w-[15%] object-cover"
           />
           <div className="w-full flex gap-6 flex-wrap items-center justify-end ">
-            {user.email ? (
+            {user?.uid && tuser ? (
               <div onClick={handleSignOut}>
                 <Text
                   size="2xl"

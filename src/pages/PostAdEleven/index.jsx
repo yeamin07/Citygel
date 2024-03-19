@@ -15,22 +15,14 @@ export default function PostAdElevenPage() {
         />
       </Helmet>
       <div className="h-[1677px] w-full bg-gray-50 relative">
-        <div className="flex flex-col items-start justify-center w-full h-full left-0 bottom-0 right-0 top-0 m-auto absolute">
-          <Img
-            src="images/img_vector_19.png"
-            alt="vectornineteen"
-            className="w-[57%] object-cover"
-          />
-          <Footer className="flex justify-center items-center w-full mt-[-105px] p-[34px] bg-gray-100_01" />
-        </div>
-        <div className="flex flex-col items-start justify-start w-full top-0 right-0 left-0 m-auto absolute">
-          <Header1 className="flex flex-col justify-center items-center w-full z-[1]" />
-          <div className="h-[1485px] w-[56%] mt-[-140px] relative">
-            <Img
+        <div className="flex flex-col z-20 items-start justify-start w-full top-0 right-0 left-0 m-auto absolute">
+          <Header1 className="flex flex-col justify-center items-center w-full z-99" />
+          <div className="h-[1485px] w-[56%] mt-[-140px] z-0 relative">
+            {/* <Img
               src="images/img_vector_21.png"
               alt="vectortwentyone"
-              className="justify-center h-[1485px] w-full left-0 bottom-0 right-0 top-0 m-auto object-cover absolute"
-            />
+              className="justify-center h-[1485px] w-full left-0 bottom-0 right-0 top-0 m-auto object-cover absolute z-0"
+            /> */}
             <div className="flex flex-row justify-start items-center w-[84%] gap-11 bottom-[13%] right-0 left-0 m-auto absolute">
               <Button
                 color="blue_gray_100_01"
@@ -53,7 +45,7 @@ export default function PostAdElevenPage() {
         </div>
         <div className="flex flex-row justify-start pl-8 items-start w-[95%] right-0 top-0 m-auto absolute">
           <Text
-            size="8xl"
+            size="6xl"
             as="p"
             className="mt-[370px] !text-black-900_03 z-[1] text-left"
           >
@@ -106,7 +98,7 @@ export default function PostAdElevenPage() {
                     Export Cars
                   </Text>
                 </div>
-                <div className="flex flex-col items-center justify-end w-[20%] gap-[33px] p-[11px] border border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
+                <div className="flex flex-col items-center justify-end w-[20%] h-[230px] gap-[33px] p-[11px] border border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
                   <Img
                     src="images/img_frame_orange_400_74x74.svg"
                     alt="image"
@@ -120,7 +112,7 @@ export default function PostAdElevenPage() {
                     Motorcycles
                   </Text>
                 </div>
-                <div className="flex flex-col items-center justify-start w-[20%] gap-2.5 p-[11px] border border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
+                <div className="flex flex-col items-center justify-start w-[20%] h-[230px]  gap-2.5 p-[11px] border border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
                   <Img
                     src="images/img_frame.svg"
                     alt="image"
@@ -134,7 +126,7 @@ export default function PostAdElevenPage() {
                     Heavy Vehicles
                   </Text>
                 </div>
-                <div className="flex flex-col items-center justify-start w-[20%] gap-2.5 p-[11px] border border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
+                <div className="flex flex-col items-center justify-start w-[20%] h-[230px] gap-2.5 p-[11px] border border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
                   <Img
                     src="images/img_frame.svg"
                     alt="image"

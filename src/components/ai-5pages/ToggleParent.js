@@ -4,7 +4,7 @@ const ToggleParent = () => {
   return (
     <div className="self-stretch flex flex-row items-start justify-center gap-[25px] max-w-full text-left text-lg text-white font-poppins mq1500:flex-wrap">
       <div className="flex-1 rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start py-2.5 px-2 gap-[10px] min-w-[263px] max-w-full border-[1.5px] border-solid border-gray-100">
-        <div className="w-[405px] h-[705px] relative rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border hidden max-w-full border-[1.5px] border-solid border-gray-100" />
+        <div className="w-full h-[705px] relative rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border hidden max-w-full border-[1.5px] border-solid border-gray-100" />
         <div className="self-stretch h-[290px] relative">
           <img
             className="absolute top-[0px] left-[0px] rounded-xl w-[385px] h-[290px] object-cover z-[1]"
@@ -70,15 +70,16 @@ const ToggleParent = () => {
         </div>
       </div>
       <GroupComponent rectangle4624="/rectangle-4624-1@2x.png" />
-      <GroupComponent
+      <GroupComponent rectangle4624="/rectangle-4624-1@2x.png" />
+      {/* <GroupComponent
         rectangle4624="/rectangle-4624-2@2x.png"
         propDisplay="flex"
         propHeight="27px"
         propHeight1="80px"
         propDisplay1="flex"
         propHeight2="36px"
-      />
-      <div className="flex-1 rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start py-2.5 px-2 gap-[10px] min-w-[263px] max-w-full border-[1.5px] border-solid border-gray-100">
+      /> */}
+      {/* <div className="flex-1 rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start py-2.5 px-2 gap-[10px] min-w-[263px] max-w-full border-[1.5px] border-solid border-gray-100">
         <div className="w-[405px] h-[705px] relative rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border hidden max-w-full border-[1.5px] border-solid border-gray-100" />
         <div className="self-stretch h-[290px] relative">
           <img
@@ -141,7 +142,7 @@ const ToggleParent = () => {
           </div>
         </div>
       </div>
-      <div className="w-[90px] flex flex-col items-start justify-end pt-[310px] pb-2.5 pr-0 pl-2.5 box-border relative gap-[15px] mq825:pt-[201px] mq825:pb-5 mq825:box-border">
+      <div className="w-full flex flex-col items-start justify-end pt-[310px] pb-2.5 pr-0 pl-2.5 box-border relative gap-[15px] mq825:pt-[201px] mq825:pb-5 mq825:box-border">
         <div className="w-[405px] h-full absolute !m-[0] top-[0px] right-[-315px] bottom-[0px]">
           <div className="absolute top-[0px] left-[0px] rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border w-full h-full border-[1.5px] border-solid border-gray-100" />
           <div className="absolute w-[calc(100%_-_20px)] top-[10px] right-[10px] left-[10px] h-[290px]">
@@ -207,7 +208,7 @@ const ToggleParent = () => {
             View All
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

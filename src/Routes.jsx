@@ -15,6 +15,8 @@ import PostAd1 from "components/ai-5pages/PostAd1";
 import PostAd2 from "components/ai-5pages/PostAd2";
 import Profile from "components/ai-5pages/Profile";
 import Fullheader from "components/Fullheader";
+import Thankyou from "components/ai-5pages/ThankYou";
+import Confirm from "pages/SignUp/Confirm";
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -36,10 +38,7 @@ const ProjectRoutes = () => {
       path: "postadeleven",
       element: <PostAdEleven />,
     },
-    {
-      path: "postadtwo",
-      element: <PostAdTwo />,
-    },
+
     {
       path: "products",
       element: <Products />,
@@ -65,13 +64,17 @@ const ProjectRoutes = () => {
       element: <PostAd2 />,
     },
     {
-      path:"Profile",
-      element:<Profile/>
+      path: "Profile",
+      element: <Profile />,
     },
     {
-      path:"fullheader",
-      element:<Fullheader/>
-    }
+      path: "thanks",
+      element: <Thankyou />,
+    },
+    {
+      path: "confirm",
+      element: <Confirm />,
+    },
   ]);
 
   return element;

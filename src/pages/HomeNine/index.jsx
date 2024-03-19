@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { Text, Img, Heading, Button } from "../../components";
 import Footer from "../../components/Footer";
 import Header1 from "components/Header1";
-import Header5 from "components/Header5";
 
 export default function HomePage() {
   return (
@@ -30,15 +29,7 @@ export default function HomePage() {
                   <div className="flex flex-col items-center justify-start w-[94%] right-0 top-0 m-auto absolute">
                     <div className="flex flex-col items-end justify-start w-full">
                       <div className="flex flex-col items-end justify-start w-full gap-[18px]">
-                        <Header5 className="flex flex-row justify-between items-center w-full" />
-                        <Button
-                          color="red_A400_01"
-                          size="4xl"
-                          variant="fill"
-                          className="font-aleo font-bold min-w-[242px]"
-                        >
-                          Past an ad
-                        </Button>
+                        <Header1 className="flex flex-row justify-between items-center w-full" />
                       </div>
                       <div className="h-[364px] w-[364px] mt-[-118px] mr-[189px] z-[1] bg-light_blue-400 backdrop-opacity-[0.5] blur-[430.00px] rounded-[50%]" />
                     </div>
@@ -79,13 +70,30 @@ export default function HomePage() {
                 </div>
                 <div className="h-[262px] w-[262px] mt-[-57px] ml-[674px] bg-light_blue-400 backdrop-opacity-[0.5] blur-[430.00px] rounded-[50%]" />
               </div>
-              <div className="flex flex-row justify-center w-[21%] bottom-[2%] left-[6%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-[20px]">
-                <Text size="7xl" as="p" className="mb-1.5 !text-black-900_03 !font-aleo">
+              <div className="flex flex-row justify-center w-[21%] h-[214px] bottom-[2%] left-[6%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
+                <Text
+                  size="7xl"
+                  as="p"
+                  className="mb-1.5 !text-black-900_03 !font-aleo"
+                >
                   Dubai
                 </Text>
               </div>
-              <div className="flex flex-row justify-center w-[21%] bottom-[2%] left-[28%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-[20px]">
-                <Text size="7xl" as="p" className="mb-1.5 !text-black-900_03 !font-aleo">
+              <div className="flex flex-row justify-center w-[21%] h-[214px] bottom-[2%] left-[6%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-[20px]">
+                <Text
+                  size="7xl"
+                  as="p"
+                  className="mb-1.5 !text-black-900_03 !font-aleo"
+                >
+                  Dubai
+                </Text>
+              </div>
+              <div className="flex flex-row justify-center w-[21%] h-[214px] bottom-[2%] left-[28%] px-14 py-[81px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm absolute rounded-[20px]">
+                <Text
+                  size="7xl"
+                  as="p"
+                  className="mb-1.5 !text-black-900_03 !font-aleo"
+                >
                   Abu Dhabi
                 </Text>
               </div>
@@ -111,12 +119,20 @@ export default function HomePage() {
           </div>
           <div className="flex flex-row justify-start w-full mt-[22px] gap-10 max-w-[1700px]">
             <div className="flex flex-row justify-center w-[24%] px-14 py-[81px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
-              <Text size="7xl" as="p" className="mb-1.5 !text-black-900_03 !font-aleo">
+              <Text
+                size="7xl"
+                as="p"
+                className="mb-1.5 !text-black-900_03 !font-aleo"
+              >
                 Al Ain
               </Text>
             </div>
             <div className="flex flex-row justify-center w-[24%] px-14 py-[66px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
-              <Text size="7xl" as="p" className="mt-[15px] mb-[22px] !text-black-900_03 !font-aleo">
+              <Text
+                size="7xl"
+                as="p"
+                className="mt-[15px] mb-[22px] !text-black-900_03 !font-aleo"
+              >
                 Ras Al Khaimah
               </Text>
             </div>
@@ -126,7 +142,11 @@ export default function HomePage() {
               </Text>
             </div>
             <div className="flex flex-row justify-center w-[24%] px-14 py-[59px] border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm rounded-[20px]">
-              <Text size="7xl" as="p" className="mt-[25px] mb-[26px] !text-black-900_03 !font-aleo">
+              <Text
+                size="7xl"
+                as="p"
+                className="mt-[25px] mb-[26px] !text-black-900_03 !font-aleo"
+              >
                 Umm Al Quwain
               </Text>
             </div>
