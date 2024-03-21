@@ -20,7 +20,7 @@ import {
   SmallCart,
 } from "./../../components/CategoryCart/index";
 import Footer from "components/Footer";
-import Fullheader from "components/Fullheader";
+import Fullheader from "pages/AddPost/AddPostWrapper";
 import {
   man_pic,
   logo,

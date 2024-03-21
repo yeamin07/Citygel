@@ -1,6 +1,5 @@
-import Fullheader from "components/Fullheader";
+import Fullheader from "pages/AddPost/AddPostWrapper";
 import CitygelLogo from "components/ai-5pages/CitygelLogo";
-import FrameComponent1 from "components/ai-5pages/FrameComponent1";
 import React from "react";
 
 const PostAdsWrapper = ({ children }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdsInput = ({ tittle, name }) => {
+const AdsInput = ({ tittle, name, register }) => {
   return (
     <div className="self-stretch flex flex-col items-start justify-start gap-[9px] max-w-full">
       <div className="flex flex-row items-start justify-start py-0 px-1.5">
@@ -11,6 +11,7 @@ const AdsInput = ({ tittle, name }) => {
           type="text"
           name={name}
           placeholder={`Add ${tittle}`}
+          {...register(name)}
           className="h-7 w-[880px] px-[10px] py-[6px] rounded-mini bg-black-900_03 border-none outline-none focus:ring-0 max-w-full"
         />
       </div>

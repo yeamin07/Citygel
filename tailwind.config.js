@@ -1,42 +1,45 @@
 module.exports = {
   mode: "jit",
-  content: ["./src/**/**/*.{js,ts,jsx,tsx,html,mdx}", "./src/**/*.{js,ts,jsx,tsx,html,mdx}"],
+  content: [
+    "./src/**/**/*.{js,ts,jsx,tsx,html,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,html,mdx}",
+  ],
   darkMode: "class",
   theme: {
     screens: { md: { max: "1050px" }, sm: { max: "650px" } },
     extend: {
       colors: {
         gray: {
-          "100": "#fbfbfb",
-          "200": "#fafafa",
-          "300": "#212121",
-          "400": "rgba(33, 33, 33, 0.3)",
-          "500": "rgba(0, 0, 0, 0.3)",
-          "600": "rgba(1, 17, 29, 0.6)",
-          "700": "rgba(1, 17, 29, 0.1)",
-          "800": "rgba(0, 0, 0, 0.1)",
-          "900": "rgba(255, 255, 255, 0.5)",
-          "1000": "rgba(0, 0, 0, 0.7)",
-          "1100": "rgba(0, 0, 0, 0.8)",
-          "1200": "rgba(0, 0, 0, 0.5)",
+          100: "#fbfbfb",
+          200: "#fafafa",
+          300: "#212121",
+          400: "rgba(33, 33, 33, 0.3)",
+          500: "rgba(0, 0, 0, 0.3)",
+          600: "rgba(1, 17, 29, 0.6)",
+          700: "rgba(1, 17, 29, 0.1)",
+          800: "rgba(0, 0, 0, 0.1)",
+          900: "rgba(255, 255, 255, 0.5)",
+          1000: "rgba(0, 0, 0, 0.7)",
+          1100: "rgba(0, 0, 0, 0.8)",
+          1200: "rgba(0, 0, 0, 0.5)",
         },
         whitesmoke: {
-          "100": "#f6f7f9",
-          "200": "#f6f6f6",
+          100: "#f6f7f9",
+          200: "#f6f6f6",
         },
         white: "#fff",
         black: "#000",
         gainsboro: {
-          "100": "#e8e8e8",
-          "200": "rgba(217, 217, 217, 0.27)",
-          "300": "rgba(217, 217, 217, 0.2)",
-          "400": "rgba(217, 217, 217, 0.3)",
+          100: "#e8e8e8",
+          200: "rgba(217, 217, 217, 0.27)",
+          300: "rgba(217, 217, 217, 0.2)",
+          400: "rgba(217, 217, 217, 0.3)",
         },
         crimson: "#fa0037",
         nd: "#20c5f2",
         steelblue: {
-          "100": "#0c92b2",
-          "200": "rgba(11, 144, 175, 0.5)",
+          100: "#0c92b2",
+          200: "rgba(11, 144, 175, 0.5)",
         },
         deepskyblue: "rgba(32, 197, 242, 0.2)",
         lightgray: "#d3d3d3",
@@ -48,7 +51,12 @@ module.exports = {
         red: "rgba(255, 0, 0, 0.1)",
         "main-color1": "#01111d",
         lawngreen: "#2ddf00",
-        white: { A700: "#ffffff", A700_63: "#ffffff63", A700_a2: "#ffffffa2", A700_99: "#ffffff99" },
+        white: {
+          A700: "#ffffff",
+          A700_63: "#ffffff63",
+          A700_a2: "#ffffffa2",
+          A700_99: "#ffffff99",
+        },
         gray: {
           50: "#f9f9f9",
           800: "#4d4d4d",
@@ -57,7 +65,12 @@ module.exports = {
           "200_01": "#e7e7e7",
           "50_01": "#f8f8f8",
         },
-        red: { 500: "#ff3838", A400_01: "#fa0037", A700_7e: "#ff00007e", A700: "#ff0000" },
+        red: {
+          500: "#ff3838",
+          A400_01: "#fa0037",
+          A700_7e: "#ff00007e",
+          A700: "#ff0000",
+        },
         light_blue: { 400: "#20c5f2" },
         blue_gray: {
           "100_01": "#d3d3d3",
@@ -107,13 +120,29 @@ module.exports = {
         "mid-5": "17.5px",
         "4xs-8": "8.8px",
       },
-      boxShadow: { xs: "0px 0px  3px 0px #00000019", sm: "0px 0px  10px 0px #00000026" },
+      boxShadow: {
+        xs: "0px 0px  3px 0px #00000019",
+        sm: "0px 0px  10px 0px #00000026",
+      },
       backgroundImage: {
         gradient: "linear-gradient(135deg, #0b90af,#20c5f2)",
         gradient1: "linear-gradient(90deg, #fcb100,#ed893e)",
       },
-      fontFamily: { poppins: "Poppins", aleo: "Aleo", inter: "Inter", publicsans: "Public Sans" },
-      opacity: { 0.5: 0.5, 0.3: 0.3, 0.1: 0.1, 0.7: 0.7, 0.4: 0.4, 0.2: 0.2, 0.8: 0.8 },
+      fontFamily: {
+        poppins: "Poppins",
+        aleo: "Aleo",
+        inter: "Inter",
+        publicsans: "Public Sans",
+      },
+      opacity: {
+        0.5: 0.5,
+        0.3: 0.3,
+        0.1: 0.1,
+        0.7: 0.7,
+        0.4: 0.4,
+        0.2: 0.2,
+        0.8: 0.8,
+      },
     },
     fontSize: {
       xl: "20px",
@@ -147,15 +176,16 @@ module.exports = {
       "base-8": "15.8px",
       inherit: "inherit",
     },
+
     screens: {
+      sm: { min: "100px", max: "767px" },
+      md: { min: "768px", max: "1023px" },
+      lg: { min: "1024px", max: "1279px" },
       mq1500: {
         raw: "screen and (max-width: 1500px)",
       },
       mq1325: {
         raw: "screen and (max-width: 1325px)",
-      },
-      lg: {
-        max: "1200px",
       },
       mq1125: {
         raw: "screen and (max-width: 1125px)",
@@ -176,6 +206,7 @@ module.exports = {
         raw: "screen and (max-width: 450px)",
       },
     },
+    // Other Tailwind CSS configurations...
   },
   plugins: [require("@tailwindcss/forms")],
   corePlugins: {

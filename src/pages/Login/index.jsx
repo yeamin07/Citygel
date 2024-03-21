@@ -224,17 +224,23 @@ export default function LoginPage() {
             <div className="flex flex-col items-center justify-start w-full">
               <div className="flex flex-col items-center justify-start w-full gap-px max-w-[438px]">
                 <div className="">
-                  <h3 className="w-[438px] h-[66px] font-poppins font-medium text-[44px]">
+                  <h3 className="w-[438px] h-[66px] text-center font-poppins font-medium  sm:text-[24px] mq450:text-[24px] text-[44px] ">
                     Login to post an ad!
                   </h3>
-                  <p className="w-[428px] h-[36px] opacity-[40%] font-poppins font-normal text-[23px] align-middle pl-[8px]">
+                  <p className="w-[428px] h-[36px] mq450:h-[10px] mq450:mt-[-20px] sm:h-[10px] sm:mt-[-20px] opacity-[40%] font-poppins mq450:text-[16px]  sm:text-[16px] text-center font-normal text-[23px] align-middle pl-[8px]">
                     Please enter your credential Details.
                   </p>
                 </div>
               </div>
-              <Text as="p" className="mt-7 !text-black-900_99 opacity-0.7">
-                Enter Your Email
-              </Text>
+              <div className="text-left w-[428px]">
+                {" "}
+                <Text
+                  as="p"
+                  className="mt-7 !text-black-900_99 opacity-0.7 text-left"
+                >
+                  Enter Your Email
+                </Text>
+              </div>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col items-start justify-start w-full mt-[9px]">
                   <div className="h-[80px] w-full relative">
@@ -272,7 +278,7 @@ export default function LoginPage() {
                     )}
                   </div>
 
-                  <div className="relative">
+                  <div className="relative w-full justify-center items-center flex">
                     <Controller
                       name="code"
                       control={control}
@@ -285,18 +291,18 @@ export default function LoginPage() {
                           <PinInput
                             length={6}
                             initialValue=""
-                            secret
-                            secretDelay={100}
                             value={value}
                             onChange={onChange}
                             type="numeric"
                             inputMode="number"
                             style={{ padding: "15px", paddingLeft: "40px" }}
                             inputStyle={{
-                              borderColor: "#0B90AF",
+                              borderColor: "transparent",
+                              backgroundColor: "rgba(217, 217, 217, 0.25)",
+
                               borderRadius: "10px",
                             }}
-                            inputFocusStyle={{ borderColor: "blue" }}
+                            inputFocusStyle={{ borderColor: "#0B90AF" }}
                             onComplete={(value, index) => {}}
                             autoSelect={true}
                             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}

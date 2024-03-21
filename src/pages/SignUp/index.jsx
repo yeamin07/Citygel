@@ -134,129 +134,32 @@ export default function SignUpPage() {
         <div className="flex flex-col items-center justify-start w-[32%] ">
           <div className="h-[372px] w-full  relative max-w-[372px]">
             <div className="flex flex-col items-start justify-start w-full top-[11%] right-0 left-0 m-auto absolute">
-              <div className="h-[257px] w-full relative">
+              <div className="h-[372px] w-full relative">
                 <Img
-                  src="images/img_background_complete.svg"
+                  src="authheader.png"
                   alt="background_one"
-                  className="justify-center h-[257px] left-0 bottom-0 right-0 top-0 m-auto absolute"
+                  className="justify-center h-[372px]"
                 />
-                <Img
-                  src="images/img_group.svg"
-                  alt="image_one"
-                  className="h-[37px] right-[28%] top-[26%] m-auto absolute"
-                />
-              </div>
-              <Img
-                src="images/img_plant.svg"
-                alt="plant_one"
-                className="h-[104px] mt-[-93px] ml-[58px] z-[1]"
-              />
-            </div>
-            <div className="flex flex-col items-end justify-start w-[78%] bottom-[15%] right-0 left-0 m-auto absolute">
-              <div className="flex flex-row justify-end items-center w-[67%] mr-1.5">
-                <Img
-                  src="images/img_character.svg"
-                  alt="character_one"
-                  className="h-[158px] z-[1]"
-                />
-                <Img
-                  src="images/img_lamp.svg"
-                  alt="lamp_one"
-                  className="h-[203px] ml-[-6px]"
-                />
-              </div>
-              <Img
-                src="images/img_x3c_path_x3e_359.svg"
-                alt="x3cpathx3e_one"
-                className="h-[16px] mt-[-8px]"
-              />
-            </div>
-            <div className="flex flex-col items-center justify-start w-[30%] left-[20%] top-[24%] m-auto absolute">
-              <div className="flex flex-col items-center justify-start w-full">
-                <div className="flex flex-col items-center justify-start w-full p-[18px] bg-white-A700 rounded-md">
-                  <div className="flex flex-col items-center justify-start w-[99%] mt-1.5 gap-[13px]">
-                    <Img
-                      src="images/img_group_white_a700.svg"
-                      alt="image_two"
-                      className="h-[29px] w-[29px]"
-                    />
-                    <div className="flex flex-col items-center justify-start w-full">
-                      <div className="flex flex-row justify-center w-full">
-                        <div className="flex flex-col items-start justify-start w-full">
-                          <div className="h-[12px] w-full relative">
-                            <Img
-                              src="images/img_vector_white_a700.svg"
-                              alt="vector_one"
-                              className="justify-center h-[12px] left-0 bottom-0 right-0 top-0 m-auto absolute"
-                            />
-                            <Img
-                              src="images/img_vector_black_900_03.svg"
-                              alt="vector_three"
-                              className="h-[5px] right-[6%] bottom-0 top-0 m-auto opacity-0.2 absolute"
-                            />
-                          </div>
-                          <div className="flex flex-row justify-start mt-[-8px] ml-[7px] z-[1]">
-                            <Text
-                              size="s"
-                              as="p"
-                              className="!text-black-900_03 !font-inter"
-                            >
-                              Name@mail.com
-                            </Text>
-                          </div>
-                        </div>
-                      </div>
-                      <Text
-                        size="xs"
-                        as="p"
-                        className="w-[24%] mt-[11px] !text-black-900_03 !font-inter"
-                      >
-                        Sign up now
-                      </Text>
-                      <div className="h-[12px] w-full mt-[-2px] relative">
-                        <Img
-                          src="images/img_vector_cyan_700_01.svg"
-                          alt="vector_five"
-                          className="justify-center h-[12px] left-0 bottom-0 right-0 top-0 m-auto absolute"
-                        />
-                        <a
-                          href="#"
-                          className="w-max top-[17%] right-0 left-0 m-auto absolute"
-                        >
-                          <Text size="md" as="p" className="!font-inter">
-                            Login
-                          </Text>
-                        </a>
-                      </div>
-                      <a href="#" className="w-[36%] mt-[5px]">
-                        <Text
-                          size="xs"
-                          as="p"
-                          className="!text-black-900_03 !font-inter"
-                        >
-                          Forgot Password?
-                        </Text>
-                      </a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-          <div className="mt-[9px] z-[1]">
-            <Text size="8xl" as="p" className="!text-black-900_03 text-center">
+          <div className="mt-[9px] z-[1] w-[1800px]">
+            <Text
+              size="8xl"
+              as="p"
+              className="!text-black-900_03  mq450:text-[24px] mq750::text-[28px] sm:text-[36px] text-center"
+            >
               Create an Account
             </Text>
-          </div>
-          <div className="flex flex-col items-center justify-start w-full mt-[-3px]">
             <Text
               size="3xl"
               as="p"
-              className="!text-black-900_7e text-center opacity-0.4"
+              className="!text-black-900_7e text-center mq450:text-[16px] mq750::text-[18x] sm:text-[16px]  opacity-0.4"
             >
               Please enter your credential Details.
             </Text>
-
+          </div>
+          <div className="flex flex-col items-center justify-start w-full mt-[-3px]">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col items-start justify-start w-full mt-2">
                 <Text
@@ -388,18 +291,18 @@ export default function SignUpPage() {
                         <PinInput
                           length={6}
                           initialValue=""
-                          secret
-                          secretDelay={100}
                           value={value}
                           onChange={onChange}
                           type="numeric"
                           inputMode="number"
                           style={{ padding: "15px", paddingLeft: "40px" }}
                           inputStyle={{
-                            borderColor: "#0B90AF",
+                            borderColor: "transparent",
+                            backgroundColor: "rgba(217, 217, 217, 0.21)",
+
                             borderRadius: "10px",
                           }}
-                          inputFocusStyle={{ borderColor: "blue" }}
+                          inputFocusStyle={{ borderColor: "#0B90AF" }}
                           onComplete={(value, index) => {}}
                           autoSelect={true}
                           regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}

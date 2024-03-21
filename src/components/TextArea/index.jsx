@@ -16,6 +16,7 @@ const TextArea = React.forwardRef(
     {
       className = "",
       name = "",
+      register,
       placeholder = "",
       shape = "round",
       size = "xs",
@@ -34,7 +35,7 @@ const TextArea = React.forwardRef(
         ref={ref}
         className={`${className} ${shapes[shape] || ""} ${sizes[size] || ""} ${variants[variant] || ""}`}
         name={name}
-        onChange={handleChange}
+        {...register(name)}
         placeholder={placeholder}
         {...restProps}
       />

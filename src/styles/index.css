@@ -51,9 +51,31 @@ background-origin: padding-box, border-box;
 border: 3px solid transparent;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 20px; 
-  font-size: 36px;
+
+}
+.product-border {
+  
+  background: linear-gradient(to top right, #ffffff, #ffffff),
+  linear-gradient(to bottom right, #FBFBFB, #d16161a5);
+background-clip: padding-box, border-box;
+background-origin: padding-box, border-box;
+border: 3px solid transparent;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.205);
+  border-radius: 20px; 
+
 }
 .gray_50_02_red_A400_border:hover {
+  
+  background: linear-gradient(to top right, #ffffff, #ffffff),
+  linear-gradient(to top left, #FBFBFB, #F90E3A);
+background-clip: padding-box, border-box;
+background-origin: padding-box, border-box;
+border: 3px solid transparent;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+cursor: pointer;
+
+}
+.gray_50_02_red_A400_active {
   
   background: linear-gradient(to top right, #ffffff, #ffffff),
   linear-gradient(to top left, #FBFBFB, #F90E3A);
@@ -126,8 +148,8 @@ background-color: #F3F3F3 !important;
 } */
 .pincode-input-text {
 
-  width: 68px !important;
-  height: 80px !important;
+  width: 65px !important;
+  height: 65px !important;
 }
 .pincode-input-container{
   padding: 0px !important;
@@ -139,4 +161,8 @@ background-color: #F3F3F3 !important;
 }
 .form-control {
   padding-left: 56px !important;
+}
+
+.slick-dots{
+  bottom: 24px !important;
 }

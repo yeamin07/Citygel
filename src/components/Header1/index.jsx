@@ -96,6 +96,7 @@ export default function Header1({ ...props }) {
             </a>
           </div>
           <Button
+            onClick={() => navigate("/add-post")}
             color="red_A400_01"
             size="4xl"
             variant="fill"

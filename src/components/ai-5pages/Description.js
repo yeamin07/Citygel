@@ -1,5 +1,3 @@
-import ParentLink from "./ParentLink";
-import FrameComponent from "./FrameComponent";
 import RangeSliderParent from "./RangeSliderParent";
 import ToggleParent from "./ToggleParent";
 import Header1 from "components/Header1";
