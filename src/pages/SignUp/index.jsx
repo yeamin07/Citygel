@@ -45,13 +45,17 @@ export default function SignUpPage() {
   });
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-  let { setAuthToken, setTUser } = useContext(AuthContext);
+
+  let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   const location = useLocation();
   const [loading, setLoading] = useState(false);
   let from = location.state?.from?.pathname || "/";
   const [createUserWithEmailAndPassword, cuser, gloading, hookerror] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: false });
   console.log(errors);
+  if (tuser && user) {
+    navigate(from, { replace: true });
+  }
   const onSubmit = async (e) => {
     console.log(e);
     const email = e.email;

@@ -10,12 +10,15 @@ import { SignInFormValidationSchemas } from "./SignInFormValidationSchemas";
 import SocialLogin from "components/SocialLogin/SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import Loading from "components/Loading/Loading";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "firebase.init";
 import { password } from "config/password";
 export default function LoginPage() {
@@ -30,14 +33,21 @@ export default function LoginPage() {
     resolver: yupResolver(SignInFormValidationSchemas),
     mode: "onChange",
   });
+
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, gloading, error] =
     useSignInWithEmailAndPassword(auth);
-  let { setAuthToken, setTUser } = useContext(AuthContext);
+  let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   let from = location.state?.from?.pathname || "/";
+  const [user1] = useAuthState(auth);
   const { email } = getValues();
+
+  if (tuser && user1) {
+    navigate(from, { replace: true });
+  }
+
   console.log(email);
   if (loading) {
     return <Loading />;

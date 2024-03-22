@@ -9,52 +9,25 @@ const postSlice = createSlice({
     date: "",
     category: null,
     subcategory: null,
-    // packages: [
-    //   {
-    //     packing: "",
-    //     box: {
-    //       size: "",
-    //       length: "",
-    //       width: "",
-    //       height: "",
-    //       weight: "",
-    //     },
-    //     items: [
-    //       { quantity: 0, description: "", category: "", value: 0, weight: 0 },
-    //     ],
-    //     items_total_value: 0,
-    //   },
-    // ],
-
-    addons: {
-      insurance: { insured: false, value: 0 },
-      taxes_and_duties: { payer: "receiver", value: 0 },
-    },
     total_cost: 0,
+    membership: null,
+    membershipCosts: {
+      starter: 0,
+      premium: 20,
+      professional: 30,
+    },
   },
   reducers: {
-    setForm: (state, action) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
-    },
-    updateInsurance: (state, action) => {
-      state.addons.insurance = action.payload;
-    },
-    updateTaxAndDuties: (state, action) => {
-      state.addons.taxes_and_duties = action.payload;
-    },
-    updateTotalCost: (state, action) => {
-      state.total_cost = action.payload;
-    },
     nextStep: (state) => {
       state.currentStep += 1;
     },
     prevStep: (state) => {
       state.currentStep -= 1;
     },
-
+    setMembership: (state, action) => {
+      state.membership = action.payload;
+      state.total_cost = state.membershipCosts[action.payload];
+    },
     setForm: (state, action) => {
       state.form = action.payload;
       state.currentStep += 1;
@@ -79,23 +52,15 @@ const postSlice = createSlice({
 });
 
 export const {
-  // setForm,
-  // updateInsurance,
-  // updateTaxAndDuties,
-  // updateTotalCost,
   nextStep,
   prevStep,
-  // setSender,
-  // setRecipient,
-  // setPackage,
-  // setAddOns,
-  // resetForm,
-  // updateDate,
+
   setPackageAddon,
   setCurrent,
   setCategory,
   setForm,
   setSubCategory,
+  setMembership,
 } = postSlice.actions;
 
 export default postSlice;

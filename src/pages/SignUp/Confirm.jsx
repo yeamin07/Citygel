@@ -50,19 +50,19 @@ export default function Confirm() {
   let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  // const fetchUser = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `http://localhost:5000/api/v1/users/${user?.email}`,
-  //     );
-  //     if (response.data) {
-  //       navigate(from);
-  //     }
-  //   } catch (error) {}
-  // };
-  // useEffect(() => {
-  //   fetchUser();
-  // }, [user, tuser]);
+  const fetchUser = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/v1/users/${user?.email}`,
+      );
+      if (response.data) {
+        navigate(from);
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    fetchUser();
+  }, [user]);
 
   console.log(errors);
   const onSubmit = async (e) => {

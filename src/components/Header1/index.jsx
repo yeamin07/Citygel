@@ -27,7 +27,7 @@ export default function Header1({ ...props }) {
       {...props}
       className={` w-full h-200 head bg-[url(images/header.webp)]`}
     >
-      <div className="pl-24 pr-24 mr-auto ">
+      <div className="pl-24 pr-24 mr-auto pb-3 ">
         <div className="flex  justify-between items-center w-full py-3 mx-auto max-w-[1427px]">
           <Img
             src="images/img_citygel_2_white.png"
@@ -46,7 +46,7 @@ export default function Header1({ ...props }) {
                 </Text>
               </div>
             ) : (
-              <div onCanPlay={() => navigate("/login")}>
+              <div onClick={() => navigate("/login")}>
                 <Text
                   size="2xl"
                   as="p"
@@ -87,11 +87,6 @@ export default function Header1({ ...props }) {
             <a href="#">
               <Text size="2xl" as="p">
                 Job
-              </Text>
-            </a>
-            <a href="#">
-              <Text size="2xl" as="p">
-                Classified (General Category)
               </Text>
             </a>
           </div>
