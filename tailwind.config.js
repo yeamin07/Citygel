@@ -209,6 +209,7 @@ module.exports = {
     // Other Tailwind CSS configurations...
   },
   plugins: [require("@tailwindcss/forms")],
+  plugins:[require("daisyui")],
   corePlugins: {
     preflight: false,
   },
