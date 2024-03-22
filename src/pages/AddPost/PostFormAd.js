@@ -32,14 +32,19 @@ const items = [
 const imageStorageKey = "3a1e59ad1d3a8caba2efe37f45b560e9";
 const PostFormAd = () => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const { register, handleSubmit, errors, control, getValues, setValue } =
-    useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+    getValues,
+    setValue,
+  } = useForm();
+
   const dispatch = useDispatch();
   const onSubmit = (data) => {
-    // Handle form submission here
     console.log(data);
     dispatch(setForm(data));
-    // You can dispatch an action or perform other operations with form data
   };
   const { currentStep, category, subcategory } = useSelector(
     (state) => state.post,
@@ -62,7 +67,7 @@ const PostFormAd = () => {
       const { data } = info.file.response;
 
       const currentImages = getValues("moreImages") || [];
-      setValue("moreImages", [...currentImages, data]);
+      setValue("moreImages", [...currentImages, data.url]);
       message.success(`${info.file.name} file uploaded successfully`);
     } else if (info.file.status === "error") {
       message.error(`${info.file.name} file upload failed.`);
@@ -71,6 +76,7 @@ const PostFormAd = () => {
   const handlePrev = () => {
     dispatch(prevStep());
   };
+  console.log(errors);
   const props = {
     name: "file",
     action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
@@ -100,45 +106,79 @@ const PostFormAd = () => {
   return (
     <form>
       {" "}
-      <main className="self-stretch flex flex-row items- justify-between pl-10 box-border max-w-full">
+      <main className="self-stretch flex flex-row mq750:flex-col  items- justify-between pl-10 box-border max-w-full">
         <section className="w-[100%] pl-4 flex flex-col items-start justify-start gap-[9px] max-w-full text-left text-25xl text-black font-poppins">
-          <div className="w-[80%] flex flex-col items-start justify-start gap-[50px] max-w-full mq450=gap-[25px_50px]">
+          <div className="w-[80%] flex flex-col items-start justify-start gap-[50px] max-w-full mq450:gap-[25px_50px]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[20px]">
-              <h1 className="m-0 relative text-inherit font-medium font-inherit z-[4] mq450=text-7xl mq800=text-16xl">
+              <h1 className="m-0 relative text-inherit font-medium font-inherit z-[4] mq450:text-7xl mq800:text-16xl">
                 Enter Details
               </h1>
-              <h3 className="m-0 self-stretch relative text-3xl leading-[35px] font-normal font-inherit text-gray-1200 z-[4] mq450=text-lg mq450=leading-[28px]">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</h3>
+              <h3 className="m-0 self-stretch relative text-3xl leading-[35px] font-normal font-inherit text-gray-1200 z-[4] mq450:text-lg mq450:leading-[28px]">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</h3>
             </div>
             <div className="self-stretch flex flex-col items-start justify-start gap-[20px] max-w-full text-base text-gray-1000">
-              <AdsInput tittle="Type" name="type" register={register} />
-              <AdsInput tittle="Brand" name="brand" register={register} />
-              <AdsInput tittle="Model" name="model" register={register} />
+              <AdsInput
+                tittle="Type"
+                name="type"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Brand"
+                name="brand"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Model"
+                name="model"
+                register={register}
+                required
+                errors={errors}
+              />
               <AdsInput
                 tittle="Fuel Type"
                 name="fuelType"
                 register={register}
+                required
+                errors={errors}
               />
               <AdsInput
                 tittle="Listed By"
                 name="listedBy"
                 register={register}
+                required
+                errors={errors}
               />
               <AdsInput
                 tittle="Transmission"
                 name="transmission"
                 register={register}
+                required
+                errors={errors}
               />
               <AdsInput
                 tittle="KM Driven"
                 name="kmdriven"
                 register={register}
+                required
+                errors={errors}
               />
               <AdsInput
                 tittle="No of Owners"
                 name="owners"
                 register={register}
+                required
+                errors={errors}
               />
-              <AdsInput tittle="Ad Title" name="title" register={register} />
+              <AdsInput
+                tittle="Ad Title"
+                name="title"
+                register={register}
+                required
+                errors={errors}
+              />
 
               <div className="self-stretch flex-1 flex flex-col items-start justify-start gap-[9px] max-w-full">
                 <div className="flex flex-row items-start justify-start py-0 px-1.5">
@@ -146,17 +186,48 @@ const PostFormAd = () => {
                     Ad Description
                   </div>
                 </div>
-                <Input.TextArea
+
+                <textarea
                   name="description"
-                  register={register}
+                  placeholder="Add Description"
+                  {...register("description", { required: true })}
                   className="self-stretch flex-1 font-poppins text-xl text-black max-w-full bg-gainsboro-300 focus=bg-gainsboro-300 border-0 hover=bg-gainsboro-300"
                 />
+                {errors["description"] &&
+                  errors["description"]?.type === "required" && (
+                    <span className="text-red-500">This field is required</span>
+                  )}
               </div>
-              <AdsInput tittle="Ad Price" name="price" register={register} />
+              <AdsInput
+                tittle="Ad Price"
+                name="price"
+                type="number"
+                register={register}
+                required
+                errors={errors}
+              />
               <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[9px] box-border gap-[9px] max-w-full">
-                <AdsInput tittle="Country" name="country" register={register} />
-                <AdsInput tittle="State" name="state" register={register} />
-                <AdsInput tittle="City" name="city" register={register} />
+                <AdsInput
+                  tittle="Country"
+                  name="country"
+                  register={register}
+                  required
+                  errors={errors}
+                />
+                <AdsInput
+                  tittle="State"
+                  name="state"
+                  register={register}
+                  required
+                  errors={errors}
+                />
+                <AdsInput
+                  tittle="City"
+                  name="city"
+                  register={register}
+                  required
+                  errors={errors}
+                />
               </div>
               <div className="self-stretch flex flex-col items-start justify-start gap-[9px] max-w-full">
                 <div className="flex flex-row items-start justify-start py-0 px-1.5">
@@ -166,7 +237,7 @@ const PostFormAd = () => {
                 </div>
                 <div className="self-stretch rounded-mini bg-gainsboro-300 flex flex-row items-start justify-start py-[25px] px-[23px] box-border max-w-full z-[4] text-xl text-black">
                   <Controller
-                    name="selectedItem"
+                    name="selectedContact"
                     control={control}
                     defaultValue={selectedItem} // Set default value if needed
                     render={({ field }) => (
@@ -208,7 +279,7 @@ const PostFormAd = () => {
                   </div>
                   <div className="self-stretch rounded-mini bg-gainsboro-300 flex flex-row items-start justify-start pt-7 px-7 pb-[22px] box-border max-w-full">
                     <div className="h-20 w-[880px] relative rounded-mini bg-gainsboro-300 hidden max-w-full" />
-                    <div className="relative text-xl font-poppins text-black text-left z-[1] mq450=text-base">
+                    <div className="relative text-xl font-poppins text-black text-left z-[1] mq450:text-base">
                       <Controller
                         name="mainImage"
                         control={control}
@@ -236,7 +307,7 @@ const PostFormAd = () => {
                   </div>
                   <div className="self-stretch rounded-mini bg-gainsboro-300 flex flex-row items-start justify-start pt-3 px-7 pb-[22px] box-border max-w-full">
                     <div className="h-10 w-[880px] relative rounded-mini bg-gainsboro-300 hidden max-w-full" />
-                    <div className="relative text-xl font-poppins text-black text-left z-[1] mq450=text-base">
+                    <div className="relative text-xl font-poppins text-black text-left z-[1] mq450:text-base">
                       <Controller
                         name="moreImages"
                         control={control}
@@ -264,62 +335,53 @@ const PostFormAd = () => {
           </div>
         </section>
         <section className="mt-[640px]">
-          <div className="w-[20%] bg-gainsboro-100 flex flex-row items-center justify-center pb-[1000px] pr-5 pl-[21px] box-border min-w-[350px] max-w-full mq800=pt-[298px] mq800=pb-[298px] mq800=box-border mq800=min-w-full mq1125=pt-[458px] mq1125=pb-[458px] mq1125=box-border mq1325=flex-1 mq1325=pt-[705px] mq1325=pb-[705px] mq1325=box-border">
+          <div className="w-[20%] bg-gainsboro-100 flex flex-row items-center justify-center pb-[1000px] pr-5 pl-[21px] box-border min-w-[350px] max-w-full mq800:pt-[298px] mq800:pb-[298px] mq800:box-border mq800:min-w-full mq1125=pt-[458px] mq1125=pb-[458px] mq1125=box-border mq1325=flex-1 mq1325=pt-[705px] mq1325=pb-[705px] mq1325=box-border">
             <div className="h-[20px] w-[20%] relative bg-gainsboro-100 hidden max-w-full" />
-            <h1 className="m-0 flex justify-center items-center relative text-inherit font-normal font-inherit inline-block min-w-[70px] z-[1] mq450=text-11xl mq800=text-21xl">
+            <h1 className="m-0 flex justify-center items-center relative text-inherit font-normal font-inherit inline-block min-w-[70px] z-[1] mq450:text-11xl mq800:text-21xl">
               AD
             </h1>
           </div>
         </section>
       </main>
       <div className="mt-9">
-        <div className="w-[70%] sm=w-[100%] py-9 flex flex-row sm=flex-col mq450=flex-col mq800= mq1050=items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
-          <div className="w-full flex flex-row  items-center justify-between gap-5 max-w-full mq1050=flex-wrap mq1050=justify-center">
+        <div className="w-[70%] sm:w-[100%] mq1050:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
+          <div className="w-full flex flex-row  items-center justify-between gap-5 max-w-full mq1050:flex-wrap mq1050:justify-center">
             <div
               onClick={handlePrev}
-              className={` cursor-pointer w-[30%] sm=w-[40%]  mq750=w-[30%] sm=mt-[10px] mq750=w-[50%]  rounded-xl bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+              className="rounded-xl mq1050:w-[30%] cursor-pointer w-[30%] sm:w-[35%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
             >
-              <div className="relative sm=text-[14px] z-[3] text-white-A700">
+              <div className="relative z-[3] mq450:text-lg mq1050:text-3xl text-white-A700">
                 Previous
               </div>
             </div>
-            <div className="h-[47px] w-[232px] sm=w-[20%] flex flex-col mt-10 items-center justify-between">
+            <div className="h-[47px]  sm:w-[20%] flex flex-col mt-10 items-center justify-between">
               <div className=" h-[5px] flex flex-row items-center justify-between relative gap-[10px] z-[2]">
                 <div
-                  className={`h-full  w-11 sm=w-3  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  className={`h-full  w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                 />
                 <div
-                  className={`h-full w-11 sm=w-3 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                 />
                 <div
-                  className={`h-full w-11 sm=w-3 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                 />
                 <div
-                  className={`h-full w-11 sm=w-3  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  className={`h-full w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                 />
                 <div
-                  className={`h-full w-11 sm=w-3 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                 />
               </div>
             </div>
-            {!errors ? (
-              <div
-                onClick={handleSubmit(onSubmit)}
-                className={`cursor-pointer w-[30%] sm:w-[40%]  mq750:w-[30%] sm:mt-[10px] mq750:w-[50%]  rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
-              >
-                <div className="relative sm=text-[14px] z-[3] text-white-A700">
-                  {currentStep}/5 Next
-                </div>
+
+            <div
+              onClick={handleSubmit(onSubmit)}
+              className={`w-[30%] sm:w-[35%]  sm:mt-[8px]  mq750:w-[30%] mq1050:w-[30%]  cursor-pointer rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+            >
+              <div className="relative sm:text-[14px] mq1050:text-[16px] z-[3] text-white-A700">
+                {currentStep}/5 Next
               </div>
-            ) : (
-              <div
-                className={`w-[30%] sm:w-[40%]  mq750:w-[30%] sm:mt-[10px] mq750:w-[50%]  rounded-xl bg-black-900_33 shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
-              >
-                <div className="relative sm=text-[14px] z-[3] text-white-A700">
-                  {currentStep}/5 Next
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { Img } from "components";
 import Loading from "components/Loading/Loading";
 import auth from "firebase.init";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
@@ -54,7 +54,7 @@ const SocialLogin = () => {
           localStorage.setItem("authToken", response.data.data.accessToken);
           toast.success("Login Successfully");
 
-          navigate(from);
+          navigate(from); // Navigate to the previous page
         } else {
           toast.error("please create your account first");
         }
@@ -64,9 +64,8 @@ const SocialLogin = () => {
       setLoading(true);
       setSignUp(true);
       toast.success("please add your information");
-
-      navigate("/confirm");
       setLoading(false);
+      navigate("/confirm", { state: { from: location }, replace: true }); // Navigate to "/confirm" page upon error
     }
   };
   return (

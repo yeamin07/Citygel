@@ -1,13 +1,26 @@
 import { Helmet } from "react-helmet";
 import ProductCart from "pages/Products/ProductCart";
 import Header1 from "components/Header1";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DropdownButton from "components/Dropdown";
 import DropdownButton2 from "components/Dropdown/index2";
-import arrow from "../../assets/images/up-and-down-arrow.png";
 import Footer from "components/Footer";
+import useAxios from "config/api/useAxios";
+import axios from "axios";
 
 const Products = () => {
+  const api = useAxios();
+  const [allProduct, setAllProduct] = useState([]);
+  const getAllProduct = async () => {
+    const product = await axios.get(`http://localhost:5000/api/v1/ads`);
+    if (product.data) {
+      setAllProduct(product.data.data);
+    }
+  };
+  useEffect(() => {
+    getAllProduct();
+  }, []);
+  console.log(allProduct);
   return (
     <div>
       <Helmet>
@@ -59,18 +72,15 @@ const Products = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4 w-[95%] grid grid-cols-4 md:grid-cols-2 mq450:grid-cols-1 mq750:grid-cols-1 mt-16">
+          <div className="grid grid-cols-3 gap-3 w-[95%] grid grid-cols-4 md:grid-cols-2 mq450:grid-cols-1 mq750:grid-cols-1 mt-16">
             {/* components */}
-            <ProductCart />
-            <ProductCart />
-            <ProductCart />
-            <ProductCart />
-            <ProductCart />
-            <ProductCart />
+            {allProduct.map((item) => (
+              <ProductCart {...{ item }} />
+            ))}
           </div>
         </div>
 
-        <div className="h-[1200] w-[50%] bg-gray-200 mt-20 flex justify-center items-center">
+        <div className="h-[1200] w-[60%] bg-gray-200 mt-20 flex justify-center items-center">
           AD
         </div>
       </div>

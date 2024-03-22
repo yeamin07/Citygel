@@ -17,6 +17,12 @@ import PostSubCategory from "pages/AddPost/PostSubCategory";
 import PostFormAd from "./PostFormAd";
 import PostMembershipPlan from "./PostMembershipPlan";
 import PostAddPayment from "./PostAddPayment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
+);
 const AddPostWrapper = () => {
   const dispatch = useDispatch();
   const { currentStep, categories, subcategory } = useSelector(
@@ -100,13 +106,17 @@ const AddPostWrapper = () => {
           />
         </div>
       </div>
-      <div className="absolute top-[300px] z-[999]  mq1125:relative mq1125:top-[-40px]   w-[60%]">
+      <div className="absolute  mq750:mt-14 sm:relative mq450:relative mq750:relative mq800:relative top-[300px] z-[999]  mq1125:relative  sm:w-[100%] mq450:w-[100%]  mq750:w-[100%]   w-[60%]">
         {/* {children} */}
         {currentStep === 1 && <PostCategories />}
         {currentStep === 2 && <PostSubCategory />}
         {currentStep === 3 && <PostFormAd />}
         {currentStep === 4 && <PostMembershipPlan />}
-        {currentStep === 5 && <PostAddPayment />}
+        {currentStep === 5 && (
+          <Elements stripe={stripePromise}>
+            <PostAddPayment />
+          </Elements>
+        )}
       </div>
     </div>
   );

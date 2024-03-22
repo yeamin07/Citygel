@@ -3,11 +3,15 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductSlider from "./ProductSlider";
-const ProductCart = (props) => {
+const ProductCart = ({ item }) => {
+  console.log(item);
   return (
     <div className="p-3 w-full product-border rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col  py-2.5 px-[10px]   max-w-full text-left text-lg text-white font-poppins border-[1px] border-solid border-gray-100">
       <div>
-        <ProductSlider />
+        <ProductSlider
+          mainImage={item.mainImage}
+          moreImages={item.moreImages}
+        />
       </div>
       <div className="self-stretch flex flex-col items-center justify-center gap-[10px] max-w-full">
         <div className="self-stretch flex flex-col items-center justify-center gap-[10px]">
@@ -29,28 +33,27 @@ const ProductCart = (props) => {
             </div>
           </div>
           <h3 className="m-0 self-stretch relative text-9xl leading-[40px] font-semibold font-inherit text-black z-[1] mq450:text-3xl mq450:leading-[32px]">
-            Dell Touch Screen - Core I7 16GB RAM 512GB
+            {item.title}
           </h3>
         </div>
-        <div className="flex flex-row items-start justify-start pt-0 px-0 pb-[5px] text-xl text-gray-1100">
-          <div className="relative z-[1] mq450:text-base">
-            Electronics . Computers
+        <div className="flex flex-row items-start w-full justify-start pt-0 px-0 pb-[5px] text-xl text-gray-1100">
+          <div className="relative w-full text-left  z-[1] mq450:text-base">
+            {item.category.name} - {item.subcategory.name}
           </div>
         </div>
         <div className="w-[375px] flex flex-row items-start justify-start pt-0 px-0 pb-[5px] box-border max-w-full text-gray-1200">
           <div className="flex-1 relative leading-[25px] inline-block max-w-full z-[1]">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            ind...
+            {item.description}
           </div>
         </div>
-        <div className="self-stretch flex flex-row items-start justify-start pt-0 px-0 pb-4 box-border max-w-full text-9xl text-black">
-          <div className="flex-1 relative leading-[40px] font-semibold inline-block whitespace-nowrap max-w-full z-[1] mq450:text-3xl mq450:leading-[32px]">
-            AED 980
+        <div className="self-stretch flex w-full flex-row items-start justify-between pt-0 px-0 pb-4 box-border max-w-full text-9xl text-black">
+          <div className="relative w-[50%] leading-[40px] font-semibold inline-block whitespace-nowrap max-w-full z-[1] mq450:text-3xl mq450:leading-[32px]">
+            AED {item.price}
           </div>
-          <div className="flex flex-col items-start justify-start pt-[5px] px-0 pb-0 ml-[-129px] text-xl text-gray-1100">
-            <div className="flex flex-row items-start justify-start gap-[10px]">
-              <div className="relative inline-block min-w-[105px] z-[1] mq450:text-base">
-                City Name
+          <div className="flex items-center ml-9 justify-end w-[50%]  pt-[5px] px-0 pb-0 text-xl text-gray-1100">
+            <div className="flex flex-row items-start justify-end  gap-[1px]">
+              <div className="relative inline-block max-w-[105px] z-[1] mq450:text-base">
+                {item.city}
               </div>
               <div className="h-[27px] flex flex-col items-start justify-start pt-[3px] px-0 pb-0 box-border">
                 <img

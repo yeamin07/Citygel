@@ -1,21 +1,25 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { nextStep, prevStep, setForm } from "store/slices/adsPostSlice";
+import {
+  nextStep,
+  prevStep,
+  setForm,
+  setMembership,
+} from "store/slices/adsPostSlice";
 
 const PostMembershipPlan = () => {
   const { register, handleSubmit, errors, control } = useForm();
   const dispatch = useDispatch();
   const [selected, setSelected] = useState(null);
-  const onSubmit = (data) => {
-    // Handle form submission here
-    console.log(data);
-    dispatch(setForm(data));
-    // You can dispatch an action or perform other operations with form data
-  };
+
   const { currentStep, categories, subcategory, form } = useSelector(
     (state) => state.post,
   );
+  const handleMembershipSelect = (selectedMembership) => {
+    setSelected(selectedMembership);
+    dispatch(setMembership(selected));
+  };
   const handleNext = () => {
     dispatch(nextStep());
   };
@@ -25,7 +29,7 @@ const PostMembershipPlan = () => {
   console.log(form);
   return (
     <div className="w-screen h-auto">
-      <div className="w-screen h-screen rounded-31xl overflow-hide tracking-[normal] mq750:h-auto mq750:min-h-[1781]">
+      <div className="w-screen h-screen mq800:h-auto rounded-31xl overflow-hide tracking-[normal] mq750:h-auto mq750:min-h-[1781]">
         <main className=" w-full flex flex-col items-start justify-start gap-[83px] max-w-full text-left text-25xl text-black font-poppins mq750:gap-[21px_83px] mq1050:gap-[41px_83px]">
           <div className="w-full flex flex-row items-start justify-center pt-0 px-5 pb-[37px] box-border max-w-full">
             <div className="w-full flex flex-col items-start justify-start gap-[20px] max-w-full">
@@ -36,8 +40,8 @@ const PostMembershipPlan = () => {
           <section className="w-full flex flex-row items-start justify-start pt-0 px-5 pb-[8.300000000000182px] box-border max-w-full text-left text-22xl-5 text-main-color font-poppins">
             <div className=" w-full flex flex-row sm:flex-col mq450:flex-col mq750:flex-col mq1050:flex-col items-start justify-start max-w-full">
               <div className="w-[46%] mq450:w-[100%] mq750:w-[100%] rounded-[29.94px] bg-white-A700  flex flex-row items-start justify-start py-[46.09999999999991px] px-[78.29999999999927px] box-border gap-[39.10000000000037px] max-w-full z-[4] mq750:flex-wrap mq750:gap-[39.10000000000037px_20px] mq750:pl-[39px] mq750:pr-[39px] mq750:box-border">
-                <div className="h-[537.8px] w-[1079px] relative rounded-[29.94px] bg-white-A700 hidden max-w-full" />
-                <div className="w-[268px] flex flex-col items-start justify-start pt-0 px-0 pb-[0.8999999999996362px] box-border gap-[97px] min-w-[267.2000000000007px] z-[5] mq450:gap-[48px_97px] mq750:flex-1">
+                <div className="h-[537.8px] w-[50%] relative rounded-[29.94px] bg-white-A700 hidden max-w-full" />
+                <div className="w-[50%] flex flex-col items-start justify-start pt-0 px-0 pb-[0.8999999999996362px] box-border gap-[97px] min-w-[50%]  z-[5] mq450:gap-[48px_97px] mq750:flex-1">
                   <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-0 gap-[23.030948638916016px]">
                     <div className="h-[53px] overflow-hidden shrink-0 flex flex-row items-center justify-end pt-[9.799999999999956px] pb-0 pr-3.5 pl-[14.300000000001091px] box-border gap-[2px]">
                       <b className="relative leading-[52.97px] mq450:text-6xl mq450:leading-[32px] mq1050:text-14xl mq1050:leading-[42px]">
@@ -90,15 +94,15 @@ const PostMembershipPlan = () => {
                     </div>
                   </div>
                   <div
-                    onClick={() => setSelected("starter")}
+                    onClick={() => handleMembershipSelect("starter")}
                     className=" cursor-pointer w-[238.4px] rounded-[27.64px] bg-steelblue-200 overflow-hidden flex flex-col items-start justify-center pt-[13px] pb-[12.800000000000182px] pr-[64.09999999999854px] pl-[63.30000000000109px] box-border mix-blend-normal whitespace-nowrap text-center text-mid-3 text-white"
                   >
                     <div className="self-stretch relative font-medium">
-                      Choose plan
+                      {selected == "starter" ? "Selected" : " Choose plan"}
                     </div>
                   </div>
                 </div>
-                <div className="w-[267.2px] flex flex-col items-start justify-start gap-[61.90000000000009px] min-w-[267.2000000000007px] mq450:gap-[31px_61.90000000000009px] mq750:flex-1">
+                <div className="w-[50%]  flex flex-col items-start justify-start gap-[61.90000000000009px] min-w-[50%]  mq450:gap-[31px_61.90000000000009px] mq750:flex-1">
                   <div className="self-stretch flex flex-col items-start justify-start gap-[23.049999999999955px]">
                     <div className="h-[53px] overflow-hidden shrink-0 flex flex-row items-start justify-start pt-[9.799999999999956px] pb-[2.2000000000000455px] pr-5 pl-0 box-border gap-[6px] z-[5]">
                       <b className="relative leading-[52.97px] whitespace-nowrap mq450:text-6xl mq450:leading-[32px] mq1050:text-14xl mq1050:leading-[42px]">
@@ -164,11 +168,11 @@ const PostMembershipPlan = () => {
                     </div>
                   </div>
                   <div
-                    onClick={() => setSelected("premium")}
+                    onClick={() => handleMembershipSelect("premium")}
                     className="cursor-pointer rounded-[27.64px] bg-steelblue-200 overflow-hidden flex flex-row items-start justify-start pt-[13px] pb-[12.800000000000182px] pr-16 pl-[63.39999999999963px] mix-blend-normal whitespace-nowrap z-[5] text-center text-mid-3 text-white"
                   >
                     <div className="w-[111px] relative font-medium inline-block">
-                      Choose plan
+                      {selected == "premium" ? "Selected" : " Choose plan"}
                     </div>
                   </div>
                 </div>
@@ -255,11 +259,11 @@ const PostMembershipPlan = () => {
                     </div>
                   </div>
                   <div
-                    onClick={() => setSelected("professional")}
+                    onClick={() => handleMembershipSelect("professional")}
                     className={`cursor-pointer bottom-1 ${selected === "professional" ? "border-red-500" : ""} rounded-[27.64px] bg-white-A700 overflow-hidden flex flex-row items-start justify-start pt-[12.300000000000182px] px-[78.10000000000036px] pb-[12.399999999999636px] whitespace-nowrap text-center text-nd mq450:pl-5 mq450:pr-5 mq450:box-border`}
                   >
                     <div className=" text-nd w-[111px] relative font-medium inline-block">
-                      Choose plan
+                      {selected == "professional" ? "Selected" : " Choose plan"}
                     </div>
                   </div>
                 </div>
@@ -291,47 +295,47 @@ const PostMembershipPlan = () => {
             </div> */}
         </main>
         <div className="mt-9">
-          <div className="w-[70%] sm:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
+          <div className="w-[70%] sm:w-[100%] mq1050:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
             <div className="w-full flex flex-row  items-center justify-between gap-5 max-w-full mq1050:flex-wrap mq1050:justify-center">
               <div
                 onClick={handlePrev}
-                className={` cursor-pointer w-[30%] sm:w-[40%]  mq750:w-[30%] sm:mt-[10px] mq750:w-[50%]  rounded-xl bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+                className="rounded-xl mq1050:w-[30%] cursor-pointer w-[30%] sm:w-[35%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
               >
-                <div className="relative sm:text-[14px] z-[3] text-white-A700">
+                <div className="relative z-[3] mq450:text-lg mq1050:text-3xl text-white-A700">
                   Previous
                 </div>
               </div>
-              <div className="h-[47px] w-[232px] sm:w-[20%] flex flex-col mt-10 items-center justify-between">
+              <div className="h-[47px]  sm:w-[20%] flex flex-col mt-10 items-center justify-between">
                 <div className=" h-[5px] flex flex-row items-center justify-between relative gap-[10px] z-[2]">
                   <div
-                    className={`h-full  w-11 sm:w-3  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full  w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                 </div>
               </div>
               {selected ? (
                 <div
                   onClick={handleNext}
-                  className={`cursor-pointer w-[30%] sm:w-[40%]  mq750:w-[30%] sm:mt-[10px] mq750:w-[50%]  rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+                  className={`w-[30%] sm:w-[35%]  sm:mt-[8px]  mq750:w-[30%] mq1050:w-[30%]  cursor-pointer rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
                 >
-                  <div className="relative sm:text-[14px] z-[3] text-white-A700">
+                  <div className="relative sm:text-[14px] mq1050:text-[16px] z-[3] text-white-A700">
                     {currentStep}/5 Next
                   </div>
                 </div>
               ) : (
                 <div
-                  className={`w-[30%] sm:w-[40%]  mq750:w-[30%] sm:mt-[10px] mq750:w-[50%]  rounded-xl bg-black-900_33 shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+                  className={`w-[30%] sm:w-[40%] mq1050:text-[16px]   mq1050:w-[30%] mq750:w-[30%] sm:mt-[8px] mq750:w-[50%]  rounded-xl bg-black-900_33 shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
                 >
                   <div className="relative sm:text-[14px] z-[3] text-white-A700">
                     {currentStep}/5 Next

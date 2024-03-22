@@ -4,7 +4,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import aiImage from "../../../assets/images/ai.jpg"; // Import your image
 
-const ProductSlider = () => {
+const ProductSlider = ({ mainImage, moreImages }) => {
+  // Combine mainImage and moreImages into a single array
+  const images = [mainImage, ...moreImages];
+  console.log(mainImage, moreImages);
   const settings = {
     dots: true,
     arrows: false,
@@ -31,28 +34,16 @@ const ProductSlider = () => {
   return (
     <div className="slider">
       <Slider {...settings}>
-        {/* Render your images inside the slider */}
-        <div className="">
-          <img
-            src={aiImage}
-            className="rounded-xl h-[253px] w-[100%] p-2"
-            alt="Slide 1"
-          />
-        </div>
-        <div>
-          <img
-            src={aiImage}
-            className="rounded-xl h-[253px] w-[100%] p-2"
-            alt="Slide 1"
-          />
-        </div>
-        <div>
-          <img
-            src={aiImage}
-            className="rounded-xl h-[253px] w-[100%] p-2"
-            alt="Slide 1"
-          />
-        </div>
+        {/* Render images from the combined array */}
+        {images.map((image, index) => (
+          <div key={index}>
+            <img
+              src={image}
+              className="rounded-xl h-[253px] w-[100%] p-2"
+              alt={`Slide ${index + 1}`}
+            />
+          </div>
+        ))}
       </Slider>
     </div>
   );

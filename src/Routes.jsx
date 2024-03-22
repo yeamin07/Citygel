@@ -19,6 +19,12 @@ import Thankyou from "components/ai-5pages/ThankYou";
 import Confirm from "pages/SignUp/Confirm";
 import RequiredAuth from "hooks/RequiredAuth";
 import AddPostWrapper from "pages/AddPost/AddPostWrapper";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
+);
 
 const ProjectRoutes = () => {
   let element = useRoutes([
@@ -67,7 +73,11 @@ const ProjectRoutes = () => {
     },
     {
       path: "postad2",
-      element: <PostAd2 />,
+      element: (
+        <Elements stripe={stripePromise}>
+          <PostAd2 />
+        </Elements>
+      ),
     },
     {
       path: "Profile",
