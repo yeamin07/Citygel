@@ -8,20 +8,7 @@ export default function HomePage() {
   return (
     <>
 
-      {/* FIXME: delete before production */}
 
-
-
-      <div>
-        <a></a>
-        <a></a>
-        <a></a>
-        <a></a>
-
-      </div>
-
-
-      {/* end */}
 
       <Helmet>
         <title>Citygel</title>
