@@ -5,6 +5,7 @@ import auth from "firebase.init";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AuthContext from "context/AuthContext";
+import SelectLanguage from "./select-language/SelectLanguage";
 
 export default function Header1({ ...props }) {
   const navigate = useNavigate();
@@ -56,20 +57,8 @@ export default function Header1({ ...props }) {
                 </Text>
               </div>
             )}
-
-            <div className="flex flex-row justify-between items-center w-[22%]   p-[3px] border-white-A700 border border-solid rounded-[25px]">
-              <div className="flex flex-col items-center justify-start h-[44px] w-[44px] p-2.5 border-white-A700 border border-solid bg-white-A700 rounded-[50%]">
-                <Img
-                  src="images/location.png"
-                  alt="arrowdown_one"
-                  className="h-[20px]"
-                />
-              </div>
-
-              <Text as="p" className="pr-6">
-                Change Location
-              </Text>
-            </div>
+            {/* me */}
+            <SelectLanguage />
           </div>
         </div>
         <div className="flex flex-row justify-between items-center w-full mb-2 mt-8 mx-auto max-w-[1685px]">
