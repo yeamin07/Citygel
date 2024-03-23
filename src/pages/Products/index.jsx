@@ -10,6 +10,7 @@ import axios from "axios";
 import arrow from "../../assets/images/up-and-down-arrow.png";
 
 import { Slider } from 'antd';
+import CitygelLogo from "components/ai-5pages/CitygelLogo";
 
 
 
@@ -183,8 +184,10 @@ const Products = () => {
           </div>
         </div>
 
-        <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01 inline" />
+        {/* <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01 inline" /> */}
+        
       </div>
+      <CitygelLogo/>
     </div>
   );
 };

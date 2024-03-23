@@ -6,7 +6,9 @@ import greycurve from "./Vector 19 (1).png"
 import logo from "./Citygel-logo.png"
 import man_pic from "./logo-man.png" 
 import downarrow from "./Vector 16.png"
-
+import home from "./Homef.png"
+import profile from "./Profilef.png"
+import postad  from "./PostADf.png"
 
 export  {
     laptop,
@@ -16,5 +18,6 @@ export  {
     logo,
     man_pic,
     greycurve,
-    downarrow
+    downarrow,
+    home,profile,postad
 };
