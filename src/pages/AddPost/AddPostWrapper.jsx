@@ -19,6 +19,7 @@ import PostMembershipPlan from "./PostMembershipPlan";
 import PostAddPayment from "./PostAddPayment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { Dropdown, Space } from "antd";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
@@ -28,6 +29,53 @@ const AddPostWrapper = () => {
   const { currentStep, categories, subcategory } = useSelector(
     (state) => state.post,
   );
+  const items = [
+    {
+      key: '1',
+      label: (
+        <div className="flex flex-row items-center gap-1 justify-center">
+        
+
+        <img className="w-5 rounded-lg" src="https://flagsapi.com/AE/shiny/64.png" alt=""/>
+
+
+         <a target="_blank" rel="noopener noreferrer" href="#">
+        UAE
+        </a>
+       </div>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <div className="flex flex-row items-center gap-1 justify-center">
+        
+
+        <img className="w-5 rounded-lg" src="https://flagsapi.com/US/shiny/64.png" alt=""/>
+
+
+         <a target="_blank" rel="noopener noreferrer" href="#">
+       USA
+        </a>
+       </div>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+       <div className="flex flex-row items-center gap-1 justify-center">
+        
+
+        <img className="w-5 rounded-lg" src="https://flagsapi.com/BD/shiny/64.png" alt=""/>
+
+
+         <a target="_blank" rel="noopener noreferrer" href="#">
+     BD
+        </a>
+       </div>
+      ),
+    },
+  ];
 
   return (
     <div className="overflow-hidden">
@@ -56,9 +104,20 @@ const AddPostWrapper = () => {
               <h4 className="text-[18px] font-medium font-poppins">
                 John Smith
               </h4>
-              <p className="text-teal-400 text-[13px]">
-                My Account <FaCaretDown />
-              </p>
+          
+           
+                <Dropdown 
+      menu={{
+        items,
+      }}
+      placement="bottomRight"
+      arrow={{
+        pointAtCenter: false,
+      }}
+    >
+      <p className="text-teal-400 text-[13px] cursor-pointer">   My Account <FaCaretDown />       </p>
+    </Dropdown>
+       
             </div>
             <div className="mq800:hidden block">
               <img
@@ -74,11 +133,26 @@ const AddPostWrapper = () => {
             >
               <div className="flex justify-start flex-row items-center space-x-1 pl-[1px] pt-[1px]">
                 <div className="flex justify-center items-center bg-white-A700 h-[26px] w-[26px] rounded-full">
-                  {/* <img src={location} className="w-[20px] h-[21px]" /> */}
+                  <img src={location} className="w-[20px] h-[21px]" />
                 </div>
-                <p className="text-[10px] text-white-A700 font-extralight">
-                  Change Location <FaAngleDown />
-                </p>
+                <Dropdown 
+    menu={{
+      items,
+    }}
+    trigger={['click']}
+  >
+    <a onClick={(e) => e.preventDefault()}>
+      <Space>
+     <div>
+     <p className="text-[10px] text-white-A700 font-extralight cursor-pointer">
+      Change Location <FaAngleDown />
+             </p>
+     </div>
+  
+      </Space>
+    </a>
+  </Dropdown>
+               
               </div>
             </div>
           </div>
@@ -97,13 +171,13 @@ const AddPostWrapper = () => {
           <img
             src={bluecurve}
             alt=""
-            className="w-[89%] h-[780px] mq800:h-[390px] absolute right-0 top-0 mq800:w-[120%]
+            className="w-[89%] h-[780px] mq800:h-[390px]   absolute right-0 top-0 mq800:w-[120%]
           mq450:h-[350px] mq450:w-[130%]"
           />
           <img
             src={sittingman}
             alt=""
-            className="absolute mq800:right-8 mq800:top-24 right-20 top-48 mq800:w-[390px] mq800:h-[350px] w-[720px] h-[660px]
+            className="absolute mq800:right-8 mq800:top-24 right-5 top-48 mq800:w-[390px] mq1050:w-[500px] mq1050:h-[550px] mq800:h-[350px] w-[600px] h-[650px]
           mq450:w-[350px] mq450:h-[300] mq450:right-5"
           />
         </div>

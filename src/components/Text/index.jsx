@@ -17,11 +17,11 @@ const sizes = {
   md: "text-[8px] font-normal",
 };
 
-const Text = ({ children, className = "", as, size = "xl", ...restProps }) => {
+const Text = ({ children, className = "",onClick, as, size = "xl", ...restProps }) => {
   const Component = as || "p";
 
   return (
-    <Component className={`text-white-A700 font-poppins ${className} ${sizes[size]}`} {...restProps}>
+    <Component onClick={onClick} className={`text-white-A700 font-poppins ${className} ${sizes[size]}`} {...restProps}>
       {children}
     </Component>
   );

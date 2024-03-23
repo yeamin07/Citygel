@@ -3,8 +3,10 @@ import { Helmet } from "react-helmet";
 import { Text, Img, Heading, Button } from "../../components";
 import Footer from "../../components/Footer";
 import Header1 from "components/Header1";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
+  const navigate=useNavigate()
   return (
     <>
 
@@ -33,9 +35,10 @@ export default function HomePage() {
                   <div className="flex flex-col items-center justify-start w-[94%] right-0 top-0 m-auto absolute">
                     <div className="flex flex-col items-end justify-start w-full">
                       <div className="flex flex-col items-end justify-start w-full gap-[18px]"></div>
-                      <div className="h-[364px] w-[364px] mt-[-118px] mr-[189px] z-[1] bg-light_blue-400 backdrop-opacity-[0.5] blur-[430.00px] rounded-[50%]" />
+                    <img className="absolute  mq1050:hidden" src="elipse.png" alt="" />
                     </div>
-                    <div className="flex flex-col items-center justify-start w-full mt-[-132px] z-[1] ">
+        
+                     <div className="flex flex-col items-center justify-start w-full mt-40 z-[1] ">
                       <Heading
                         as="h1"
                         className="sm:text-[32px] mq450:text-[32px] mq750:text-[32px]"
@@ -65,7 +68,8 @@ export default function HomePage() {
                         when an unknown printer took a galley of type and
                         scrambled.
                       </Text>
-                    </div>
+                  
+               </div>
                   </div>
                   <Img
                     src="images/img_ellipse_2_262x241.png"
@@ -73,16 +77,17 @@ export default function HomePage() {
                     className="h-[262px] w-[14%] bottom-0 left-0 m-auto object-cover absolute"
                   />
                 </div>
-                <div className="h-[262px] w-[262px] mt-[-57px] ml-[674px] bg-light_blue-400 backdrop-opacity-[0.5] blur-[430.00px] rounded-[50%]" />
+              
               </div>
             </div>
           </div>
-          <div className="relative w-[95%] sm:w-full grid grid-cols-4 md:grid-cols-2 mq450:grid-cols-1 mq750:grid-cols-2 sm:grid-cols-2 gap-5 items-start mt-[-160px] sm:mt-[5px] mq450:mt-[5px] mq750:mt-[5px]">
+          <div className="relative z-50 w-[95%] sm:w-full grid grid-cols-4 md:grid-cols-2 mq450:grid-cols-1 mq750:grid-cols-2 sm:grid-cols-2 gap-5 items-start mt-[-160px] sm:mt-[5px] mq450:mt-[5px] mq750:mt-[5px]">
             <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-20 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
               <Text
                 size="7xl"
                 as="p"
                 className="mb-1.5 !text-black-900_03 text-3xl !font-aleo"
+                onClick={()=>navigate('/categories')}
               >
                 Dubai
               </Text>
@@ -92,17 +97,23 @@ export default function HomePage() {
                 size="3xl"
                 as="p"
                 className="mb-1.5 text-center  !text-black-900_03 !font-aleo"
+                onClick={()=>navigate('/categories')}
               >
                 AbuDhabi
               </Text>
             </div>
             <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-14 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
-              <Text size="3xl" as="p" className="!text-black-900_03 !font-aleo">
+              <Text           onClick={()=>navigate('/categories')} size="3xl" as="p" className="!text-black-900_03 !font-aleo">
                 Sharjah
               </Text>
             </div>
             <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-14 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
-              <Text size="3xl" as="p" className="!text-black-900_03 !font-aleo">
+              <Text           onClick={()=>navigate('/categories')} size="3xl" as="p" className="!text-black-900_03 !font-aleo">
+                Ajman
+              </Text>
+            </div>
+            <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-14 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
+              <Text           onClick={()=>navigate('/categories')} size="3xl" as="p" className="!text-black-900_03 !font-aleo">
                 Ajman
               </Text>
             </div>
@@ -112,12 +123,7 @@ export default function HomePage() {
               </Text>
             </div>
             <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-14 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
-              <Text size="3xl" as="p" className="!text-black-900_03 !font-aleo">
-                Ajman
-              </Text>
-            </div>
-            <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-14 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
-              <Text size="3xl" as="p" className="!text-black-900_03 !font-aleo">
+              <Text            onClick={()=>navigate('/categories')} size="3xl" as="p" className="!text-black-900_03 !font-aleo">
                 Ajman
               </Text>
             </div>

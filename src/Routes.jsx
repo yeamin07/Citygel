@@ -3,8 +3,6 @@ import { useRoutes } from "react-router-dom";
 import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import LoginThree from "pages/Login";
-import PostAdEleven from "pages/AddPost/PostCategories";
-import PostAdTwo from "pages/PostAdTwo";
 import SignUpPage from "pages/SignUp";
 import HomePage from "pages/HomeNine";
 import Products from "./pages/Products/index";
@@ -21,6 +19,7 @@ import RequiredAuth from "hooks/RequiredAuth";
 import AddPostWrapper from "pages/AddPost/AddPostWrapper";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
@@ -54,6 +53,10 @@ const ProjectRoutes = () => {
     {
       path: "products",
       element: <Products />,
+    },
+    {
+      path: "products/:id",
+      element: <Description />,
     },
     {
       path: "categories",
@@ -98,6 +101,7 @@ const ProjectRoutes = () => {
   ]);
 
   return element;
+
 };
 
 export default ProjectRoutes;

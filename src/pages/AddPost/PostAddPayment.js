@@ -96,7 +96,7 @@ const PostAddPayment = () => {
   };
   console.log(category);
   return (
-    <div>
+    <div className="pl-20 mq1050:pt-[34px] mq1050:pl-0">
       <div>
         {/* <div className="absolute top-[580px]  left-[80px] mq1325:relative  mq1325:top-5 mq1325:left-[8px] h-auto flex mq1500:flex-col flex-row space-x-6">
         <div className="mq1325:w-[370px] mq450:w-[350px] mq450:ml-7 w-[400px] h-[540px] flex justify-between flex-col border-[1px] border-red-700 
@@ -118,7 +118,7 @@ const PostAddPayment = () => {
             View All
           </button>
         </div> */}
-        <div className="p-10">
+        <div className="">
           <Text
             as="p"
             className="mt-[70px] w-[100%] !text-black-900_03 z-[1] font-medium  text-start sm:text-center mq450:text-center  sm:text-[28px] mq450:text-[28px] text-[44px]"
@@ -135,8 +135,8 @@ const PostAddPayment = () => {
             Lorem Ipsum 
           </Text>
         </div>
-        <div className="flex flex-row p-11  space-x-10 mq450:space-x-2 mq750:space-x-5 mq825:space-x-10  mq750:flex-col">
-          <div className="w-[354.4px] rounded-mid-5 bg-white shadow-[0px_0px_8.75px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start pt-[8.80000000000291px] px-[7px] pb-[8.69999999999709px] gap-[8.69999999999709px] max-w-full z-[6] border-[1.3px] border-solid border-gray-100">
+        <div className="flex  flex-row pt-10  space-x-10 mq450:space-x-2 mq750:space-x-5 mq825:space-x-10  mq750:flex-col">
+          <div className="w-[354.4px] h-[568.8px] rounded-mid-5 bg-white shadow-[0px_0px_8.75px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start pt-[8.80000000000291px] px-[7px] pb-[8.69999999999709px] gap-[8.69999999999709px] max-w-full z-[6] border-[1.3px] border-solid border-gray-100">
             <div className="self-stretch h-[253.8px] relative">
               <ProductSlider
                 mainImage={form.mainImage}
@@ -203,7 +203,7 @@ const PostAddPayment = () => {
               {" "}
               {/*This is pay now section*/}
               <form>
-                <div className="flex-1 flex flex-col items-start justify-start pt-[26px] px-0 pb-0 box-border min-w-[686px] max-w-full text-xl-4 text-gray-600 mq750:min-w-full">
+                <div className="flex-1 min-h-screen flex flex-col items-start justify-start pt-[26px] px-0 pb-0 box-border min-w-[686px] max-w-full text-xl-4 text-gray-600 mq750:min-w-full">
                   <div className="self-stretch flex flex-col items-start justify-start gap-[115px] max-w-full mq750:gap-[29px_115px] mq1050:gap-[57px_115px]">
                     <div className="self-stretch flex flex-row items-start justify-start py-0 pr-0 pl-[5px] mq450:pl-[0px] mq750:pl-[0px] box-border max-w-full">
                       <div className="flex-1 flex flex-col items-start justify-start gap-[30px] max-w-full">

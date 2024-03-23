@@ -38,7 +38,7 @@ const ProductCart = ({ item }) => {
         </div>
         <div className="flex flex-row items-start w-full justify-start pt-0 px-0 mq750:pb-[2px]  pb-[5px] text-xl text-gray-1100">
           <div className="relative w-full text-left mq750:text-[8.02px]   z-[1] mq450:text-base">
-            {item.category.name} - {item.subcategory.name}
+            {item?.category?.name} - {item?.subcategory?.name}
           </div>
         </div>
         <div className="w-[375px] flex flex-row items-start justify-start pt-0 px-0  mq750:pb-[2px] pb-[5px] box-border max-w-full text-gray-1200">

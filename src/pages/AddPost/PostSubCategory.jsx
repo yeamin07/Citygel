@@ -35,7 +35,7 @@ export default function PostSubCategory() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="h-screen  relative">
+      <div className="h-screen  relative w-full px-16 ">
         <div className="flex flex-col justify-start items-start">
           <Text
             as="p"
@@ -53,10 +53,10 @@ export default function PostSubCategory() {
             Lorem Ipsum 
           </Text>
           <div>
-            <div className="grid grid-cols-4 sm:grid-cols-2 mq450:grid-cols-2 mq750:grid-cols-3 gap-4 w-full mt-6">
+            <div className="grid grid-cols-4 mq1125:grid-cols-3 sm:grid-cols-2 mq450:grid-cols-2 mq750:grid-cols-2 mq1050:grid-cols-2 gap-4 w-full mt-6">
               <div
                 onClick={() => handleSelect("computers")}
-                className={`flex flex-col items-center justify-start w-[100%] h-[230px]  gap-2.5 p-[11px] border border-solid ${selected == "electric" ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} bg-white-A700 shadow-sm rounded-[20px]`}
+                className={`flex flex-col p-5 items-center justify-start w-[100%] h-[230px]  gap-2.5 p-[11px] border border-solid ${selected == "electric" ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} bg-white-A700 shadow-sm rounded-[20px]`}
               >
                 <Img
                   src="images/img_frame_orange_400.svg"
@@ -126,33 +126,33 @@ export default function PostSubCategory() {
             </div>
           </div>
         </div>
-        <div className="mt-9">
-          <div className="w-[70%] sm:w-[100%] mq1050:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
-            <div className="w-full flex flex-row  items-center justify-between gap-5 max-w-full mq1050:flex-wrap mq1050:justify-center">
+        <div className="mt-9  w-full">
+          <div className="w-[80%] sm:w-[100%] mq1050:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
+            <div className="w-full flex flex-row  items-center justify-between gap-5 max-w-full mq1050:justify-between">
               <div
                 onClick={handlePrev}
-                className="rounded-xl mq1050:w-[30%] cursor-pointer w-[30%] sm:w-[35%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
+                className="rounded-xl mq1050:w-[30%] cursor-pointer w-[30%] sm:w-[%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
               >
-                <div className="relative z-[3] mq450:text-lg mq1050:text-3xl text-white-A700">
+                <div className="relative mr-[7px] z-[3] text-center mq450:text-sm mq750:text-sm mq1050:text-3xl text-white-A700">
                   Previous
                 </div>
               </div>
-              <div className="h-[47px]  sm:w-[20%] flex flex-col mt-10 items-center justify-between">
+              <div className="h-[47px]  sm:w-[20%] flex flex-col mt-10 items-center justify-start">
                 <div className=" h-[5px] flex flex-row items-center justify-between relative gap-[10px] z-[2]">
                   <div
-                    className={`h-full  w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full  w-11 sm:w-3 mq750:w-2 mq1050:w-5  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                   <div
-                    className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
                   />
                 </div>
               </div>

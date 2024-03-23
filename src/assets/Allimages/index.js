@@ -5,6 +5,7 @@ import bluecurve from "./Vector 20 (1).png"
 import greycurve from "./Vector 19 (1).png"
 import logo from "./Citygel-logo.png"
 import man_pic from "./logo-man.png" 
+import location from "./location.png" 
 
 
 export  {
@@ -14,5 +15,5 @@ export  {
     bluecurve,
     logo,
     man_pic,
-    greycurve
+    greycurve,location
 };

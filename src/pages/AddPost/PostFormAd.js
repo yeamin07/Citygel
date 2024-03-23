@@ -106,8 +106,9 @@ const PostFormAd = () => {
   return (
     <form>
       {" "}
-      <main className="self-stretch flex flex-row mq750:flex-col  items- justify-between pl-10 box-border max-w-full">
-        <section className="w-[100%] pl-4 flex flex-col items-start justify-start gap-[9px] max-w-full text-left text-25xl text-black font-poppins">
+    <main className="w-[100%]  mq750:mt-48">
+    <div className=" flex flex-row mq750:flex-col  items-center justify-between pl-10 box-border max-w-full">
+        <section className="w-[100%] min-h-screen pl-4 flex flex-col items-start justify-start gap-[9px] max-w-full text-left text-25xl text-black font-poppins">
           <div className="w-[80%] flex flex-col items-start justify-start gap-[50px] max-w-full mq450:gap-[25px_50px]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[20px]">
               <h1 className="m-0 relative text-inherit font-medium font-inherit z-[4] mq450:text-7xl mq800:text-16xl">
@@ -191,7 +192,7 @@ const PostFormAd = () => {
                   name="description"
                   placeholder="Add Description"
                   {...register("description", { required: true })}
-                  className="self-stretch flex-1 font-poppins text-xl text-black max-w-full bg-gainsboro-300 focus=bg-gainsboro-300 border-0 hover=bg-gainsboro-300"
+                  className="p-7 self-stretch flex-1 font-poppins text-xl text-black max-w-full bg-gainsboro-300 focus=bg-gainsboro-300 border-0 hover=bg-gainsboro-300"
                 />
                 {errors["description"] &&
                   errors["description"]?.type === "required" && (
@@ -242,7 +243,7 @@ const PostFormAd = () => {
                     defaultValue={selectedItem} // Set default value if needed
                     render={({ field }) => (
                       <Dropdown
-                        className="h-7 w-[880px] px-[10px] py-[6px] rounded-mini border-none outline-none focus:ring-0 max-w-full"
+                        className="h-7 w-[880px] px-[10px] py-[1px] rounded-mini border-none outline-none focus:ring-0 max-w-full"
                         menu={{
                           items: items.map((item) => ({
                             ...item,
@@ -334,57 +335,75 @@ const PostFormAd = () => {
             </div>
           </div>
         </section>
-        <section className="mt-[640px]">
-          <div className="w-[20%] bg-gainsboro-100 flex flex-row items-center justify-center pb-[1000px] pr-5 pl-[21px] box-border min-w-[350px] max-w-full mq800:pt-[298px] mq800:pb-[298px] mq800:box-border mq800:min-w-full mq1125=pt-[458px] mq1125=pb-[458px] mq1125=box-border mq1325=flex-1 mq1325=pt-[705px] mq1325=pb-[705px] mq1325=box-border">
-            <div className="h-[20px] w-[20%] relative bg-gainsboro-100 hidden max-w-full" />
+        <section className="mt-[-250px]  mq1050:hidden ml-[140px]">
+          <div className="w-[100%] bg-gainsboro-100 flex  items-center justify-center pb-[1000px] pr-5 pl-[21px] box-border min-w-[350px] max-w-full mq800:pt-[298px] mq800:pb-[298px] mq800:box-border mq800:min-w-full mq1125:pt-[458px] mq1125:pb-[458px] mq1125=box-border mq1325:flex-1 mq1325:pt-[705px] mq1325:pb-[705px] mq1325:ox-border">
+
             <h1 className="m-0 flex justify-center items-center relative text-inherit font-normal font-inherit inline-block min-w-[70px] z-[1] mq450:text-11xl mq800:text-21xl">
-              AD
+              Ad
             </h1>
           </div>
         </section>
-      </main>
-      <div className="mt-9">
-        <div className="w-[70%] sm:w-[100%] mq1050:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
-          <div className="w-full flex flex-row  items-center justify-between gap-5 max-w-full mq1050:flex-wrap mq1050:justify-center">
-            <div
-              onClick={handlePrev}
-              className="rounded-xl mq1050:w-[30%] cursor-pointer w-[30%] sm:w-[35%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
-            >
-              <div className="relative z-[3] mq450:text-lg mq1050:text-3xl text-white-A700">
-                Previous
+      </div>
+      <div className="mt-9 min-h-screen  pl-14 mq800:pl-0  w-full">
+          <div className="w-[80%] sm:w-[100%] mq1050:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
+            <div className="w-full flex flex-row  items-center justify-center gap-5 max-w-full mq1050:justify-between">
+              <div
+                onClick={handlePrev}
+                className="rounded-xl mq1050:w-[30%] cursor-pointer w-[30%] sm:w-[%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
+              >
+                <div className="relative mr-[7px] z-[3] text-center mq450:text-sm mq750:text-sm mq1050:text-3xl text-white-A700">
+                  Previous
+                </div>
               </div>
-            </div>
-            <div className="h-[47px]  sm:w-[20%] flex flex-col mt-10 items-center justify-between">
-              <div className=" h-[5px] flex flex-row items-center justify-between relative gap-[10px] z-[2]">
-                <div
-                  className={`h-full  w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                />
-                <div
-                  className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                />
-                <div
-                  className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                />
-                <div
-                  className={`h-full w-11 sm:w-3 mq1050:w-5  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                />
-                <div
-                  className={`h-full w-11 sm:w-3 mq1050:w-5 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                />
+              <div className="h-[47px]  sm:w-[20%] flex flex-col mt-10 items-center justify-start">
+                <div className=" h-[5px] flex flex-row items-center justify-between relative gap-[10px] z-[2]">
+                  <div
+                    className={`h-full  w-11 sm:w-3 mq750:w-2 mq1050:w-5  rounded-21xl ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  />
+                  <div
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5 rounded-21xl ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  />
+                  <div
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5 rounded-21xl ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  />
+                  <div
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5  rounded-21xl ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  />
+                  <div
+                    className={`h-full w-11 sm:w-3 mq750:w-2 mq1050:w-5 rounded-21xl ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  />
+                </div>
               </div>
-            </div>
-
-            <div
-              onClick={handleSubmit(onSubmit)}
-              className={`w-[30%] sm:w-[35%]  sm:mt-[8px]  mq750:w-[30%] mq1050:w-[30%]  cursor-pointer rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
-            >
-              <div className="relative sm:text-[14px] mq1050:text-[16px] z-[3] text-white-A700">
-                {currentStep}/5 Next
-              </div>
+              {!errors.root ? (
+                <div
+                onClick={handleSubmit(onSubmit)}
+                  className={`w-[30%] sm:w-[35%]  sm:mt-[8px]  mq750:w-[30%] mq1050:w-[30%]  cursor-pointer rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+                >
+                  <div className="relative sm:text-[14px] mq1050:text-[16px] z-[3] text-white-A700">
+                    {currentStep}/5 Next
+                  </div>
+                </div>
+              ) : (
+                <div
+                  className={`w-[30%] sm:w-[40%] mq1050:text-[16px]   mq1050:w-[30%] mq750:w-[30%] sm:mt-[8px] mq750:w-[50%]  rounded-xl bg-black-900_33 shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+                >
+                  <div className="relative sm:text-[14px] z-[3] text-white-A700">
+                    {currentStep}/5 Next
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-      </div>
+
+        <section className="hidden md:block lg:block xl:block">
+  <div className="w-[100%] bg-gainsboro-100 flex items-center justify-center pb-[1000px] pr-5 pl-[21px] box-border min-w-[350px] max-w-full md:pt-[298px] md:pb-[298px] md:box-border md:min-w-full lg:pt-[458px] lg:pb-[458px] lg=box-border xl:flex-1 xl:pt-[705px] xl:pb-[705px] xl:ox-border">
+    <h1 className="m-0 flex justify-center items-center relative text-inherit font-normal font-inherit inline-block min-w-[70px] z-[1] md:text-11xl lg:text-21xl">
+      Ad
+    </h1>
+  </div>
+</section>
+    </main>
     </form>
   );
 };

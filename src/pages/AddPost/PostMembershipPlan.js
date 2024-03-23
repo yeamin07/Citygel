@@ -28,23 +28,24 @@ const PostMembershipPlan = () => {
   };
   console.log(form);
   return (
-    <div className="w-screen h-auto">
-      <div className="w-screen h-screen mq800:h-auto rounded-31xl overflow-hide tracking-[normal] mq750:h-auto mq750:min-h-[1781]">
+    <div className=" min-h-screen mq1050:mt-36">
+      
+      <div className="">
         <main className=" w-full flex flex-col items-start justify-start gap-[83px] max-w-full text-left text-25xl text-black font-poppins mq750:gap-[21px_83px] mq1050:gap-[41px_83px]">
           <div className="w-full flex flex-row items-start justify-center pt-0 px-5 pb-[37px] box-border max-w-full">
-            <div className="w-full flex flex-col items-start justify-start gap-[20px] max-w-full">
+            <div className="w-full flex flex-col items-start pl-11 mq800:pl-0 justify-start gap-[20px] max-w-full">
               <h1 className="m-0 relative text-inherit font-medium font-inherit inline-block max-w-full z-[4] mq450:text-7xl mq1050:text-16xl">{`Pricing & Plans`}</h1>
               <div className="self-stretch relative text-3xl leading-[35px] text-gray-1200 z-[4] mq450:text-lg mq450:leading-[28px]">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</div>
             </div>
           </div>
-          <section className="w-full flex flex-row items-start justify-start pt-0 px-5 pb-[8.300000000000182px] box-border max-w-full text-left text-22xl-5 text-main-color font-poppins">
+          <section className="pt-0 px-5 pb-[8.300000000000182px] box-border max-w-full text-left text-22xl-5 text-main-color font-poppins">
             <div className=" w-full flex flex-row sm:flex-col mq450:flex-col mq750:flex-col mq1050:flex-col items-start justify-start max-w-full">
-              <div className="w-[46%] mq450:w-[100%] mq750:w-[100%] rounded-[29.94px] bg-white-A700  flex flex-row items-start justify-start py-[46.09999999999991px] px-[78.29999999999927px] box-border gap-[39.10000000000037px] max-w-full z-[4] mq750:flex-wrap mq750:gap-[39.10000000000037px_20px] mq750:pl-[39px] mq750:pr-[39px] mq750:box-border">
+              <div className="w-[100%] mq450:w-[100%] mq750:w-[100%] rounded-[29.94px] bg-white-A700  flex flex-row items-start justify-start py-[46.09999999999991px] px-[78.29999999999927px] box-border gap-[39.10000000000037px] max-w-full z-[4] mq750:flex-wrap mq750:gap-[39.10000000000037px_20px] mq750:pl-[39px] mq750:pr-[39px] mq750:box-border">
                 <div className="h-[537.8px] w-[50%] relative rounded-[29.94px] bg-white-A700 hidden max-w-full" />
                 <div className="w-[50%] flex flex-col items-start justify-start pt-0 px-0 pb-[0.8999999999996362px] box-border gap-[97px] min-w-[50%]  z-[5] mq450:gap-[48px_97px] mq750:flex-1">
                   <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-0 gap-[23.030948638916016px]">
-                    <div className="h-[53px] overflow-hidden shrink-0 flex flex-row items-center justify-end pt-[9.799999999999956px] pb-0 pr-3.5 pl-[14.300000000001091px] box-border gap-[2px]">
-                      <b className="relative leading-[52.97px] mq450:text-6xl mq450:leading-[32px] mq1050:text-14xl mq1050:leading-[42px]">
+                    <div className="h-[53px] overflow-hidden shrink-0 flex flex-row items-center justify-end pt-[9.799999999999956px] pb-0 pr-3.5 box-border gap-[2px]">
+                      <b className="relative leading-[48.97px] mq450:text-6xl mq450:leading-[32px] mq1050:text-14xl mq1050:leading-[42px]">
                         Free
                       </b>
                       <div className="relative text-lgi-6 font-medium text-lightslategray inline-block min-w-[76px]">
@@ -177,17 +178,17 @@ const PostMembershipPlan = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-[25%] mq450:w-[100%] mq750:w-[100%] flex flex-col items-start justify-start pt-0 px-0 pb-[23px] box-border max-w-full text-mid-3 text-white">
-                <div className="self-stretch rounded-[29.94px] bg-main-color shadow-[0px_48.4px_39.15px_rgba(11,_144,_175,_0.3)] flex flex-col items-start justify-start py-[23px] pr-[34.49999999999818px] pl-[34.600000000000364px] gap-[23px] z-[5]">
-                  <div className="self-stretch flex flex-row items-start justify-end text-center text-[11.5px]">
-                    <div className="rounded-[15.55px] bg-nd overflow-hidden flex flex-row items-start justify-start pt-[8.099999999999909px] pb-1.5 pr-5 pl-[18px] whitespace-nowrap">
-                      <div className="text-white-A700 w-[102px] relative tracking-[0.96px] leading-[18px] font-extrabold inline-block">
+              <div className="w-[50%] mq450:w-[100%] mq750:w-[100%] flex flex-col items-start justify-start pt-0 px-0 pb-[23px] box-border max-w-full text-mid-3 text-white">
+                <div className=" rounded-[29.94px] bg-main-color shadow-[0px_48.4px_39.15px_rgba(11,_144,_175,_0.3)] flex flex-col items-start justify-start py-[23px] pr-[34.49999999999818px] pl-[34.600000000000364px] gap-[23px] z-[5]">
+                  <div className=" flex flex-row items-start justify-end text-center text-[11.5px]">
+                    <div className="rounded-[15.55px] bg-nd flex flex-row items-start justify-start pt-[8.099999999999909px] pb-1.5 pr-5 pl-[18px]">
+                      <div className="text-white-A700 w-[102px] relative  leading-[18px] font-extrabold inline-block">
                         MOST POPULAR
                       </div>
                     </div>
                   </div>
-                  <div className="h-[53px] overflow-hidden shrink-0 flex flex-row items-start justify-start pt-[9.700000000000044px] px-3 pb-[2.2999999999999545px] box-border gap-[7px] text-22xl-5">
-                    <b className=" text-white-A700 relative leading-[52.97px] whitespace-nowrap mq450:text-6xl mq450:leading-[32px] mq1050:text-14xl mq1050:leading-[42px]">
+                  <div className="h-[53px]  flex flex-row items-start justify-start pt-[9.700000000000044px] px-3 pb-[2.2999999999999545px] box-border gap-[7px] text-22xl-5">
+                    <b className=" text-white-A700 relative leading-[52.97px]  mq450:text-6xl mq450:leading-[32px] mq1050:text-14xl mq1050:leading-[42px]">
                       $89
                     </b>
                     <div className="flex flex-col items-start justify-start pt-3 px-0 pb-0 text-lgi-6">
@@ -196,16 +197,16 @@ const PostMembershipPlan = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="self-stretch h-[106.3px] overflow-hidden shrink-0 flex flex-col items-start justify-start pt-0 px-0 pb-[53.30000000000018px] box-border gap-[7px] text-13xl-2">
-                    <div className=" text-white-A700 relative font-medium shrink-0 [debug_commit:612783b] mq450:text-lgi mq1050:text-7xl">
+                  <div className=" h-[106.3px]   flex flex-col items-start justify-start pt-0 px-0 pb-[53.30000000000018px] box-border gap-[7px] text-13xl-2">
+                    <div className=" text-white-A700 relative font-medium  mq450:text-lgi mq1050:text-7xl">
                       Company
                     </div>
-                    <div className=" text-white-A700 self-stretch relative text-mid-3 font-medium shrink-0 [debug_commit:612783b]">
+                    <div className=" text-white-A700  relative text-mid-3 font-medium shrink-0 [debug_commit:612783b]">
                       Automation plus enterprise-grade features.
                     </div>
                   </div>
                   <div className="w-[238.4px] flex flex-col items-start justify-start pt-0 px-0 pb-[3.5px] box-border gap-[11.500000000000227px]">
-                    <div className=" text-white-A700 self-stretch h-[24.2px] overflow-hidden shrink-0 flex flex-row items-start justify-start py-[0.599999999999909px] pr-px pl-0 box-border gap-[11px]">
+                    <div className=" text-white-A700  h-[24.2px] overflow-hidden shrink-0 flex flex-row items-start justify-start py-[0.599999999999909px] pr-px pl-0 box-border gap-[11px]">
                       <img
                         className="h-[23px] w-[23px] relative min-h-[23px]"
                         alt=""
@@ -270,36 +271,15 @@ const PostMembershipPlan = () => {
               </div>
             </div>
           </section>
-          {/* <div className="w-[1259px] flex flex-row items-start justify-center py-0 px-5 box-border max-w-full text-11xl text-white">
-              <div className="w-[1039px] flex flex-row items-end justify-between gap-[20px] max-w-full mq1050:flex-wrap mq1050:justify-center">
-                <div className="rounded-xl bg-lightgray shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-start justify-start pt-[23px] px-[77px] pb-[22px] z-[2] mq450:pl-5 mq450:pr-5 mq450:box-border">
-                  <div className="h-[90px] w-[280px] relative rounded-xl bg-lightgray shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] hidden" />
-                  <div className=" text-white-A700 relative z-[3] mq450:text-lg mq1050:text-5xl">
-                    Previous
-                  </div>
-                </div>
-                <div className="h-[47px] w-[232px] flex flex-col items-start justify-start">
-                  <div className="self-stretch h-[5px] flex flex-row items-start justify-start relative gap-[3px] z-[2]">
-                    <div className="h-full w-11 absolute !m-[0] top-[0px] bottom-[0px] left-[0px] rounded-21xl bg-gainsboro-400" />
-                    <div className="h-full w-11 absolute !m-[0] top-[0px] bottom-[0px] left-[47px] rounded-21xl bg-gainsboro-400" />
-                    <div className="h-full w-11 absolute !m-[0] top-[0px] bottom-[0px] left-[calc(50%_-_22px)] rounded-21xl bg-gainsboro-400" />
-                    <div className="h-full w-11 absolute !m-[0] top-[0px] right-[47px] bottom-[0px] rounded-21xl bg-steelblue-100" />
-                    <div className="h-full w-11 absolute !m-[0] top-[0px] right-[0px] bottom-[0px] rounded-21xl bg-gainsboro-400" />
-                  </div>
-                </div>
-                <div className="w-[280px] rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-start justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]">
-                  <div className="h-[90px] w-[280px] relative rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] hidden" />
-                  <div className="relative z-[3]">4/5 Next</div>
-                </div>
-              </div>
-            </div> */}
+         
+        
         </main>
-        <div className="mt-9">
+        <div className="mt-9 flex w-full items-center justify-center">
           <div className="w-[70%] sm:w-[100%] mq1050:w-[100%] py-9 flex flex-row sm:flex-col mq450:flex-col mq800: mq1050:items-center justify-center  py-0 px-5 box-border max-w-full text-11xl text-white">
             <div className="w-full flex flex-row  items-center justify-between gap-5 max-w-full mq1050:flex-wrap mq1050:justify-center">
               <div
                 onClick={handlePrev}
-                className="rounded-xl mq1050:w-[30%] cursor-pointer w-[30%] sm:w-[35%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
+                className="rounded-xl h-[80px]  mq1050:w-[30%] cursor-pointer w-[70%] sm:w-[35%]  mq750:w-[30%]   bg-[#D3D3D3] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] z-[2]  box-border"
               >
                 <div className="relative z-[3] mq450:text-lg mq1050:text-3xl text-white-A700">
                   Previous
@@ -327,7 +307,7 @@ const PostMembershipPlan = () => {
               {selected ? (
                 <div
                   onClick={handleNext}
-                  className={`w-[30%] sm:w-[35%]  sm:mt-[8px]  mq750:w-[30%] mq1050:w-[30%]  cursor-pointer rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+                  className={`w-[50%] h-[80px]  sm:w-[35%]  sm:mt-[8px]  mq750:w-[30%] mq1050:w-[30%]  cursor-pointer rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
                 >
                   <div className="relative sm:text-[14px] mq1050:text-[16px] z-[3] text-white-A700">
                     {currentStep}/5 Next
@@ -335,7 +315,7 @@ const PostMembershipPlan = () => {
                 </div>
               ) : (
                 <div
-                  className={`w-[30%] sm:w-[40%] mq1050:text-[16px]   mq1050:w-[30%] mq750:w-[30%] sm:mt-[8px] mq750:w-[50%]  rounded-xl bg-black-900_33 shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
+                  className={`w-[50%] h-[80px]  sm:w-[40%] mq1050:text-[16px]   mq1050:w-[30%] mq750:w-[30%] sm:mt-[8px] mq750:w-[50%]  rounded-xl bg-black-900_33 shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center pt-[23px] pb-[22px] pr-5 pl-[29px] box-border whitespace-nowrap z-[2]`}
                 >
                   <div className="relative sm:text-[14px] z-[3] text-white-A700">
                     {currentStep}/5 Next
