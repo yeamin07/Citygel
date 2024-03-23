@@ -24,7 +24,7 @@ const Products = () => {
   const [loading, setLoading] = useState(false);
   const getAllProduct = async () => {
     setLoading(true);
-    const product = await axios.get("http://localhost:5000/api/v1/ads");
+    const product = await axios.get("https://citygel-backend.onrender.com/api/v1/ads");
     if (product.data) {
       setLoading(false);
       setAllProduct(product.data.data);
@@ -108,7 +108,7 @@ const Products = () => {
       queryParams.push(`city=${city}`);
     }
 
-    let apiUrl = "http://localhost:5000/api/v1/ads";
+    let apiUrl = "https://citygel-backend.onrender.com/api/v1/ads";
     if (queryParams.length > 0) {
       apiUrl += "?" + queryParams.join("&");
     }
@@ -140,7 +140,7 @@ const Products = () => {
       </Helmet>
       <Header1 className="flex flex-col justify-center items-center w-full" />
 
-      <div className="w-[95%] mx-auto bg-[rgba(250, 250, 250, 1)]">
+      <div className="w-[95%] min-h-screen mx-auto bg-[rgba(250, 250, 250, 1)]">
         <div className="w-[100%] mx-auto h-[345px] bg-gray-200 flex  mt-10 justify-center">
           <p className="pt-[12%] text-xl">AD</p>
         </div>

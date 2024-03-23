@@ -13,13 +13,15 @@ import electronics from '../../assets/images/electronics.png'
 import motor from '../../assets/images/motor.png'
 import properties from '../../assets/images/properties.png'
 import five from '../../assets/images/5.png'
+import Header1 from 'components/Header1';
 
 const Category = () => {
     return (
         <div >
-       
+       <div className='z-[100] relative'>
+       <Header1/>   </div>    
 
-            <div className="flex overflow-hidden h-auto">
+            <div className="flex overflow-hidden mt-[-100px] h-auto">
                 <img
                     src={yellowcurve}
                     className="w-1/5 mq1500:h-[1000px] mq800:h-[500px] relative top-[100px] mq1500:top-[80px] flex-grow -z-10"
@@ -30,13 +32,13 @@ const Category = () => {
                 />
                 <img
                     src={sittingman}
-                    className="absolute mq800:right-0 mq800:top-24 right-20 top-48 mq800:w-[320px] mq800:h-[290px] mq800:mt-[-3%] mq1050:w-[450px] mq1050:h-[410px] mq1050:mt-[-10%] mq1500:w-[500px] mq1500:h-[450px] mq1500:mt-[-8%] w-[720px] h-[660px] mt-[]"
+                    className="absolute mq800:right-0 mq800:top-24 right-20 top-48 mq800:w-[320px] mq800:h-[290px] mq800:mt-[-3%] mq1050:w-[450px] mq1050:h-[410px] mq1050:mt-[-10%] mq1500:w-[500px] mq1500:h-[450px] mq1500:mt-[10%] w-[720px] h-[660px] mt-[]"
                 />
             </div>
 
-            <div className='absolute mq450:mt-[-20%] mq450:w-screen  mq1500:mt-[-55%] mq1050:mt-[-80%] mq800:mt-[-50%] mq800:w-[60%] mq800:h-auto mq1050:w-[60%] mq1050:h-auto flex flex-col  mq1500:items-center mq1500:w-[60vw] mq1500:h-auto mq450:h-auto mq450:pl-0 mq1500:pl-3 '>
-                <div className='font-publicsans font-extrabold text-[44px] mq1500:text-16xl mq450:place-content-center flex flex-col mq1500:ml-[2%] w-[100%] mq450:justify-center mq800:pl-[5%] mq1500:pl-[9%]'>
-                    <p className='mq450:self-center text-[94px]'>Find Anything<br />Around You</p>
+            <div className='absolute mq450:mt-[-20%] mt-[-100px] mq450:w-screen  mq1500:mt-[-55%] mq1050:mt-[-80%] mq800:mt-[-50%] mq800:w-[60%] mq800:h-auto mq1050:w-[60%] mq1050:h-auto flex flex-col  mq1500:items-center mq1500:w-[60vw] mq1500:h-auto mq450:h-auto mq450:pl-0 mq1500:pl-3 '>
+                <div className='font-publicsans font-extrabold  mq1500:text-16xl mq450:place-content-center flex flex-col mq1500:ml-[2%] w-[100%] mq450:justify-center mq800:pl-[5%] mq1500:pl-[9%]'>
+                    <p className='mq450:self-center text-[94px] sm:text-[18px] mq800:text-[16px]'>Find Anything<br />Around You</p>
                 </div>
                 <div className='font-poppins font-normal text-sm opacity-50 mq800:pl-[5%]  mq1050:pl-[10%] mq1500:pl-[10%] mq450:mt-3'>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>

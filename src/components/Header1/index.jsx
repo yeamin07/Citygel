@@ -5,12 +5,12 @@ import auth from "firebase.init";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AuthContext from "context/AuthContext";
-import { downarrow } from "assets/Allimages";
+import { downarrow, menu } from "assets/Allimages";
 import SelectLanguage from "./select-language/SelectLanguage";
 import { FaAngleDown } from "react-icons/fa";
 import { Dropdown, Space } from "antd";
 import { location } from "assets/Allimages";
-
+import images from '../../assets/images/Citygel-2 white 1.png'
 export default function Header1({ ...props }) {
   const navigate = useNavigate();
   let { logoutUser, tuser } = useContext(AuthContext);
@@ -78,14 +78,14 @@ export default function Header1({ ...props }) {
     <header
       {...props} >
       <div className="w-full mq1050:px-6 px-14  py-5 h-[210px] mq1050:h-[170px] space-y-6 mq1050:space-y-4
-      bg-steelblue-200  mq500:hidden block">
+  bg-gradient-to-r from-[#003E4C] form-95% to-cyan-800 to-5%  mq500:hidden block">
         <div  className="flex justify-between flex-row mq500:hidden block">
           <Img
-            src="images/img_citygel_2_white.png"
+            src={images}
             alt="citygel2white"
             className="w-[195px] h-[66px]  mq1050:w-[165px] mq1050:h-[50px]  object-cover shrink-0"
           />
-          <div className="flex justify-end flex-row shrink w-[50%] mq1050:space-x-5 space-x-10">
+          <div className="flex justify-end items-center flex-row shrink w-[50%] mq1050:space-x-5 space-x-10">
             {user?.uid && tuser ? (
               <div onClick={handleSignOut}>
                 <Text
@@ -179,13 +179,21 @@ export default function Header1({ ...props }) {
         
       </div>
       {/**MObile version */}
-      <div className="hidden mq500:block    bg-steelblue-200 w-full h-[80px] px-3 py-3 flex justify-center items-center">
+      <div className="hidden mq500:block    bg-gradient-to-r from-[#003E4C] form-95% to-cyan-800 to-5% w-full h-[80px] px-3 py-3 flex justify-center items-center">
        <div className="flex justify-end flex-row space-x-5">
        <div>
-       <img src="images/img_citygel_2_white.png"
+      <div className="flex justify-between w-full items-center gap-2">
+            
+      <img
+              alt=""
+              src={menu}
+              className="hidden mr-11 mq800:block w-[19px] h-[26%]"
+            />
+       <img src={images}
           alt="ksdfk"
           className="w-[117px] h-[53px] mt-[-2px]"
         />
+      </div>
        </div>
         <div className="w-[154px]  h-[34px] flex justify-between items-center mt-[4px]
             border border-solid border-white-A700_63  rounded-3xl  text-white-A700 ">
@@ -193,7 +201,7 @@ export default function Header1({ ...props }) {
               <div className="w-[30px] h-[30px] rounded-full border border-solid border-black-900_87 rounded-xl 
              ml-[0.5px] flex justify-center items-center bg-white-A700 "> 
                 <Img
-                  src="images/location.png"
+                  src={location}
                   alt="arrowdown_one"
                   className="h-[17px] h-[15px]"
                 />

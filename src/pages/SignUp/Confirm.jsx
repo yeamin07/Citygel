@@ -53,7 +53,7 @@ export default function Confirm() {
   const fetchUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/users/${user?.email}`,
+        `https://citygel-backend.onrender.com/api/v1/users/${user?.email}`,
       );
       if (response.data) {
         navigate(from);
@@ -72,7 +72,7 @@ export default function Confirm() {
     try {
       if (e) {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/users/create-user-confirm",
+          "https://citygel-backend.onrender.com/api/v1/users/create-user-confirm",
           {
             email,
             phoneNumber: e.phoneNumber,

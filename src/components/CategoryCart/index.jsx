@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Categorycart = (props) => {
+    const navigate=useNavigate()
     return (
-        <div
+        <div onClick={()=>navigate("/products")}
             className='mq450:w-[157px] mq450:h-[100px]  mq800:w-[100px]  mq800:h-[125px] mq1050:w-[120px] mq1050:h-[140px] mq1500:w-[170px] mq1500:h-[200px] gray_50_02_red_A400_border flex flex-col justify-center items-center'
         >
             <img src={props.image} className='mq800:w-[34px] mq800:h-[34px] mq1050:w-[54] mq1050:h-[54px] w-[74px] h-[74px]' />

@@ -34,12 +34,12 @@ const SocialLogin = () => {
 
       // Check if the user's email already exists
       const response = await axios.get(
-        `http://localhost:5000/api/v1/users/${email}`,
+        `https://citygel-backend.onrender.com/api/v1/users/${email}`,
       );
       setLoading(false);
       if (response.data) {
         const response = await axios.post(
-          `http://localhost:5000/api/v1/auth/google-auth`,
+          `https://citygel-backend.onrender.com/api/v1/auth/google-auth`,
           {
             email: email,
           },

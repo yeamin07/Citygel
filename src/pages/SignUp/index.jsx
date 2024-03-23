@@ -63,7 +63,7 @@ export default function SignUpPage() {
     try {
       setLoading(true);
       const Verifyresponse = await axios.post(
-        "http://localhost:5000/api/v1/auth/verify-code",
+        "https://citygel-backend.onrender.com/api/v1/auth/verify-code",
         {
           email: e.email,
           code: e.code,
@@ -71,7 +71,7 @@ export default function SignUpPage() {
       );
       if (Verifyresponse.data) {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/users/create-user",
+          "https://citygel-backend.onrender.com/api/v1/users/create-user",
           {
             fullName: e.fullName,
             email: e.email,
@@ -111,7 +111,7 @@ export default function SignUpPage() {
     try {
       if (email) {
         const response = await axios.post(
-          `http://localhost:5000/api/v1/auth/send-code`,
+          `https://citygel-backend.onrender.com/api/v1/auth/send-code`,
           {
             email: email,
           },
@@ -125,7 +125,7 @@ export default function SignUpPage() {
     } catch (error) {}
   };
   return (
-    <>
+    <>    <Header1 />
       <Helmet>
         <title>Citygel</title>
         <meta
@@ -134,7 +134,7 @@ export default function SignUpPage() {
         />
       </Helmet>
       <div className="flex flex-col items-center justify-start w-full bg-gray-50">
-        <Header1 />
+    
         <div className="flex flex-col items-center justify-start w-[32%] ">
           <div className="h-[372px] w-full  relative max-w-[372px]">
             <div className="flex flex-col items-start justify-start w-full top-[11%] right-0 left-0 m-auto absolute">

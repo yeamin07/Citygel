@@ -3,8 +3,10 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductSlider from "./ProductSlider";
+import { useNavigate } from "react-router-dom";
 const ProductCart = ({ item }) => {
   console.log(item);
+  const navigate=useNavigate()
   return (
     <div className="p-3 w-full product-border rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col  py-2.5  px-[10px]   max-w-full text-left text-lg text-white font-poppins border-[1px] border-solid border-gray-100">
       <div>
@@ -67,7 +69,7 @@ const ProductCart = ({ item }) => {
         </div>
         <div className="cursor-pointer mq750:w-[100%] self-stretch rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] flex flex-row items-center justify-center py-[17px] px-[130px] mq750:px-[90px] mq1050:px-[120px] box-border whitespace-nowrap max-w-full z-[1] text-5xl mq450:pl-5 mq450:pr-5 mq450:box-border">
           <div className="h-[70px] w-[100%]  relative rounded-xl [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] hidden max-w-full" />
-          <div className="text-whitesmoke-100  text-center relative inline-block min-w-[92px] z-[2]">
+          <div onClick={()=>navigate("/description")} className="text-whitesmoke-100  text-center relative inline-block min-w-[92px] z-[2]">
             View All
           </div>
         </div>

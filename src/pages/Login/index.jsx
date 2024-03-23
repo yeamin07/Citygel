@@ -57,7 +57,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:5000/api/v1/auth/login`,
+        `https://citygel-backend.onrender.com/api/v1/auth/login`,
         {
           email: e.email,
           code: e.code,
@@ -94,7 +94,7 @@ export default function LoginPage() {
     try {
       if (email) {
         const response = await axios.post(
-          `http://localhost:5000/api/v1/auth/send-code`,
+          `https://citygel-backend.onrender.com/api/v1/auth/send-code`,
           {
             email: email,
           },

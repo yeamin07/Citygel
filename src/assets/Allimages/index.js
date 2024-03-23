@@ -6,6 +6,7 @@ import greycurve from "./Vector 19 (1).png"
 import logo from "./Citygel-logo.png"
 import man_pic from "./logo-man.png" 
 import location from "./location.png" 
+import menu from "./menu.png" 
 
 import downarrow from "./Vector 16.png"
 import home from "./Homef.png"
@@ -20,7 +21,7 @@ export  {
     logo,
     man_pic,
     greycurve,location,
-
+menu,
     downarrow,
     home,profile,postad
 };

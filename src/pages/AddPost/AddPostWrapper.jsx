@@ -20,6 +20,7 @@ import PostAddPayment from "./PostAddPayment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Dropdown, Space } from "antd";
+import { Img } from "components";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
@@ -36,12 +37,7 @@ const AddPostWrapper = () => {
         <div className="flex flex-row items-center gap-1 justify-center">
         
 
-        <img className="w-5 rounded-lg" src="https://flagsapi.com/AE/shiny/64.png" alt=""/>
-
-
-         <a target="_blank" rel="noopener noreferrer" href="#">
-        UAE
-        </a>
+      Profile
        </div>
       ),
     },
@@ -50,13 +46,7 @@ const AddPostWrapper = () => {
       label: (
         <div className="flex flex-row items-center gap-1 justify-center">
         
-
-        <img className="w-5 rounded-lg" src="https://flagsapi.com/US/shiny/64.png" alt=""/>
-
-
-         <a target="_blank" rel="noopener noreferrer" href="#">
-       USA
-        </a>
+        Profile
        </div>
       ),
     },
@@ -65,13 +55,7 @@ const AddPostWrapper = () => {
       label: (
        <div className="flex flex-row items-center gap-1 justify-center">
         
-
-        <img className="w-5 rounded-lg" src="https://flagsapi.com/BD/shiny/64.png" alt=""/>
-
-
-         <a target="_blank" rel="noopener noreferrer" href="#">
-     BD
-        </a>
+        Profile
        </div>
       ),
     },
@@ -84,25 +68,23 @@ const AddPostWrapper = () => {
           <div className="flex justify-start mq550:justify-between items-center
           
           mx-7 mq550:flex-grow">
-            {/* <img
+            <img
               alt=""
               src={menu}
               className="hidden mq800:block w-[19px] h-[26%]"
-            /> */}
-            {/* <img
-              src={headerlogo}
-              alt=""
-              className="h-5/6 mq800:h-[56px] mq550:h-4/6 ml-3"
-            /> */}
+            />
+                   <Img src="images/img_citygel_2.png" alt="citygeltwo_one"
+              className="h-5/6 mq800:h-[56px] mq550:h-4/6 ml-3"/>
+           
           </div>
           {/*This part is for location and user part */}
           <div
-            className="flex justify-center items-center h-[70px] mq750:h-[60px] mt-2 mq800:space-x-0 space-x-4   mq450:w-[150px] mq550:flex-grow-0 
+            className="w-full flex justify-center items-center h-[70px] mq750:h-[60px] mt-2 mq800:space-x-0 space-x-4   mq450:w-[150px] mq550:flex-grow-0 
          mq550:mr-6 "
           >
-            <div className="mq800:hidden block">
+            <div className="mq800:hidden block mq800:w-full w-[90%]">
               <h4 className="text-[18px] font-medium font-poppins">
-                John Smith
+                John
               </h4>
           
            
@@ -115,7 +97,7 @@ const AddPostWrapper = () => {
         pointAtCenter: false,
       }}
     >
-      <p className="text-teal-400 text-[13px] cursor-pointer">   My Account <FaCaretDown />       </p>
+      <p className="text-teal-400 text-[13px] cursor-pointer"> Account <FaCaretDown />       </p>
     </Dropdown>
        
             </div>
