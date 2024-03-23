@@ -7,6 +7,9 @@ import Header1 from "components/Header1";
 export default function HomePage() {
   return (
     <>
+
+
+
       <Helmet>
         <title>Citygel</title>
         <meta
