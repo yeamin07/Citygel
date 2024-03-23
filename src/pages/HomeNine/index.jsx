@@ -3,10 +3,14 @@ import { Helmet } from "react-helmet";
 import { Text, Img, Heading, Button } from "../../components";
 import Footer from "../../components/Footer";
 import Header1 from "components/Header1";
+import CitygelLogo from "components/ai-5pages/CitygelLogo";
 
 export default function HomePage() {
   return (
     <>
+
+
+
       <Helmet>
         <title>Citygel</title>
         <meta
@@ -15,7 +19,7 @@ export default function HomePage() {
         />
       </Helmet>
       <Header1 className="flex flex-row justify-between items-center w-full pb-4" />
-      <div className="flex flex-row justify-center w-full bg-gray-50 mt-[-10px]">
+      <div className="flex flex-row justify-center w-full bg-gray-50 mt-[-16px]">
         <div className="flex flex-col items-center justify-start w-full ">
           <div className="h-[800px] sm:h-[381px] mq450:h-[381px] mq750:h-[381px] w-full relative ">
             <div className="justify-center h-[800px] sm:h-[381px] mq450:h-[381px] mq750:h-[381px] w-full left-0 bottom-0 right-0 top-0 m-auto bg-teal-900 absolute" />
@@ -74,8 +78,8 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="relative container mx w-[100%] grid grid-cols-4 md:grid-cols-2 mq450:grid-cols-1 mq750:grid-cols-1 gap-5 items-start mt-[-160px] sm:mt-[5px] mq450:mt-[5px] mq750:mt-[5px]">
-            <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-14 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
+          <div className="relative w-[95%] sm:w-full grid grid-cols-4 md:grid-cols-2 mq450:grid-cols-1 mq750:grid-cols-2 sm:grid-cols-2 gap-5 items-start mt-[-160px] sm:mt-[5px] mq450:mt-[5px] mq750:mt-[5px]">
+            <div className="flex flex-row justify-center w-[90%]  h-[214px]  px-20 py-[84px] m-auto border-[3px] border-solid gray_50_02_red_A400_border bg-white-A700 shadow-sm  rounded-[20px]">
               <Text
                 size="7xl"
                 as="p"
@@ -125,7 +129,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01" />
+          {/* <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01" /> */}
+          <CitygelLogo/>
         </div>
       </div>
     </>

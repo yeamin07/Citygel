@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AuthContext from "context/AuthContext";
 import { downarrow } from "assets/Allimages";
+import SelectLanguage from "./select-language/SelectLanguage";
 
 export default function Header1({ ...props }) {
   const navigate = useNavigate();
