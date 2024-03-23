@@ -11,6 +11,7 @@ import arrow from "../../assets/images/up-and-down-arrow.png";
 // import "./products.css";
 import { Slider } from "antd";
 import Loading from "components/Loading/Loading";
+import CitygelLogo from "components/ai-5pages/CitygelLogo";
 
 const Products = () => {
   const api = useAxios();
@@ -292,9 +293,10 @@ return <>    <ProductCart {...{ item }} />
           </div>
         </div>
       </div>
-      <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01 inline" />
+      {/* <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01 inline" /> */}
+      <CitygelLogo/>
     </div>
   );
 };
 
-export default Products;
+export default Products

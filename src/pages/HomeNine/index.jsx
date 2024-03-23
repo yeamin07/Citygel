@@ -4,6 +4,7 @@ import { Text, Img, Heading, Button } from "../../components";
 import Footer from "../../components/Footer";
 import Header1 from "components/Header1";
 import { useNavigate } from "react-router-dom";
+import CitygelLogo from "components/ai-5pages/CitygelLogo";
 
 export default function HomePage() {
   const navigate=useNavigate()
@@ -20,7 +21,7 @@ export default function HomePage() {
         />
       </Helmet>
       <Header1 className="flex flex-row justify-between items-center w-full pb-4" />
-      <div className="flex flex-row justify-center w-full bg-gray-50 mt-[-10px]">
+      <div className="flex flex-row justify-center w-full bg-gray-50 mt-[-16px]">
         <div className="flex flex-col items-center justify-start w-full ">
           <div className="h-[800px] sm:h-[381px] mq450:h-[381px] mq750:h-[381px] w-full relative ">
             <div className="justify-center h-[800px] sm:h-[381px] mq450:h-[381px] mq750:h-[381px] w-full left-0 bottom-0 right-0 top-0 m-auto bg-teal-900 absolute" />
@@ -134,7 +135,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01" />
+          {/* <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01" /> */}
+          <CitygelLogo/>
         </div>
       </div>
     </>

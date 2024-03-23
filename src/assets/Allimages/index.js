@@ -7,6 +7,10 @@ import logo from "./Citygel-logo.png"
 import man_pic from "./logo-man.png" 
 import location from "./location.png" 
 
+import downarrow from "./Vector 16.png"
+import home from "./Homef.png"
+import profile from "./Profilef.png"
+import postad  from "./PostADf.png"
 
 export  {
     laptop,
@@ -15,5 +19,8 @@ export  {
     bluecurve,
     logo,
     man_pic,
-    greycurve,location
+    greycurve,location,
+
+    downarrow,
+    home,profile,postad
 };
