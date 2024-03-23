@@ -35,7 +35,7 @@ export default function PostSubCategory() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="h-screen  relative w-full px-16 ">
+      <div className="min-h-screen  relative w-full px-16 ">
         <div className="flex flex-col justify-start items-start">
           <Text
             as="p"

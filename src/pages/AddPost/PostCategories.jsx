@@ -30,7 +30,7 @@ export default function PostCategories() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="h-screen w-full px-16 relative">
+      <div className="min-h-screen w-full px-16 relative">
         <div className="flex flex-col justify-start items-start">
           <Text
             as="p"

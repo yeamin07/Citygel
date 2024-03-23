@@ -19,7 +19,7 @@ const CitygelLogo = () => {
       </div>
     </footer>
     {/*~~~~~~~~~~~~~~~This is for mobile footer~~~~~~~~~~~~~~~ */}
-    <div className="hidden mq500:block h-[68px] w-full bg-white-A700 border-t-[2px] border-solid border-gray-200
+    <div className="hidden mq500:block  h-[68px] w-full bg-white-A700 border-t-[2px] border-solid border-gray-200
       flex justify-center items-center pt-[9px]">
         <div className="w-full px-8 h-5/6 flex justify-between ">
         <img className="w-[33px] h-[82%]" src={home}/>
