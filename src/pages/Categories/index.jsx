@@ -37,13 +37,13 @@ const Category = () => {
         />
         <img
           src={sittingman}
-          className="absolute right-20 top-48 mt-[] h-[660px] w-[720px] mq1500:mt-[10%] mq1500:h-[450px] mq1500:w-[500px] mq1050:mt-[10%] mq1050:h-[410px] mq1050:w-[450px] mq800:right-0 mq800:top-24 mq800:mt-[3%] mq800:h-[290px] mq800:w-[320px]"
+          className="mq800:top-70 absolute right-20 top-48 mt-[] h-[660px] w-[720px] mq1500:mt-[10%] mq1500:h-[450px] mq1500:w-[500px] mq1050:mt-[10%] mq1050:h-[410px] mq1050:w-[450px] mq800:right-0 mq800:mt-[3%] mq800:h-[290px] mq800:w-[320px] mq500:top-20"
         />
       </div>
 
       <div className="absolute top-[300px] z-[999] w-[100%] sm:relative sm:w-[100%] mq1125:relative mq1050:relative  mq1050:top-[0px]    mq1050:mt-[-200px] mq800:w-[100%] mq750:mt-[-80px] ">
-        <div className="ml-11   font-bold">
-          <p className="w-[60%]  text-[70px] sm:text-[60px] mq1325:text-[50px] mq1050:text-[45px] mq825:w-[200px] mq800:text-[16px]">
+        <div className="ml-11 font-bold ">
+          <p className="w-[60%] text-[70px]  sm:text-[60px] mq1325:text-[50px] mq1050:text-[45px] mq825:w-[200px] mq800:w-[100%] mq800:text-[25px]">
             Find Anything
             <br />
             Around You
@@ -202,7 +202,7 @@ const Category = () => {
             <p className=" mt-8 text-[44px] font-semibold mq1500:mt-4 mq1050:text-[38px] mq800:text-center mq800:text-[24px] mq750:w-full">
               Lorem ispum is simply <br></br> dummy text
             </p>
-            <p className="w-[70%] py-[2%] font-poppins text-[24px] font-normal opacity-50 mq1050:text-[15px] mq800:text-center mq800:text-[14px]">
+            <p className="w-[70%] py-[2%] font-poppins text-[24px] font-normal opacity-50 mq1050:text-[15px] mq800:w-[100%] mq800:text-center mq800:text-[14px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy.
             </p>

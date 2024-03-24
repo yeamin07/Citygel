@@ -129,7 +129,7 @@ export default function Header1({ ...props }) {
                   <a onClick={(e) => e.preventDefault()}>
                     <Space>
                       <div>
-                        <p className="flex cursor-pointer items-center justify-center text-[16px] font-extralight text-white-A700">
+                        <p className="flex cursor-pointer items-center justify-center text-[16px] font-extralight text-white-A700 mq750:text-[8px]">
                           Change Location <FaAngleDown className="mt-1 w-5" />
                         </p>
                       </div>
