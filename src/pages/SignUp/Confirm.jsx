@@ -56,13 +56,14 @@ export default function Confirm() {
         `http://localhost:5000/api/v1/users/${user?.email}`,
       );
       if (response.data) {
+        console.log(response.data);
         navigate(from);
       }
     } catch (error) {}
   };
   useEffect(() => {
     fetchUser();
-  }, [user]);
+  }, [user, tuser]);
 
   console.log(errors);
   const onSubmit = async (e) => {

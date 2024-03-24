@@ -17,6 +17,7 @@ const SocialLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let { setAuthToken, setTUser } = useContext(AuthContext);
+
   let from = location.state?.from?.pathname || "/";
   if (loading) {
     return <Loading />;
@@ -65,7 +66,7 @@ const SocialLogin = () => {
       setSignUp(true);
       toast.success("please add your information");
       setLoading(false);
-      navigate("/confirm", { state: { from: location }, replace: true }); // Navigate to "/confirm" page upon error
+      window.location.href = "/confirm"; // Navigate to "/confirm" page upon error
     }
   };
   return (
