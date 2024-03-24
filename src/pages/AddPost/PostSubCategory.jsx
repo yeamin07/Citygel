@@ -66,7 +66,7 @@ export default function PostSubCategory() {
                 <Text
                   size="6xl"
                   as="p"
-                  className="mb-[15px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   computers
                 </Text>
@@ -81,9 +81,8 @@ export default function PostSubCategory() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="mb-[21px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Motorcycles
                 </Text>
@@ -98,11 +97,10 @@ export default function PostSubCategory() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="w-[72%] text-center !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
-                  Heavy Vehicles
+                  Vehicles
                 </Text>
               </div>
 
@@ -116,11 +114,10 @@ export default function PostSubCategory() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="w-[72%] text-center !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
-                  Heavy Vehicles
+                  Vehicles
                 </Text>
               </div>
             </div>

@@ -1,10 +1,11 @@
 import React from "react";
 import Routes from "./Routes";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "context/AuthContext";
 import Footer from "components/Footer";
+import { home, postad, profile } from "assets/Allimages";
 // import { useEffect } from "react";
 // import {
 //   Route,
@@ -51,9 +52,34 @@ function App() {
   //     }
   //   }
   // }, [pathname]);
-
+  const navigate = useNavigate();
   return (
     <AuthProvider>
+      <div className="h-auto">
+        <div
+          className="fixed bottom-0  z-[1000] hidden  h-[68px] w-full items-center justify-center border-t-[2px]
+      border-solid border-gray-200 bg-[#FFFFFF] p-4 pt-[9px] mq500:flex"
+        >
+          <div className="flex h-5/6 w-full justify-between px-8 ">
+            <img
+              className="h-[82%] w-[33px] cursor-pointer"
+              alt=""
+              src={home}
+            />
+            <img
+              className="h-[82%] w-[38px] cursor-pointer"
+              alt=""
+              src={postad}
+              onClick={() => navigate("/add-post")}
+            />
+            <img
+              className="h-[82%] w-[36px] cursor-pointer"
+              alt=""
+              src={profile}
+            />
+          </div>
+        </div>
+      </div>
       <Routes />
       {/* <Footer/> */}
       <ToastContainer />

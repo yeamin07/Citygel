@@ -30,7 +30,7 @@ export default function PostCategories() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="relative min-h-screen w-full px-16">
+      <div className="relative min-h-[2000px] w-full px-16">
         <div className="flex  flex-col items-start justify-start">
           <Text
             as="p"
@@ -54,9 +54,8 @@ export default function PostCategories() {
                   className="mt-7 h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="mb-[15px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   computers
                 </Text>
@@ -71,9 +70,8 @@ export default function PostCategories() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="mb-[21px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Motorcycles
                 </Text>
@@ -88,9 +86,8 @@ export default function PostCategories() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="mb-[21px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Motorcycles
                 </Text>
@@ -105,9 +102,8 @@ export default function PostCategories() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="mb-[21px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Motorcycles
                 </Text>
@@ -122,9 +118,8 @@ export default function PostCategories() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="mb-[21px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Motorcycles
                 </Text>
@@ -139,9 +134,8 @@ export default function PostCategories() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="mb-[21px] !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Motorcycles
                 </Text>
@@ -156,9 +150,8 @@ export default function PostCategories() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="w-[72%] text-center !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Heavy Vehicles
                 </Text>
@@ -174,9 +167,8 @@ export default function PostCategories() {
                   className="mt-[34px] h-[74px] w-[74px]"
                 />
                 <Text
-                  size="6xl"
                   as="p"
-                  className="w-[72%] text-center !text-black-900_03"
+                  className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
                   Heavy Vehicles
                 </Text>
