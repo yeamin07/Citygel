@@ -53,7 +53,7 @@ export default function Confirm() {
   const fetchUser = async () => {
     try {
       const response = await axios.get(
-        `https://citygel-backend.onrender.com/api/v1/users/${user?.email}`,
+        `http://localhost:5000/api/v1/users/${user?.email}`,
       );
       if (response.data) {
         navigate(from);
@@ -72,7 +72,7 @@ export default function Confirm() {
     try {
       if (e) {
         const response = await axios.post(
-          "https://citygel-backend.onrender.com/api/v1/users/create-user-confirm",
+          "http://localhost:5000/api/v1/users/create-user-confirm",
           {
             email,
             phoneNumber: e.phoneNumber,
@@ -108,77 +108,77 @@ export default function Confirm() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="flex flex-col items-center justify-start w-full bg-gray-50">
-        <Header1 />
-        <div className="flex flex-col items-center justify-start w-[32%] ">
-          <div className="h-[372px] w-full  relative max-w-[372px]">
-            <div className="flex flex-col items-start justify-start w-full top-[11%] right-0 left-0 m-auto absolute">
-              <div className="h-[257px] w-full relative">
+      <Header1 />
+      <div className="flex w-full flex-col items-center justify-start bg-gray-50">
+        <div className="flex w-[32%] flex-col items-center justify-start ">
+          <div className="relative h-[372px]  w-full max-w-[372px]">
+            <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
+              <div className="relative h-[257px] w-full">
                 <Img
                   src="images/img_background_complete.svg"
                   alt="background_one"
-                  className="justify-center h-[257px] left-0 bottom-0 right-0 top-0 m-auto absolute"
+                  className="absolute left-0 bottom-0 right-0 top-0 m-auto h-[257px] justify-center"
                 />
                 <Img
                   src="images/img_group.svg"
                   alt="image_one"
-                  className="h-[37px] right-[28%] top-[26%] m-auto absolute"
+                  className="absolute right-[28%] top-[26%] m-auto h-[37px]"
                 />
               </div>
               <Img
                 src="images/img_plant.svg"
                 alt="plant_one"
-                className="h-[104px] mt-[-93px] ml-[58px] z-[1]"
+                className="z-[1] mt-[-93px] ml-[58px] h-[104px]"
               />
             </div>
-            <div className="flex flex-col items-end justify-start w-[78%] bottom-[15%] right-0 left-0 m-auto absolute">
-              <div className="flex flex-row justify-end items-center w-[67%] mr-1.5">
+            <div className="absolute bottom-[15%] right-0 left-0 m-auto flex w-[78%] flex-col items-end justify-start">
+              <div className="mr-1.5 flex w-[67%] flex-row items-center justify-end">
                 <Img
                   src="images/img_character.svg"
                   alt="character_one"
-                  className="h-[158px] z-[1]"
+                  className="z-[1] h-[158px]"
                 />
                 <Img
                   src="images/img_lamp.svg"
                   alt="lamp_one"
-                  className="h-[203px] ml-[-6px]"
+                  className="ml-[-6px] h-[203px]"
                 />
               </div>
               <Img
                 src="images/img_x3c_path_x3e_359.svg"
                 alt="x3cpathx3e_one"
-                className="h-[16px] mt-[-8px]"
+                className="mt-[-8px] h-[16px]"
               />
             </div>
-            <div className="flex flex-col items-center justify-start w-[30%] left-[20%] top-[24%] m-auto absolute">
-              <div className="flex flex-col items-center justify-start w-full">
-                <div className="flex flex-col items-center justify-start w-full p-[18px] bg-white-A700 rounded-md">
-                  <div className="flex flex-col items-center justify-start w-[99%] mt-1.5 gap-[13px]">
+            <div className="absolute left-[20%] top-[24%] m-auto flex w-[30%] flex-col items-center justify-start">
+              <div className="flex w-full flex-col items-center justify-start">
+                <div className="flex w-full flex-col items-center justify-start rounded-md bg-white-A700 p-[18px]">
+                  <div className="mt-1.5 flex w-[99%] flex-col items-center justify-start gap-[13px]">
                     <Img
                       src="images/img_group_white_a700.svg"
                       alt="image_two"
                       className="h-[29px] w-[29px]"
                     />
-                    <div className="flex flex-col items-center justify-start w-full">
-                      <div className="flex flex-row justify-center w-full">
-                        <div className="flex flex-col items-start justify-start w-full">
-                          <div className="h-[12px] w-full relative">
+                    <div className="flex w-full flex-col items-center justify-start">
+                      <div className="flex w-full flex-row justify-center">
+                        <div className="flex w-full flex-col items-start justify-start">
+                          <div className="relative h-[12px] w-full">
                             <Img
                               src="images/img_vector_white_a700.svg"
                               alt="vector_one"
-                              className="justify-center h-[12px] left-0 bottom-0 right-0 top-0 m-auto absolute"
+                              className="absolute left-0 bottom-0 right-0 top-0 m-auto h-[12px] justify-center"
                             />
                             <Img
                               src="images/img_vector_black_900_03.svg"
                               alt="vector_three"
-                              className="h-[5px] right-[6%] bottom-0 top-0 m-auto opacity-0.2 absolute"
+                              className="absolute right-[6%] bottom-0 top-0 m-auto h-[5px] opacity-0.2"
                             />
                           </div>
-                          <div className="flex flex-row justify-start mt-[-8px] ml-[7px] z-[1]">
+                          <div className="z-[1] mt-[-8px] ml-[7px] flex flex-row justify-start">
                             <Text
                               size="s"
                               as="p"
-                              className="!text-black-900_03 !font-inter"
+                              className="!font-inter !text-black-900_03"
                             >
                               Name@mail.com
                             </Text>
@@ -188,30 +188,30 @@ export default function Confirm() {
                       <Text
                         size="xs"
                         as="p"
-                        className="w-[24%] mt-[11px] !text-black-900_03 !font-inter"
+                        className="mt-[11px] w-[24%] !font-inter !text-black-900_03"
                       >
                         Sign up now
                       </Text>
-                      <div className="h-[12px] w-full mt-[-2px] relative">
+                      <div className="relative mt-[-2px] h-[12px] w-full">
                         <Img
                           src="images/img_vector_cyan_700_01.svg"
                           alt="vector_five"
-                          className="justify-center h-[12px] left-0 bottom-0 right-0 top-0 m-auto absolute"
+                          className="absolute left-0 bottom-0 right-0 top-0 m-auto h-[12px] justify-center"
                         />
                         <a
                           href="#"
-                          className="w-max top-[17%] right-0 left-0 m-auto absolute"
+                          className="absolute top-[17%] right-0 left-0 m-auto w-max"
                         >
                           <Text size="md" as="p" className="!font-inter">
                             Login
                           </Text>
                         </a>
                       </div>
-                      <a href="#" className="w-[36%] mt-[5px]">
+                      <a href="#" className="mt-[5px] w-[36%]">
                         <Text
                           size="xs"
                           as="p"
-                          className="!text-black-900_03 !font-inter"
+                          className="!font-inter !text-black-900_03"
                         >
                           Forgot Password?
                         </Text>
@@ -222,35 +222,34 @@ export default function Confirm() {
               </div>
             </div>
           </div>
-          <div className="mt-[9px] z-[1]">
-            <Text size="8xl" as="p" className="!text-black-900_03 text-center">
+          <div className="z-[1] mt-[9px] w-[400px]">
+            <Text size="8xl" as="p" className="text-center !text-black-900_03">
               Confirm Details
             </Text>
-          </div>
-          <div className="flex flex-col items-center justify-start w-full mt-[-3px]">
             <Text
               size="3xl"
               as="p"
-              className="!text-black-900_7e text-center opacity-0.4"
+              className="text-center !text-black-900_7e opacity-0.4"
             >
               Please enter your credential Details.
             </Text>
-
+          </div>
+          <div className="mt-[-3px] flex w-full flex-col items-center justify-start">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex flex-col items-start justify-start w-full mt-2">
+              <div className="mt-2 flex w-full flex-col items-start justify-start">
                 <Text
                   as="p"
                   className="mt-7 ml-1.5 !text-black-900_99 opacity-0.7"
                 >
                   Enter Your Full Name
                 </Text>
-                <div className="h-[80px] w-full mt-[15px] relative rounded-[15px]">
+                <div className="relative mt-[15px] h-[80px] w-full rounded-[15px]">
                   <Input
                     register={register}
                     size="lg"
                     name="fullName"
                     placeholder="Please Type Full Name"
-                    className={`w-full border-cyan-700_01 border border-solid ${
+                    className={`w-full border border-solid border-cyan-700_01 ${
                       errors.fullName?.message
                         ? "border-red-600"
                         : "border-cyan-700_01"
@@ -274,7 +273,7 @@ export default function Confirm() {
                 >
                   Enter Your Phone number
                 </Text>
-                <div className="relative mt-[5px] block md:flex gap-[25px] w-full ">
+                <div className="relative mt-[5px] block w-full gap-[25px] md:flex ">
                   <Controller
                     control={control}
                     name="phoneNumber"
@@ -317,7 +316,7 @@ export default function Confirm() {
                   Enter Your Email
                 </Text>
                 <div
-                  className={`h-[80px] w-full mt-[15px] relative border border-solid rounded-[15px] ${
+                  className={`relative mt-[15px] h-[80px] w-full rounded-[15px] border border-solid ${
                     errors.email?.message
                       ? "border-red-600"
                       : "border-cyan-700_01"
@@ -330,7 +329,7 @@ export default function Confirm() {
                     name="email"
                     value={user?.email}
                     placeholder="mail@email.com"
-                    className="w-full left-0 bottom-0 right-0 top-0 m-auto !text-black-900_6f absolute"
+                    className="absolute left-0 bottom-0 right-0 top-0 m-auto w-full !text-black-900_6f"
                   />
 
                   {errors.email?.message && (
@@ -346,8 +345,8 @@ export default function Confirm() {
                   )}
                 </div>
 
-                <div className="flex flex-row justify-start w-full mt-[20px] mx-auto max-w-[490px]">
-                  <div className="flex flex-col items-start justify-start w-full gap-3">
+                <div className="mx-auto mt-[20px] flex w-full max-w-full flex-row justify-start">
+                  <div className="flex w-full flex-col items-start justify-start gap-3">
                     <div className="relative mb-3">
                       <CheckBox
                         color="blue_gray_100_03"
@@ -361,7 +360,7 @@ export default function Confirm() {
                             <span style={{ color: "#00e4e4" }}>Conditions</span>
                           </span>
                         }
-                        className="gap-2.5 text-left rounded-md text-[13px]"
+                        className="gap-2.5 rounded-md text-left text-[13px]"
                       />
                       {errors.terms?.message && (
                         <Text
@@ -380,47 +379,46 @@ export default function Confirm() {
                       color="blue_gray_100_03"
                       name="marketing"
                       label="Are you interested to receive marketing communications"
-                      className="gap-2.5 text-left rounded-md text-[13px]"
+                      className="gap-2.5 rounded-md text-left text-[13px]"
                     />
                   </div>
                 </div>
-                <div>
-                  <button
-                    type="submit"
-                    style={{ backgroundColor: "#0B90AF" }}
-                    className="w-[430px] h-[80px] rounded-[15px] mt-7 text-white-A700 font-poppins font-normal text-[24px]"
-                  >
-                    Create Account
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  style={{ backgroundColor: "#0B90AF" }}
+                  className="mt-7 h-[80px] w-full rounded-[15px] font-poppins text-[24px] font-normal text-white-A700"
+                >
+                  Create Account
+                </button>
+                <div></div>
                 <a href="#" className="mt-8">
                   <Text />
                 </a>
-                <div className="flex flex-row justify-start w-full mt-[31px]">
-                  <div className="flex flex-col items-center justify-start w-full">
-                    <div className="flex flex-row justify-start items-start w-full gap-[19px]">
-                      <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
+                <div className="mt-[31px] flex w-full flex-row justify-start">
+                  <div className="flex w-full flex-col items-center justify-start">
+                    <div className="flex w-full flex-row items-start justify-start gap-[19px]">
+                      <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
                       <Text
                         size="2xl"
                         as="p"
-                        className="!text-black-900_75 text-center opacity-0.3"
+                        className="text-center !text-black-900_75 opacity-0.3"
                       >
                         or
                       </Text>
-                      <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
+                      <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
                     </div>
                     <SocialLogin />
                     <Text
                       size="2xl"
                       as="p"
-                      className="mt-[35px] !text-red-500 text-center"
+                      className="mt-[35px] text-center !text-red-500"
                     >
                       <span className="text-gray_500">
                         Already have an account?
                       </span>
                       <span className="text-red-500"></span>
                       <span
-                        className="text-cyan-700_01 ml-2 cursor-pointer"
+                        className="ml-2 cursor-pointer text-cyan-700_01"
                         onClick={() => navigate("/login")}
                       >
                         Sign in
@@ -432,7 +430,7 @@ export default function Confirm() {
             </form>
           </div>
         </div>
-        <Footer className="flex justify-center items-center w-full mt-[120px] p-[34px] bg-gray-100_01" />
+        <Footer className="mt-[120px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" />
       </div>
     </>
   );

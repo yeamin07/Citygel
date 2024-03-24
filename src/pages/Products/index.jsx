@@ -24,11 +24,10 @@ const Products = () => {
   const [loading, setLoading] = useState(false);
   const getAllProduct = async () => {
     setLoading(true);
-    const product = await axios.get("https://citygel-backend.onrender.com/api/v1/ads");
+    const product = await axios.get("http://localhost:5000/api/v1/ads");
     if (product.data) {
       setLoading(false);
       setAllProduct(product.data.data);
-     
     }
   };
   useEffect(() => {
@@ -52,7 +51,7 @@ const Products = () => {
       selectedCity,
     );
   };
- 
+
   const handleCategoryChange = (event) => {
     const { value, checked } = event.target;
 
@@ -108,7 +107,7 @@ const Products = () => {
       queryParams.push(`city=${city}`);
     }
 
-    let apiUrl = "https://citygel-backend.onrender.com/api/v1/ads";
+    let apiUrl = "http://localhost:5000/api/v1/ads";
     if (queryParams.length > 0) {
       apiUrl += "?" + queryParams.join("&");
     }
@@ -138,38 +137,40 @@ const Products = () => {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <Header1 className="flex flex-col justify-center items-center w-full" />
+      <Header1 className="flex w-full flex-col items-center justify-center" />
 
-      <div className="w-[95%] min-h-screen mx-auto bg-[rgba(250, 250, 250, 1)]">
-        <div className="w-[100%] mx-auto h-[345px] bg-gray-200 flex  mt-10 justify-center">
+      <div className="bg-[rgba(250, 250, 250, 1)] mx-auto min-h-screen w-[95%]">
+        <div className="mx-auto mt-10 flex h-[345px] w-[100%]  justify-center bg-gray-200">
           <p className="pt-[12%] text-xl">AD</p>
         </div>
 
-        <div className="flex flex-row mx-auto sm:flex-col mq450:flex-col mq750:flex-col gap-5  w-[100%]  mx-auto">
-          <div className="w-[76%] sm:w-[100%] mq750:w-[100%] mx-auto ">
-            <div className="w-auto flex flex-row mt-16">
+        <div className="mx-auto mx-auto flex w-[100%] flex-row gap-5 sm:flex-col  mq750:flex-col  mq450:flex-col">
+          <div className="mx-auto w-[76%] sm:w-[100%] mq750:w-[100%] ">
+            <div className="mt-16 flex w-auto flex-row">
               <DropdownButton text="Sort Default" />
               {/*This is Filter by section */}
               <div
-                className="flex justify-center items-center gap-2  p-4 border-[1px] border-solid border-black-900_87 rounded-31xl
-              w-[150px] h-[50px] cursor-pointer"
+                className="flex h-[50px] w-[150px] cursor-pointer  items-center justify-center gap-2 rounded-31xl border-[1px]
+              border-solid border-black-900_87 p-4"
                 onClick={() => setFilter(!filter)}
               >
-                <img src={arrow} className="w-[11px] h-[20px] ml-3" />
-                <p className="text-[14px] mt-[0.5] text-[#000000df] font-poppins font-medium">Filter By</p>
+                <img src={arrow} className="ml-3 h-[20px] w-[11px]" />
+                <p className="mt-[0.5] font-poppins text-[14px] font-medium text-[#000000df]">
+                  Filter By
+                </p>
               </div>
             </div>
 
             {/*This is Filter Default section*/}
             {filter && (
-              <div className=" mt-5 mx-auto sm:w-[100%] mq750:w-[100%] w-[100%] ">
-                <div className="w-[100%] h-[60px] rounded-t-[27px] border border-solid border-gray-300 border-b-0 flex flex-row pt-3 mr-4 space-x-2">
+              <div className=" mx-auto mt-5 w-[100%] sm:w-[100%] mq750:w-[100%] ">
+                <div className="mr-4 flex h-[60px] w-[100%] flex-row space-x-2 rounded-t-[27px] border border-b-0 border-solid border-gray-300 pt-3">
                   <img
                     src={arrow}
                     alt=""
-                    className="w-[11px] h-[20px] ml-5 mt-1"
+                    className="ml-5 mt-1 h-[20px] w-[11px]"
                   />
-                  <p className="w-[80%] mt-[2px] text-[15px]">
+                  <p className="mt-[2px] w-[80%] text-[15px]">
                     Filter: Default
                   </p>
                 </div>
@@ -182,8 +183,8 @@ const Products = () => {
                             <p>cities</p>
                         </div> */}
                 <div
-                  className="w-[100%] h-[150px] max-h-[200px] mq450:h-[200px] border border-solid border-gray-300 mr-4 
-                         grid grid-rows-2 grid-cols-2  rounded-b-[27px]"
+                  className="mr-4 grid h-[150px] max-h-[200px] w-[100%] grid-cols-2 grid-rows-2 rounded-b-[27px] 
+                         border border-solid border-gray-300  mq450:h-[200px]"
                 >
                   <p className="border border-solid border-gray-300 pl-2 font-medium">
                     Categories
@@ -194,13 +195,13 @@ const Products = () => {
                         id="checkbox1"
                         type="checkbox"
                         value={"electric"}
-                        className="bg-white-A700 border-[1px] border-solid rounded border-r-black-900_03
-                            w-[13px] h-[13px]"
+                        className="h-[13px] w-[13px] rounded border-[1px] border-solid
+                            border-r-black-900_03 bg-white-A700"
                       />
 
                       <label
                         htmlFor="checkbox1"
-                        className="flex-1 relative capitalize shrink-0 text-[14px] font-extralight mt-[-2px]"
+                        className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
                       >
                         Motor
                       </label>
@@ -209,7 +210,7 @@ const Products = () => {
                   <p className="border border-solid border-gray-300 pl-2 font-medium ">
                     Price
                     <br />
-                    <div className="w-[70%] ml-3">
+                    <div className="ml-3 w-[70%]">
                       <Slider
                         range
                         defaultValue={[0, 50]}
@@ -217,21 +218,21 @@ const Products = () => {
                       />
                     </div>
                   </p>
-                  <p className="border-t border-r border-solid border-gray-300 pl-2 font-medium items-stretch h-[60%]">
+                  <p className="h-[60%] items-stretch border-t border-r border-solid border-gray-300 pl-2 font-medium">
                     Subcategories <br />
-                    <div className="space-x-1 flex mt-1">
+                    <div className="mt-1 flex space-x-1">
                       <input
                         id="checkbox1"
                         type="checkbox"
-                        className="bg-white-A700 border-[1px] border-solid rounded border-r-black-900_03
-                            w-[13px] h-[13px]"
+                        className="h-[13px] w-[13px] rounded border-[1px] border-solid
+                            border-r-black-900_03 bg-white-A700"
                         value="computers"
                         onChange={handleSubCategoryChange}
                       />
 
                       <label
                         htmlFor="checkbox1"
-                        className="flex-1 relative capitalize shrink-0 text-[14px] font-extralight mt-[-2px]"
+                        className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
                       >
                         Motor
                       </label>
@@ -239,15 +240,15 @@ const Products = () => {
                       <input
                         id="checkbox1"
                         type="checkbox"
-                        className="bg-white-A700 border-[1px] border-solid rounded border-r-black-900_03
-                            w-[13px] h-[13px]"
+                        className="h-[13px] w-[13px] rounded border-[1px] border-solid
+                            border-r-black-900_03 bg-white-A700"
                         value="computers"
                         onChange={handleSubCategoryChange}
                       />
 
                       <label
                         htmlFor="checkbox1"
-                        className="flex-1 relative capitalize shrink-0 text-[14px] font-extralight mt-[-2px]"
+                        className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
                       >
                         Motor 2
                       </label>
@@ -257,8 +258,8 @@ const Products = () => {
                     cities
                     <form>
                       <select
-                        className="w-[80%] h-[40px] border rounded-[7px]
-              border-solid border-gray-400 pl-2 text-[15px] font-poppins mt-1"
+                        className="mt-1 h-[40px] w-[80%] rounded-[7px]
+              border border-solid border-gray-400 pl-2 font-poppins text-[15px]"
                         onChange={handleDropdownChange}
                       >
                         <option value="" disabled selected hidden>
@@ -273,30 +274,31 @@ const Products = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-3 gap-3 w-[95%] mx-auto sm:w-[100%] mq750:w-[100%] md:grid-cols-2 mq450:grid-cols-2 mq750:grid-cols-2 mt-16">
+            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3 gap-3 sm:w-[100%] md:grid-cols-2 mq750:w-[100%] mq750:grid-cols-2 mq450:grid-cols-2">
               {/* components */}
               {allProduct.map((item) => {
                 if (loading) {
-                    return <Loading />;
-                  
+                  return <Loading />;
                 }
-return <>    <ProductCart {...{ item }} />
-</>
-              }
-            
-              )}
+                return (
+                  <>
+                    {" "}
+                    <ProductCart {...{ item }} />
+                  </>
+                );
+              })}
             </div>
           </div>
 
-          <div className="h-[1200] sm:h-[110px] mq750:h-[110px] w-[20%] mx-auto sm:w-[100%] mq750:w-[100%] bg-gray-200 mt-20 flex justify-center items-center">
+          <div className="mx-auto mt-20 flex h-[1200] w-[20%] items-center justify-center bg-gray-200 sm:h-[110px] sm:w-[100%] mq750:h-[110px] mq750:w-[100%]">
             AD
           </div>
         </div>
       </div>
       {/* <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01 inline" /> */}
-      <CitygelLogo/>
+      <CitygelLogo />
     </div>
   );
 };
 
-export default Products
+export default Products;

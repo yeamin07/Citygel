@@ -34,12 +34,12 @@ const SocialLogin = () => {
 
       // Check if the user's email already exists
       const response = await axios.get(
-        `https://citygel-backend.onrender.com/api/v1/users/${email}`,
+        `http://localhost:5000/api/v1/users/${email}`,
       );
       setLoading(false);
       if (response.data) {
         const response = await axios.post(
-          `https://citygel-backend.onrender.com/api/v1/auth/google-auth`,
+          `http://localhost:5000/api/v1/auth/google-auth`,
           {
             email: email,
           },
@@ -73,7 +73,7 @@ const SocialLogin = () => {
       {" "}
       <div
         onClick={() => handleGoogleSignIn()}
-        className="flex cursor-pointer flex-col items-center justify-start h-[80px] w-[80px] mt-[18px] p-[22px] bg-blue_gray-100_19 rounded-[50%]"
+        className="mt-[18px] flex h-[80px] w-[80px] cursor-pointer flex-col items-center justify-start rounded-[50%] bg-blue_gray-100_19 p-[22px]"
       >
         <Img
           src="images/img_group_red_500_01.svg"

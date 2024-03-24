@@ -170,3 +170,18 @@ a {
  
   text-decoration: unset;
 }
+@media screen and (min-device-width:1400px) {
+  .react-tel-input .form-control {
+    width: 600px;
+  }
+  .react-tel-input {
+ 
+    width: 600px;
+
+  }
+  .pincode-input-text {
+
+    width: 85px !important;
+    height: 85px !important;
+  }
+}

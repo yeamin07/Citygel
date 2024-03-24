@@ -57,7 +57,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       const response = await axios.post(
-        `https://citygel-backend.onrender.com/api/v1/auth/login`,
+        `http://localhost:5000/api/v1/auth/login`,
         {
           email: e.email,
           code: e.code,
@@ -94,7 +94,7 @@ export default function LoginPage() {
     try {
       if (email) {
         const response = await axios.post(
-          `https://citygel-backend.onrender.com/api/v1/auth/send-code`,
+          `http://localhost:5000/api/v1/auth/send-code`,
           {
             email: email,
           },
@@ -118,7 +118,7 @@ export default function LoginPage() {
       </Helmet>
       <div className="flex flex-col items-center justify-start w-full bg-gray-50">
         <Header1 className="flex flex-col justify-center items-center w-full" />
-        <div className="flex flex-col items-center justify-start w-[32%] mt-[50px] gap-3.5">
+        <div className="flex flex-col items-center justify-start w-[40%] mt-[50px] gap-3.5">
           <div className="h-[372px] w-full py-10 relative max-w-[372px]">
             <div className="flex flex-col items-start justify-start w-full top-[11%] right-0 left-0 m-auto absolute">
               <div className="h-[257px] w-full relative">
@@ -232,7 +232,7 @@ export default function LoginPage() {
           </div>
           <div className="flex flex-col items-center justify-start w-full gap-[31px]">
             <div className="flex flex-col items-center justify-start w-full">
-              <div className="flex flex-col items-center justify-start w-full gap-px max-w-[438px]">
+              <div className="flex flex-col items-center justify-start w-full gap-px max-w-full">
                 <div className="">
                   <h3 className="w-[438px] h-[66px] text-center font-poppins font-medium  sm:text-[24px] mq450:text-[24px] text-[44px] ">
                     Login to post an ad!
@@ -242,7 +242,10 @@ export default function LoginPage() {
                   </p>
                 </div>
               </div>
-              <div className="text-left w-[428px]">
+           
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex flex-col items-start justify-start w-full mt-[9px]">
+                <div className="text-left w-[90%]">
                 {" "}
                 <Text
                   as="p"
@@ -251,8 +254,6 @@ export default function LoginPage() {
                   Enter Your Email
                 </Text>
               </div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex flex-col items-start justify-start w-full mt-[9px]">
                   <div className="h-[80px] w-full relative">
                     <Input
                       register={register}
@@ -300,6 +301,7 @@ export default function LoginPage() {
                         <div>
                           <PinInput
                             length={6}
+                            
                             initialValue=""
                             value={value}
                             onChange={onChange}
@@ -312,6 +314,7 @@ export default function LoginPage() {
 
                               borderRadius: "10px",
                             }}
+                            
                             inputFocusStyle={{ borderColor: "#0B90AF" }}
                             onComplete={(value, index) => {}}
                             autoSelect={true}
@@ -336,14 +339,15 @@ export default function LoginPage() {
                     <Text />
                   </a>
                 </div>
-                <div>
-                  <button
+                <button
                     type="submit"
                     style={{ backgroundColor: "#0B90AF" }}
-                    className="w-[430px] h-[80px] rounded-[15px] text-white-A700 font-poppins font-normal text-[24px]"
+                    className="w-full h-[80px] rounded-[15px] text-white-A700 font-poppins font-normal text-[24px]"
                   >
                     Sign in
                   </button>
+                <div>
+                 
                 </div>
               </form>
             </div>

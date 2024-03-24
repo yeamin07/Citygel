@@ -109,12 +109,12 @@ export default function Header1({ ...props }) {
             )}
             {/* me */}
             <div
-              className=" mt-4  h-[30px] rounded-2xl flex justify-center  items-center
+              className=" mt-4  h-[50px] w-[223px] rounded-[50px] flex justify-center  items-center
              inline-block border border-solid border-white-A700 mb-[5px]"
             >
-              <div className="flex py-4 px-0.5 justify-start flex-row items-center space-x-1 ">
-                <div className="flex justify-center items-center bg-white-A700 h-[26px] w-[26px] rounded-full">
-                  <img src={location} className="w-[20px] h-[21px]" />
+              <div className="flex  justify-between flex-row items-center  gap-4 ">
+                <div className="flex justify-center items-center bg-white-A700 h-[44px] w-[44px] rounded-full">
+                  <img src={location} className="w-[24px] h-[24px]" />
                 </div>
                 <Dropdown 
     menu={{
@@ -125,8 +125,8 @@ export default function Header1({ ...props }) {
     <a onClick={(e) => e.preventDefault()}>
       <Space>
      <div>
-     <p className="text-[10px] text-white-A700 font-extralight cursor-pointer">
-      Change Location <FaAngleDown />
+     <p className="text-[16px] text-white-A700 font-extralight flex justify-center items-center cursor-pointer">
+      Change Location <FaAngleDown className="w-5 mt-1" />
              </p>
      </div>
   
