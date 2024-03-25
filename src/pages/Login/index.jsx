@@ -36,15 +36,16 @@ export default function LoginPage() {
   });
 
   const [loading, setLoading] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, gloading, error] =
     useSignInWithEmailAndPassword(auth);
   let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
-  let from = location.state?.from?.pathname || "/";
-  const [user1] = useAuthState(auth);
 
-  if (tuser && user1) {
+  const [user1] = useAuthState(auth);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const from = state?.from?.pathname || "/";
+
+  if (tuser && user1 && navigate) {
     navigate(from, { replace: true });
   }
 
@@ -63,10 +64,7 @@ export default function LoginPage() {
       );
       if (response.data) {
         try {
-          const firebase = await signInWithEmailAndPassword(
-            e.email,
-            e.password,
-          );
+          const firebase = await signInWithEmailAndPassword(e.email, password);
           setLoading(false);
           console.log(response.data.data);
           if (firebase?.user?.email) {
@@ -74,7 +72,6 @@ export default function LoginPage() {
             setTUser(jwtDecode(response.data.data.accessToken));
             localStorage.setItem("authToken", response.data.data.accessToken);
             toast.success("Login Successfully");
-            navigate(from);
           } else toast.error("Your account is created using google");
         } catch (error) {
           setLoading(false);

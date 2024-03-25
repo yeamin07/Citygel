@@ -44,18 +44,22 @@ export default function SignUpPage() {
     resolver: yupResolver(SignUpFormValidationSchemas),
     mode: "onChange",
   });
-  const navigate = useNavigate();
+
   const [user] = useAuthState(auth);
 
   let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   const location = useLocation();
   const [loading, setLoading] = useState(false);
-  let from = location.state?.from?.pathname || "/";
+
   const [createUserWithEmailAndPassword, cuser, gloading, hookerror] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: false });
   const [emailVeri, setEmailVerfi] = useState("");
   console.log(errors);
-  if (tuser && user) {
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const from = state?.from?.pathname || "/";
+
+  if (tuser && user && navigate) {
     navigate(from, { replace: true });
   }
   const onSubmit = async (e) => {
@@ -91,8 +95,6 @@ export default function SignUpPage() {
           console.log(response.data.data.accessToken);
           localStorage.setItem("authToken", response.data.data.accessToken);
           toast.success("Login Successfully");
-
-          navigate(from);
         }
         console.log(response.data);
       } else {
