@@ -44,16 +44,12 @@ const Input = React.forwardRef(
       register, // Add register prop
       ...restProps
     },
-    ref
+    ref,
   ) => {
-    const handleChange = (e) => {
-      if (onChange) onChange(e?.target?.value);
-    };
-
     return (
       <>
         <div
-          className={`${className} flex items-center justify-center bg-blue_gray-100_33 rounded-[15px] ${
+          className={`${className} flex items-center justify-center rounded-[15px] bg-blue_gray-100_33 ${
             shapes[shape] || ""
           } ${variants[variant]?.[color] || variants[variant] || ""} ${
             sizes[size] || ""
@@ -65,16 +61,16 @@ const Input = React.forwardRef(
             ref={ref} // Forward the ref to the input element
             type={type}
             name={name}
-            onChange={handleChange}
+            // onChange={onChange}
             placeholder={placeholder}
-            {...register(name)} // Use register function to register the input field
+            {...register(name, { onChange })} // Use register function to register the input field
             {...restProps}
           />
           {!!suffix && suffix}
         </div>
       </>
     );
-  }
+  },
 );
 
 Input.propTypes = {

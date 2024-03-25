@@ -25,6 +25,7 @@ export default function LoginPage() {
   const {
     handleSubmit,
     register,
+    setValue,
     getFieldState,
     getValues,
     formState: { errors },
@@ -42,59 +43,59 @@ export default function LoginPage() {
   let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   let from = location.state?.from?.pathname || "/";
   const [user1] = useAuthState(auth);
-  const { email } = getValues();
 
   if (tuser && user1) {
     navigate(from, { replace: true });
   }
 
-  console.log(email);
   if (loading) {
     return <Loading />;
   }
   const onSubmit = async (e) => {
     setLoading(true);
     try {
-      setLoading(true);
       const response = await axios.post(
-        `http://localhost:5000/api/v1/auth/login`,
+        `https://citygel-backend.onrender.com /api/v1/auth/login`,
         {
           email: e.email,
           code: e.code,
         },
       );
       if (response.data) {
-        const firebaseSignin = signInWithEmailAndPassword(e.email, password);
-        setLoading(false);
-        if (firebaseSignin) {
+        try {
+          const firebase = await signInWithEmailAndPassword(
+            e.email,
+            e.password,
+          );
+          setLoading(false);
           console.log(response.data.data);
-          setAuthToken(response.data.data.accessToken);
-          setTUser(jwtDecode(response.data.data.accessToken));
-          console.log(response.data.data.accessToken);
-          localStorage.setItem("authToken", response.data.data.accessToken);
-          toast.success("Login Successfully");
-
-          navigate(from);
-        } else {
-          toast.error("please create your account first");
+          if (firebase?.user?.email) {
+            setAuthToken(response.data.data.accessToken);
+            setTUser(jwtDecode(response.data.data.accessToken));
+            localStorage.setItem("authToken", response.data.data.accessToken);
+            toast.success("Login Successfully");
+            navigate(from);
+          } else toast.error("Your account is created using google");
+        } catch (error) {
+          setLoading(false);
+          toast.error("Firebase sign-in error: " + error);
         }
       } else {
-        alert("Something went wrong!");
+        toast.error("please create your account first");
       }
     } catch (error) {
       setLoading(false);
-      toast("Please Enter Correct Code");
+      toast.error("Please Enter Correct Code");
       console.log(error);
     }
   };
-  console.log(email);
 
   const handleSendCode = async () => {
-    console.log(email);
+    const { email } = getValues();
     try {
       if (email) {
         const response = await axios.post(
-          `http://localhost:5000/api/v1/auth/send-code`,
+          `https://citygel-backend.onrender.com /api/v1/auth/send-code`,
           {
             email: email,
           },
@@ -116,77 +117,77 @@ export default function LoginPage() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="flex flex-col items-center justify-start w-full bg-gray-50">
-        <Header1 className="flex flex-col justify-center items-center w-full" />
-        <div className="flex flex-col items-center justify-start w-[40%] mt-[50px] gap-3.5">
-          <div className="h-[372px] w-full py-10 relative max-w-[372px]">
-            <div className="flex flex-col items-start justify-start w-full top-[11%] right-0 left-0 m-auto absolute">
-              <div className="h-[257px] w-full relative">
+      <div className="flex w-full flex-col items-center justify-start bg-gray-50">
+        <Header1 className="flex w-full flex-col items-center justify-center" />
+        <div className="mt-[50px] flex w-[40%] flex-col items-center justify-start gap-3.5">
+          <div className="relative h-[372px] w-full max-w-[372px] py-10">
+            <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
+              <div className="relative h-[257px] w-full">
                 <Img
                   src="images/img_background_complete.svg"
                   alt="background_one"
-                  className="justify-center h-[257px] left-0 bottom-0 right-0 top-0 m-auto absolute"
+                  className="absolute left-0 bottom-0 right-0 top-0 m-auto h-[257px] justify-center"
                 />
                 <Img
                   src="images/img_group.svg"
                   alt="image_one"
-                  className="h-[37px] right-[28%] top-[26%] m-auto absolute"
+                  className="absolute right-[28%] top-[26%] m-auto h-[37px]"
                 />
               </div>
               <Img
                 src="images/img_plant.svg"
                 alt="plant_one"
-                className="h-[104px] mt-[-93px] ml-[58px] z-[1]"
+                className="z-[1] mt-[-93px] ml-[58px] h-[104px]"
               />
             </div>
-            <div className="flex flex-col items-end justify-start w-[78%] bottom-[15%] right-0 left-0 m-auto absolute">
-              <div className="flex flex-row justify-end items-center w-[67%] mr-1.5">
+            <div className="absolute bottom-[15%] right-0 left-0 m-auto flex w-[78%] flex-col items-end justify-start">
+              <div className="mr-1.5 flex w-[67%] flex-row items-center justify-end">
                 <Img
                   src="images/img_character.svg"
                   alt="character_one"
-                  className="h-[158px] z-[1]"
+                  className="z-[1] h-[158px]"
                 />
                 <Img
                   src="images/img_lamp.svg"
                   alt="lamp_one"
-                  className="h-[203px] ml-[-6px]"
+                  className="ml-[-6px] h-[203px]"
                 />
               </div>
               <Img
                 src="images/img_x3c_path_x3e_359.svg"
                 alt="x3cpathx3e_one"
-                className="h-[16px] mt-[-8px]"
+                className="mt-[-8px] h-[16px]"
               />
             </div>
-            <div className="flex flex-col items-center justify-start w-[30%] left-[20%] top-[24%] m-auto absolute">
-              <div className="flex flex-col items-center justify-start w-full">
-                <div className="flex flex-col items-center justify-start w-full p-[18px] bg-white-A700 rounded-md">
-                  <div className="flex flex-col items-center justify-start w-[99%] mt-1.5 gap-[13px]">
+            <div className="absolute left-[20%] top-[24%] m-auto flex w-[30%] flex-col items-center justify-start">
+              <div className="flex w-full flex-col items-center justify-start">
+                <div className="flex w-full flex-col items-center justify-start rounded-md bg-white-A700 p-[18px]">
+                  <div className="mt-1.5 flex w-[99%] flex-col items-center justify-start gap-[13px]">
                     <Img
                       src="images/img_group_white_a700.svg"
                       alt="image_two"
                       className="h-[29px] w-[29px]"
                     />
-                    <div className="flex flex-col items-center justify-start w-full">
-                      <div className="flex flex-row justify-center w-full">
-                        <div className="flex flex-col items-start justify-start w-full">
-                          <div className="h-[12px] w-full relative">
+                    <div className="flex w-full flex-col items-center justify-start">
+                      <div className="flex w-full flex-row justify-center">
+                        <div className="flex w-full flex-col items-start justify-start">
+                          <div className="relative h-[12px] w-full">
                             <Img
                               src="images/img_vector_white_a700.svg"
                               alt="vector_one"
-                              className="justify-center h-[12px] left-0 bottom-0 right-0 top-0 m-auto absolute"
+                              className="absolute left-0 bottom-0 right-0 top-0 m-auto h-[12px] justify-center"
                             />
                             <Img
                               src="images/img_vector_black_900_03.svg"
                               alt="vector_three"
-                              className="h-[5px] right-[6%] bottom-0 top-0 m-auto opacity-0.2 absolute"
+                              className="absolute right-[6%] bottom-0 top-0 m-auto h-[5px] opacity-0.2"
                             />
                           </div>
-                          <div className="flex flex-row justify-start mt-[-8px] ml-[7px] z-[1]">
+                          <div className="z-[1] mt-[-8px] ml-[7px] flex flex-row justify-start">
                             <Text
                               size="s"
                               as="p"
-                              className="!text-black-900_03 !font-inter"
+                              className="!font-inter !text-black-900_03"
                             >
                               Name@mail.com
                             </Text>
@@ -196,30 +197,30 @@ export default function LoginPage() {
                       <Text
                         size="xs"
                         as="p"
-                        className="w-[24%] mt-[11px] !text-black-900_03 !font-inter"
+                        className="mt-[11px] w-[24%] !font-inter !text-black-900_03"
                       >
                         Sign up now
                       </Text>
-                      <div className="h-[12px] w-full mt-[-2px] relative">
+                      <div className="relative mt-[-2px] h-[12px] w-full">
                         <Img
                           src="images/img_vector_cyan_700_01.svg"
                           alt="vector_five"
-                          className="justify-center h-[12px] left-0 bottom-0 right-0 top-0 m-auto absolute"
+                          className="absolute left-0 bottom-0 right-0 top-0 m-auto h-[12px] justify-center"
                         />
                         <a
                           href="#"
-                          className="w-max top-[17%] right-0 left-0 m-auto absolute"
+                          className="absolute top-[17%] right-0 left-0 m-auto w-max"
                         >
                           <Text size="md" as="p" className="!font-inter">
                             Login
                           </Text>
                         </a>
                       </div>
-                      <a href="#" className="w-[36%] mt-[5px]">
+                      <a href="#" className="mt-[5px] w-[36%]">
                         <Text
                           size="xs"
                           as="p"
-                          className="!text-black-900_03 !font-inter"
+                          className="!font-inter !text-black-900_03"
                         >
                           Forgot Password?
                         </Text>
@@ -230,41 +231,42 @@ export default function LoginPage() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-start w-full gap-[31px]">
-            <div className="flex flex-col items-center justify-start w-full">
-              <div className="flex flex-col items-center justify-start w-full gap-px max-w-full">
+          <div className="flex w-full flex-col items-center justify-start gap-[31px]">
+            <div className="flex w-full flex-col items-center justify-start">
+              <div className="flex w-full max-w-full flex-col items-center justify-start gap-px">
                 <div className="">
-                  <h3 className="w-[438px] h-[66px] text-center font-poppins font-medium  sm:text-[24px] mq450:text-[24px] text-[44px] ">
+                  <h3 className="h-[66px] w-[438px] text-center font-poppins text-[44px]  font-medium sm:text-[24px] mq450:text-[24px] ">
                     Login to post an ad!
                   </h3>
-                  <p className="w-[428px] h-[36px] mq450:h-[10px] mq450:mt-[-20px] sm:h-[10px] sm:mt-[-20px] opacity-[40%] font-poppins mq450:text-[16px]  sm:text-[16px] text-center font-normal text-[23px] align-middle pl-[8px]">
+                  <p className="h-[36px] w-[428px] pl-[8px] text-center align-middle font-poppins text-[23px] font-normal opacity-[40%]  sm:mt-[-20px] sm:h-[10px] sm:text-[16px] mq450:mt-[-20px] mq450:h-[10px] mq450:text-[16px]">
                     Please enter your credential Details.
                   </p>
                 </div>
               </div>
-           
+
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex flex-col items-start justify-start w-full mt-[9px]">
-                <div className="text-left w-[90%]">
-                {" "}
-                <Text
-                  as="p"
-                  className="mt-7 !text-black-900_99 opacity-0.7 text-left"
-                >
-                  Enter Your Email
-                </Text>
-              </div>
-                  <div className="h-[80px] w-full relative">
+                <div className="mt-[9px] flex w-full flex-col items-start justify-start">
+                  <div className="w-[90%] text-left">
+                    {" "}
+                    <Text
+                      as="p"
+                      className="mt-7 text-left !text-black-900_99 opacity-0.7"
+                    >
+                      Enter Your Email
+                    </Text>
+                  </div>
+                  <div className="relative h-[80px] w-full">
                     <Input
                       register={register}
                       size="lg"
                       name="email"
+                      onChange={(e) => setValue("email", e.target.value)}
                       placeholder="name@mail.com"
-                      className={`w-full left-0 bottom-0 right-0 top-0 m-auto ${
+                      className={`left-0 bottom-0 right-0 top-0 m-auto w-full ${
                         errors.email?.message
                           ? "border-red-800 "
                           : "border-cyan-700_01"
-                      }  border border-solid absolute`}
+                      }  absolute border border-solid`}
                     />
                     <Button
                       type="button"
@@ -272,24 +274,24 @@ export default function LoginPage() {
                       color="cyan_700_01"
                       size="5xl"
                       variant="fill"
-                      className="right-[1%] bottom-0 top-0 m-auto min-w-[170px] absolute rounded-[15px]"
+                      className="absolute right-[1%] bottom-0 top-0 m-auto min-w-[170px] rounded-[15px]"
                     >
                       Send OTP
                     </Button>
                   </div>
                   <div className="relative">
                     {errors.email?.message ? (
-                      <p className="w-[428px] h-[36px] opacity-[40%] font-poppins font-normal text-[18px] text-red-A700 ">
+                      <p className="h-[36px] w-[428px] font-poppins text-[18px] font-normal text-red-A700 opacity-[40%] ">
                         {errors.email?.message}
                       </p>
                     ) : (
-                      <p className="w-[428px] h-[36px] opacity-[40%] font-poppins font-normal text-[18px] text-red-500">
+                      <p className="h-[36px] w-[428px] font-poppins text-[18px] font-normal text-red-500 opacity-[40%]">
                         Please enter your credential Details.
                       </p>
                     )}
                   </div>
 
-                  <div className="relative w-full justify-center items-center flex">
+                  <div className="relative flex w-full items-center justify-center">
                     <Controller
                       name="code"
                       control={control}
@@ -301,7 +303,6 @@ export default function LoginPage() {
                         <div>
                           <PinInput
                             length={6}
-                            
                             initialValue=""
                             value={value}
                             onChange={onChange}
@@ -314,7 +315,6 @@ export default function LoginPage() {
 
                               borderRadius: "10px",
                             }}
-                            
                             inputFocusStyle={{ borderColor: "#0B90AF" }}
                             onComplete={(value, index) => {}}
                             autoSelect={true}
@@ -340,40 +340,38 @@ export default function LoginPage() {
                   </a>
                 </div>
                 <button
-                    type="submit"
-                    style={{ backgroundColor: "#0B90AF" }}
-                    className="w-full h-[80px] rounded-[15px] text-white-A700 font-poppins font-normal text-[24px]"
-                  >
-                    Sign in
-                  </button>
-                <div>
-                 
-                </div>
+                  type="submit"
+                  style={{ backgroundColor: "#0B90AF" }}
+                  className="h-[80px] w-full rounded-[15px] font-poppins text-[24px] font-normal text-white-A700"
+                >
+                  Sign in
+                </button>
+                <div></div>
               </form>
             </div>
-            <div className="flex flex-row justify-center w-full">
-              <div className="flex flex-col items-center justify-start w-full">
-                <div className="flex flex-row justify-start items-start w-full gap-[19px]">
-                  <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
+            <div className="flex w-full flex-row justify-center">
+              <div className="flex w-full flex-col items-center justify-start">
+                <div className="flex w-full flex-row items-start justify-start gap-[19px]">
+                  <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
                   <Text
                     size="2xl"
                     as="p"
-                    className="!text-black-900_75 text-center opacity-0.3"
+                    className="text-center !text-black-900_75 opacity-0.3"
                   >
                     or
                   </Text>
-                  <div className="h-[2px] w-[46%] mt-[13px] opacity-0.3 bg-black-900_75" />
+                  <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
                 </div>
                 <SocialLogin />
                 <Text
                   size="2xl"
                   as="p"
-                  className="mt-[33px] !text-red-500 text-center"
+                  className="mt-[33px] text-center !text-red-500"
                 >
                   <span className="text-gray_500">Don’t have an account?</span>
                   <span className="text-red-500"></span>
                   <span
-                    className="text-cyan-700_01 ml-2 cursor-pointer"
+                    className="ml-2 cursor-pointer text-cyan-700_01"
                     onClick={() => navigate("/signup")}
                   >
                     Create Account
@@ -383,7 +381,7 @@ export default function LoginPage() {
             </div>
           </div>
         </div>
-        <Footer className="flex justify-center items-center w-full mt-[118px] p-[34px] bg-gray-100_01" />
+        <Footer className="mt-[118px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" />
       </div>
     </>
   );

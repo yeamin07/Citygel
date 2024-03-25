@@ -65,7 +65,7 @@ const PostAddPayment = () => {
       setLoading(true);
       const token = await generateStripeToken();
       // const resultPayment = await api.post(
-      //   "http://localhost:5000/api/v1/payment",
+      //   "https://citygel-backend.onrender.com /api/v1/payment",
       //   {
       //     membershipType: membership,
       //     email: user?.email,
@@ -76,10 +76,13 @@ const PostAddPayment = () => {
       // console.log(resultPayment);
       // if (resultPayment.data) {
 
-      const resultPostAds = await api.post("http://localhost:5000/api/v1/ads", {
-        email: user?.email,
-        ...ads,
-      });
+      const resultPostAds = await api.post(
+        "https://citygel-backend.onrender.com /api/v1/ads",
+        {
+          email: user?.email,
+          ...ads,
+        },
+      );
       console.log(resultPostAds);
       if (resultPostAds.data) {
         message.success("You Ads Post SuccessFully");
@@ -121,13 +124,13 @@ const PostAddPayment = () => {
         <div className="">
           <Text
             as="p"
-            className="mt-[70px] w-[100%] !text-black-900_03 z-[1] font-medium  text-start sm:text-center mq450:text-center  sm:text-[28px] mq450:text-[28px] text-[44px]"
+            className="text-start z-[1] mt-[70px] w-[100%] text-[44px]  font-medium !text-black-900_03 sm:text-center  sm:text-[28px] mq450:text-center mq450:text-[28px]"
           >
             Preview & Pay
           </Text>
           <Text
             as="p"
-            className="w-[100%] mq1500:w-[100%] !text-black-900_87 text-start sm:text-center mq450:text-center z-[1] mt-3 opacity-0.8 sm:text-[14px] mq450:text-[14px] text-[20px] leading-[35px]"
+            className="text-start z-[1] mt-3 w-[100%] text-[20px] leading-[35px] !text-black-900_87 opacity-0.8 sm:text-center sm:text-[14px] mq1500:w-[100%] mq450:text-center mq450:text-[14px]"
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -135,53 +138,53 @@ const PostAddPayment = () => {
             Lorem Ipsum 
           </Text>
         </div>
-        <div className="flex  flex-row pt-10  space-x-10 mq450:space-x-2 mq750:space-x-5 mq825:space-x-10  mq750:flex-col">
-          <div className="w-[354.4px] h-[568.8px] rounded-mid-5 bg-white shadow-[0px_0px_8.75px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start pt-[8.80000000000291px] px-[7px] pb-[8.69999999999709px] gap-[8.69999999999709px] max-w-full z-[6] border-[1.3px] border-solid border-gray-100">
-            <div className="self-stretch h-[253.8px] relative">
+        <div className="flex  flex-row space-x-10  pt-10 mq825:space-x-10 mq750:flex-col mq750:space-x-5  mq450:space-x-2">
+          <div className="bg-white z-[6] box-border flex h-[568.8px] w-[354.4px] max-w-full flex-col items-start justify-start gap-[8.69999999999709px] rounded-mid-5 border-[1.3px] border-solid border-gray-100 px-[7px] pt-[8.80000000000291px] pb-[8.69999999999709px] shadow-[0px_0px_8.75px_rgba(0,_0,_0,_0.15)]">
+            <div className="relative h-[253.8px] self-stretch">
               <ProductSlider
                 mainImage={form.mainImage}
                 moreImages={form.moreImages || []}
               />
             </div>
-            <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[14.10000000000582px] box-border gap-[7.80000000000291px] max-w-full">
-              <div className="flex flex-row items-start justify-start gap-[8.5px] text-base-8 text-white mq450:flex-wrap">
-                <div className="rounded-[8.75px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] flex flex-row items-start justify-start pt-[5.30000000000291px] px-[17.5px] pb-[5.19999999999709px]">
+            <div className="box-border flex max-w-full flex-col items-start justify-start gap-[7.80000000000291px] self-stretch px-0 pt-0 pb-[14.10000000000582px]">
+              <div className="text-white flex flex-row items-start justify-start gap-[8.5px] text-base-8 mq450:flex-wrap">
+                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-[17.5px] pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)]">
                   <div className="relative inline-block min-w-[72px]">
                     Premium
                   </div>
                 </div>
-                <div className="rounded-[8.75px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] flex flex-row items-start justify-start pt-[5.30000000000291px] px-[17.5px] pb-[5.19999999999709px]">
+                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-[17.5px] pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)]">
                   <div className="relative inline-block min-w-[72px]">
                     Premium
                   </div>
                 </div>
-                <div className="rounded-[8.75px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] flex flex-row items-start justify-start pt-[5.30000000000291px] px-[17.5px] pb-[5.19999999999709px]">
+                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-[17.5px] pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)]">
                   <div className="relative inline-block min-w-[72px]">
                     Premium
                   </div>
                 </div>
               </div>
-              <div className="self-stretch relative leading-[35.01px] font-semibold mq450:text-xl mq450:leading-[28px]">
+              <div className="relative self-stretch font-semibold leading-[35.01px] mq450:text-xl mq450:leading-[28px]">
                 {form.title}
               </div>
-              <div className="w-[328.2px] flex flex-col items-start justify-start pt-0 px-0 pb-[5.099999999991269px] box-border gap-[13.30000000000291px] max-w-full text-mid-5 text-gray-1100">
+              <div className="text-gray-1100 box-border flex w-[328.2px] max-w-full flex-col items-start justify-start gap-[13.30000000000291px] px-0 pt-0 pb-[5.099999999991269px] text-mid-5">
                 <div className="relative">
                   {category} - {subcategory}
                 </div>
-                <div className="self-stretch relative text-base-8 leading-[21.88px] text-gray-1200">
+                <div className="text-gray-1200 relative self-stretch text-base-8 leading-[21.88px]">
                   {form.description}
                 </div>
               </div>
-              <div className="self-stretch flex flex-row items-start justify-start max-w-full">
-                <div className="flex-1 relative leading-[35.01px] font-semibold shrink-0 [debug_commit:612783b] mq450:text-xl mq450:leading-[28px]">
+              <div className="flex max-w-full flex-row items-start justify-start self-stretch">
+                <div className="relative flex-1 shrink-0 font-semibold leading-[35.01px] [debug_commit:612783b] mq450:text-xl mq450:leading-[28px]">
                   AED {form.price}
                 </div>
-                <div className="flex flex-col items-start justify-start pt-[4.400000000008731px] px-0 pb-0 ml-[-113px] text-mid-5 text-gray-1100">
-                  <div className="flex flex-row items-start justify-start gap-[8.69999999999709px] shrink-0 [debug_commit:612783b]">
+                <div className="text-gray-1100 ml-[-113px] flex flex-col items-start justify-start px-0 pt-[4.400000000008731px] pb-0 text-mid-5">
+                  <div className="flex shrink-0 flex-row items-start justify-start gap-[8.69999999999709px] [debug_commit:612783b]">
                     <div className="relative">{form.city}</div>
-                    <div className="h-[23.6px] flex flex-col items-start justify-start pt-[2.599999999991269px] px-0 pb-0 box-border">
+                    <div className="box-border flex h-[23.6px] flex-col items-start justify-start px-0 pt-[2.599999999991269px] pb-0">
                       <img
-                        className="w-[21px] h-[21px] relative"
+                        className="relative h-[21px] w-[21px]"
                         loading="lazy"
                         alt=""
                         src="/vuesaxboldlocation1.svg"
@@ -191,9 +194,9 @@ const PostAddPayment = () => {
                 </div>
               </div>
             </div>
-            <div className="rounded-mid-5 [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_2.63px_rgba(0,_0,_0,_0.1)] flex flex-row items-start justify-start pt-[14.89999999999418px] pb-[14.400000000008731px] pr-[133px] pl-[123.29999999999563px] box-border whitespace-nowrap max-w-full text-2xl text-white mq450:pl-5 mq450:pr-5 mq450:box-border">
-              <div className="h-[61.3px] w-[336.9px] relative rounded-mid-5 [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_2.63px_rgba(0,_0,_0,_0.1)] hidden max-w-full" />
-              <div className="relative z-[1] text-white-A700 cursor-pointer">
+            <div className="text-white box-border flex max-w-full flex-row items-start justify-start whitespace-nowrap rounded-mid-5 pt-[14.89999999999418px] pb-[14.400000000008731px] pr-[133px] pl-[123.29999999999563px] text-2xl shadow-[0px_0px_2.63px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] mq450:box-border mq450:pl-5 mq450:pr-5">
+              <div className="relative hidden h-[61.3px] w-[336.9px] max-w-full rounded-mid-5 shadow-[0px_0px_2.63px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)]" />
+              <div className="relative z-[1] cursor-pointer text-white-A700">
                 View All
               </div>
             </div>
@@ -203,14 +206,14 @@ const PostAddPayment = () => {
               {" "}
               {/*This is pay now section*/}
               <form>
-                <div className="flex-1 min-h-screen flex flex-col items-start justify-start pt-[26px] px-0 pb-0 box-border min-w-[686px] max-w-full text-xl-4 text-gray-600 mq750:min-w-full">
-                  <div className="self-stretch flex flex-col items-start justify-start gap-[115px] max-w-full mq750:gap-[29px_115px] mq1050:gap-[57px_115px]">
-                    <div className="self-stretch flex flex-row items-start justify-start py-0 pr-0 pl-[5px] mq450:pl-[0px] mq750:pl-[0px] box-border max-w-full">
-                      <div className="flex-1 flex flex-col items-start justify-start gap-[30px] max-w-full">
-                        <div className="w-[550px] flex flex-col items-start justify-start pt-0 px-0 pb-2.5 box-border gap-[6px] max-w-full">
+                <div className="box-border flex min-h-screen min-w-[686px] max-w-full flex-1 flex-col items-start justify-start px-0 pt-[26px] pb-0 text-xl-4 text-gray-600 mq750:min-w-full">
+                  <div className="flex max-w-full flex-col items-start justify-start gap-[115px] self-stretch mq1050:gap-[57px_115px] mq750:gap-[29px_115px]">
+                    <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch py-0 pr-0 pl-[5px] mq750:pl-[0px] mq450:pl-[0px]">
+                      <div className="flex max-w-full flex-1 flex-col items-start justify-start gap-[30px]">
+                        <div className="box-border flex w-[550px] max-w-full flex-col items-start justify-start gap-[6px] px-0 pt-0 pb-2.5">
                           <label
                             htmlFor="cardholderName"
-                            className="w-[393.9px] relative text-black-900_03 uppercase inline-block max-w-full mq450:text-base"
+                            className="relative inline-block w-[393.9px] max-w-full uppercase text-black-900_03 mq450:text-base"
                           >
                             Card Holder Name
                           </label>
@@ -221,14 +224,14 @@ const PostAddPayment = () => {
                             id="cardholderName"
                             className="
                  
-                 self-stretch h-[46px]  relative text-9xl-1 text-gray-500 "
+                 relative h-[46px]  self-stretch text-9xl-1 text-gray-500 "
                             defaultValue="Anne Jenny"
                           />
                         </div>
-                        <div className="w-[681.4px] flex flex-col items-start justify-start pt-0 px-0 pb-[10.89999999999418px] box-border gap-[9.80000000000291px] max-w-full">
+                        <div className="box-border flex w-[681.4px] max-w-full flex-col items-start justify-start gap-[9.80000000000291px] px-0 pt-0 pb-[10.89999999999418px]">
                           <label
                             htmlFor="cardNumber"
-                            className="w-[393.9px] text-black-900_03 relative uppercase inline-block max-w-full mq450:text-base"
+                            className="relative inline-block w-[393.9px] max-w-full uppercase text-black-900_03 mq450:text-base"
                           >
                             Card Number
                           </label>
@@ -236,26 +239,26 @@ const PostAddPayment = () => {
                           <CardNumberElement
                             style={{ borderBottom: "1px solid gray" }}
                             id="card-nr"
-                            className="self-stretch relative text-9xl-1 text-gray-500 font-comfortaa  border-solid border-b-[1px] border-gray-500 "
+                            className="font-comfortaa relative self-stretch border-b-[1px] border-solid  border-gray-500 text-9xl-1 text-gray-500 "
                           />
                         </div>
-                        <div className="self-stretch flex flex-row mq1325:flex-col items-start justify-start gap-[50px] max-w-full mq750:gap-[50px_25px] mq1050:flex-wrap">
+                        <div className="flex max-w-full flex-row items-start justify-start gap-[50px] self-stretch mq1325:flex-col mq1050:flex-wrap mq750:gap-[50px_25px]">
                           <ExpDateInput expDate="06/27" />
 
                           <CvvInput cvv="262" />
                         </div>
-                        <div className="w-full flex flex-row items-center gap-5 justify-center py-0 pr-[27px] pl-[20.80000000000291px] box-border max-w-full text-[15.3px]">
+                        <div className="box-border flex w-full max-w-full flex-row items-center justify-center gap-5 py-0 pr-[27px] pl-[20.80000000000291px] text-[15.3px]">
                           <input
                             id="checkbox1"
                             type="checkbox"
                             checked={save}
                             onChange={handleSaveCardChange}
-                            className="bg-white-A700 border-[3px] border-solid rounded border-r-black-900_03"
+                            className="rounded border-[3px] border-solid border-r-black-900_03 bg-white-A700"
                           />
 
                           <label
                             htmlFor="checkbox1"
-                            className="flex-1 relative capitalize shrink-0"
+                            className="relative flex-1 shrink-0 capitalize"
                           >
                             Save card details
                           </label>
@@ -269,9 +272,9 @@ const PostAddPayment = () => {
                     </div>
                     <div
                       onClick={handleSubmit}
-                      className="rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-700 shadow-md flex flex-row items-start justify-start mq800:pt-[13px] mq800:px-[45px] mq800:pb-[8px] pt-[23px] px-[76px] pb-[22px] whitespace-nowrap z-[4] mq800:text-9xl text-11xl text-white mq450:pl-5 mq450:pr-5 mq450:box-border"
+                      className="text-white z-[4] flex flex-row items-start justify-start whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-700 px-[76px] pt-[23px] pb-[22px] text-11xl shadow-md mq800:px-[45px] mq800:pt-[13px] mq800:pb-[8px] mq800:text-9xl mq450:box-border mq450:pl-5 mq450:pr-5"
                     >
-                      <div className="relative text-white-A700 cursor-pointer">
+                      <div className="relative cursor-pointer text-white-A700">
                         Pay Now
                       </div>
                     </div>
@@ -280,10 +283,10 @@ const PostAddPayment = () => {
               </form>
             </>
           ) : (
-            <div className="flex flex-col p-11 w-full gap-8 mq450:space-x-2 mq750:space-x-5 mq825:space-x-10  mq750:flex-col">
+            <div className="flex w-full flex-col gap-8 p-11 mq825:space-x-10 mq750:flex-col mq750:space-x-5  mq450:space-x-2">
               {/*This is pay now section*/}
 
-              <h1 className="text-[38px] font-medium font-poppins">
+              <h1 className="font-poppins text-[38px] font-medium">
                 Thank You
               </h1>
               <p className="text-[20px] text-gray-500">
@@ -293,7 +296,7 @@ const PostAddPayment = () => {
               </p>
               <button
                 onClick={() => navigate("/")}
-                className="bg-gradient-to-br from-cyan-600 to-cyan-400 w-[150px] h-[60px] rounded-2xl text-white-A700 text-[20px]"
+                className="h-[60px] w-[150px] rounded-2xl bg-gradient-to-br from-cyan-600 to-cyan-400 text-[20px] text-white-A700"
               >
                 Go To Home
               </button>
@@ -322,14 +325,14 @@ const ExpDateInput = ({ expDate }) => {
     <div className="relative">
       <label
         htmlFor="expDate"
-        className="uppercase text-black-900_03 inline-block max-w-full mq450:text-base"
+        className="inline-block max-w-full uppercase text-black-900_03 mq450:text-base"
       >
         Exp Date
       </label>
 
       <CardExpiryElement
         id="card-exp"
-        className=" relative text-9xl-1 text-gray-500 font-comfortaa border-solid border-b-[1px] border-gray-500 "
+        className=" font-comfortaa relative border-b-[1px] border-solid border-gray-500 text-9xl-1 text-gray-500 "
       />
     </div>
   );
@@ -340,7 +343,7 @@ const CvvInput = ({ cvv }) => {
     <div className="relative">
       <label
         htmlFor="cvv"
-        className="uppercase text-black-900_03 inline-block max-w-full mq450:text-base"
+        className="inline-block max-w-full uppercase text-black-900_03 mq450:text-base"
       >
         CVV
       </label>
@@ -348,7 +351,7 @@ const CvvInput = ({ cvv }) => {
       <CardCvcElement
         id="card-cvc"
         style={{ borderBottom: "1px solid gray" }}
-        className=" relative text-9xl-1 text-gray-500 font-comfortaa border-solid border-b-[1px] border-gray-500 "
+        className=" font-comfortaa relative border-b-[1px] border-solid border-gray-500 text-9xl-1 text-gray-500 "
       />
     </div>
   );

@@ -36,6 +36,7 @@ export default function Confirm() {
   const {
     handleSubmit,
     register,
+    setValue,
     getFieldState,
     getValues,
     formState: { errors },
@@ -53,7 +54,7 @@ export default function Confirm() {
   const fetchUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/users/${user?.email}`,
+        `https://citygel-backend.onrender.com /api/v1/users/${user?.email}`,
       );
       if (response.data) {
         console.log(response.data);
@@ -68,12 +69,12 @@ export default function Confirm() {
   console.log(errors);
   const onSubmit = async (e) => {
     console.log(e);
-
-    const email = e.email;
+    setValue("email", user?.email);
+    const { email } = getValues();
     try {
       if (e) {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/users/create-user-confirm",
+          "https://citygel-backend.onrender.com /api/v1/users/create-user-confirm",
           {
             email,
             phoneNumber: e.phoneNumber,
@@ -248,6 +249,9 @@ export default function Confirm() {
                   <Input
                     register={register}
                     size="lg"
+                    onChange={(e) => {
+                      setValue("fullName", e.target.value);
+                    }}
                     name="fullName"
                     placeholder="Please Type Full Name"
                     className={`w-full border border-solid border-cyan-700_01 ${
@@ -328,6 +332,9 @@ export default function Confirm() {
                     size="2xl"
                     type="email"
                     name="email"
+                    onChange={(e) => {
+                      setValue("email", user?.email);
+                    }}
                     value={user?.email}
                     placeholder="mail@email.com"
                     className="absolute left-0 bottom-0 right-0 top-0 m-auto w-full !text-black-900_6f"
