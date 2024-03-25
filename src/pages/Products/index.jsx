@@ -25,7 +25,7 @@ const Products = () => {
   const getAllProduct = async () => {
     setLoading(true);
     const product = await axios.get(
-      "https://citygel-backend.onrender.com /api/v1/ads",
+      "https://citygel-backend.onrender.com/api/v1/ads",
     );
     if (product.data) {
       setLoading(false);
@@ -109,7 +109,7 @@ const Products = () => {
       queryParams.push(`city=${city}`);
     }
 
-    let apiUrl = "https://citygel-backend.onrender.com /api/v1/ads";
+    let apiUrl = "https://citygel-backend.onrender.com/api/v1/ads";
     if (queryParams.length > 0) {
       apiUrl += "?" + queryParams.join("&");
     }

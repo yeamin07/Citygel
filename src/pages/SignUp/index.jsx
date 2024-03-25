@@ -65,7 +65,7 @@ export default function SignUpPage() {
     try {
       setLoading(true);
       const Verifyresponse = await axios.post(
-        "https://citygel-backend.onrender.com /api/v1/auth/verify-code",
+        "https://citygel-backend.onrender.com/api/v1/auth/verify-code",
         {
           email: e.email,
           code: e.code,
@@ -73,7 +73,7 @@ export default function SignUpPage() {
       );
       if (Verifyresponse.data) {
         const response = await axios.post(
-          "https://citygel-backend.onrender.com /api/v1/users/create-user",
+          "https://citygel-backend.onrender.com/api/v1/users/create-user",
           {
             fullName: e.fullName,
             email: e.email,
@@ -115,7 +115,7 @@ export default function SignUpPage() {
     try {
       if (emailVeri) {
         const response = await axios.post(
-          `https://citygel-backend.onrender.com /api/v1/auth/send-code`,
+          `https://citygel-backend.onrender.com/api/v1/auth/send-code`,
           {
             email: emailVeri,
           },

@@ -54,7 +54,7 @@ export default function Confirm() {
   const fetchUser = async () => {
     try {
       const response = await axios.get(
-        `https://citygel-backend.onrender.com /api/v1/users/${user?.email}`,
+        `https://citygel-backend.onrender.com/api/v1/users/${user?.email}`,
       );
       if (response.data) {
         console.log(response.data);
@@ -70,11 +70,12 @@ export default function Confirm() {
   const onSubmit = async (e) => {
     console.log(e);
     setValue("email", user?.email);
-    const { email } = getValues();
+
     try {
+      const { email } = getValues();
       if (e) {
         const response = await axios.post(
-          "https://citygel-backend.onrender.com /api/v1/users/create-user-confirm",
+          "https://citygel-backend.onrender.com/api/v1/users/create-user-confirm",
           {
             email,
             phoneNumber: e.phoneNumber,

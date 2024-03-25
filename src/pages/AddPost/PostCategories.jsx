@@ -89,7 +89,7 @@ export default function PostCategories() {
                   as="p"
                   className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
-                  Motorcycles
+                  Electric
                 </Text>
               </div>
               <div
@@ -153,7 +153,7 @@ export default function PostCategories() {
                   as="p"
                   className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
-                  Heavy Vehicles
+                  Vehicles
                 </Text>
               </div>
 
@@ -170,7 +170,7 @@ export default function PostCategories() {
                   as="p"
                   className="mb-[15px] text-[24px] !text-black-900_03 mq450:text-[16px]"
                 >
-                  Heavy Vehicles
+                  Vehicles
                 </Text>
               </div>
             </div>

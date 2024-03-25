@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://citygel-backend.onrender.com ";
+const BASE_URL = "https://citygel-backend.onrender.com";
 
 export default axios.create({
   baseURL: BASE_URL,

@@ -65,7 +65,7 @@ const PostAddPayment = () => {
       setLoading(true);
       const token = await generateStripeToken();
       // const resultPayment = await api.post(
-      //   "https://citygel-backend.onrender.com /api/v1/payment",
+      //   "https://citygel-backend.onrender.com/api/v1/payment",
       //   {
       //     membershipType: membership,
       //     email: user?.email,
@@ -77,7 +77,7 @@ const PostAddPayment = () => {
       // if (resultPayment.data) {
 
       const resultPostAds = await api.post(
-        "https://citygel-backend.onrender.com /api/v1/ads",
+        "https://citygel-backend.onrender.com/api/v1/ads",
         {
           email: user?.email,
           ...ads,
