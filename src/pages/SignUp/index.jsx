@@ -136,7 +136,7 @@ export default function SignUpPage() {
       <div>
         <Header1 />
         <div className=" mx-auto flex w-full items-center justify-center overflow-hidden bg-gray-50">
-          <div className="flex w-[32%] flex-col items-center justify-start ">
+          <div className="flex w-[32%] flex-col items-center justify-start mq450:w-[100%] ">
             <div className="relative h-[372px]  w-full max-w-full">
               <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
                 <div className="relative flex h-[372px] w-full items-center justify-center">

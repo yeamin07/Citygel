@@ -102,7 +102,7 @@ export default function Confirm() {
       </Helmet>
       <Header1 />
       <div className="flex w-full flex-col items-center justify-start bg-gray-50">
-        <div className="flex w-[32%] flex-col items-center justify-start ">
+        <div className="flex w-[32%] flex-col items-center justify-start mq450:w-[100%] ">
           <div className="relative h-[372px]  w-full max-w-[372px]">
             <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
               <div className="relative h-[257px] w-full">
