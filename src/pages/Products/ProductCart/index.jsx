@@ -7,6 +7,28 @@ import { useNavigate } from "react-router-dom";
 const ProductCart = ({ item }) => {
   console.log(item);
   const navigate = useNavigate();
+  const handleTittle = (tittle) => {
+    var words = tittle.split(/\s+/);
+
+    // Check if the number of words is more than 30
+    if (words.length > 6) {
+      // Join the first 30 words and append "..."
+      return words.slice(0, 6).join(" ") + "...";
+    } else {
+      return tittle;
+    }
+  };
+  const handleDes = (des) => {
+    var words = des.split(/\s+/);
+
+    // Check if the number of words is more than 30
+    if (words.length > 8) {
+      // Join the first 30 words and append "..."
+      return words.slice(0, 8).join(" ") + "...";
+    } else {
+      return des;
+    }
+  };
   return (
     <div className="product-border bg-white text-white box-border flex w-full max-w-full flex-col rounded-xl  border-[1px]  border-solid   border-gray-100 p-3 py-2.5 px-[10px] text-left font-poppins text-lg shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)]">
       <div>
@@ -34,8 +56,8 @@ const ProductCart = ({ item }) => {
               </div>
             </div>
           </div>
-          <h3 className="font-inherit text-black relative z-[1] m-0 self-stretch text-9xl font-semibold leading-[40px] mq750:text-[16.23px] mq750:leading-[16.23px] mq450:text-[16.23px] mq450:leading-[1.23]">
-            {item.title}
+          <h3 className="font-inherit text-black relative z-[1] m-0 min-h-[40px] self-stretch text-9xl font-semibold mq750:text-[16.23px] mq750:leading-[16.23px] mq450:text-[16.23px] mq450:leading-[1.23]">
+            {handleTittle(item.title)}
           </h3>
         </div>
         <div className="text-gray-1100 flex w-full flex-row items-start justify-start px-0 pt-0  pb-[5px] text-xl mq750:pb-[2px]">
@@ -44,8 +66,8 @@ const ProductCart = ({ item }) => {
           </div>
         </div>
         <div className="text-gray-1200 box-border flex w-[375px] max-w-full flex-row items-start  justify-start px-0 pt-0 pb-[5px] mq750:pb-[2px]">
-          <div className="h-100% relative z-[1]  inline-block max-w-full flex-1 leading-[25px] mq750:text-[7.22px] mq750:leading-[08px]">
-            {item.description}
+          <div className="h-100% relative z-[1]  inline-block min-h-[25px] max-w-full flex-1 mq750:text-[7.22px] mq750:leading-[08px]">
+            {handleDes(item.description)}
           </div>
         </div>
         <div className="text-black box-border flex w-full max-w-full flex-row items-center justify-between self-stretch px-0 pt-0 pb-4 text-9xl">
