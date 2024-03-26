@@ -1,5 +1,5 @@
 import React from "react";
-import CitygelLogo from "../../components/ai-5pages/CitygelLogo";
+import CitygelLogo from "../../components/Footer/CitygelLogo";
 import {
   man_pic,
   headerlogo,

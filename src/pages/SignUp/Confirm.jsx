@@ -2,21 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import {
-  Text,
-  Img,
-  CheckBox,
-  Input,
-  Button,
-  SelectBox,
-} from "../../components";
-import Footer from "../../components/Footer";
+import { Text, Img, CheckBox, Input } from "../../components";
 import Header1 from "../../components/Header1";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
-import { SignUpFormValidationSchemas } from "./SignUpFormValidationSchemas";
-import PinInputfunc from "components/PinInput";
-import PinInput from "react-pin-input";
 import SocialLogin from "components/SocialLogin/SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -28,10 +17,10 @@ import { password } from "config/password";
 import axios from "axios";
 import { ConfirmValidation } from "./ConfirmValidation";
 import { ToastContainer, toast } from "react-toastify";
-
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
+import CitygelLogo from "components/Footer/CitygelLogo";
 export default function Confirm() {
   const {
     handleSubmit,
@@ -439,7 +428,7 @@ export default function Confirm() {
             </form>
           </div>
         </div>
-        <Footer className="mt-[120px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" />
+        <CitygelLogo />
       </div>
     </>
   );

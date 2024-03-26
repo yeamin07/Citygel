@@ -9,6 +9,7 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
+import { message } from "antd";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, gloading, error] = useSignInWithGoogle(auth);
@@ -53,9 +54,9 @@ const SocialLogin = () => {
           setTUser(jwtDecode(response.data.data.accessToken));
           console.log(response.data.data.accessToken);
           localStorage.setItem("authToken", response.data.data.accessToken);
-          toast.success("Login Successfully");
+          message.success("Login Successfully");
 
-          navigate(from); // Navigate to the previous page
+          navigate(from);
         } else {
           toast.error("please create your account first");
         }

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Text, Img, Button } from "../../components";
-import Footer from "../../components/Footer";
 import Header1 from "components/Header1";
 import { useDispatch, useSelector } from "react-redux";
 import { nextStep, prevStep, setSubCategory } from "store/slices/adsPostSlice";

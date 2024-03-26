@@ -4,7 +4,6 @@ import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "context/AuthContext";
-import Footer from "components/Footer";
 import { home, postad, profile } from "assets/Allimages";
 // import { useEffect } from "react";
 // import {
@@ -81,7 +80,6 @@ function App() {
         </div>
       </div>
       <Routes />
-      {/* <Footer/> */}
       <ToastContainer />
     </AuthProvider>
   );

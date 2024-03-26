@@ -1,8 +1,6 @@
 import { Helmet } from "react-helmet";
 import { Text, Img, Input, Button } from "../../components";
-import Footer from "../../components/Footer";
 import Header1 from "../../components/Header1";
-import PinInputfunc from "components/PinInput";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PinInput from "react-pin-input";
@@ -21,6 +19,8 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "firebase.init";
 import { password } from "config/password";
+import CitygelLogo from "components/Footer/CitygelLogo";
+import { message } from "antd";
 export default function LoginPage() {
   const {
     handleSubmit,
@@ -71,7 +71,7 @@ export default function LoginPage() {
             setAuthToken(response.data.data.accessToken);
             setTUser(jwtDecode(response.data.data.accessToken));
             localStorage.setItem("authToken", response.data.data.accessToken);
-            toast.success("Login Successfully");
+            message.success("Login Successfully");
           } else toast.error("Your account is created using google");
         } catch (error) {
           setLoading(false);
@@ -378,7 +378,7 @@ export default function LoginPage() {
             </div>
           </div>
         </div>
-        <Footer className="mt-[118px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" />
+        <CitygelLogo />
       </div>
     </>
   );
