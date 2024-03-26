@@ -362,14 +362,17 @@ export default function Header1({ ...props }) {
               }}
               trigger={["click"]}
             >
-            <a onClick={(e) => e.preventDefault()}>
-            <Space>
+            <a onClick={(e) => e.preventDefault()}
+            className=" flex justify-center items-center">
+            <Space >
               <Text as="p" className="text-[11px] mq400:text-[9px]">
                 Change Location
               </Text>
+              <div className="mt-[-4px]">
               <img src={downarrow}
-                className="w-[9px] h-[6px] mr-1"
+                className="w-[9px] h-[6px] mq400:w-[7px] mq400:h-[5px]  mq500:mr-1 mr-3"
               />
+              </div>
               </Space>
               </a>
             </Dropdown>

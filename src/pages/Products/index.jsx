@@ -139,7 +139,7 @@ const Products = () => {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <Header1 className="flex w-full flex-col items-center justify-center" />
+      <Header1 />
 
       <div className="bg-[rgba(250, 250, 250, 1)] mx-auto min-h-screen w-[95%]">
         <div className="mx-auto mt-10 flex h-[345px] w-[100%]  justify-center bg-gray-200">
