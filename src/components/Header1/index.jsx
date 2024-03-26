@@ -344,15 +344,15 @@ export default function Header1({ ...props }) {
               className="w-[117px] h-[53px] mt-[-2px] mq400:w-[90%] mq300:h-[45px]"
             />
           </div>
-          <div className="w-[154px] mq400:w-[130px] mq400:h-[30px] h-[34px] flex justify-between items-center mt-[4px] mq400:mt-[7px]
+          <div className="w-[154px] mq500:w-[130px] mq500:h-[30px] h-[34px] flex justify-between items-center mt-[4px] mq500:mt-[7px]
             border border-solid border-white-A700_63  rounded-3xl  text-white-A700 cursor-pointer">
 
-            <div className="w-[30px] h-[30px] mq400:w-[18%] mq400:h-[84%] rounded-full border border-solid border-black-900_87 rounded-xl 
-             ml-[0.5px] mq400:ml-[1px] flex justify-center items-center bg-white-A700 ">
+            <div className="w-[30px] h-[30px] mq500:w-[18%] mq500:h-[84%] rounded-full border border-solid border-black-900_87 rounded-xl 
+             ml-[0.5px] mq500:ml-[1px] flex justify-center items-center bg-white-A700 ">
               <Img
                 src={location}
                 alt="arrowdown_one"
-                className="w-[17px] h-[15px] mq400:h-[13px] mq400:w-[13px]"
+                className="w-[17px] h-[15px] mq500:h-[13px] mq500:w-[13px]"
               />
             </div>
 
@@ -365,12 +365,12 @@ export default function Header1({ ...props }) {
             <a onClick={(e) => e.preventDefault()}
             className=" flex justify-center items-center">
             <Space >
-              <Text as="p" className="text-[11px] mq400:text-[9px]">
+              <Text as="p" className="text-[11px] mq500:text-[9px]">
                 Change Location
               </Text>
-              <div className="mt-[-4px]">
+              <div className="mt-[-4px] w-[9px] mq500:w-[7px]   mq500:mr-1">
               <img src={downarrow}
-                className="w-[9px] h-[6px] mq400:w-[7px] mq400:h-[5px]  mq500:mr-1 mr-3"
+                className="w-[9px] h-[6px] mq400:w-[7px] mq400:h-[5px] mr-3 "
               />
               </div>
               </Space>
