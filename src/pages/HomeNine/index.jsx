@@ -136,9 +136,9 @@ export default function HomePage() {
           </div>
 
           {/* <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01" /> */}
-          <CitygelLogo/>
         </div>
       </div>
+      <CitygelLogo/>
     </>
   );
 }

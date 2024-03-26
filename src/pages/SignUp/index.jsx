@@ -30,6 +30,7 @@ import Loading from "components/Loading/Loading";
 import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
+import CitygelLogo from "components/ai-5pages/CitygelLogo";
 
 export default function SignUpPage() {
   const {
@@ -430,8 +431,8 @@ export default function SignUpPage() {
             </div>
           </div>
         </div>
-        <Footer className="mt-[120px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" />
       </div>
+      <CitygelLogo/>
     </>
   );
 }

@@ -21,6 +21,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "firebase.init";
 import { password } from "config/password";
+import CitygelLogo from "components/ai-5pages/CitygelLogo";
 export default function LoginPage() {
   const {
     handleSubmit,
@@ -114,8 +115,9 @@ export default function LoginPage() {
           content="Web site created using create-react-app"
         />
       </Helmet>
+      <Header1/>
       <div className="flex w-full flex-col items-center justify-start bg-gray-50">
-        <Header1 className="flex w-full flex-col items-center justify-center" />
+        {/* <Header1 className="flex w-full flex-col items-center justify-center" /> */}
         <div className="mt-[50px] flex w-[40%] flex-col items-center justify-start gap-3.5">
           <div className="relative h-[372px] w-full max-w-[372px] py-10">
             <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
@@ -378,8 +380,9 @@ export default function LoginPage() {
             </div>
           </div>
         </div>
-        <Footer className="mt-[118px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" />
+        {/* <Footer className="mt-[118px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" /> */}
       </div>
+      <CitygelLogo/>
     </>
   );
 }
