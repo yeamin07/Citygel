@@ -424,8 +424,8 @@ export default function SignUpPage() {
             </div>
           </div>
         </div>
-        <CitygelLogo />
       </div>
+      <CitygelLogo />
     </>
   );
 }
