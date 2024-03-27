@@ -39,7 +39,7 @@ const ProductSlider = ({ mainImage, moreImages }) => {
           <div key={index}>
             <img
               src={image}
-              className="rounded-xl h-[253px] w-[100%] p-2"
+              className="rounded-xl h-[253px] mq450:h-[185px] w-[100%] p-2 mq350:h-[150px] mq350:p-[0.8px]"
               alt={`Slide ${index + 1}`}
             />
           </div>

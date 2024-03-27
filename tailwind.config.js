@@ -211,8 +211,8 @@ module.exports = {
       mq400: {
         raw: "screen and (max-width: 400px)",
       },
-      mq300: {
-        raw: "screen and (max-width: 300px)",
+      mq350: {
+        raw: "screen and (max-width: 350px)",
       },
     },
     // Other Tailwind CSS configurations...

@@ -146,8 +146,8 @@ const Products = () => {
           <p className="pt-[12%] text-xl">AD</p>
         </div>
 
-        <div className="mx-auto mx-auto flex w-[100%] flex-row gap-5 sm:flex-col  mq750:flex-col  mq450:flex-col">
-          <div className="mx-auto w-[76%] sm:w-[100%] mq750:w-[100%] ">
+        <div className="mx-auto flex w-[100%] flex-row gap-5  mq800:flex-col">
+          <div className="mx-auto w-[76%] mq800:w-[100%] ">
             <div className="mt-16 flex w-auto flex-row">
               <DropdownButton text="Sort Default" />
               {/*This is Filter by section */}
@@ -276,7 +276,7 @@ const Products = () => {
               </div>
             )}
 
-            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3 gap-3 sm:w-[100%] md:grid-cols-2 mq750:w-[100%] mq750:grid-cols-2 mq450:grid-cols-2">
+            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3 mq1500:grid-cols-2 gap-3 flex-wrap mq800:w-[100%] md:grid-cols-2  mq750:grid-cols-2 mq450:grid-cols-2">
               {/* components */}
               {allProduct.map((item) => {
                 if (loading) {
@@ -292,7 +292,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="mx-auto mt-20 flex h-[1200] w-[20%] items-center justify-center bg-gray-200 sm:h-[110px] sm:w-[100%] mq750:h-[110px] mq750:w-[100%]">
+          <div className="mx-auto mt-20 flex h-[1200] mq800:h-[200px] mq800:w-[100%] w-[20%] items-center justify-center bg-gray-200 sm:h-[110px] sm:w-[100%] mq750:h-[110px] mq750:w-[100%]">
             AD
           </div>
         </div>

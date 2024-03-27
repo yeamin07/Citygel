@@ -365,12 +365,12 @@ export default function Header1({ ...props }) {
             <a onClick={(e) => e.preventDefault()}
             className=" flex justify-center items-center">
             <Space >
-              <Text as="p" className="text-[11px] mq500:text-[9px]">
+              <p className="text-[11px] mq500:text-[9px]">
                 Change Location
-              </Text>
-              <div className="mt-[-4px] w-[9px] mq500:w-[7px]   mq500:mr-1">
+              </p>
+              <div className="mt-[-4px] w-[9px] mq500:w-[9px]   mq500:mr-[2px]">
               <img src={downarrow}
-                className="w-[9px] h-[6px] mq400:w-[7px] mq400:h-[5px] mr-3 "
+                className="w-[9px] h-[6px] mq400:w-[7px] mq400:h-[5px] mr-3 mq500:mr-2"
               />
               </div>
               </Space>
