@@ -1,8 +1,6 @@
 import { Helmet } from "react-helmet";
 import { Text, Img, Input, Button } from "../../components";
-import Footer from "../../components/Footer";
 import Header1 from "../../components/Header1";
-import PinInputfunc from "components/PinInput";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PinInput from "react-pin-input";
@@ -21,7 +19,8 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "firebase.init";
 import { password } from "config/password";
-import CitygelLogo from "components/ai-5pages/CitygelLogo";
+import CitygelLogo from "components/Footer/CitygelLogo";
+import { message } from "antd";
 export default function LoginPage() {
   const {
     handleSubmit,
@@ -72,7 +71,7 @@ export default function LoginPage() {
             setAuthToken(response.data.data.accessToken);
             setTUser(jwtDecode(response.data.data.accessToken));
             localStorage.setItem("authToken", response.data.data.accessToken);
-            toast.success("Login Successfully");
+            message.success("Login Successfully");
           } else toast.error("Your account is created using google");
         } catch (error) {
           setLoading(false);
@@ -115,10 +114,10 @@ export default function LoginPage() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <Header1/>
+      <Header1 />
       <div className="flex w-full flex-col items-center justify-start bg-gray-50">
         {/* <Header1 className="flex w-full flex-col items-center justify-center" /> */}
-        <div className="mt-[50px] flex w-[40%] flex-col items-center justify-start gap-3.5">
+        <div className="mt-[50px] flex w-[40%] flex-col items-center justify-start gap-3.5 mq450:w-[90%]">
           <div className="relative h-[372px] w-full max-w-[372px] py-10">
             <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
               <div className="relative h-[257px] w-full">
@@ -243,8 +242,11 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mt-[9px] flex w-full flex-col items-start justify-start">
+              <form
+                className="flex flex-col items-center justify-center"
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <div className="mt-[9px] flex w-full flex-col items-start justify-start mq450:w-[90%]">
                   <div className="w-[90%] text-left">
                     {" "}
                     <Text
@@ -341,11 +343,10 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   style={{ backgroundColor: "#0B90AF" }}
-                  className="h-[80px] w-full rounded-[15px] font-poppins text-[24px] font-normal text-white-A700"
+                  className="h-[80px] w-full rounded-[15px] font-poppins text-[24px] font-normal text-white-A700 mq450:w-[90%]"
                 >
                   Sign in
                 </button>
-                <div></div>
               </form>
             </div>
             <div className="flex w-full flex-row justify-center">
@@ -382,7 +383,7 @@ export default function LoginPage() {
         </div>
         {/* <Footer className="mt-[118px] flex w-full items-center justify-center bg-gray-100_01 p-[34px]" /> */}
       </div>
-      <CitygelLogo/>
+      <CitygelLogo />
     </>
   );
 }

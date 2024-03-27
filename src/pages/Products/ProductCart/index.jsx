@@ -7,6 +7,28 @@ import { useNavigate } from "react-router-dom";
 const ProductCart = ({ item }) => {
   console.log(item);
   const navigate = useNavigate();
+  const handleTittle = (tittle) => {
+    var words = tittle.split(/\s+/);
+
+    // Check if the number of words is more than 30
+    if (words.length > 6) {
+      // Join the first 30 words and append "..."
+      return words.slice(0, 6).join(" ") + "...";
+    } else {
+      return tittle;
+    }
+  };
+  const handleDes = (des) => {
+    var words = des.split(/\s+/);
+
+    // Check if the number of words is more than 30
+    if (words.length > 8) {
+      // Join the first 30 words and append "..."
+      return words.slice(0, 8).join(" ") + "...";
+    } else {
+      return des;
+    }
+  };
   return (
     <div className="product-border bg-white text-white box-border flex w-full max-w-full flex-col rounded-xl  border-[1px]  border-solid   border-gray-100 p-3 py-2.5 px-[10px] text-left font-poppins text-lg shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)]">
       <div>
@@ -37,8 +59,9 @@ const ProductCart = ({ item }) => {
             </div>
           </div>
           {/*Button ends */}
+          
           <h3 className="font-inherit text-black relative z-[1] m-0 self-stretch text-9xl font-semibold leading-[35px] mq1125:text-[25px] mq750:text-[18.23px] mq750:leading-[16.23px] mq450:text-[14.23px] mq350:text-[12px] mq350:leading-[15px] mq450:leading-[1.23]">
-            {item.title}
+            {handleTittle(item.title)}
           </h3>
         </div>
         <div className="text-gray-1100 flex w-full flex-row items-start justify-start px-0 pt-0  pb-[5px] text-xl mq750:pb-[2px]">

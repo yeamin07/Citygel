@@ -4,14 +4,14 @@ import Header1 from "components/Header1";
 import React, { useEffect, useState } from "react";
 import DropdownButton from "components/Dropdown";
 import DropdownButton2 from "components/Dropdown/index2";
-import Footer from "components/Footer";
 import useAxios from "config/api/useAxios";
 import axios from "axios";
 import arrow from "../../assets/images/up-and-down-arrow.png";
 // import "./products.css";
 import { Slider } from "antd";
 import Loading from "components/Loading/Loading";
-import CitygelLogo from "components/ai-5pages/CitygelLogo";
+import CitygelLogo from "components/Footer/CitygelLogo";
+import Product from "./Product";
 
 const Products = () => {
   const api = useAxios();
@@ -278,17 +278,7 @@ const Products = () => {
 
             <div className="mx-auto mt-16 grid w-[95%] grid-cols-3 mq1500:grid-cols-2 gap-3 flex-wrap mq800:w-[100%] md:grid-cols-2  mq750:grid-cols-2 mq450:grid-cols-2">
               {/* components */}
-              {allProduct.map((item) => {
-                if (loading) {
-                  return <Loading />;
-                }
-                return (
-                  <>
-                    {" "}
-                    <ProductCart {...{ item }} />
-                  </>
-                );
-              })}
+              <Product allProduct={allProduct} loading={loading} />
             </div>
           </div>
 
@@ -297,7 +287,7 @@ const Products = () => {
           </div>
         </div>
       </div>
-      {/* <Footer className="flex justify-center items-center w-full mt-[145px] p-[34px] bg-gray-100_01 inline" /> */}
+
       <CitygelLogo />
     </div>
   );

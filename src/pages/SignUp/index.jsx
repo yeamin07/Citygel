@@ -2,20 +2,11 @@ import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import {
-  Text,
-  Img,
-  CheckBox,
-  Input,
-  Button,
-  SelectBox,
-} from "../../components";
-import Footer from "../../components/Footer";
+import { Text, Img, CheckBox, Input, Button } from "../../components";
 import Header1 from "../../components/Header1";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import { SignUpFormValidationSchemas } from "./SignUpFormValidationSchemas";
-import PinInputfunc from "components/PinInput";
 import PinInput from "react-pin-input";
 import SocialLogin from "components/SocialLogin/SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -30,7 +21,8 @@ import Loading from "components/Loading/Loading";
 import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
-import CitygelLogo from "components/ai-5pages/CitygelLogo";
+import CitygelLogo from "components/Footer/CitygelLogo";
+import { message } from "antd";
 
 export default function SignUpPage() {
   const {
@@ -95,7 +87,8 @@ export default function SignUpPage() {
           setTUser(jwtDecode(response.data.data.accessToken));
           console.log(response.data.data.accessToken);
           localStorage.setItem("authToken", response.data.data.accessToken);
-          toast.success("Login Successfully");
+          message.success("Login Successfully");
+          // toast.success("Login Successfully");
         }
         console.log(response.data);
       } else {
@@ -143,7 +136,7 @@ export default function SignUpPage() {
       <div>
         <Header1 />
         <div className=" mx-auto flex w-full items-center justify-center overflow-hidden bg-gray-50">
-          <div className="flex w-[32%] flex-col items-center justify-start ">
+          <div className="flex w-[32%] flex-col items-center justify-start mq450:w-[100%] ">
             <div className="relative h-[372px]  w-full max-w-full">
               <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
                 <div className="relative flex h-[372px] w-full items-center justify-center">
@@ -432,7 +425,7 @@ export default function SignUpPage() {
           </div>
         </div>
       </div>
-      <CitygelLogo/>
+      <CitygelLogo />
     </>
   );
 }

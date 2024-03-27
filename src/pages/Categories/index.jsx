@@ -17,7 +17,7 @@ import motor from "../../assets/images/motor.png";
 import properties from "../../assets/images/properties.png";
 import five from "../../assets/images/5.png";
 import Header1 from "components/Header1";
-import CitygelLogo from "components/ai-5pages/CitygelLogo";
+import CitygelLogo from "components/Footer/CitygelLogo";
 
 const Category = () => {
   return (

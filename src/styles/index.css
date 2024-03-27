@@ -185,3 +185,18 @@ a {
     height: 85px !important;
   }
 }
+@media screen and (max-device-width:450px) {
+  .react-tel-input .form-control {
+    width: 100%;
+  }
+  .react-tel-input {
+ 
+    width: 100%;
+
+  }
+  .pincode-input-text {
+
+    width:58px !important;
+    height: 58px !important;
+  }
+}
