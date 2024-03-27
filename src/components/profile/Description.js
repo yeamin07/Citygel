@@ -1,7 +1,8 @@
-import CitygelLogo from "./CitygelLogo";
+
 import RangeSliderParent from "./RangeSliderParent";
 import ToggleParent from "./ToggleParent";
 import Header1 from "components/Header1";
+import CitygelLogo from "../Footer/CitygelLogo";
 
 const Description = () => {
   return (
