@@ -1,21 +1,23 @@
+import { useEffect, useRef, useState } from "react";
+import OctalTree from "./OctalTree";
 const Background = () => {
+ const [Number,setNumber] = useState(0)
   return (
-    <div className=" rounded-11xl bg-white w-full h-[120px] z-[3] text-9xl text-black">
-      <div className="relative top-[0px] left-[0px] rounded-11xl bg-white w-full h-full hidden" />
-      <div className="relative top-[5px] left-[5px] rounded-11xl bg-whitesmoke-200 w-full h-[110px] z-[4]">
-        <div className="relative top-[0px] left-[0px] rounded-11xl bg-whitesmoke-200 w-full h-full hidden" />
-        <div className="relative h-full top-[0px] bottom-[0px] left-[0px] rounded-7xl bg-main-color w-[563.3px] z-[5] text-white">
-          <div className="relative top-[0px] left-[0px] rounded-7xl bg-main-color w-full h-full hidden" />
-          <div className="relative top-[34px] left-[170px] whitespace-nowrap z-[6]">
-            Personal Details
-          </div>
+    <div className="bg-white text-black w-full   rounded-11xl   pt-3  text-9xl">
+      <div className=" relative h-60 w-full  bg-sky-700 p-10">
+        <div className="mx-5 flex items-center  justify-around  rounded-md bg-white-A700 p-4 font-bold text-white-A700">
+          {[1, 3, 5, 6].map((item, index) => (
+            <div
+             onClick={()=>setNumber(index)}
+              key={index}
+              className={`"w-full  rounded-xl text-center text-black-900_87 outline-none hover:bg-sky-700  hover:text-white-A700  focus:bg-sky-800 focus:ring-2 ${index === Number ? 'bg-sky-700 px-3 pt-2 ':null}`}
+            >
+              Tab One
+            </div>
+          ))}
         </div>
-
-        <div className="relative top-[34px] right-[200px] whitespace-nowrap z-[6]">
-          My Ads
-        </div>
-        <div className="relative top-[34px] right-[200px] whitespace-nowrap z-[6]">
-          My Ads
+        <div className="  z-10 mt-5  rounded-md bg-white-A700 p-3">
+          <OctalTree />
         </div>
       </div>
     </div>
