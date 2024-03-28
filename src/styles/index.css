@@ -3,89 +3,103 @@ body {
   padding: 0;
   font-family: Poppins;
 }
+
 * {
   box-sizing: border-box;
   line-height: normal;
   font-family: inherit;
   margin: unset;
 }
+
 a {
   display: block;
 }
+
 ul {
   margin: 0;
   margin-inline: 0 !important;
   padding: 0;
   list-style: none;
 }
+
 .ReactModal__Overlay {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
   background: transparent;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #6b6b6b;
   border-radius: 10px;
 }
+
 input {
   background-color: transparent;
   width: 100%;
 }
+
 input:focus {
   outline: none;
 }
+
 .gray_50_02_red_A400_border {
-  
+
   background: linear-gradient(to top right, #ffffff, #ffffff),
-  linear-gradient(to bottom right, #FBFBFB, #F90E3A);
-background-clip: padding-box, border-box;
-background-origin: padding-box, border-box;
-border: 3px solid transparent;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 20px; 
+    linear-gradient(to bottom right, #FBFBFB, #F90E3A);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  border: 3px solid transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
 
 }
+
 .product-border {
-  
+
   background: linear-gradient(to top right, #ffffff, #ffffff),
-  linear-gradient(to bottom right, #FBFBFB, #d16161a5);
-background-clip: padding-box, border-box;
-background-origin: padding-box, border-box;
-border: 3px solid transparent;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.205);
-  border-radius: 20px; 
+    linear-gradient(to bottom right, #FBFBFB, #d16161a5);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  border: 3px solid transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.205);
+  border-radius: 20px;
 
 }
+
 .gray_50_02_red_A400_border:hover {
-  
+
   background: linear-gradient(to top right, #ffffff, #ffffff),
-  linear-gradient(to top left, #FBFBFB, #F90E3A);
-background-clip: padding-box, border-box;
-background-origin: padding-box, border-box;
-border: 3px solid transparent;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-cursor: pointer;
+    linear-gradient(to top left, #FBFBFB, #F90E3A);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  border: 3px solid transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 
 }
+
 .gray_50_02_red_A400_active {
-  
+
   background: linear-gradient(to top right, #ffffff, #ffffff),
-  linear-gradient(to top left, #FBFBFB, #F90E3A);
-background-clip: padding-box, border-box;
-background-origin: padding-box, border-box;
-border: 3px solid transparent;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-cursor: pointer;
+    linear-gradient(to top left, #FBFBFB, #F90E3A);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  border: 3px solid transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 
 }
+
 /* .gray_50_02_red_A400_border::before {
   content: '';
   position: absolute;
@@ -97,12 +111,14 @@ cursor: pointer;
   background: linear-gradient(135deg, #fafafa, #f90e3a);
   border-radius: 20px; /* Same border radius as the main element */
 
-.has-error{
+.has-error {
   border: 1px solid red;
 }
-.is-valid{
+
+.is-valid {
   border: 1px solid #0B90AF;
 }
+
 .react-tel-input .flag-dropdown {
   position: absolute;
   top: 6px;
@@ -114,9 +130,11 @@ cursor: pointer;
   margin-left: 2px;
 
 }
-button{
+
+button {
   cursor: pointer !important;
 }
+
 .react-tel-input .selected-flag {
   position: absolute;
   top: 0;
@@ -126,16 +144,18 @@ button{
   border: 1px solid #f4f4f4;
   border-radius: 19px 0 0 19px;
 }
+
 .react-tel-input {
   border-radius: 15px;
   line-height: 25px;
   height: 82px;
   width: 436px;
 }
+
 .react-tel-input .form-control {
   border-radius: 15px;
   line-height: 30px;
-background-color: #F3F3F3 !important;
+  background-color: #F3F3F3 !important;
   border: 1px solid #0B90AF;
 
   border-radius: 15px;
@@ -143,6 +163,7 @@ background-color: #F3F3F3 !important;
   height: 80px;
   width: 434px;
 }
+
 /* .head{
   background-image: url('images/header.webp');
 } */
@@ -151,52 +172,66 @@ background-color: #F3F3F3 !important;
   width: 65px !important;
   height: 65px !important;
 }
-.pincode-input-container{
+
+.pincode-input-container {
   padding: 0px !important;
 }
+
 .react-tel-input .flag-dropdown {
   padding: 10px !important;
 
   border-radius: 50px 0 0 50px !important;
 }
+
 .form-control {
   padding-left: 56px !important;
 }
 
-.slick-dots{
+.slick-dots {
   bottom: 24px !important;
 }
+
 a {
- 
+
   text-decoration: unset;
 }
+
 @media screen and (min-device-width:1400px) {
   .react-tel-input .form-control {
     width: 600px;
   }
+
   .react-tel-input {
- 
+
     width: 600px;
 
   }
+
   .pincode-input-text {
 
     width: 85px !important;
     height: 85px !important;
   }
 }
+
 @media screen and (max-device-width:450px) {
   .react-tel-input .form-control {
     width: 100%;
   }
+
   .react-tel-input {
- 
+
     width: 100%;
 
   }
+
   .pincode-input-text {
 
-    width:58px !important;
-    height: 58px !important;
+    width: 45px !important;
+    height: 45px !important;
   }
+}
+
+body {
+  overflow-x: hidden;
 }

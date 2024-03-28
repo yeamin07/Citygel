@@ -17,7 +17,7 @@ const sizes = {
   md: "text-[8px] font-normal",
 };
 
-const Text = ({ children, className = "",onClick, as, size = "xl", ...restProps }) => {
+const Text = ({ children, className = "", onClick, as, size = "xl", ...restProps }) => {
   const Component = as || "p";
 
   return (
