@@ -122,7 +122,7 @@ export default function SignUpPage() {
       } else {
         toast.error("please enter your email");
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
     <>
@@ -136,30 +136,26 @@ export default function SignUpPage() {
       <div>
         <Header1 />
         <div className=" mx-auto flex w-full items-center justify-center overflow-hidden bg-gray-50">
-          <div className="flex w-[32%] flex-col items-center justify-start mq450:w-[100%] ">
-            <div className="relative h-[372px]  w-full max-w-full">
-              <div className="absolute top-[11%] right-0 left-0 m-auto flex w-full flex-col items-start justify-start">
-                <div className="relative flex h-[372px] w-full items-center justify-center">
-                  <Img
-                    src="authheader.png"
-                    alt="background_one"
-                    className=" h-[372px]"
-                  />
-                </div>
-              </div>
+          <div className="flex sm:w-[36rem] w-[100%] flex-col items-center justify-start  px-5 sm:px-0">
+            <div >
+              <Img
+                src="images/login.png"
+                alt="background_one"
+                className=" mx-auto  justify-center "
+              />
             </div>
-            <div className="z-[1] mt-[9px] w-[1800px]">
+            <div className="z-[1] mt-[9px] w-full">
               <Text
                 size="8xl"
                 as="p"
-                className="mq750::text-[28px]  text-center !text-black-900_03 sm:text-[36px] mq450:text-[24px]"
+                className=" text-center !text-black-900_03 sm:text-[36px] text-[24px]"
               >
                 Create an Account
               </Text>
               <Text
                 size="3xl"
                 as="p"
-                className="mq750::text-[18x] text-center !text-black-900_7e opacity-0.4 sm:text-[16px]  mq450:text-[16px]"
+                className=" text-center !text-black-900_7e opacity-0.4 sm:text-[16px]  !text-[14px]"
               >
                 Please enter your credential Details.
               </Text>
@@ -182,11 +178,10 @@ export default function SignUpPage() {
                         setValue("fullName", e.target.value);
                       }}
                       placeholder="your name"
-                      className={`w-full border border-solid border-cyan-700_01 ${
-                        errors.fullName?.message
-                          ? "border-red-600"
-                          : "border-cyan-700_01"
-                      }`}
+                      className={`w-full border border-solid border-cyan-700_01 ${errors.fullName?.message
+                        ? "border-red-600"
+                        : "border-cyan-700_01"
+                        }`}
                     />
                     {errors.fullName?.message && (
                       <Text
@@ -249,11 +244,10 @@ export default function SignUpPage() {
                     Enter Your Email
                   </Text>
                   <div
-                    className={`relative mt-[15px] h-[80px] w-full rounded-[15px] border border-solid ${
-                      errors.email?.message
-                        ? "border-red-600"
-                        : "border-cyan-700_01"
-                    } `}
+                    className={`relative mt-[15px] h-[80px] w-full rounded-[15px] border border-solid ${errors.email?.message
+                      ? "border-red-600"
+                      : "border-cyan-700_01"
+                      } `}
                   >
                     <Input
                       register={register}
@@ -316,7 +310,7 @@ export default function SignUpPage() {
                               borderRadius: "10px",
                             }}
                             inputFocusStyle={{ borderColor: "#0B90AF" }}
-                            onComplete={(value, index) => {}}
+                            onComplete={(value, index) => { }}
                             autoSelect={true}
                             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                           />

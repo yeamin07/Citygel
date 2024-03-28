@@ -1,12 +1,13 @@
 const OctalTree = () => {
   return (
-    <div className="self-stretch flex flex-row items-start justify-center py-0 px-5 box-border max-w-full  text-left text-base text-gray-1000 font-poppins">
+    <div className="  self-stretch flex flex-row items-start justify-center py-0 px-5 box-border  text-left text-base text-gray-1000 font-poppins">
       <div className="w-full rounded-11xl bg-white shadow-[0px_0px_5px_rgba(0,_0,_0,_0.1)] box-border flex flex-col items-start justify-start py-[30px] px-7 gap-[30px] max-w-full z-[3] border-[2px] border-solid border-gray-800 mq750:pt-[291px] mq750:pb-5 mq750:box-border">
         <div className="w-full h-[710px] relative rounded-11xl bg-white shadow-[0px_0px_5px_rgba(0,_0,_0,_0.1)] box-border hidden max-w-full border-[2px] border-solid border-gray-800" />
         <div className="flex flex-row items-start justify-start pt-0 px-0 pb-2.5 text-15xl text-black">
           <h2 className="m-0 relative text-inherit font-medium font-inherit z-[4] mq450:text-xl mq1050:text-8xl">
             Personal Details
           </h2>
+          
         </div>
         <div className="self-stretch flex flex-col items-start justify-start gap-[9px] max-w-full">
           <div className="flex flex-row items-start justify-start py-0 px-1.5">
