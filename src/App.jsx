@@ -4,7 +4,9 @@ import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "context/AuthContext";
-import { home, postad, profile } from "assets/Allimages";
+import { RiHome5Line } from "react-icons/ri"; 
+import { FiPlusCircle } from "react-icons/fi"; 
+import { FaRegCircleUser } from "react-icons/fa6"; 
 // import { useEffect } from "react";
 // import {
 //   Route,
@@ -13,9 +15,6 @@ import { home, postad, profile } from "assets/Allimages";
 // } from "react-router-dom";
 
 function App() {
-  {
-    /**This is from ai-5 component */
-  }
 
   // const action = useNavigationType();
   // const location = useLocation();
@@ -54,33 +53,30 @@ function App() {
   const navigate = useNavigate();
   return (
     <AuthProvider>
-      <div className="h-auto">
+    {/*~~~~~~~~~~~~~~~~~~~~~~~New Footer ~~~~~~~~~~~~~~~~~~~~~~~~~~*/}
+      <div className="h-auto">       
         <div
           className="fixed bottom-0  z-[1000] hidden  h-[80px] w-full items-center justify-center border-t-[2px]
       border-solid border-gray-200 bg-[#FFFFFF] p-4 pt-[9px] mq500:flex"
         >
-          <div className="mq300:px-4 flex h-5/6 w-full justify-between px-8">
-            <img
-              className="h-[100%]  w-[33px] cursor-pointer"
-              alt=""
-              src={home}
-            />
-            <img
-              className="h-[100%] w-[40px] cursor-pointer"
-              alt=""
-              src={postad}
-              onClick={() => navigate("/add-post")}
-            />
-            <img
-              className="h-[100%] w-[36px] cursor-pointer"
-              alt=""
-              src={profile}
-            />
+          <div className="mq400:px-4 flex h-5/6 w-full justify-between px-8">
+            <div className="w-[34px] h-[70%]">
+              <RiHome5Line className="w-[25px] h-[100%] text-cyan-500 ml-[2.5px]" />
+              <p className="text-cyan-400 mt-[-8px] text-[13px] font-aleo">Home</p>
+            </div>
+            <div className="w-[45px] h-[70%] text-gray-400">
+              <FiPlusCircle className="w-[22px] h-[100%] mb-[-13px] ml-[6px]"/>
+              <p className=" text-[13px] font-aleo inline">Post ad</p>
+            </div>
+            <div className="w-[34px] h-[70%] text-gray-400">
+              <FaRegCircleUser className="w-[22px] h-[100%] ml-2"/>
+              <p className="text-[13px] font-aleo mt-[-8px]">Profile</p>
+            </div>
           </div>
         </div>
       </div>
       <Routes />
-      <ToastContainer />
+      <ToastContainer/>
     </AuthProvider>
   );
 }
