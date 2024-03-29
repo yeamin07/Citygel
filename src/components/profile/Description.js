@@ -77,7 +77,7 @@ const Description = () => {
 
   return (
     <div>
-      <Header1 className="flex flex-col justify-center items-center w-full" />
+      <Header1 className="flex flex-col justify-center items-center w-full container mx-auto" />
       <div className="w-full  overflow-hidden flex flex-col items-end justify-start gap-[30px] ">
         <main className="w-[1830px] flex flex-col items-start justify-start pt-0 pb-[30px] pr-0 pl-5 box-border gap-[60px] max-w-full mq825:gap-[30px_60px]">
           <section className="self-stretch flex flex-col items-start justify-start gap-[50px] max-w-full text-left text-25xl text-black-900_87 font-poppins mq825:gap-[25px_50px]">
@@ -219,11 +219,11 @@ const Description = () => {
 
                 </div>
               </div>
-              <div className=" w-[20%] mq500:w-[100%] mt-10 flex flex-col items-start justify-start gap-[44px] max-w-full text-center">
+              <div className=" w-[20%] hidden  mt-10 sm:flex flex-col items-start justify-start gap-[44px] max-w-full text-center">
                 {/*~~~~~~~~~~~For details section~~~~~~~~~~~~*/}
                 <div className="self-stretch rounded-xl bg-white-A700 shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start pt-5 px-2 pb-2.5 gap-[25px] max-w-full border-[1.5px] border-solid border-gray-100">
-                  <div className="flex items-center justify-center mq500:box-border w-[100%]">
-                    <h4 className="m-0 text-[1.3rem] mq1500:text-[1.1rem]  font-extralight mq500:text-[28px]  relative  font-inherit flex items-center justify-center whitespace-nowrap z-[1] mq825:text-[27px] text-black-900_87">
+                  <div className="flex items-center justify-center sm:box-border w-[100%]">
+                    <h4 className="m-0 xl:text-[1.3rem] lg:text-[1.1rem]  font-extralight sm:text-[28px]  relative  font-inherit flex items-center justify-center whitespace-nowrap z-[1]  text-black-900_87">
                       For more details
                     </h4>
                   </div>
@@ -232,18 +232,18 @@ const Description = () => {
                     <RangeSliderParent
                       vuesaxboldsms="/vuesaxboldsms.svg"
                       enquireNow="Enquire Now"
-                      className="mq1500:text-[18px]"
+                      className=""
                     />
                     <RangeSliderParent
                       vuesaxboldsms="/vuesaxboldcall.svg"
                       enquireNow="Contact Us"
-                      className="mq1500:text-[18px]"
+                      className=""
                     />
                   </div>
                 </div>
 
 
-                <div className="block mq500:hidden self-stretch bg-gainsboro-100 flex flex-row items-start justify-center py-[633px] px-5 box-border max-w-full text-left text-31xl lg:pt-[411px] lg:pb-[411px] lg:box-border mq825:pt-[267px] mq825:pb-[267px] mq825:box-border mq500:hidden block">
+                <div className="hidden  self-stretch bg-gainsboro-100 sm:flex flex-row items-start justify-center py-[633px] px-5 box-border max-w-full text-left text-31xl lg:pt-[411px] lg:pb-[411px] lg:box-border sm:pt-[267px] sm:pb-[267px] ">
                   <div className="h-[1341px] w-[395px] relative bg-gainsboro-100 hidden max-w-full" />
                   <h1 className="m-0 relative text-inherit font-normal font-inherit inline-block min-w-[70px] z-[1] mq825:text-21xl mq450:text-11xl">
                     AD
@@ -252,39 +252,60 @@ const Description = () => {
               </div>
             </div>
             {/* <ToggleParent /> */}
-           
+
           </section>
           <Swiper
-                    breakpoints={{
-                      340: {
-                        slidesPerView: 2,
-                        spaceBetween: 15,
-                      },
-                      700: {
-                        slidesPerView: 3,
-                        spaceBetween: 15,
-                      },
-                    }}
-                    freeMode={true}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    modules={[FreeMode, Pagination]}
-                    className="w-[80%] h-[60%] flex flex-row justify-start mb-[50px]"
-                  >
-                  <div className="grid grid-cols-5 gap-2 ">
-                    {allProduct.map((item)=>(
-                      <SwiperSlide>
-                          <div className="mb-[45px]">
-                          <ProductCart {...{ item }}/>
-                          </div>
-                          
-                     </SwiperSlide>
-                    
-                    ))}
-                    </div>
-                  </Swiper>
-          
+            breakpoints={{
+              340: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+              },
+              700: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+            }}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[FreeMode, Pagination]}
+            className="w-[95%] h-[60%] flex flex-row justify-start mb-[50px]"
+          >
+            <div className="grid grid-cols-5 gap-2 ">
+              {allProduct.map((item) => (
+                <SwiperSlide>
+                  <div className="mb-[45px]">
+                    <ProductCart {...{ item }} />
+                  </div>
+
+                </SwiperSlide>
+
+              ))}
+            </div>
+          </Swiper>
+
+          <div className="sm:hidden container mx-auto  rounded-xl bg-white-A700 shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start pt-5 px-2 pb-2.5 gap-[25px] max-w-[95%] border-[1.5px] border-solid border-gray-100">
+            <div className="flex items-center justify-center box-border w-[100%]">
+              <h4 className="m-0 text-[1.3rem] :text-[1.1rem]  font-extralight lg:text-[20px]  relative  font-inherit flex items-center justify-center whitespace-nowrap z-[1] text-[27px] text-black-900_87">
+                For more details
+              </h4>
+            </div>
+
+            <div className="self-stretch flex flex-col items-start justify-start gap-[10px] max-w-full">
+              <RangeSliderParent
+                vuesaxboldsms="/vuesaxboldsms.svg"
+                enquireNow="Enquire Now"
+                className="text-[18px] "
+              />
+              <RangeSliderParent
+                vuesaxboldsms="/vuesaxboldcall.svg"
+                enquireNow="Contact Us"
+                className="text-[18px]"
+              />
+            </div>
+          </div>
+
         </main>
 
       </div>
