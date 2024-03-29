@@ -38,13 +38,13 @@ export default function PostSubCategory() {
         <div className="flex flex-col items-start justify-start">
           <Text
             as="p"
-            className="text-start z-[1] mt-[70px] w-[100%] text-[44px]  font-medium !text-black-900_03 sm:text-center  sm:text-[28px] mq450:text-center mq450:text-[28px]"
+            className="text-start z-[1] mt-[70px] w-[100%] text-[44px] font-medium !text-black-900_03  sm:text-center sm:text-[28px] md:text-left  lg:text-left mq450:text-center mq450:text-[28px]"
           >
             Select SubCategory of {category}
           </Text>
           <Text
             as="p"
-            className="text-start z-[1] mt-3 w-[100%] text-[20px] leading-[35px] !text-black-900_87 opacity-0.8 sm:text-center sm:text-[14px] mq450:text-center mq450:text-[14px]"
+            className="text-start z-[1] mt-3 w-[60%] text-[20px] leading-[35px] !text-black-900_87 opacity-0.8 sm:text-center sm:text-[14px] md:text-left lg:text-left mq450:text-center mq450:text-[14px]"
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -52,7 +52,7 @@ export default function PostSubCategory() {
             Lorem Ipsum 
           </Text>
           <div className="">
-            <div className="mt-6 grid w-full grid-cols-4 gap-4 sm:grid-cols-2 mq1125:grid-cols-3 mq1050:grid-cols-2 mq750:grid-cols-2 mq450:grid-cols-2">
+            <div className="mt-6 grid w-full grid-cols-4 gap-4 sm:grid-cols-2 md:grid-cols-4 mq750:grid-cols-2 mq450:grid-cols-2">
               <div
                 onClick={() => handleSelect("computers")}
                 className={`flex h-[230px] w-[100%] flex-col items-center justify-start gap-2.5  border border-solid p-5 p-[11px] ${selected == "electric" ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} rounded-[20px] bg-white-A700 shadow-sm`}
@@ -122,12 +122,12 @@ export default function PostSubCategory() {
             </div>
           </div>
         </div>
-        <div className="mt-9 min-h-screen  w-full">
-          <div className="mq800: text-white box-border flex w-[80%] max-w-full flex-row justify-center py-9 py-0 px-5  text-11xl sm:w-[100%] sm:flex-col mq1050:w-[100%] mq1050:items-center mq450:flex-col">
-            <div className="flex w-full max-w-full  flex-row items-center justify-between gap-5 mq1050:justify-between">
+        <div className="mt-9 min-h-screen  w-[60%]">
+          <div className="mq800: text-white box-border flex w-[80%] max-w-full flex-row justify-center py-9 px-5  text-11xl sm:w-[100%] sm:flex-col md:items-center mq1050:w-[100%] ">
+            <div className="flex w-full max-w-full flex-row items-center justify-between gap-5 mq1050:justify-between">
               <div
                 onClick={handlePrev}
-                className="z-[2] box-border flex w-[30%] cursor-pointer  flex-row   items-center justify-center rounded-xl bg-[#D3D3D3] pt-[23px] pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] sm:w-[%] mq1050:w-[30%]  mq750:w-[30%]"
+                className="z-[2] box-border flex h-[70px] w-[30%]  cursor-pointer   flex-row items-center justify-center rounded-xl bg-[#D3D3D3] pt-[23px] pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] sm:w-[%] mq1050:w-[30%]  mq750:w-[30%]"
               >
                 <div className="relative z-[3] mr-[7px] text-center text-white-A700 mq1050:text-3xl mq750:text-sm mq450:text-sm">
                   Previous

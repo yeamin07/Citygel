@@ -33,7 +33,7 @@ export default function PostCategories() {
         <div className="flex  flex-col items-start justify-start">
           <Text
             as="p"
-            className="text-start z-[1] mt-[70px] w-[100%] text-[44px]  font-medium !text-black-900_03 sm:text-center  sm:text-[28px] mq450:text-center mq450:text-[28px]"
+            className="z-[1] mt-[70px] w-[100%] text-left text-[44px]  font-medium !text-black-900_03  sm:text-center sm:text-[28px] md:text-left lg:text-left mq450:text-[28px]"
           >
             Select Category
           </Text>
@@ -42,7 +42,7 @@ export default function PostCategories() {
             className="text-start z-[1] mt-3 w-[100%] text-[20px] leading-[35px] !text-black-900_87 opacity-0.8 sm:text-center sm:text-[14px] mq1500:w-[100%] mq450:text-center mq450:text-[14px]"
           ></Text>
           <div>
-            <div className="mt-6 grid w-full grid-cols-4 gap-4 sm:grid-cols-2 mq1125:grid-cols-3 mq1050:grid-cols-2 mq750:grid-cols-2 mq450:grid-cols-2">
+            <div className="mt-6 grid w-full grid-cols-4 gap-4 sm:grid-cols-4 mq1125:grid-cols-3 mq1050:grid-cols-2 mq750:grid-cols-2 mq450:grid-cols-2">
               <div
                 onClick={() => handleSelect("electric")}
                 className={`flex h-[230px] w-[100%] flex-col items-center justify-start gap-2.5  border border-solid p-5 p-[11px] ${selected == "electric" ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} rounded-[20px] bg-white-A700 shadow-sm`}
