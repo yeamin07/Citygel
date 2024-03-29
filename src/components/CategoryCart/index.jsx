@@ -6,11 +6,11 @@ export const Categorycart = (props) => {
   return (
     <div
       onClick={() => navigate("/products")}
-      className="gray_50_02_red_A400_border flex h-[200px]   flex-col items-center  justify-center sm:h-[100px] sm:w-[100px] mq1500:w-[170px] mq1050:h-[140px] mq1050:w-[120px] mq800:h-[143px] mq800:w-[157px] mq450:h-[143px] mq450:w-[157px]"
+      className="gray_50_02_red_A400_border border flex flex-col items-center justify-center h-[9.5rem] "
     >
       <img
         src={props.image}
-        className="h-[74px] w-[74px] sm:h-[50%] sm:w-[50%] mq1050:h-[54px] mq800:h-[34px] mq800:w-[34px]"
+        className=" w-[56px] h-[56px]"
       />
       <p className="mt-3 font-poppins font-normal">{props.text}</p>
     </div>
@@ -19,7 +19,7 @@ export const Categorycart = (props) => {
 
 export const BigCart = (props) => {
   return (
-    <div className="solid flex h-[230px] w-[280px] flex-col items-center justify-center border-2 border-slate-100 mq1500:shadow-md  mq1050:h-[190px] mq1050:w-[220px] mq800:h-[140px]  mq800:w-[180px] mq450:h-[94px] mq450:w-[160px] mq450:rounded-md ">
+    <div className="solid flex bg-[#ffffff] w-full py-10 flex-col items-center justify-center border-2 border-slate-100 rounded-[17px] mb-2">
       <img
         src={props.image}
         className="h-[74px] w-[74px] mq450:h-[26px] mq450:w-[26px]"
@@ -31,8 +31,8 @@ export const BigCart = (props) => {
 
 export const SmallCart = (props) => {
   return (
-    <div className="solid mb-2  flex h-[100px] w-[280px] place-content-between items-center rounded-md border-2 border-slate-100  px-2 mq1500:shadow-md mq1050:w-[220px] mq800:h-[60px] mq800:w-[180px]">
-      <p>{props.text}</p>
+    <div className="solid mb-2  flex bg-[#ffffff] py-6 place-content-between items-center rounded-md border-2 border-slate-100  px-4 ">
+      <p className="sm:text-xl opacity-70">{props.text}</p>
       <img src={props.image} alt="" />
     </div>
   );
@@ -49,7 +49,7 @@ export const SmallCartMobile = (props) => {
 export const Buttons = () => {
   return (
     <button
-      className="border-1 flex h-[90px] h-[80px]  w-[280px] items-center justify-center rounded-[15px]  
+      className="border-1 flex  h-[80px]  w-full items-center justify-center rounded-[15px]  
             text-lg text-white-A700 mq1050:h-[80px]
             mq1050:w-[220px] mq800:h-[60px] mq800:w-[180px] mq450:h-[45px] mq450:w-[160px]"
       style={{
@@ -64,15 +64,15 @@ export const Buttons = () => {
 
 export const Cart4 = (props) => {
   return (
-    <div className="gray_50_02_red_A400_border flex h-[25vh] w-[25%] flex-col items-center justify-center mq1500:h-[230px] mq1500:w-[280px] mq1050:h-[170px] mq1050:w-[230px] mq450:h-[188px] mq450:w-[256px]">
+    <div className="gray_50_02_red_A400_border2 flex h-[25vh] flex-col items-center justify-center text-center">
       <h1
-        className="font-poppins text-[130%] font-medium"
+        className="font-poppins 2xl:text-[25px] text-[22px] font-medium"
         style={{ overflowWrap: "break-word" }}
       >
         {props.h}
       </h1>
       <p
-        className="pt-5 pl-7 font-poppins text-[90%] font-normal opacity-50"
+        className="pt-5  font-poppins 2xl:px-5 px-3 text-center font-normal opacity-70"
         style={{ overflowWrap: "break-word" }}
       >
         {props.p}
