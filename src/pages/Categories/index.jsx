@@ -37,7 +37,7 @@ const Category = () => {
         />
         <img
           src={sittingman}
-          className=" absolute 2xl:right-32 sm:right-14 left-[20vw] xl:top-48 top-32  xl:h-[660px] sm:h-[420px] h-[320px] xl:w-[720px] sm:w-[520px] "
+          className=" absolute 2xl:right-32 sm:right-14 right-[20vw]  xl:top-48 top-32  xl:h-[660px] sm:h-[420px] h-[320px] xl:w-[720px] sm:w-[520px] "
         />
       </div>
 
