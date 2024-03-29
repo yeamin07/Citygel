@@ -22,6 +22,8 @@ const Products = () => {
   const [priceRange, setPriceRange] = useState([0, 50]);
   const [selectedCity, setSelectedCity] = useState("");
   const [loading, setLoading] = useState(false);
+
+
   const getAllProduct = async () => {
     setLoading(true);
     const product = await axios.get(
@@ -35,6 +37,8 @@ const Products = () => {
   useEffect(() => {
     getAllProduct();
   }, []);
+
+  
   const handleSubCategoryChange = (event) => {
     const { value, checked } = event.target;
 
@@ -276,7 +280,7 @@ const Products = () => {
               </div>
             )}
 
-            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3 mq1500:grid-cols-2 gap-3 flex-wrap mq800:w-[100%] md:grid-cols-2  mq750:grid-cols-2 mq450:grid-cols-2">
+            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3  gap-3 flex-wrap mq800:w-[100%]  mq750:grid-cols-2 mq450:grid-cols-2">
               {/* components */}
               <Product allProduct={allProduct} loading={loading} />
             </div>

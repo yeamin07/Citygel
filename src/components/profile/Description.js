@@ -3,16 +3,86 @@ import RangeSliderParent from "./RangeSliderParent";
 import ToggleParent from "./ToggleParent";
 import Header1 from "components/Header1";
 import CitygelLogo from "../Footer/CitygelLogo";
+import ProductCart from "pages/Products/ProductCart";
+import Product from "pages/Products/Product";
+import { useState, useEffect } from "react";
+import useAxios from "config/api/useAxios";
+import Loading from "components/Loading/Loading";
+import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react"
+import { FreeMode, Pagination } from "swiper/modules"
+
+import "swiper/css"
+import "swiper/css/pagination"
+import "swiper/css/free-mode"
 
 const Description = () => {
+  const [loading, setLoading] = useState(false);
+  const [allProduct, setAllProduct] = useState([]);
+  const api = useAxios();
+
+  {/**/ }
+
+  const getAllProduct = async () => {
+    setLoading(true);
+    const product = await axios.get(
+      "https://citygel-backend.onrender.com/api/v1/ads",
+    );
+    if (product.data) {
+      setLoading(false);
+      setAllProduct(product.data.data);
+    }
+  };
+  useEffect(() => {
+    getAllProduct();
+  }, []);
+
+  const fetchData = (category, subcategories, priceRange, city) => {
+    // Construct the query parameters
+    let queryParams = [];
+    if (category) {
+      queryParams.push(`category=${category.join(",")}`);
+    }
+    if (subcategories.length > 0) {
+      queryParams.push(`subcategories=${subcategories.join(",")}`);
+    }
+    if (priceRange) {
+      queryParams.push(`minPrice=${priceRange[0]}`);
+      queryParams.push(`maxPrice=${priceRange[1]}`);
+    }
+    if (city) {
+      queryParams.push(`city=${city}`);
+    }
+
+    let apiUrl = "https://citygel-backend.onrender.com/api/v1/ads";
+    if (queryParams.length > 0) {
+      apiUrl += "?" + queryParams.join("&");
+    }
+    setLoading(true);
+    console.log(apiUrl);
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        // Handle the fetched data
+        console.log("Fetched data:", response.data);
+        setAllProduct(response.data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+
+
   return (
     <div>
-      <Header1 className="flex flex-col justify-center items-center w-full" />
-      <div className="w-full bg-gray-200 overflow-hidden flex flex-col items-end justify-start gap-[30px] tracking-[normal]">
+      <Header1 className="flex flex-col justify-center items-center w-full container mx-auto" />
+      <div className="w-full  overflow-hidden flex flex-col items-end justify-start gap-[30px] ">
         <main className="w-[1830px] flex flex-col items-start justify-start pt-0 pb-[30px] pr-0 pl-5 box-border gap-[60px] max-w-full mq825:gap-[30px_60px]">
           <section className="self-stretch flex flex-col items-start justify-start gap-[50px] max-w-full text-left text-25xl text-black-900_87 font-poppins mq825:gap-[25px_50px]">
-            <div className=" flex flex-row flex-wrap items-start justify-start py-0 pr-5 pl-0 box-border gap-[39.69999999999982px] max-w-full mq825:gap-[20px]">
-              <div className="flex-1 w-[80%] flex flex-col items-start justify-start gap-[30px] max-w-full lg:min-w-full">
+            <div className=" flex flex-row mq500:flex-col items-start justify-start py-0 pr-5 pl-0 box-border gap-[39.69999999999982px] max-w-full mq825:gap-[20px]">
+              <div className="flex-1 w-[80%] mq500:w-[100%] flex flex-col items-start justify-start gap-[30px] max-w-full lg:min-w-full">
                 <div className="self-stretch h-[760px] mq500:h-[420px] relative">
                   <img
                     className="relative rounded-[20px] w-[100%] h-[760px] mt-[20px] mq500:h-[400px] object-cover"
@@ -40,25 +110,25 @@ const Description = () => {
 
 
                       <button className=" text-[21px] mq500:text-[13px] rounded-3xs [background:linear-gradient(90deg,_#fcb100,_#ed893e)] flex flex-row items-start justify-start mq500:py-1.5 mq500:px-5 py-3 px-7 relative">
-                      Premium</button>
+                        Premium</button>
 
                     </div>
                   </div>
-                  <div className="self-stretch flex flex-row items-start justify-between max-w-full gap-[20px] mq825:flex-wrap">
-                    <div className="w-[375px] relative leading-[50px] font-semibold inline-block shrink-0 whitespace-nowrap max-w-full mq825:text-16xl mq825:leading-[40px] mq450:text-7xl mq450:leading-[30px]">
+                  <div className="self-stretch flex flex-row items-start justify-between max-w-full gap-[20px] mq750:gap-[10px] mq500:flex-wrap">
+                    <div className="w-[375px] mq750:w-[350px] mq450:w-[340px] relative leading-[50px] font-semibold inline-block shrink-0 whitespace-nowrap max-w-full mq450:text-[24px] mq750:text-[28px] mq825:text-16xl mq825:leading-[40px] mq450:leading-[30px]">
                       AED 980
                     </div>
                     <div className="flex flex-col items-start justify-start pt-[5px] px-0 pb-0 text-7xl text-gray-1100">
                       <div className="flex flex-row items-start justify-start gap-[13px]">
                         <div className="h-[35.2px] flex flex-col items-start justify-start pt-[3.899999999999636px] px-0 pb-0 box-border">
                           <img
-                            className="w-[31.3px] h-[31.3px] relative"
+                            className="w-[31.3px] mq500:w-[27px] mq500:h-[26px] h-[31.3px] relative"
                             loading="lazy"
                             alt=""
                             src="/vuesaxboldlocation.svg"
                           />
                         </div>
-                        <h3 className="m-0 relative text-inherit font-normal font-inherit mq450:text-2xl">
+                        <h3 className="m-0 relative text-inherit font-normal font-inherit mq750:text-[22px] mq500:text-[22px] mq350:text-[19px]">
                           City Name
                         </h3>
                       </div>
@@ -118,27 +188,62 @@ const Description = () => {
                   <h1 className="m-0 relative text-inherit leading-[50px] font-semibold font-inherit inline-block max-w-full mq825:text-16xl mq825:leading-[40px] mq450:text-7xl mq450:leading-[30px]">
                     Recommended Products:
                   </h1>
+
+
+
+                  {/* <Swiper
+                    breakpoints={{
+                      340: {
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                      },
+                      700: {
+                        slidesPerView: 3,
+                        spaceBetween: 15,
+                      },
+                    }}
+                    freeMode={true}
+                    pagination={{
+                      clickable: true,
+                    }}
+                    modules={[FreeMode, Pagination]}
+                    className="max-w-[90%]"
+                  >
+                    <SwiperSlide>
+                    <Product allProduct={allProduct} loading={loading}/>
+                    </SwiperSlide>
+                  </Swiper> */}
+
+
+
+
                 </div>
               </div>
-              <div className="w-[395px] w-[20%] mq500:w-[100%] mt-10 flex flex-col items-start justify-start gap-[44px] max-w-full text-center">
+              <div className=" w-[20%] hidden  mt-10 sm:flex flex-col items-start justify-start gap-[44px] max-w-full text-center">
+                {/*~~~~~~~~~~~For details section~~~~~~~~~~~~*/}
                 <div className="self-stretch rounded-xl bg-white-A700 shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start pt-5 px-2 pb-2.5 gap-[25px] max-w-full border-[1.5px] border-solid border-gray-100">
-                  <div className="flex items-center justify-center mq500:box-border w-[100%]">
-                    <h4 className="m-0 text-[28px] font-bold mq500:text-[28px]  relative text-inherit font-medium font-inherit flex items-center justify-center whitespace-nowrap z-[1] mq825:text-[27px] text-black-900_87">
+                  <div className="flex items-center justify-center sm:box-border w-[100%]">
+                    <h4 className="m-0 xl:text-[1.3rem] lg:text-[1.1rem]  font-extralight sm:text-[28px]  relative  font-inherit flex items-center justify-center whitespace-nowrap z-[1]  text-black-900_87">
                       For more details
                     </h4>
                   </div>
+
                   <div className="self-stretch flex flex-col items-start justify-start gap-[10px] max-w-full">
                     <RangeSliderParent
                       vuesaxboldsms="/vuesaxboldsms.svg"
                       enquireNow="Enquire Now"
+                      className=""
                     />
                     <RangeSliderParent
                       vuesaxboldsms="/vuesaxboldcall.svg"
                       enquireNow="Contact Us"
+                      className=""
                     />
                   </div>
                 </div>
-                <div className="self-stretch bg-gainsboro-100 flex flex-row items-start justify-center py-[633px] px-5 box-border max-w-full text-left text-31xl lg:pt-[411px] lg:pb-[411px] lg:box-border mq825:pt-[267px] mq825:pb-[267px] mq825:box-border mq500:hidden block">
+
+
+                <div className="hidden  self-stretch bg-gainsboro-100 sm:flex flex-row items-start justify-center py-[633px] px-5 box-border max-w-full text-left text-31xl lg:pt-[411px] lg:pb-[411px] lg:box-border sm:pt-[267px] sm:pb-[267px] ">
                   <div className="h-[1341px] w-[395px] relative bg-gainsboro-100 hidden max-w-full" />
                   <h1 className="m-0 relative text-inherit font-normal font-inherit inline-block min-w-[70px] z-[1] mq825:text-21xl mq450:text-11xl">
                     AD
@@ -146,49 +251,62 @@ const Description = () => {
                 </div>
               </div>
             </div>
-            <ToggleParent />
+            {/* <ToggleParent /> */}
+
           </section>
-          <div className="w-[1701px] flex flex-row items-start justify-center py-0 px-5 box-border max-w-full">
-            <div className="h-6 flex flex-row items-start justify-start gap-[16px]">
-              <div className="h-3 flex flex-col items-start justify-start pt-3 px-0 pb-0 box-border">
-                <img
-                  className="w-[30px] h-0 relative object-contain"
-                  loading="lazy"
-                  alt=""
-                  src="/line-40.svg"
-                />
-              </div>
-              <img
-                className="h-6 w-[141px] relative"
-                loading="lazy"
-                alt=""
-                src="/group-1000003755.svg"
+          <Swiper
+            breakpoints={{
+              340: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+              },
+              700: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+              },
+            }}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[FreeMode, Pagination]}
+            className="w-[95%] h-[60%] flex flex-row justify-start mb-[50px]"
+          >
+            <div className="grid grid-cols-5 gap-2 ">
+              {allProduct.map((item) => (
+                <SwiperSlide>
+                  <div className="mb-[45px]">
+                    <ProductCart {...{ item }} />
+                  </div>
+
+                </SwiperSlide>
+
+              ))}
+            </div>
+          </Swiper>
+
+          <div className="sm:hidden container mx-auto  rounded-xl bg-white-A700 shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)] box-border flex flex-col items-start justify-start pt-5 px-2 pb-2.5 gap-[25px] max-w-[95%] border-[1.5px] border-solid border-gray-100">
+            <div className="flex items-center justify-center box-border w-[100%]">
+              <h4 className="m-0 text-[1.3rem] :text-[1.1rem]  font-extralight lg:text-[20px]  relative  font-inherit flex items-center justify-center whitespace-nowrap z-[1] text-[27px] text-black-900_87">
+                For more details
+              </h4>
+            </div>
+
+            <div className="self-stretch flex flex-col items-start justify-start gap-[10px] max-w-full">
+              <RangeSliderParent
+                vuesaxboldsms="/vuesaxboldsms.svg"
+                enquireNow="Enquire Now"
+                className="text-[18px] "
               />
-              <div className="h-3 flex flex-col items-start justify-start pt-3 px-0 pb-0 box-border">
-                <img
-                  className="w-[30px] h-[22.1px] relative"
-                  loading="lazy"
-                  alt=""
-                  src="/line-39.svg"
-                />
-              </div>
+              <RangeSliderParent
+                vuesaxboldsms="/vuesaxboldcall.svg"
+                enquireNow="Contact Us"
+                className="text-[18px]"
+              />
             </div>
           </div>
+
         </main>
-        {/* <footer className="self-stretch h-[307px] bg-whitesmoke-100 flex flex-col items-center justify-start py-[37px] px-5 box-border gap-[10px] max-w-full text-left text-xl text-gray-1200 font-poppins">
-          <div className="w-[1920px] h-[307px] relative bg-whitesmoke-100 hidden max-w-full" />
-          <img
-            className="w-[390px] h-[193px] relative object-cover max-w-full z-[1]"
-            loading="lazy"
-            alt=""
-            src="/citygel2@2x.png"
-          />
-          <div className="flex flex-row items-start justify-start py-0 pr-1.5 pl-2 box-border max-w-full">
-            <div className="relative z-[1] mq450:text-base">
-              ©CityGel.com 2024, All rights Reseved
-            </div>
-          </div>
-        </footer> */}
 
       </div>
       <CitygelLogo />
