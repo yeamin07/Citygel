@@ -1,5 +1,5 @@
 import React from "react";
-import { useRoutes } from "react-router-dom";
+import { Route, useRoutes } from "react-router-dom";
 import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import LoginThree from "pages/Login";
@@ -17,6 +17,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Profile from "components/profile/Profile";
 import Description from "components/profile/Description";
+import PageTitle from "components/Dashboard/PageTitle";
+import ECommerce from "pages/Dashboard";
+import Dashboard from "pages/Dashboard";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
@@ -87,6 +90,10 @@ const ProjectRoutes = () => {
     {
       path: "confirm",
       element: <Confirm />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
     },
   ]);
 
