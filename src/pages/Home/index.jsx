@@ -20,11 +20,11 @@ export default function HomePage() {
       <div className="flex w-full flex-row justify-center bg-gray-50">
         <div className="flex w-full flex-col items-center justify-start ">
 
-          <div className="absolute left-0  right-0 top-0 m-auto sm:h-[800px] w-full justify-center bg-teal-900 h-[600px] " />
+          <div className="absolute left-0  right-0 top-0 m-auto sm:h-[800px] w-full justify-center bg-teal-900 h-[500px] " />
           <Img
             src="images/img_shanghai_aerial_sunset_970x1920.png"
             alt="shanghaiaerial"
-            className="absolute left-0 right-0 top-0 m-auto sm:h-[800px] w-full justify-center   h-[600px] "
+            className="absolute left-0 right-0 top-0 m-auto sm:h-[800px] w-full justify-center   h-[500px] "
           />
           <img
             className="absolute  right-0 top-0 opacity-60"
@@ -38,7 +38,7 @@ export default function HomePage() {
           />
 
 
-          <div className="relative sm:!pt-[550px] !pt-[550px] w-full ">
+          <div className="relative sm:!pt-[550px] !pt-[480px] w-full ">
             <div className="absolute right-0 -top-8 m-auto flex w-full mx-auto flex-col items-center justify-start">
               <div className="z-[1] mt-40 flex w-full flex-col items-center justify-start ">
                 <Heading
@@ -59,11 +59,11 @@ export default function HomePage() {
                 >
                   Online Classified Website
                 </Text>
-                <div className=" sm:w-[68%] w-[95%] mx-auto">
+                <div className=" mx-auto container 2xl:px-60 xl:px-28 sm:px-20 px-5">
                   <Text
                     size="5xl"
                     as="p"
-                    className="mt-[25px] text-center !text-white-A700_99 opacity-0.7 md:text-[19px] sm:text-[16px]  text-[14px]"
+                    className="mt-[25px] text-center !text-white-A700_99 opacity-0.8 md:text-[19px] sm:text-[16px]  text-[14px]"
                   >
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
                   </Text>

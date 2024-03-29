@@ -53,19 +53,28 @@ input:focus {
 }
 
 .gray_50_02_red_A400_border {
+  background: linear-gradient(to top right, #ffffff, #ffffff),
+    linear-gradient(to bottom right, #FBFBFB, #F90E3A);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  border: 1.5px solid transparent;
+  box-shadow: 0 0 6px rgba(139, 139, 139, 0.5);
+  border-radius: 20px;
 
+}
+
+.gray_50_02_red_A400_border2 {
   background: linear-gradient(to top right, #ffffff, #ffffff),
     linear-gradient(to bottom right, #FBFBFB, #F90E3A);
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
   border: 3px solid transparent;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px rgba(139, 139, 139, 0.5);
   border-radius: 20px;
 
 }
 
 .product-border {
-
   background: linear-gradient(to top right, #ffffff, #ffffff),
     linear-gradient(to bottom right, #FBFBFB, #d16161a5);
   background-clip: padding-box, border-box;
@@ -77,15 +86,23 @@ input:focus {
 }
 
 .gray_50_02_red_A400_border:hover {
+  background: linear-gradient(to top right, #ffffff, #ffffff),
+    linear-gradient(to top left, #FBFBFB, #F90E3A);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  border: 1.5px solid transparent;
+  box-shadow: 0 0 6px rgba(139, 139, 139, 0.5);
+  cursor: pointer;
+}
 
+.gray_50_02_red_A400_border2:hover {
   background: linear-gradient(to top right, #ffffff, #ffffff),
     linear-gradient(to top left, #FBFBFB, #F90E3A);
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
   border: 3px solid transparent;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px rgba(139, 139, 139, 0.5);
   cursor: pointer;
-
 }
 
 .gray_50_02_red_A400_active {

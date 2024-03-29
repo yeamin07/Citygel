@@ -21,41 +21,41 @@ import CitygelLogo from "components/Footer/CitygelLogo";
 
 const Category = () => {
   return (
-    <div>
+    <div className="bg-[#FAFAFA]">
       <div className="relative z-[100]">
         <Header1 />{" "}
       </div>
 
-      <div className="mt-[-100px] flex h-auto overflow-hidden">
+      <div className="mt-[-90px] flex h-auto overflow-hidden">
         <img
           src={yellowcurve}
-          className="relative top-[100px] -z-10 w-1/5 flex-grow mq1500:top-[80px] mq1500:h-[1000px] mq800:h-[500px]"
+          className="relative top-[90px]  w-1/5 flex-grow "
         />
         <img
           src={bluecurve}
-          className="left-0 top-0 h-[540px] w-5/6 flex-grow-0 mq1500:h-[550px] mq1050:h-[490px] mq800:h-[390px]"
+          className="left-0 top-0 sm:h-[540px] h-[450px] w-5/6 flex-grow-0 "
         />
         <img
           src={sittingman}
-          className="mq800:top-70 absolute right-20 top-48 mt-[] h-[660px] w-[720px] mq1500:mt-[10%] mq1500:h-[450px] mq1500:w-[500px] mq1050:mt-[10%] mq1050:h-[410px] mq1050:w-[450px] mq800:right-0 mq800:mt-[3%] mq800:h-[290px] mq800:w-[320px] mq500:top-20"
+          className=" absolute 2xl:right-32 sm:right-14 left-[20vw] xl:top-48 top-32  xl:h-[660px] sm:h-[420px] h-[320px] xl:w-[720px] sm:w-[520px] "
         />
       </div>
 
-      <div className="absolute top-[300px] z-[999] w-[100%] sm:relative sm:w-[100%] mq1125:relative mq1050:relative  mq1050:top-[0px]    mq1050:mt-[-200px] mq800:w-[100%] mq750:mt-[-80px] ">
-        <div className="ml-11 font-bold ">
-          <p className="w-[60%] text-[70px]  sm:text-[60px] mq1325:text-[50px] mq1050:text-[45px] mq825:w-[200px] mq800:w-[100%] mq800:text-[25px]">
+      <div className="container mx-auto relative  lg:-mt-[30%] mt-10 px-5 text-center lg:text-left">
+        <div className=" font-bold ">
+          <p className="lg:w-[60%] md:text-[70px] text-[35px] sm:text-[55px] ">
             Find Anything
             <br />
             Around You
           </p>
         </div>
-        <div className="ml-11 w-[60%] font-poppins text-sm font-normal opacity-50 ">
+        <div className=" xl:w-[35%] lg:w-[45%] font-poppins text-[15px] font-normal opacity-70 ">
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy.
           </p>
         </div>
-        <div className="mx-auto mt-8 ml-11 grid w-[60%] grid-cols-4 gap-y-5 gap-x-5 sm:grid-cols-2 mq1500:gap-x-0  mq1050:gap-2 mq800:grid-cols-2 mq750:ml-2 mq750:w-[100%] mq450:grid-cols-2">
+        <div className=" mt-8  2xl:w-[40%] xl:w-[50%] lg:w-[70%] grid sm:grid-cols-4 gap-y-5 gap-x-5 grid-cols-2 ">
           <Categorycart image={properties} text="Properties" />
           <Categorycart image={motor} text="Motor" />
           <Categorycart image={electronics} text="Electronics" />
@@ -65,58 +65,14 @@ const Category = () => {
           <Categorycart image={services} text="Category 7" />
           <Categorycart image={services} text="Category 8" />
         </div>
-        <div className="mt-5 mt-11 ml-14 flex h-[81px]  mq450:h-[27px] mq450:items-center mq450:justify-center mq450:pl-0">
-          <div className="font-poppins text-[56px] font-medium mq1050:text-9xl mq450:text-lg">
+        <div className=" sm:mt-11 my-16 text-center sm:text-left">
+          <p className="font-poppins sm:text-[39px] text-[25px] ">
             Browse By SubCategories:
-          </div>
+          </p>
         </div>
-        <div className="mt-5 hidden shrink grid-cols-2 place-items-center gap-y-2 mq1050:grid">
-          <BigCart text="Properties" image={properties} />
-          <BigCart text="Motor" image={motor} />
-          <SmallCartMobile text="Apartment" />
-          <SmallCartMobile text="Cars" />
-          <SmallCartMobile text="Flats" />
-          <SmallCartMobile text="Export Cars" />
-          <SmallCartMobile text="House & Villas" />
-          <SmallCartMobile text="Motorcycles" />
-          <Buttons />
-          <Buttons />
 
-          <BigCart text="Electronics" image={electronics} />
-          <BigCart text="Furniture" image={furniture} />
-          <SmallCartMobile text="Electronics" />
-          <SmallCartMobile text="Hospitality" />
-          <SmallCartMobile text="Furniture" />
-          <SmallCartMobile text="Travel & Tourism" />
-          <SmallCartMobile text="Fashion" />
-          <SmallCartMobile text="Government" />
-          <Buttons />
-          <Buttons />
-
-          <BigCart text="Services" image={services} />
-          <BigCart text="Jobs" image={jobs} />
-          <SmallCartMobile text="Hospitality" />
-          <SmallCartMobile text="Cars" />
-          <SmallCartMobile text="Travel & Tourism" />
-          <SmallCartMobile text="Export Cars" />
-          <SmallCartMobile text="Government" />
-          <SmallCartMobile text="Motorcycles" />
-          <Buttons />
-          <Buttons />
-
-          <BigCart text="Category 7" image={services} />
-          <BigCart text="Category 7" image={services} />
-          <SmallCartMobile text="Sub category 1" />
-          <SmallCartMobile text="Sub category 1" />
-          <SmallCartMobile text="Sub category 1" />
-          <SmallCartMobile text="Sub category 1" />
-          <SmallCartMobile text="Sub category 1" />
-          <SmallCartMobile text="Sub category 1" />
-          <Buttons />
-          <Buttons />
-        </div>
-        <div className="mx-auto flex w-[90%] items-center justify-center">
-          <div className=" grid w-full grid-cols-4 gap-12 gap-y-1  mq1050:hidden">
+        <div className="mx-auto flex  items-center justify-center">
+          <div className=" grid w-full xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-12 gap-y-12  ">
             <div>
               <BigCart text="Properties" image={properties} />
               <SmallCart image={five} text="Apartment" />
@@ -145,76 +101,101 @@ const Category = () => {
               <SmallCart image={five} text="Home Decor & ga..." />
               <Buttons />
             </div>
+            <div>
+              <BigCart text="Services" image={services} />
+              <SmallCart image={five} text="Electronics & Repair" />
+              <SmallCart image={five} text="Health & beauty" />
+              <SmallCart image={five} text="Renovation & re..." />
+              <Buttons />
+            </div>
+            <div>
+              <BigCart text="Jobs" image={jobs} />
+              <SmallCart image={five} text="Hospitality" />
+              <SmallCart image={five} text="Travel & Tourism" />
+              <SmallCart image={five} text="Government" />
+              <Buttons />
+            </div>
 
-            <BigCart text="Services" image={services} />
-            <BigCart text="Jobs" image={jobs} />
-            <BigCart text="Category 7" image={services} />
-            <BigCart text="Category 8" image={services} />
-            <SmallCart image={five} text="Electronics & Repair" />
-            <SmallCart image={five} text="Hospitality" />
-            <SmallCart image={five} text="SubCategory 1" />
-            <SmallCart image={five} text="SubCategory 1" />
-            <SmallCart image={five} text="Health & beauty" />
-            <SmallCart image={five} text="Travel & Tourism" />
-            <SmallCart image={five} text="SubCategory 2" />
-            <SmallCart image={five} text="SubCategory 2" />
-            <SmallCart image={five} text="Renovation & re..." />
-            <SmallCart image={five} text="Government" />
-            <SmallCart image={five} text="SubCategory 3" />
-            <SmallCart image={five} text="SubCategory 3" />
-            <Buttons />
-            <Buttons />
-            <Buttons />
-            <Buttons />
+            <div>
+              <BigCart text="Category 7" image={services} />
+              <SmallCart image={five} text="SubCategory 1" />
+              <SmallCart image={five} text="SubCategory 2" />
+              <SmallCart image={five} text="SubCategory 3" />
+              <Buttons />
+            </div>
+
+            <div>
+              <BigCart text="Category 8" image={services} />
+              <SmallCart image={five} text="SubCategory 1" />
+              <SmallCart image={five} text="SubCategory 2" />
+              <SmallCart image={five} text="SubCategory 3" />
+              <Buttons />
+            </div>
           </div>
         </div>
+
+        {/* End category */}
+
         <div className="mt-24 flex w-full  flex-col items-center justify-center">
-          <p className=" font-poppins text-[50px] font-bold mq750:text-[36px]">
+          <p className=" font-poppins sm:text-[60px] text-[40px] font-bold ">
             How it Works
           </p>
-          <p className="font-poppins font-semibold mq1500:text-[36px] mq1050:text-[25px] mq800:text-[20px] mq450:text-[16px] mq450:font-medium">
+          <p className="font-poppins font-medium sm:text-[32px] text-[20px]">
             Can help you make smart choice
           </p>
-          <p className="mt-3 text-center font-poppins text-[16px] opacity-50 mq800:p-1 mq800:text-[13px] mq450:px-2 mq450:text-[9px] mq450:font-normal">
+          <p className="mt-3 text-center font-poppins sm:text-[18px] opacity-50 lg:w-[43%] mx-auto">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy.
           </p>
         </div>
-        <div className="relative mt-10 flex flex-row flex-wrap items-center justify-center gap-8 mq750:flex-col">
+        <div className="relative my-10  flex lg:flex-row flex-col items-center justify-center xl:gap-7 lg:gap-3 gap-7 2xl:px-20">
           <Cart4
             h="Search for services"
             p="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
           />
-          <img src="images/line.png" className="mq750:hidden" alt="" />
+          <img src="images/line.png" className="xl:w-auto w-16 lg:block hidden" alt="" />
           <Cart4
             h="Get your deal"
             p="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
           />
-          <img src="images/line.png" className="mq750:hidden" alt="" />
+          <img src="images/line.png" className="xl:w-auto w-16 lg:block hidden" alt="" />
           <Cart4
             h="Enjoy the service"
             p="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
           />
         </div>
-        <div className=" relative mt-8 flex flex-col">
-          <img src={blueimg2} className="mq800:h-[200px] mq800:w-full" />
-          <div className="absolute left-11 mq1500:mt-[10%] mq1500:w-[50%] mq750:left-0 mq750:mt-56 mq750:w-full ">
-            <p className=" mt-8 text-[44px] font-semibold mq1500:mt-4 mq1050:text-[38px] mq800:text-center mq800:text-[24px] mq750:w-full">
-              Lorem ispum is simply <br></br> dummy text
+      </div>
+
+      <div className=" w-full relative bg-[#fff] py-5 mt-16">
+        <img src={blueimg2} className="lg:h-[93%] w-full lg:w-auto absolute top-0 right-0 z-[2]" />
+        <div className="container mx-auto px-5 z-[5] relative py-6">
+          <div className="flex  justify-center lg:hidden">
+            <img
+              src={sittingman}
+              className=" sm:h-96 h-72"
+            />
+          </div>
+
+          <div className=" 2xl:w-1/2 lg:w-[65%] w-full text-center lg:text-left">
+            <p className=" sm:text-[44px] text-[32px] font-semibold lg:pr-20 sm:leading-[3.5rem]">
+              Lorem ispum is simply dummy text
             </p>
-            <p className="w-[70%] py-[2%] font-poppins text-[24px] font-normal opacity-50 mq1050:text-[15px] mq800:w-[100%] mq800:text-center mq800:text-[14px]">
+            <p className=" py-[2%] font-poppins sm:text-[22px] text-sm font-normal opacity-50 mb-5">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy.
             </p>
-            <div className="mq800:flex mq800:justify-center">
+            <div className="w-60 mx-auto lg:mx-0">
               <Buttons />
             </div>
           </div>
         </div>
-        <div className="mt-96 mq1325:mt-96">
-          <CitygelLogo />{" "}
-        </div>
       </div>
+
+      <div className="mt-36 ">
+        <CitygelLogo />{" "}
+      </div>
+
+
     </div>
   );
 };
