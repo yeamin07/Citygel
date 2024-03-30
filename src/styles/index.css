@@ -76,10 +76,10 @@ input:focus {
 
 .product-border {
   background: linear-gradient(to top right, #ffffff, #ffffff),
-    linear-gradient(to bottom right, #FBFBFB, #d16161a5);
+    linear-gradient(to bottom right, #FBFBFB, #f90e39c9);
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.205);
   border-radius: 20px;
 

@@ -141,13 +141,13 @@ const Products = () => {
       </Helmet>
       <Header1 />
 
-      <div className="bg-[rgba(250, 250, 250, 1)] mx-auto min-h-screen w-[95%]">
+      <div className="bg-[rgba(250, 250, 250, 1)] mx-auto min-h-screen container px-5">
         <div className="mx-auto mt-10 flex h-[345px] w-[100%]  justify-center bg-gray-200">
           <p className="pt-[12%] text-xl">AD</p>
         </div>
 
-        <div className="mx-auto flex w-[100%] flex-row gap-5  mq800:flex-col">
-          <div className="mx-auto w-[76%] mq800:w-[100%] ">
+        <div className="flex w-full lg:flex-row flex-col gap-5">
+          <div className=" lg:w-[76%]  ">
             <div className="mt-16 flex w-auto flex-row">
               <DropdownButton text="Sort Default" />
               {/*This is Filter by section */}
@@ -276,13 +276,13 @@ const Products = () => {
               </div>
             )}
 
-            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3 mq1500:grid-cols-2 gap-3 flex-wrap mq800:w-[100%] md:grid-cols-2  mq750:grid-cols-2 mq450:grid-cols-2">
+            <div className="mt-16 grid lg:w-[95%] w-full xl:grid-cols-3  gap-3 flex-wrap  sm:grid-cols-2 grid-cols-1 ">
               {/* components */}
               <Product allProduct={allProduct} loading={loading} />
             </div>
           </div>
 
-          <div className="mx-auto mt-20 flex h-[1200] mq800:h-[200px] mq800:w-[100%] w-[20%] items-center justify-center bg-gray-200 sm:h-[110px] sm:w-[100%] mq750:h-[110px] mq750:w-[100%]">
+          <div className="mt-20 flex sm:h-[1200px]  lg:w-[20%] items-center justify-center bg-gray-200 h-[110px]  ">
             AD
           </div>
         </div>
