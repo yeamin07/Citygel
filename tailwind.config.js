@@ -213,6 +213,9 @@ module.exports = {
     },
 
     screens: {
+      // smx: { min: "100px", max: "767px" },
+      // mdx: { min: "768px", max: "1023px" },
+      // lgx: { min: "1024px", max: "1279px" },
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 

@@ -143,13 +143,14 @@ const Products = () => {
       </Helmet>
       <Header1 />
 
-      <div className="bg-[rgba(250, 250, 250, 1)] container mx-auto min-h-screen">
-        <div className="mx-auto mt-10 flex h-[345px] w-[100%]  justify-center bg-gray-200">
+     <div className="">
+     <div className="bg-[rgba(250, 250, 250, 1)]  min-h-screen container mx-auto">
+        <div className="mx-auto mt-10 flex h-[345px] sm:w-[100%]  justify-center bg-gray-200">
           <p className="pt-[12%] text-xl">AD</p>
         </div>
 
-        <div className="flex w-[100%] flex-row justify-between gap-5 mq800:flex-col">
-          <div className="xl:w-[100%] mx-auto lg:w-[100%] mq800:w-[100%] ">
+        <div className="mx-auto flex w-[100%] flex-row gap-5  mq800:flex-col">
+          <div className="mx-auto w-[76%] mq800:w-[100%] ">
             <div className="mt-16 flex w-auto flex-row">
               <DropdownButton text="Sort Default" />
               {/*This is Filter by section */}
@@ -167,7 +168,7 @@ const Products = () => {
 
             {/*This is Filter Default section*/}
             {filter && (
-              <div className=" mx-auto mt-5 w-[100%] sm:w-[100%] mq750:w-[100%] ">
+              <div className=" mx-auto mt-5 w-[100%] smx:w-[100%] mq750:w-[100%] ">
                 <div className="mr-4 flex h-[60px] w-[100%] flex-row space-x-2 rounded-t-[27px] border border-b-0 border-solid border-gray-300 pt-3">
                   <img
                     src={arrow}
@@ -278,17 +279,18 @@ const Products = () => {
               </div>
             )}
 
-            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3  flex-wrap gap-3 mq800:w-[100%]  mq750:grid-cols-2 mq450:grid-cols-2">
+            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3  gap-3 flex-wrap mq800:w-[100%]  mq750:grid-cols-2 mq450:grid-cols-2">
               {/* components */}
               <Product allProduct={allProduct} loading={loading} />
             </div>
           </div>
 
-          <div className="mx-auto mt-20 flex h-[1200] items-center justify-center bg-gray-200 sm:h-[110px] sm:w-[100%] md:w-[100%] lg:h-screen  lg:w-[10%]">
+          <div className="mx-auto mt-20 flex h-[1200] mq800:h-[200px] mq800:w-[100%] w-[20%] items-center justify-center bg-gray-200 smx:h-[110px] smx:w-[100%] mq750:h-[110px] mq750:w-[100%]">
             AD
           </div>
         </div>
       </div>
+     </div>
 
       <CitygelLogo />
     </div>
