@@ -40,20 +40,6 @@ const Profile = () => {
             <ConditionChecker />
           </div>
         </section>
-        <section className="text-gray-1200 box-border flex h-[307px] max-w-full flex-col items-center justify-start gap-[10px] self-stretch bg-whitesmoke-100 py-[37px] px-5 text-left font-poppins text-xl">
-          <div className="relative hidden h-[307px] w-full max-w-full bg-whitesmoke-100" />
-          <img
-            className="relative z-[1] h-[193px] w-[390px] max-w-full object-cover"
-            loading="lazy"
-            alt=""
-            src="/citygel2@2x.png"
-          />
-          <div className="box-border flex max-w-full flex-row items-start justify-start py-0 pr-1.5 pl-2">
-            <div className="relative z-[1] mq450:text-base">
-              ©CityGel.com 2024, All rights Reseved
-            </div>
-          </div>
-        </section>
       </div>
       <CitygelLogo />
     </div>

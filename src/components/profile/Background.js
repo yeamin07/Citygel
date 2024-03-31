@@ -3,7 +3,7 @@ import OctalTree from "./OctalTree";
 const Background = () => {
  const [Number,setNumber] = useState(0)
   return (
-    <div className="bg-white text-black w-full   rounded-11xl   pt-3  text-9xl">
+    <div className="bg-white text-black w-full  pt-3  text-9xl">
       <div className=" relative h-60 w-full  bg-sky-700 p-10">
         <div className="mx-5 flex items-center  justify-around  rounded-md bg-white-A700 p-4 font-bold text-white-A700">
           {[1, 3, 5, 6].map((item, index) => (
