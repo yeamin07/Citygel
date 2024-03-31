@@ -60,7 +60,7 @@ const AddPostWrapper = () => {
   return (
     <div className="overflow-hidden">
       <div className="">
-        <header className=" absolute z-30 flex h-[100px] w-full justify-between overflow-hidden bg-gradient-to-r from-[rgb(16,56,76)] to-[rgb(21,60,77)] mq800:h-[80px]">
+        <header className="container  absolute z-30 mx-auto flex h-[100px] justify-between overflow-hidden bg-gradient-to-r from-[rgb(16,56,76)] to-[rgb(21,60,77)] mq800:h-[80px]">
           <div
             className="mq550:justify-between mq550:flex-grow mx-7 flex
           
@@ -161,7 +161,7 @@ const AddPostWrapper = () => {
           />
         </div>
       </div>
-      <div className="absolute  top-[300px] z-[999] w-[60%] sm:relative sm:w-[100%] mq1125:relative mq800:relative  mq750:relative  mq750:mt-14 mq750:w-[100%]  mq450:relative   mq450:w-[100%]">
+      <div className="absolute  top-[300px] z-[999] w-[100%] sm:relative sm:w-[100%] sm:w-[100%] mq1125:relative  mq800:relative  mq750:relative mq750:mt-14  mq750:w-[100%]  mq450:relative">
         {/* {children} */}
         {currentStep === 1 && <PostCategories />}
         {currentStep === 2 && <PostSubCategory />}
