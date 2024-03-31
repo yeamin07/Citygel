@@ -82,7 +82,7 @@ export default function Header1({ bg = true }) {
 
   return (
     <header>
-      <div className={` pt-5 pb-1 md:block hidden !z-[10000] relative ${bg ? "bg-gradient-to-r from-[#003E4C] form-95% to-cyan-800 to-5%" : "bg-transparent"}`} >
+      <div className={` pt-5 pb-4 md:block hidden !z-[10000] relative ${bg ? "bg-gradient-to-r from-[#003E4C] form-95% to-cyan-800 to-5%" : "bg-transparent"}`} >
 
         <div className="flex justify-between flex-row mb-4  container mx-auto px-5">
           <Img

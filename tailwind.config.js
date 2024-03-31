@@ -181,40 +181,40 @@ module.exports = {
     //   sm: { min: "100px", max: "767px" },
     //   md: { min: "768px", max: "1023px" },
     //   lg: { min: "1024px", max: "1279px" },
-    //   mq1500: {
-    //     raw: "screen and (max-width: 1500px)",
-    //   },
-    //   mq1325: {
-    //     raw: "screen and (max-width: 1325px)",
-    //   },
-    //   mq1125: {
-    //     raw: "screen and (max-width: 1125px)",
-    //   },
-    //   mq1050: {
-    //     raw: "screen and (max-width: 1050px)",
-    //   },
-    //   mq825: {
-    //     raw: "screen and (max-width: 825px)",
-    //   },
-    //   mq800: {
-    //     raw: "screen and (max-width: 800px)",
-    //   },
-    //   mq750: {
-    //     raw: "screen and (max-width: 750px)",
-    //   },
-    //   mq500: {
-    //     raw: "screen and (max-width: 500px)",
-    //   },
-    //   mq450: {
-    //     raw: "screen and (max-width: 450px)",
-    //   },
-    //   mq400: {
-    //     raw: "screen and (max-width: 400px)",
-    //   },
-    //   mq350: {
-    //     raw: "screen and (max-width: 350px)",
-    //   },
-    // },
+      // mq1500: {
+      //   raw: "screen and (max-width: 1500px)",
+      // },
+      // mq1325: {
+      //   raw: "screen and (max-width: 1325px)",
+      // },
+      // mq1125: {
+      //   raw: "screen and (max-width: 1125px)",
+      // },
+      // mq1050: {
+      //   raw: "screen and (max-width: 1050px)",
+      // },
+      // mq825: {
+      //   raw: "screen and (max-width: 825px)",
+      // },
+      // mq800: {
+      //   raw: "screen and (max-width: 800px)",
+      // },
+      // mq750: {
+      //   raw: "screen and (max-width: 750px)",
+      // },
+      // mq500: {
+      //   raw: "screen and (max-width: 500px)",
+      // },
+      // mq450: {
+      //   raw: "screen and (max-width: 450px)",
+      // },
+      // mq400: {
+      //   raw: "screen and (max-width: 400px)",
+      // },
+      // mq350: {
+      //   raw: "screen and (max-width: 350px)",
+      //  },
+   // },
     // Other Tailwind CSS configurations...
   },
   plugins: [require("@tailwindcss/forms")],
