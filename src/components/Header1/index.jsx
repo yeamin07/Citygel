@@ -133,14 +133,14 @@ export default function Header1({ bg = true }) {
                 />
               </div>
 
-              <Dropdown
+              <Dropdown className="z-[100]"
                 menu={{
                   items,
                 }}
                 trigger={["click"]}
               >
                 <a onClick={(e) => e.preventDefault()}>
-                  <Space>
+                  <Space className="z-[100]">
                     <Text as="p" className="text-[18px] mq1050:text-[11px] ">
                       Change Location
                     </Text>

@@ -6,7 +6,7 @@ import { logo } from "assets/Allimages";
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
   const { pathname } = location;
-
+  console.log(pathname);
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
@@ -112,7 +112,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to="#"
-                        className={`text-bodydark1 hover:bg-graydark  group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium duration-300 ease-in-out ${
+                        className={`group relative  flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark ${
                           (pathname === "/" ||
                             pathname.includes("dashboard")) &&
                           "bg-graydark dark:bg-meta-4"
@@ -198,10 +198,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Calendar --> */}
               <li>
                 <NavLink
-                  to="/calendar"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("calendar") &&
-                    "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/all-ads"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("all-ads") && "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -217,7 +216,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       fill=""
                     />
                   </svg>
-                  Calendar
+                  All Ads
                 </NavLink>
               </li>
               {/* <!-- Menu Item Calendar --> */}
@@ -225,9 +224,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Profile --> */}
               <li>
                 <NavLink
-                  to="/profile"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("profile") && "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/all-user"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("all-user") &&
+                    "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -247,7 +247,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       fill=""
                     />
                   </svg>
-                  Profile
+                  All User
                 </NavLink>
               </li>
               {/* <!-- Menu Item Profile --> */}
@@ -263,7 +263,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to="#"
-                        className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                           (pathname === "/forms" ||
                             pathname.includes("forms")) &&
                           "bg-graydark dark:bg-meta-4"
@@ -332,24 +332,24 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                         <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                           <li>
                             <NavLink
-                              to="/forms/form-elements"
+                              to="/forms/add-field"
                               className={({ isActive }) =>
-                                "text-bodydark2 hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out " +
+                                "hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out " +
                                 (isActive && "!text-white")
                               }
                             >
-                              Form Elements
+                              Add Field
                             </NavLink>
                           </li>
                           <li>
                             <NavLink
-                              to="/forms/form-layout"
+                              to="/forms/delete-field"
                               className={({ isActive }) =>
-                                "text-bodydark2 hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out " +
+                                "hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out " +
                                 (isActive && "!text-white")
                               }
                             >
-                              Form Layout
+                              Delete Field
                             </NavLink>
                           </li>
                         </ul>
@@ -364,9 +364,21 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Tables --> */}
               <li>
                 <NavLink
-                  to="/tables"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("tables") && "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/add-post"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("add-post") &&
+                    "bg-graydark dark:bg-meta-4"
+                  }`}
+                >
+                  Add Post
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/category"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("category") &&
+                    "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -394,7 +406,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       </clipPath>
                     </defs>
                   </svg>
-                  Tables
+                  category
                 </NavLink>
               </li>
               {/* <!-- Menu Item Tables --> */}
@@ -402,9 +414,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Settings --> */}
               <li>
                 <NavLink
-                  to="/settings"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("settings") &&
+                  to="/dashboard/subcategory"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("subcategory") &&
                     "bg-graydark dark:bg-meta-4"
                   }`}
                 >
@@ -437,7 +449,29 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       </clipPath>
                     </defs>
                   </svg>
-                  Settings
+                  Subcategory
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/subcategory"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("subcategory") &&
+                    "bg-graydark dark:bg-meta-4"
+                  }`}
+                >
+                  State
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/subcategory"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("subcategory") &&
+                    "bg-graydark dark:bg-meta-4"
+                  }`}
+                >
+                  Country
                 </NavLink>
               </li>
               {/* <!-- Menu Item Settings --> */}
@@ -446,7 +480,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
           {/* <!-- Others Group --> */}
           <div>
-            <h3 className="text-bodydark2 mb-4 ml-4 text-sm font-semibold">
+            <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
               OTHERS
             </h3>
 
@@ -455,7 +489,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <li>
                 <NavLink
                   to="/chart"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                     pathname.includes("chart") && "bg-graydark dark:bg-meta-4"
                   }`}
                 >
@@ -502,7 +536,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to="#"
-                        className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium duration-300 ease-in-out ${
+                        className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                           (pathname === "/ui" || pathname.includes("ui")) &&
                           "bg-graydark dark:bg-meta-4"
                         }`}
@@ -576,7 +610,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/ui/alerts"
                               className={({ isActive }) =>
-                                "text-bodydark2 hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out " +
+                                "hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out " +
                                 (isActive && "!text-white")
                               }
                             >
@@ -587,7 +621,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/ui/buttons"
                               className={({ isActive }) =>
-                                "text-bodydark2 hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out " +
+                                "hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out " +
                                 (isActive && "!text-white")
                               }
                             >
@@ -614,7 +648,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to="#"
-                        className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                           (pathname === "/auth" || pathname.includes("auth")) &&
                           "bg-graydark dark:bg-meta-4"
                         }`}
@@ -684,7 +718,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/auth/signin"
                               className={({ isActive }) =>
-                                "text-bodydark2 hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out " +
+                                "hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out " +
                                 (isActive && "!text-white")
                               }
                             >
@@ -695,7 +729,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/auth/signup"
                               className={({ isActive }) =>
-                                "text-bodydark2 hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out " +
+                                "hover:text-white group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out " +
                                 (isActive && "!text-white")
                               }
                             >
