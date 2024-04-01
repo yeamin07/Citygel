@@ -12,6 +12,7 @@ import downarrow from "./Vector 16.png"
 import home from "./Homef.png"
 import profile from "./Profilef.png"
 import postad  from "./PostADf.png"
+import trash from "./trash.png"
 
 export  {
     laptop,
@@ -23,5 +24,5 @@ export  {
     greycurve,location,
 menu,
     downarrow,
-    home,profile,postad
+    home,profile,postad,trash
 };
