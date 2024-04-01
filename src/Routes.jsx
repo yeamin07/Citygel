@@ -41,9 +41,9 @@ const ProjectRoutes = () => {
     {
       path: "add-post",
       element: (
-        <RequiredAuth>
-          <AddPostWrapper />
-        </RequiredAuth>
+        // <RequiredAuth>
+        <AddPostWrapper />
+        // </RequiredAuth>
       ),
     },
 
