@@ -170,29 +170,33 @@ const AddPostWrapper = () => {
 
       {/* Body */}
 
-      <div className="container mx-auto relative  mt-10 px-5 text-center lg:text-left lg:flex-row flex-col-reverse  items-center lg:items-start flex ">
+      <div className="container mx-auto relative  mt-10 px-5 text-center lg:text-left ">
         {/* {children} */}
-        <div>
-          {currentStep === 1 && <PostCategories />}
-          {currentStep === 2 && <PostSubCategory />}
-          {currentStep === 3 && <PostFormAd />}
-          {currentStep === 4 && <PostMembershipPlan />}
-          {currentStep === 5 && (
-            <Elements stripe={stripePromise}>
-              <PostAddPayment />
-            </Elements>
-          )}{" "}
+        <div className="lg:flex-row flex-col-reverse  items-center lg:items-start flex ">
+          <div className=" 2xl:w-[60%] xl:w-[65%]">
+            {currentStep === 1 && <PostCategories />}
+            {currentStep === 2 && <PostSubCategory />}
+            {currentStep === 3 && <PostFormAd />}
+            {currentStep === 4 && <PostMembershipPlan />}
+            {currentStep === 5 && (
+              <Elements stripe={stripePromise}>
+                <PostAddPayment />
+              </Elements>
+            )}{" "}
+          </div>
+
+
+          <div className="  2xl:w-[40%] w-[35%] flex lg:justify-end justify-center">
+            <img
+              src={sittingman}
+              alt=""
+              className="  2xl:h-[660px] lg:h-[350px] lg:w-[350px] sm:h-[420px] h-[320px] 2xl:w-[720px] sm:w-[520px] "
+            />
+          </div>
         </div>
 
-
-
-        <img
-          src={sittingman}
-          alt=""
-          className="  xl:h-[660px] sm:h-[420px] h-[320px] xl:w-[720px] sm:w-[520px] "
-        />
-
       </div>
+
       <div className="mt-36 mx-auto  flex items-center justify-center w-full ">
         <CitygelLogo />{" "}
       </div>

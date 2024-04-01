@@ -23,7 +23,7 @@ const PostAddPayment = () => {
   );
   const [loading, setLoading] = useState(false);
   console.log(form);
-  const payNow = () => {};
+  const payNow = () => { };
   const stripe = useStripe();
   const elements = useElements();
   const [name, setName] = useState("");
@@ -124,18 +124,18 @@ const PostAddPayment = () => {
         <div className="">
           <Text
             as="p"
-            className="text-start z-[1] mt-[70px] w-[100%] text-[44px]  font-medium !text-black-900_03 sm:text-center  sm:text-[28px] mq450:text-center mq450:text-[28px]"
+            className="sm:text-start z-[1] mt-[70px] w-[100%] text-[44px]  font-medium !text-black-900_03 text-center  sm:text-[28px] "
           >
             Preview & Pay
           </Text>
           <Text
             as="p"
-            className="text-start z-[1] mt-3 w-[100%] text-[20px] leading-[35px] !text-black-900_87 opacity-0.8 sm:text-center sm:text-[14px] mq1500:w-[100%] mq450:text-center mq450:text-[14px]"
+            className="text-start z-[1] mt-3 w-[100%] text-[20px] leading-[35px] !text-black-900_87 opacity-0.8 sm:text-center sm:text-[14px] "
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             Lorem Ipsum is simply dummy text of the printing and typesetting
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            Lorem Ipsum 
+            Lorem Ipsum
           </Text>
         </div>
         <div className="flex  flex-row space-x-10  pt-10 mq825:space-x-10 mq750:flex-col mq750:space-x-5  mq450:space-x-2">

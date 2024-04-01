@@ -34,7 +34,7 @@ export default function PostSubCategory() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="relative w-full sm:pr-10 z-[100]">
+      <div className="relative w-full 2xl:pr-10 z-[100]">
         <div className="flex  flex-col items-start lg:justify-start justify-center">
           <Text
             as="p"
@@ -74,14 +74,12 @@ export default function PostSubCategory() {
 
 
         <div className="mt-9  w-full">
-          <div className="mq800: text-white box-border flex lg:w-[80%] max-w-full flex-row justify-center py-0 px-5  text-11xl sm:w-[100%] sm:flex-col ">
+          <div className=" text-white box-border flex lg:w-[80%] max-w-full flex-row justify-center py-0 px-5  text-11xl sm:w-[100%] sm:flex-col ">
             <div className="flex w-full max-w-full  flex-row items-center  gap-5 md:justify-between justify-end ">
 
               {currentStep > 1 &&
                 <div
                   onClick={handlePrev}
-                  // className={`z-[2] box-border flex   w-[30%] flex-row items-center justify-center  whitespace-nowrap rounded-xl bg-black-900_33 pt-[23px] pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] sm:mt-[8px] sm:w-[40%] `}
-
                   className={`z-[2] box-border  flex  md:w-[35%] cursor-pointer  flex-row items-center justify-center whitespace-nowrap md:rounded-xl rounded-md md:pt-[23px] md:pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] bg-black-900_33 py-2 px-16 `}
                 >
                   <div className="relative z-[3] text-white-A700 text-[14px] ">
@@ -89,7 +87,6 @@ export default function PostSubCategory() {
                   </div>
                 </div>
               }
-
 
               <div className="  flex  flex-col items-center justify-start sm:w-[20%] ">
                 <div className=" relative z-[2] flex h-[5px] flex-row items-center justify-between gap-[10px]">
