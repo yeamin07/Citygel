@@ -62,14 +62,14 @@ const Profile = () => {
                 </div>
                 {/*~~~~~~~~~~~~~~~~~~~~~Phone input full-width problem ~~~~~~~~~~~~~~~~~~*/}
                 <div className="w-full">
-                  <label>Phone Number</label>
+                  <label className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px] 2xl:text-[19.5px] text-gray-500">Phone Number</label>
                   <div className="relative mt-[5px] block w-full gap-[25px] md:flex ">
                     {/* <Controller/> */}
 
                     <PhoneInput
                       country={"us"}
                       placeholder="Phone Number"
-                      className="h-[35px] w-full"
+                      className="h-[6rem] w-full"
                     />
 
 
