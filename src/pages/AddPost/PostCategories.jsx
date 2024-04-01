@@ -54,7 +54,7 @@ export default function PostCategories() {
             {["Real Estate", "Motor", "Jobs", "General"]?.map((data, index) => (
               <div
                 key={data?.index}
-                onClick={() => handleSelect(data)}
+                onClick={() => handleSelect("electric")}
                 className={`flex w-[100%] flex-col items-center justify-start gap-2.5 border  border-solid 2xl:py-5   ${selected == data ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} rounded-[20px] bg-white-A700 shadow-sm`}
               >
                 <Img
@@ -96,15 +96,24 @@ export default function PostCategories() {
                   ))}
                 </div>
               </div>
-
-              <div
-                onClick={handleNext}
-                className={`z-[2] box-border  flex  cursor-pointer flex-row  items-center justify-center whitespace-nowrap rounded-md py-2 px-16 pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] md:w-[35%] md:rounded-xl md:pt-[23px] md:pb-[22px] `}
-              >
-                <div className="relative z-[3] text-[14px] text-white-A700 ">
-                  {currentStep}/5 Next
+              {category ? (
+                <div
+                  onClick={handleNext}
+                  className={`z-[2] box-border  flex  cursor-pointer flex-row  items-center justify-center whitespace-nowrap rounded-md py-2 px-16 pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] md:w-[35%] md:rounded-xl md:pt-[23px] md:pb-[22px] `}
+                >
+                  <div className="relative z-[3] text-[14px] text-white-A700 ">
+                    {currentStep}/5 Next
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div
+                  className={`z-[2] box-border  flex  cursor-pointer flex-row  items-center justify-center whitespace-nowrap rounded-md bg-black-900_33 py-2 px-16 pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] md:w-[35%] md:rounded-xl md:pt-[23px] md:pb-[22px] `}
+                >
+                  <div className="relative z-[3] text-[14px] text-white-A700 ">
+                    {currentStep}/5 Next
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

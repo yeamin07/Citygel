@@ -103,7 +103,7 @@ export default function LoginPage() {
       } else {
         toast.error("please enter your email");
       }
-    } catch (error) { }
+    } catch (error) {}
   };
   return (
     <>
@@ -117,37 +117,37 @@ export default function LoginPage() {
       <Header1 />
       <div className="flex w-full flex-col items-center justify-start bg-gray-50">
         {/* <Header1 className="flex w-full flex-col items-center justify-center" /> */}
-        <div className="mt-[50px] flex sm:w-[36rem] w-[100%] flex-col items-center justify-start gap-3.5">
-          <div >
+        <div className="mt-[50px] flex w-[100%] flex-col items-center justify-start gap-3.5 sm:w-[36rem]">
+          <div>
             <Img
               src="images/login.png"
               alt="background_one"
               className=" mx-auto  justify-center "
             />
           </div>
-          <div className="flex w-full flex-col items-center justify-start gap-[31px] ">
+          <div className="flex w-full flex-col  items-center justify-start gap-[31px] lg:w-[85%] ">
             <div className="flex w-full flex-col items-center justify-start ">
               <div className="flex w-full max-w-full flex-col items-center justify-start ">
                 <div className="w-full ">
-                  <h3 className=" text-center font-poppins font-medium text-[24px]  ">
+                  <h3 className=" text-center font-poppins text-[24px] font-medium  ">
                     Login to post an ad!
                   </h3>
-                  <p className=" text-center align-middle font-poppins sm:text-[23px] font-normal opacity-[40%]  sm:mt-[-20px] !mt-0  text-[16px] ">
+                  <p className=" !mt-0 text-center align-middle font-poppins text-[16px] font-normal  opacity-[40%] sm:mt-[-20px]  sm:text-[23px] ">
                     Please enter your credential Details.
                   </p>
                 </div>
               </div>
 
               <form
-                className="flex flex-col items-center justify-center px-5 w-full "
+                className="flex w-full flex-col items-center justify-center px-5 "
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <div className="mt-[9px] flex w-full flex-col items-start justify-start ">
+                <div className="mt-[9px] flex w-full flex-col items-start justify-start  ">
                   <div className=" text-left">
                     {" "}
                     <Text
                       as="p"
-                      className="mt-7 text-left text-gray-900 opacity-0.8 text-sm"
+                      className="mt-7 text-left text-sm text-gray-900 opacity-0.8"
                     >
                       Enter Your Email
                     </Text>
@@ -159,10 +159,11 @@ export default function LoginPage() {
                       name="email"
                       onChange={(e) => setValue("email", e.target.value)}
                       placeholder="name@mail.com"
-                      className={`left-0 bottom-0 right-0 top-0 m-auto w-full !text-[16px] text-gray-900 h-full ${errors.email?.message
-                        ? "border-red-800 "
-                        : "border-cyan-700_01"
-                        }  absolute border border-solid`}
+                      className={`left-0 bottom-0 right-0 top-0 m-auto h-full w-full !text-[16px] text-gray-900 ${
+                        errors.email?.message
+                          ? "border-red-800 "
+                          : "border-cyan-700_01"
+                      }  absolute border border-solid`}
                     />
                     <Button
                       type="button"
@@ -170,18 +171,18 @@ export default function LoginPage() {
                       color="cyan_700_01"
                       size="5xl"
                       variant="fill"
-                      className="absolute right-[0.7%] bottom-0 top-0 m-auto min-w-[155px] h-[90%]  rounded-[15px]"
+                      className="absolute right-[0.7%] bottom-0 top-0 m-auto h-[90%] min-w-[155px]  rounded-[15px]"
                     >
                       Send OTP
                     </Button>
                   </div>
                   <div className="relative">
                     {errors.email?.message ? (
-                      <p className=" font-poppins text-[17px] font-normal text-red-A700 opacity-[40%] !my-[10px] ">
+                      <p className=" !my-[10px] font-poppins text-[17px] font-normal text-red-A700 opacity-[40%] ">
                         {errors.email?.message}
                       </p>
                     ) : (
-                      <p className=" font-poppins text-[17px] font-normal text-red-500 opacity-[40%] !my-[10px]">
+                      <p className=" !my-[10px] font-poppins text-[17px] font-normal text-red-500 opacity-[40%]">
                         Please enter your credential Details.
                       </p>
                     )}
@@ -211,7 +212,7 @@ export default function LoginPage() {
                               borderRadius: "10px",
                             }}
                             inputFocusStyle={{ borderColor: "#0B90AF" }}
-                            onComplete={(value, index) => { }}
+                            onComplete={(value, index) => {}}
                             autoSelect={true}
                             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                           />
@@ -220,7 +221,7 @@ export default function LoginPage() {
                     />
                     {errors.code?.message && (
                       <Text
-                        className="xs absolute bottom-[-30px] text-[#ef4c4c] !pt-[15px] "
+                        className="xs absolute bottom-[-30px] !pt-[15px] text-[#ef4c4c] "
                         fontSize="xs"
                         bottom="-19px"
                         position="absolute"

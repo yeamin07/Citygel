@@ -81,307 +81,282 @@ const PostFormAd = () => {
 
   console.log(category);
   return (
-    <form>
-      {" "}
-      <main className="w-[100%]  mq750:mt-48">
-        <div className=" box-border flex max-w-full  flex-row items-center justify-between pl-10 mq750:flex-col">
-          <section className="text-black flex min-h-screen w-[100%] max-w-full flex-col items-start justify-start gap-[9px] pl-4 text-left font-poppins text-25xl">
-            <div className="flex w-[80%] max-w-full flex-col items-start justify-start gap-[50px] mq450:gap-[25px_50px]">
-              <div className="flex flex-col items-start justify-start gap-[20px] self-stretch">
-                <h1 className="font-inherit relative z-[4] m-0 font-medium text-inherit mq800:text-16xl mq450:text-7xl">
-                  Enter Details
-                </h1>
-                <h3 className="font-inherit text-gray-1200 relative z-[4] m-0 self-stretch text-3xl font-normal leading-[35px] mq450:text-lg mq450:leading-[28px]">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</h3>
-              </div>
-              <div className="text-gray-1000 flex max-w-full flex-col items-start justify-start gap-[20px] self-stretch text-base">
-                <AdsInput
-                  tittle="Type"
-                  name="type"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="Brand"
-                  name="brand"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="Model"
-                  name="model"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="Fuel Type"
-                  name="fuelType"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="Listed By"
-                  name="listedBy"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="Transmission"
-                  name="transmission"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="KM Driven"
-                  name="kmdriven"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="No of Owners"
-                  name="owners"
-                  register={register}
-                  required
-                  errors={errors}
-                />
-                <AdsInput
-                  tittle="Ad Title"
-                  name="title"
-                  register={register}
-                  required
-                  errors={errors}
-                />
+    <form >
+      <div className=" pt-20 box-border flex max-w-full  flex-row items-center justify-between lg:pl-10 ">
+        <section className=" text-black flex min-h-screen w-full flex-col items-start justify-start gap-[9px] sm:pl-4 text-left font-poppins text-2xl">
+          <div className="flex w-full flex-col items-start justify-start gap-[50px]">
+            <div className="flex flex-col items-start justify-start gap-[20px] ">
+              <h1 className="font-inherit relative z-[4] m-0 font-medium text-inherit md:text-[45px] text-[32px]">
+                Enter Details
+              </h1>
+              <h3 className="font-inherit text-gray-1200 relative z-[4] m-0  sm:text-lg text-sm text-gray-600 font-normal  ">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</h3>
+            </div>
+            {/* Fomr */}
+            <div className="text-gray-1000 flex w-full flex-col items-start justify-start gap-[20px]  text-base z-[100] relative">
+              <AdsInput
+                tittle="Type"
+                name="type"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Brand"
+                name="brand"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Model"
+                name="model"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Fuel Type"
+                name="fuelType"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Listed By"
+                name="listedBy"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Transmission"
+                name="transmission"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="KM Driven"
+                name="kmdriven"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="No of Owners"
+                name="owners"
+                register={register}
+                required
+                errors={errors}
+              />
+              <AdsInput
+                tittle="Ad Title"
+                name="title"
+                register={register}
+                required
+                errors={errors}
+              />
 
-                <div className="flex max-w-full flex-1 flex-col items-start justify-start gap-[9px] self-stretch">
+              <div className="flex  flex-1 flex-col items-start justify-start gap-[9px] w-full ">
+                <div className="flex flex-row items-start justify-start py-0 px-1.5">
+                  <div className="text-gray-1000 relative text-left font-poppins text-base">
+                    Ad Description
+                  </div>
+                </div>
+
+                <textarea
+                  name="description"
+                  placeholder="Add Description"
+                  {...register("description", { required: true })}
+                  className="text-black focus=bg-gainsboro-300 hover=bg-gainsboro-300  flex-1  border-0 bg-gainsboro-300 p-7 font-poppins text-xl w-full"
+                />
+                {errors["description"] &&
+                  errors["description"]?.type === "required" && (
+                    <span className="text-red-500">
+                      This field is required
+                    </span>
+                  )}
+              </div>
+
+              <AdsInput
+                tittle="Ad Price"
+                name="price"
+                type="number"
+                register={register}
+                required
+                errors={errors}
+              />
+              <div className="box-border flex max-w-full flex-col items-start justify-start gap-[9px] self-stretch px-0 pt-0 pb-[9px]">
+                <AdsInput
+                  tittle="Country"
+                  name="country"
+                  register={register}
+                  required
+                  errors={errors}
+                />
+                <AdsInput
+                  tittle="State"
+                  name="state"
+                  register={register}
+                  required
+                  errors={errors}
+                />
+                <AdsInput
+                  tittle="City"
+                  name="city"
+                  register={register}
+                  required
+                  errors={errors}
+                />
+              </div>
+              <div className="flex  flex-col items-start justify-start gap-[9px] w-full ">
+                <div className="flex flex-row items-start justify-start py-0 px-1.5">
+                  <div className="relative z-[2] inline-block min-w-[39px]">
+                    Enquiry Type
+                  </div>
+                </div>
+                <div className="text-black z-[4] box-border flex  flex-row items-start justify-start  rounded-mini bg-gainsboro-300 py-[25px] px-[23px] text-xl w-full">
+                  <Controller
+                    name="selectedContact"
+                    control={control}
+                    defaultValue={selectedItem} // Set default value if needed
+                    render={({ field }) => (
+                      <Dropdown
+                        className="h-7   rounded-mini border-none px-[10px] py-[1px] outline-none focus:ring-0"
+                        menu={{
+                          items: items.map((item) => ({
+                            ...item,
+                            onClick: () => {
+                              field.onChange(item.key); // Update the value directly using field.onChange
+                            },
+                          })),
+                        }}
+                        trigger={["click"]}
+                      >
+                        <a onClick={(e) => e.preventDefault()}>
+                          {field.value ? (
+                            <span>
+                              {
+                                items.find((item) => item.key === field.value)
+                                  .label
+                              }
+                            </span>
+                          ) : (
+                            <span>Select</span>
+                          )}
+                        </a>
+                      </Dropdown>
+                    )}
+                  />
+                </div>
+              </div>
+              <div className="flex max-w-full flex-col items-start justify-start self-stretch">
+                <div className="box-border flex max-w-full flex-col items-start justify-start gap-[9px] self-stretch px-0 pt-0 pb-[9px]">
                   <div className="flex flex-row items-start justify-start py-0 px-1.5">
                     <div className="text-gray-1000 relative text-left font-poppins text-base">
-                      Ad Description
+                      Main Image
                     </div>
                   </div>
-
-                  <textarea
-                    name="description"
-                    placeholder="Add Description"
-                    {...register("description", { required: true })}
-                    className="text-black focus=bg-gainsboro-300 hover=bg-gainsboro-300 max-w-full flex-1 self-stretch border-0 bg-gainsboro-300 p-7 font-poppins text-xl"
-                  />
-                  {errors["description"] &&
-                    errors["description"]?.type === "required" && (
-                      <span className="text-red-500">
-                        This field is required
-                      </span>
-                    )}
+                  <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch rounded-mini bg-gainsboro-300 px-7 pt-7 pb-[22px]">
+                    <div className="relative hidden h-20 max-w-full rounded-mini bg-gainsboro-300" />
+                    <div className="text-black relative z-[1] text-left font-poppins text-xl mq450:text-base">
+                      <Controller
+                        name="mainImage"
+                        control={control}
+                        render={({ field }) => (
+                          <Upload
+                            name="image"
+                            action={`https://api.imgbb.com/1/upload?key=${imageStorageKey}`}
+                            onChange={handleFileUpload}
+                            className="py-4 pr-7"
+                          >
+                            <Button className="bg-gainsboro-400">
+                              Upload Image
+                            </Button>
+                          </Upload>
+                        )}
+                      />
+                    </div>
+                  </div>
                 </div>
-                <AdsInput
-                  tittle="Ad Price"
-                  name="price"
-                  type="number"
-                  register={register}
-                  required
-                  errors={errors}
-                />
                 <div className="box-border flex max-w-full flex-col items-start justify-start gap-[9px] self-stretch px-0 pt-0 pb-[9px]">
-                  <AdsInput
-                    tittle="Country"
-                    name="country"
-                    register={register}
-                    required
-                    errors={errors}
-                  />
-                  <AdsInput
-                    tittle="State"
-                    name="state"
-                    register={register}
-                    required
-                    errors={errors}
-                  />
-                  <AdsInput
-                    tittle="City"
-                    name="city"
-                    register={register}
-                    required
-                    errors={errors}
-                  />
-                </div>
-                <div className="flex max-w-full flex-col items-start justify-start gap-[9px] self-stretch">
                   <div className="flex flex-row items-start justify-start py-0 px-1.5">
-                    <div className="relative z-[2] inline-block min-w-[39px]">
-                      Enquiry Type
+                    <div className="text-gray-1000 relative text-left font-poppins text-base">
+                      More Images
                     </div>
                   </div>
-                  <div className="text-black z-[4] box-border flex max-w-full flex-row items-start justify-start self-stretch rounded-mini bg-gainsboro-300 py-[25px] px-[23px] text-xl">
-                    <Controller
-                      name="selectedContact"
-                      control={control}
-                      defaultValue={selectedItem} // Set default value if needed
-                      render={({ field }) => (
-                        <Dropdown
-                          className="h-7 w-[880px] max-w-full rounded-mini border-none px-[10px] py-[1px] outline-none focus:ring-0"
-                          menu={{
-                            items: items.map((item) => ({
-                              ...item,
-                              onClick: () => {
-                                field.onChange(item.key); // Update the value directly using field.onChange
-                              },
-                            })),
-                          }}
-                          trigger={["click"]}
-                        >
-                          <a onClick={(e) => e.preventDefault()}>
-                            {field.value ? (
-                              <span>
-                                {
-                                  items.find((item) => item.key === field.value)
-                                    .label
-                                }
-                              </span>
-                            ) : (
-                              <span>Select</span>
-                            )}
-                          </a>
-                        </Dropdown>
-                      )}
-                    />
-                  </div>
-                </div>
-                <div className="flex max-w-full flex-col items-start justify-start self-stretch">
-                  <div className="box-border flex max-w-full flex-col items-start justify-start gap-[9px] self-stretch px-0 pt-0 pb-[9px]">
-                    <div className="flex flex-row items-start justify-start py-0 px-1.5">
-                      <div className="text-gray-1000 relative text-left font-poppins text-base">
-                        Main Image
-                      </div>
-                    </div>
-                    <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch rounded-mini bg-gainsboro-300 px-7 pt-7 pb-[22px]">
-                      <div className="relative hidden h-20 w-[880px] max-w-full rounded-mini bg-gainsboro-300" />
-                      <div className="text-black relative z-[1] text-left font-poppins text-xl mq450:text-base">
-                        <Controller
-                          name="mainImage"
-                          control={control}
-                          render={({ field }) => (
-                            <Upload
-                              name="image"
-                              action={`https://api.imgbb.com/1/upload?key=${imageStorageKey}`}
-                              onChange={handleFileUpload}
-                              className="py-4 pr-7"
-                            >
-                              <Button className="bg-gainsboro-400">
-                                Upload Image
-                              </Button>
-                            </Upload>
-                          )}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="box-border flex max-w-full flex-col items-start justify-start gap-[9px] self-stretch px-0 pt-0 pb-[9px]">
-                    <div className="flex flex-row items-start justify-start py-0 px-1.5">
-                      <div className="text-gray-1000 relative text-left font-poppins text-base">
-                        More Images
-                      </div>
-                    </div>
-                    <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch rounded-mini bg-gainsboro-300 px-7 pt-3 pb-[22px]">
-                      <div className="relative hidden h-10 w-[880px] max-w-full rounded-mini bg-gainsboro-300" />
-                      <div className="text-black relative z-[1] text-left font-poppins text-xl mq450:text-base">
-                        <Controller
-                          name="moreImages"
-                          control={control}
-                          render={({ field }) => (
-                            <Upload
-                              name="image"
-                              action={`https://api.imgbb.com/1/upload?key=${imageStorageKey}`}
-                              onChange={(info) =>
-                                handleMultipleFileUpload(info, field)
-                              }
-                              className="py-4 pr-7"
-                              multiple
-                            >
-                              <Button className="bg-gainsboro-400">
-                                Upload Image
-                              </Button>
-                            </Upload>
-                          )}
-                        />
-                      </div>
+                  <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch rounded-mini bg-gainsboro-300 px-7 pt-3 pb-[22px]">
+                    <div className="relative hidden h-10  max-w-full rounded-mini bg-gainsboro-300" />
+                    <div className="text-black relative z-[1] text-left font-poppins text-xl mq450:text-base">
+                      <Controller
+                        name="moreImages"
+                        control={control}
+                        render={({ field }) => (
+                          <Upload
+                            name="image"
+                            action={`https://api.imgbb.com/1/upload?key=${imageStorageKey}`}
+                            onChange={(info) =>
+                              handleMultipleFileUpload(info, field)
+                            }
+                            className="py-4 pr-7"
+                            multiple
+                          >
+                            <Button className="bg-gainsboro-400">
+                              Upload Image
+                            </Button>
+                          </Upload>
+                        )}
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-          <section className="mt-[-250px]  ml-[140px] mq1050:hidden">
-            <div className="mq1125=box-border mq1325:ox-border box-border  flex w-[100%] min-w-[350px] max-w-full items-center justify-center bg-gainsboro-100 pb-[1000px] pr-5 pl-[21px] mq1325:flex-1 mq1325:pt-[705px] mq1325:pb-[705px] mq1125:pt-[458px] mq1125:pb-[458px] mq800:box-border mq800:min-w-full mq800:pt-[298px] mq800:pb-[298px]">
-              <h1 className="font-inherit relative z-[1] m-0 inline-block flex min-w-[70px] items-center justify-center font-normal text-inherit mq800:text-21xl mq450:text-11xl">
-                Ad
-              </h1>
-            </div>
-          </section>
-        </div>
-        <div className="mt-9 min-h-screen  w-full pl-14  mq800:pl-0">
-          <div className="mq800: text-white box-border flex w-[80%] max-w-full flex-row justify-center py-9 py-0 px-5  text-11xl sm:w-[100%] sm:flex-col mq1050:w-[100%] mq1050:items-center mq450:flex-col">
-            <div className="flex w-full max-w-full  flex-row items-center justify-center gap-5 mq1050:justify-between">
+
+          </div>
+        </section>
+
+      </div>
+
+
+      <div className="mt-9  w-full">
+        <div className="text-white box-border flex lg:w-[80%] max-w-full flex-row justify-center py-0 px-5  text-11xl sm:w-[100%] sm:flex-col ">
+          <div className="flex w-full max-w-full  flex-row items-center  gap-5 md:justify-between justify-end ">
+
+            {currentStep > 1 &&
               <div
                 onClick={handlePrev}
-                className="z-[2] box-border flex w-[30%] cursor-pointer  flex-row   items-center justify-center rounded-xl bg-[#D3D3D3] pt-[23px] pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] sm:w-[%] mq1050:w-[30%]  mq750:w-[30%]"
+                className={`z-[2] box-border  flex  md:w-[35%] cursor-pointer  flex-row items-center justify-center whitespace-nowrap md:rounded-xl rounded-md md:pt-[23px] md:pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] bg-black-900_33 py-2 px-16 `}
               >
-                <div className="relative z-[3] mr-[7px] text-center text-white-A700 mq1050:text-3xl mq750:text-sm mq450:text-sm">
+                <div className="relative z-[3] text-white-A700 text-[14px] ">
                   Previous
                 </div>
               </div>
-              <div className="mt-10  flex h-[47px] flex-col items-center justify-start sm:w-[20%]">
-                <div className=" relative z-[2] flex h-[5px] flex-row items-center justify-between gap-[10px]">
-                  <div
-                    className={`h-full  w-11 rounded-21xl sm:w-3 mq1050:w-5  mq750:w-2 ${currentStep == 1 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                  />
-                  <div
-                    className={`h-full w-11 rounded-21xl sm:w-3 mq1050:w-5 mq750:w-2 ${currentStep == 2 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                  />
-                  <div
-                    className={`h-full w-11 rounded-21xl sm:w-3 mq1050:w-5 mq750:w-2 ${currentStep == 3 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                  />
-                  <div
-                    className={`h-full w-11 rounded-21xl sm:w-3 mq1050:w-5  mq750:w-2 ${currentStep == 4 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                  />
-                  <div
-                    className={`h-full w-11 rounded-21xl sm:w-3 mq1050:w-5 mq750:w-2 ${currentStep == 5 ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                  />
-                </div>
+            }
+
+
+            <div className="  flex  flex-col items-center justify-start sm:w-[20%] ">
+              <div className=" relative z-[2] flex h-[5px] flex-row items-center justify-between gap-[10px]">
+                {
+                  [1, 2, 3, 4, 5]?.map(data => <div
+                    className={`h-full  w-3 rounded-21xl sm:w-4  ${currentStep == data ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
+                  />)
+                }
               </div>
-              {!errors.root ? (
-                <div
-                  onClick={handleSubmit(onSubmit)}
-                  className={`z-[2] box-border  flex  w-[30%] cursor-pointer  flex-row items-center justify-center whitespace-nowrap rounded-xl pt-[23px] pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] sm:mt-[8px] sm:w-[35%] mq1050:w-[30%] mq750:w-[30%]`}
-                >
-                  <div className="relative z-[3] text-white-A700 sm:text-[14px] mq1050:text-[16px]">
-                    {currentStep}/5 Next
-                  </div>
-                </div>
-              ) : (
-                <div
-                  className={`z-[2] box-border flex   w-[30%] flex-row items-center justify-center  whitespace-nowrap rounded-xl bg-black-900_33 pt-[23px] pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] sm:mt-[8px] sm:w-[40%] mq1050:w-[30%] mq1050:text-[16px] mq750:w-[30%] mq750:w-[50%]`}
-                >
-                  <div className="relative z-[3] text-white-A700 sm:text-[14px]">
-                    {currentStep}/5 Next
-                  </div>
-                </div>
-              )}
+            </div>
+
+            <div
+              onClick={handleSubmit(onSubmit)}
+              className={`z-[2] box-border  flex  md:w-[35%] cursor-pointer  flex-row items-center justify-center whitespace-nowrap md:rounded-xl rounded-md md:pt-[23px] md:pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] py-2 px-16 `}
+            >
+              <div className="relative z-[3] text-white-A700 text-[14px] ">
+                {currentStep}/5 Next
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <section className="xl:block hidden md:block lg:block">
-          <div className="lg=box-border xl:flex-1 xl:pt-[705px] xl:pb-[705px] xl:ox-border box-border flex w-[100%] min-w-[350px] max-w-full items-center justify-center bg-gainsboro-100 pb-[1000px] pr-5 pl-[21px] md:box-border md:min-w-full md:pt-[298px] md:pb-[298px] lg:pt-[458px] lg:pb-[458px]">
-            <h1 className="font-inherit relative z-[1] m-0 inline-block flex min-w-[70px] items-center justify-center font-normal text-inherit md:text-11xl lg:text-21xl">
-              Ad
-            </h1>
-          </div>
-        </section>
-      </main>
     </form>
   );
 };

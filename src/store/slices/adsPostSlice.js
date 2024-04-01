@@ -22,6 +22,9 @@ const postSlice = createSlice({
     nextStep: (state) => {
       state.currentStep += 1;
     },
+    firstStep: (state) => {
+      state.currentStep = 1;
+    },
     prevStep: (state) => {
       state.currentStep -= 1;
     },
@@ -65,6 +68,7 @@ export const {
   setForm,
   setSubCategory,
   setMembership,
+  firstStep,
 } = postSlice.actions;
 
 export default postSlice;

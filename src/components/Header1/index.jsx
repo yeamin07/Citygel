@@ -94,15 +94,15 @@ export default function Header1({ bg = true }) {
           <Img
             src="images/img_citygel_2_white.png"
             alt="citygel2white"
-            className=" xl:w-[165px] xl:h-[50px] h-[45px] w-[145px] shrink-0 object-cover"
+            className=" h-[45px] w-[145px] shrink-0 object-cover xl:h-[50px] xl:w-[165px]"
           />
-          <div className="xl:w-[50%] flex flex-row  justify-end gap-12">
+          <div className="flex flex-row justify-end  gap-12 xl:w-[50%]">
             {user?.uid && tuser ? (
               <div onClick={handleSignOut}>
                 <Text
                   size="2xl"
                   as="p"
-                  className=" xl:!text-[18px] mt-2 cursor-pointer text-center font-poppins !text-[15px] !text-gray-50"
+                  className=" mt-2 cursor-pointer text-center font-poppins !text-[15px] !text-gray-50 xl:!text-[18px]"
                 >
                   Sign Out
                 </Text>
@@ -112,7 +112,7 @@ export default function Header1({ bg = true }) {
                 <Text
                   size="2xl"
                   as="p"
-                  className="xl:!text-[18px] mt-2 cursor-pointer text-center font-poppins !text-[15px] !font-thin !text-[#fafafadc]"
+                  className="mt-2 cursor-pointer text-center font-poppins !text-[15px] !font-thin !text-[#fafafadc] xl:!text-[18px]"
                 >
                   Login or Sign up
                 </Text>
@@ -133,14 +133,15 @@ export default function Header1({ bg = true }) {
                 />
               </div>
 
-              <Dropdown className="z-[100]"
+              <Dropdown
+                className=""
                 menu={{
                   items,
                 }}
                 trigger={["click"]}
               >
                 <a onClick={(e) => e.preventDefault()}>
-                  <Space className="z-[100]">
+                  <Space className="z-50">
                     <Text as="p" className="text-[18px] mq1050:text-[11px] ">
                       Change Location
                     </Text>
@@ -157,12 +158,12 @@ export default function Header1({ bg = true }) {
 
         {/*2nd foot part alvi */}
         <div className="container mx-auto hidden   flex-row justify-between px-5 md:flex">
-          <div className="xl:gap-7 2xl:gap-9 flex shrink items-center justify-between gap-4 lg:gap-5  ">
+          <div className="flex shrink items-center justify-between gap-4 lg:gap-5 xl:gap-7 2xl:gap-9  ">
             <a href="#">
               <Text
                 size="2xl"
                 as="p"
-                className="xl:!text-[18px] !text-[15px] font-thin"
+                className="!text-[15px] font-thin xl:!text-[18px]"
               >
                 Real Estate
               </Text>
@@ -171,7 +172,7 @@ export default function Header1({ bg = true }) {
               <Text
                 size="2xl"
                 as="p"
-                className="xl:!text-[18px] !text-[15px] font-thin"
+                className="!text-[15px] font-thin xl:!text-[18px]"
               >
                 Vehicle
               </Text>
@@ -180,7 +181,7 @@ export default function Header1({ bg = true }) {
               <Text
                 size="2xl"
                 as="p"
-                className="xl:!text-[18px] !text-[15px] font-thin"
+                className="!text-[15px] font-thin xl:!text-[18px]"
               >
                 Job
               </Text>
@@ -189,7 +190,7 @@ export default function Header1({ bg = true }) {
               <Text
                 size="2xl"
                 as="p"
-                className="xl:!text-[18px] !text-[15px] font-thin"
+                className="!text-[15px] font-thin xl:!text-[18px]"
               >
                 classyfied(General catagory)
               </Text>
@@ -200,7 +201,7 @@ export default function Header1({ bg = true }) {
             color="red_A400_01"
             // size="4xl"
             variant="fill"
-            className="rounded-md !px-12 py-[22px] font-aleo font-bold"
+            className="z-20 rounded-md !px-12 py-[22px] font-aleo font-bold"
           >
             Post an ad
           </Button>

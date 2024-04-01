@@ -16,7 +16,7 @@ import AddPostWrapper from "pages/AddPost/AddPostWrapper";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Profile from "components/profile/Profile";
-import Description from "components/profile/Description";
+import Description from "pages/Products/Description";
 import PageTitle from "components/Dashboard/PageTitle";
 import ECommerce from "pages/Dashboard";
 import Dashboard from "pages/Dashboard";
@@ -49,9 +49,9 @@ const ProjectRoutes = () => {
     {
       path: "add-post",
       element: (
-        // <RequiredAuth>
-        <AddPostWrapper />
-        // </RequiredAuth>
+        <RequiredAuth>
+          <AddPostWrapper />
+        </RequiredAuth>
       ),
     },
 

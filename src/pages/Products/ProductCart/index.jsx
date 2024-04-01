@@ -26,9 +26,10 @@ const ProductCart = ({ item }) => {
       // Join the first 30 words and append "..."
       return words.slice(0, 8).join(" ") + "...";
     } else {
-      return words.slice(0, 8).join(" ") + "...";
+      return des;
     }
   };
+
   return (
     <div className="product-border bg-white text-white container box-border flex w-full  flex-col rounded-xl  border-[1px]  border-solid   border-gray-100 p-3 py-2.5 px-[10px] text-left font-poppins text-lg shadow-[0px_0px_10px_rgba(0,_0,_0,_0.15)]">
       <div>
@@ -41,41 +42,41 @@ const ProductCart = ({ item }) => {
       <div className="flex flex-col items-center justify-center gap-[10px] self-stretch">
         <div className="flex flex-col items-center justify-center gap-[10px] self-stretch">
           {/*Premium Button */}
-          <div className="flex w-full flex-row items-center justify-center gap-[10px] mq500:gap-[4px] mq350:gap-[2.5px] self-stretch mq450:flex-wrap">
-            <div className="z-[1] flex w-[31%] flex-row items-center justify-center rounded-md  py-0.5 px-2 mq400:px-[1.3px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] mq750:w-[30%]">
-              <div className="relative inline-block min-w-[15%] text-center text-[14px] text-whitesmoke-100 mq750:text-[10px] mq350:text-[6px] mq450:text-[7.6px]">
+          <div className="flex w-full flex-row items-center justify-center gap-[10px] self-stretch mq500:gap-[4px] mq450:flex-wrap mq350:gap-[2.5px]">
+            <div className="z-[1] flex w-[31%] flex-row items-center justify-center rounded-md  py-0.5 px-2 [background:linear-gradient(90deg,_#fcb100,_#ed893e)] mq750:w-[30%] mq400:px-[1.3px]">
+              <div className="relative inline-block min-w-[15%] text-center text-[14px] text-whitesmoke-100 mq750:text-[10px] mq450:text-[7.6px] mq350:text-[6px]">
                 Premium
               </div>
             </div>
-            <div className="z-[1] flex w-[31%] flex-row items-center justify-center rounded-ms py-0.5 px-2 mq400:px-[1.3px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] mq750:w-[30%]">
-              <div className="relative inline-block min-w-[15%] text-center text-[14px] text-whitesmoke-100 mq750:text-[10px] mq350:text-[6px] mq450:text-[7.6px]">
+            <div className="rounded-ms z-[1] flex w-[31%] flex-row items-center justify-center py-0.5 px-2 [background:linear-gradient(90deg,_#fcb100,_#ed893e)] mq750:w-[30%] mq400:px-[1.3px]">
+              <div className="relative inline-block min-w-[15%] text-center text-[14px] text-whitesmoke-100 mq750:text-[10px] mq450:text-[7.6px] mq350:text-[6px]">
                 Premium
               </div>
             </div>
-            <div className="z-[1] flex w-[31%] flex-row items-center justify-center rounded-md  py-0.5 px-2 mq400:px-[1.3px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] mq750:w-[30%]">
-              <div className="relative inline-block min-w-[15%] text-center text-[14px] text-whitesmoke-100 mq750:text-[10px] mq350:text-[6px] mq450:text-[7.6px]">
+            <div className="z-[1] flex w-[31%] flex-row items-center justify-center rounded-md  py-0.5 px-2 [background:linear-gradient(90deg,_#fcb100,_#ed893e)] mq750:w-[30%] mq400:px-[1.3px]">
+              <div className="relative inline-block min-w-[15%] text-center text-[14px] text-whitesmoke-100 mq750:text-[10px] mq450:text-[7.6px] mq350:text-[6px]">
                 Premium
               </div>
             </div>
           </div>
           {/*Button ends */}
 
-          <h3 className="font-inherit text-black relative z-[1] m-0 self-stretch 2xl:text-5xl text-4xl font-semibold 2xl:leading-[35px] ">
+          <h3 className="font-inherit text-black text-4xl relative z-[1] m-0 self-stretch font-semibold 2xl:text-5xl 2xl:leading-[35px] ">
             {handleTittle(item.title)}
           </h3>
         </div>
-        <div className="text-gray-800 flex w-full flex-row items-start justify-start px-0 pt-0  pb-[5px] text-lg ">
+        <div className="flex w-full flex-row items-start justify-start px-0 pt-0 pb-[5px]  text-lg text-gray-800 ">
           <div className="relative z-[1] w-full text-left   ">
             {item?.category?.name} - {item?.subcategory?.name}
           </div>
         </div>
-        <div className="text-gray-600 box-border flex max-w-full flex-row items-start  justify-start px-0 pt-0 pb-[5px] ">
-          <div className="relative z-[1]  inline-block max-w-full flex-1 leading-[25px] text-sm">
-            {item.description}
+        <div className="box-border flex max-w-full flex-row items-start justify-start  px-0 pt-0 pb-[5px] text-gray-600 ">
+          <div className="relative z-[1]  inline-block max-w-full flex-1 text-sm leading-[25px]">
+            {handleDes(item.description)}
           </div>
         </div>
         <div className="text-black box-border flex w-full max-w-full flex-row items-center justify-between self-stretch px-0 pt-0 pb-4 text-6xl">
-          <div className="relative z-[1] inline-block w-[50%] mq400:w-[60%] max-w-full whitespace-nowrap font-semibold leading-[40px] ">
+          <div className="relative z-[1] inline-block w-[50%] max-w-full whitespace-nowrap font-semibold leading-[40px] mq400:w-[60%] ">
             AED {item.price}
           </div>
           <div className="text-gray-1100  ml-9 flex w-[50%] items-start justify-end px-0 pt-[5px]  pb-0 text-xl mq750:mt-[-10px] mq750:pr-4 mq450:ml-2">
@@ -93,10 +94,9 @@ const ProductCart = ({ item }) => {
             </div>
           </div>
         </div>
-        <div className="z-[1] box-border flex  cursor-pointer flex-row items-center justify-center self-stretch whitespace-nowrap rounded-[9px] py-[17px] 2xl:px-[130px]  text-5xl shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] ">
-
+        <div className="z-[1] box-border flex  cursor-pointer flex-row items-center justify-center self-stretch whitespace-nowrap rounded-[9px] py-[17px] text-5xl  shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] 2xl:px-[130px] ">
           <div
-            onClick={() => navigate("/description")}
+            onClick={() => navigate(`/products/${item.id}`)}
             className="relative  z-[2] inline-block w-full text-center text-whitesmoke-100  "
           >
             View All
