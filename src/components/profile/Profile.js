@@ -1,6 +1,4 @@
 import Background from "./Background";
-
-import ConditionChecker1 from "./ConditionChecker1";
 import Header1 from "components/Header1";
 import CitygelLogo from "../Footer/CitygelLogo";
 import { Text, Img } from "components";
@@ -47,7 +45,7 @@ const Profile = () => {
             </div>
 
             <TabPanel className="w-full mt-[14px]">
-            <div className="container mx-auto px-3  z-[990] ">
+            <div className="container mx-auto px-1   z-[990] ">
             <div className="container mx-auto w-full bg-white-A700 h-auto flex justify-center items-center  rounded-[18px]">
               <div className="w-[97%] xl:h-[600px] h-[450px] md:h-[500px] lg:h-[550px] flex justify-between flex-col px-[8px] py-[18px]">
 

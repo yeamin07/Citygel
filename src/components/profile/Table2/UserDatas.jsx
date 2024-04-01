@@ -18,9 +18,9 @@ export default function UserDatas({tit, picture,Name, Email,Phone_number,Action,
                 </button>
             </td> */}
             <td className="px-2 flex items-center justify-start  w-[7rem]">
-                <div className="flex justify-start  p-2 bg-red-300 rounded-lg" >
-                    <img src={Action} 
-                    className="w-[20px] h-[25px]"/>
+                <div className="flex justify-start  p-2 bg-red-100 rounded-lg" >
+                    <img src={trash} 
+                    className="w-[20px] h-[21.5px]"/>
                 </div>
             </td>
         </tr>
