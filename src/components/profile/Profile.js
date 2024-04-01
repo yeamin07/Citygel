@@ -53,12 +53,12 @@ const Profile = () => {
 
                 <div>
                   <label className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px] 2xl:text-[19.5px] text-gray-500">Full Name</label>
-                  <input className="w-full h-[35px] !px-3 sm:h-[39px] lg:h-[50px] !bg-gray-100 focus:border-[1px] focus:border-solid focus:border-cyan-400 sm:focus:rounded-[18px]  sm:px-6  2xl:px-6 2xl:h-[60px] focus:rounded-[10px] !rounded-[10px] sm:rounded-[18px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] 2xl:text-[21px] border" type="text" />
+                  <input className="w-full h-[41px] !px-3 sm:h-[42px] lg:h-[50px] !bg-gray-100 focus:border-[1px] focus:border-solid focus:border-cyan-400 sm:focus:rounded-[18px]  sm:px-6  2xl:px-6 2xl:h-[60px] focus:rounded-[10px] !rounded-[10px] sm:rounded-[18px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] 2xl:text-[21px] border" type="text" />
                 </div>
 
                 <div>
                   <label className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px] 2xl:text-[19.5px] text-gray-500">Email</label>
-                  <input className="w-full h-[35px] !px-3 sm:h-[39px] lg:h-[50px] !bg-gray-100 focus:border-[1px] focus:border-solid focus:border-cyan-400 sm:focus:rounded-[18px] focus:rounded-[10px] sm:px-6  2xl:px-6 2xl:h-[60px] !rounded-[10px] sm:rounded-[18px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] 2xl:text-[21px] border" type="email" />
+                  <input className="w-full h-[41px] !px-3 sm:h-[42px] lg:h-[50px] !bg-gray-100 focus:border-[1px] focus:border-solid focus:border-cyan-400 sm:focus:rounded-[18px] focus:rounded-[10px] sm:px-6  2xl:px-6 2xl:h-[60px] !rounded-[10px] sm:rounded-[18px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] 2xl:text-[21px] border" type="email" />
                 </div>
                 {/*~~~~~~~~~~~~~~~~~~~~~Phone input full-width problem ~~~~~~~~~~~~~~~~~~*/}
                 <div className="w-full">
