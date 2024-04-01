@@ -7,18 +7,27 @@ import {
   setForm,
   setMembership,
 } from "store/slices/adsPostSlice";
-
+const plan = [
+  {
+    membershipName: "plan1",
+    price: 5,
+    duration: 10,
+  },
+  { membershipName: "plan2", price: 10, duration: 20 },
+  { membershipName: "plan3", price: 20, duration: 45 },
+];
 const PostMembershipPlan = () => {
   const { register, handleSubmit, errors, control } = useForm();
   const dispatch = useDispatch();
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState({});
 
-  const { currentStep, categories, subcategory, form } = useSelector(
-    (state) => state.post,
-  );
+  const { currentStep, categories, subcategory, form, membership } =
+    useSelector((state) => state.post);
   const handleMembershipSelect = (selectedMembership) => {
     setSelected(selectedMembership);
+
     dispatch(setMembership(selected));
+    console.log(membership);
   };
   const handleNext = () => {
     dispatch(nextStep());
@@ -26,7 +35,7 @@ const PostMembershipPlan = () => {
   const handlePrev = () => {
     dispatch(prevStep());
   };
-  console.log(form);
+
   return (
     <div className="mq1050:mt-36">
       <div className=" mq750:h-[3000px]">
@@ -45,7 +54,7 @@ const PostMembershipPlan = () => {
                   <div className="flex flex-col items-start justify-start gap-[23.030948638916016px] self-stretch px-0 pt-0 pb-0">
                     <div className="box-border flex h-[53px] shrink-0 flex-row items-center justify-end gap-[2px] overflow-hidden pt-[9.799999999999956px] pb-0 pr-3.5">
                       <b className="relative leading-[48.97px] mq1050:text-14xl mq1050:leading-[42px] mq450:text-6xl mq450:leading-[32px]">
-                        Free
+                        $5
                       </b>
                       <div className="relative inline-block min-w-[76px] text-lgi-6 font-medium text-lightslategray">
                         /month
@@ -94,11 +103,13 @@ const PostMembershipPlan = () => {
                     </div>
                   </div>
                   <div
-                    onClick={() => handleMembershipSelect("starter")}
+                    onClick={() => handleMembershipSelect(plan[0])}
                     className=" text-white box-border flex w-[238.4px] cursor-pointer flex-col items-start justify-center overflow-hidden whitespace-nowrap rounded-[27.64px] bg-steelblue-200 pt-[13px] pb-[12.800000000000182px] pr-[64.09999999999854px] pl-[63.30000000000109px] text-center text-mid-3 mix-blend-normal"
                   >
                     <div className="relative self-stretch font-medium">
-                      {selected == "starter" ? "Selected" : " Choose plan"}
+                      {selected.membershipName == "plan1"
+                        ? "Selected"
+                        : " Choose plan"}
                     </div>
                   </div>
                 </div>
@@ -168,11 +179,13 @@ const PostMembershipPlan = () => {
                     </div>
                   </div>
                   <div
-                    onClick={() => handleMembershipSelect("premium")}
+                    onClick={() => handleMembershipSelect(plan[1])}
                     className="text-white z-[5] flex cursor-pointer flex-row items-start justify-start overflow-hidden whitespace-nowrap rounded-[27.64px] bg-steelblue-200 pt-[13px] pb-[12.800000000000182px] pr-16 pl-[63.39999999999963px] text-center text-mid-3 mix-blend-normal"
                   >
                     <div className="relative inline-block w-[111px] font-medium">
-                      {selected == "premium" ? "Selected" : " Choose plan"}
+                      {selected.membershipName == "plan2"
+                        ? "Selected"
+                        : " Choose plan"}
                     </div>
                   </div>
                 </div>
@@ -259,11 +272,13 @@ const PostMembershipPlan = () => {
                     </div>
                   </div>
                   <div
-                    onClick={() => handleMembershipSelect("professional")}
+                    onClick={() => handleMembershipSelect(plan[2])}
                     className={`bottom-1 cursor-pointer ${selected === "professional" ? "border-red-500" : ""} flex flex-row items-start justify-start overflow-hidden whitespace-nowrap rounded-[27.64px] bg-white-A700 px-[78.10000000000036px] pt-[12.300000000000182px] pb-[12.399999999999636px] text-center text-nd mq450:box-border mq450:pl-5 mq450:pr-5`}
                   >
                     <div className=" relative inline-block w-[111px] font-medium text-nd">
-                      {selected == "professional" ? "Selected" : " Choose plan"}
+                      {selected.membershipName == "plan3"
+                        ? "Selected"
+                        : " Choose plan"}
                     </div>
                   </div>
                 </div>

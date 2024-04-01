@@ -10,11 +10,12 @@ const postSlice = createSlice({
     category: null,
     subcategory: null,
     total_cost: 0,
-    membership: null,
-    membershipCosts: {
-      starter: 0,
-      premium: 20,
-      professional: 30,
+
+    membershipExpire: 0,
+    membership: {
+      membershipName: null,
+      price: null,
+      duration: null,
     },
   },
   reducers: {
@@ -26,7 +27,10 @@ const postSlice = createSlice({
     },
     setMembership: (state, action) => {
       state.membership = action.payload;
-      state.total_cost = state.membershipCosts[action.payload];
+      state.total_cost = state.membership.price;
+    },
+    setMembershipExpire: (state, action) => {
+      state.membershipExpire = action.payload;
     },
     setForm: (state, action) => {
       state.form = action.payload;
@@ -54,7 +58,7 @@ const postSlice = createSlice({
 export const {
   nextStep,
   prevStep,
-
+  setMembershipExpire,
   setPackageAddon,
   setCurrent,
   setCategory,

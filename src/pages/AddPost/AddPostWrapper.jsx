@@ -10,6 +10,9 @@ import {
   menu,
   location,
 } from "assets/Allimages";
+
+import arrowleft from "../../assets/Allimages/arrowleft.png";
+import whiteLogo from "../../assets/Allimages/whiteLogo.png";
 import { FaCaretDown, FaAngleDown } from "react-icons/fa";
 import PostCategories from "pages/AddPost/PostCategories";
 import { useDispatch, useSelector } from "react-redux";
@@ -58,60 +61,50 @@ const AddPostWrapper = () => {
   ];
 
   return (
-    <div className="overflow-hidden container">
-      <div className="">
-        <header className="  absolute z-30 mx-auto flex h-[100px] justify-between overflow-hidden bg-gradient-to-r from-[rgb(16,56,76)] to-[rgb(21,60,77)] mq800:h-[80px]">
-          <div
-            className="mq550:justify-between mq550:flex-grow mx-7 flex
-          
-          items-center justify-start"
-          >
-            <img
-              alt=""
-              src={menu}
-              className="mt-1 hidden h-[26%] w-[19px] mq800:block"
-            />
-            <Img
-              src="images/img_citygel_2.png"
-              alt="citygeltwo_one"
-              className="mq550:h-4/6 ml-3 h-5/6 mq800:h-[56px]"
-            />
-          </div>
-          {/*This part is for location and user part */}
-          <div
-            className="mq550:flex-grow-0 mq550:mr-6 mt-2  flex h-[70px] w-[10%] items-center justify-center space-x-4   mq800:space-x-0 mq750:h-[60px] 
-         mq450:w-[150px] "
-          >
-            <div className="block w-[90%] mq800:hidden mq800:w-full">
-              <h4 className="font-poppins text-[18px] font-medium">John</h4>
-
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottomRight"
-                arrow={{
-                  pointAtCenter: false,
-                }}
-              >
-                <p className="cursor-pointer text-[13px] text-teal-400">
-                  {" "}
-                  Account <FaCaretDown />{" "}
-                </p>
-              </Dropdown>
+    <div className="overflow-hidden">
+      <div>
+        {/* For Navbar  */}
+        <header className=" relative z-30 flex h-[100px] w-full justify-between overflow-hidden bg-gradient-to-r from-[rgb(16,56,76)] to-[rgb(21,60,77)] ">
+          <div className="container mx-auto flex items-center justify-between px-5">
+            <div>
+              <img alt="" src={arrowleft} className="sm:hidden" />
             </div>
-            <div className="block mq800:hidden">
-              <img
-                src={man_pic}
-                alt=""
-                className="mq750:mt-6px mt-[10px] mr-10 h-full h-[50px] w-[50px] rounded-full mq750:mr-0"
-              />
+
+            <Img src={whiteLogo} alt="citygeltwo_one" className=" w-32" />
+
+            {/*This part is for location and user part */}
+
+            <div className="hidden items-center gap-3 sm:flex">
+              <div className="block ">
+                <h4 className="font-poppins text-[18px] font-medium text-[#fff]">
+                  John Smith
+                </h4>
+
+                <Dropdown
+                  menu={{
+                    items,
+                  }}
+                  placement="bottomRight"
+                  arrow={{
+                    pointAtCenter: false,
+                  }}
+                >
+                  <p className="cursor-pointer text-[13px] text-teal-400">
+                    {" "}
+                    My Account <FaCaretDown />{" "}
+                  </p>
+                </Dropdown>
+              </div>
+              <div className="block mq800:hidden">
+                <img
+                  src={man_pic}
+                  alt=""
+                  className="mq750:mt-6px mt-[10px] mr-10  h-[50px] w-[50px] rounded-full mq750:mr-0"
+                />
+              </div>
             </div>
             {/**Hidden part for mobile */}
-            <div
-              className="mt-4 mb-[5px] inline-block flex hidden h-[30px] items-center justify-center rounded-2xl border border-solid  border-white-A700
-             mq800:block mq800:w-[100%] mq800:pr-2 mq450:w-[95%] mq450:px-0"
-            >
+            <div className=" flex h-[30px]  items-center justify-center rounded-2xl border border-solid border-white-A700  sm:hidden">
               <div className="flex flex-row items-center justify-start space-x-1 pl-[1px] pt-[1px]">
                 <div className="flex h-[26px] w-[26px] items-center justify-center rounded-full bg-white-A700">
                   <img src={location} className="h-[21px] w-[20px]" />
@@ -136,46 +129,53 @@ const AddPostWrapper = () => {
             </div>
           </div>
         </header>
+        {/* For Navbar  */}
+
         <div className="z-20 flex overflow-hidden">
           <img
             src={yellowcurve}
             alt=""
-            className="mq550:h-[500px] absolute left-0 top-0 z-10 h-[1067px] w-2/6 mq800:h-[560px] mq800:w-3/6 mq750:top-0 mq450:top-[30px] mq450:h-[470px] mq450:w-4/6"
+            className=" absolute left-0 top-0 z-10 h-[400px] w-full sm:h-[1067px] sm:w-2/6"
           />
           <img
             src={greycurve}
             alt=""
-            className="mq550:h-[500px] absolute left-0 top-0 z-0 h-[1070px] w-2/6 mq800:h-[560px] mq800:w-3/6 mq450:top-[30px] mq450:h-[470px] mq450:w-4/6"
+            className="absolute left-0 top-0 z-0 h-[450px] sm:h-[1070px] sm:w-2/6 "
           />
           <img
             src={bluecurve}
             alt=""
-            className="absolute right-0 top-0   h-[780px] w-[89%] mq800:h-[390px] mq800:w-[120%]
+            className="absolute right-0 top-0   h-[400px] w-[89%] sm:h-[780px] mq800:h-[390px] mq800:w-[120%]
           mq450:h-[350px] mq450:w-[130%]"
-          />
-          <img
-            src={sittingman}
-            alt=""
-            className="absolute right-5 top-48 h-[650px] w-[600px] mq1050:h-[550px] mq1050:w-[500px] mq800:right-8 mq800:top-24 mq800:h-[350px] mq800:w-[390px]
-          mq450:right-5 mq450:h-[300] mq450:w-[350px]"
           />
         </div>
       </div>
-      <div className="absolute  top-[300px] z-[999] w-[100%] sm:relative sm:w-[100%] sm:w-[100%] mq1125:relative  mq800:relative  mq750:relative mq750:mt-14  mq750:w-[100%]  mq450:relative">
+
+      {/* Body */}
+
+      <div className="container relative mx-auto  mt-10 flex flex-col-reverse items-center px-5 text-center  lg:flex-row lg:items-start lg:text-left ">
         {/* {children} */}
-        {currentStep === 1 && <PostCategories />}
-        {currentStep === 2 && <PostSubCategory />}
-        {currentStep === 3 && <PostFormAd />}
-        {currentStep === 4 && <PostMembershipPlan />}
-        {currentStep === 5 && (
-          <Elements stripe={stripePromise}>
-            <PostAddPayment />
-          </Elements>
-        )}{" "}
+        <div>
+          {currentStep === 1 && <PostCategories />}
+          {currentStep === 2 && <PostSubCategory />}
+          {currentStep === 3 && <PostFormAd />}
+          {currentStep === 4 && <PostMembershipPlan />}
+          {currentStep === 5 && (
+            <Elements stripe={stripePromise}>
+              <PostAddPayment />
+            </Elements>
+          )}{" "}
+        </div>
+
+        <img
+          src={sittingman}
+          alt=""
+          className="  h-[320px] sm:h-[420px] sm:w-[520px] xl:h-[660px] xl:w-[720px] "
+        />
       </div>
-      {/* <div className="h-screen">
-        <CitygelLogo />
-      </div> */}
+      <div className="mx-auto mt-36  flex w-full items-center justify-center ">
+        <CitygelLogo />{" "}
+      </div>
     </div>
   );
 };

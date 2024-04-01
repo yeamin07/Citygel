@@ -64,34 +64,35 @@ const PostAddPayment = () => {
     try {
       setLoading(true);
       const token = await generateStripeToken();
-      // const resultPayment = await api.post(
-      //   "https://citygel-backend.onrender.com/api/v1/payment",
-      //   {
-      //     membershipType: membership,
-      //     email: user?.email,
-      //     token: token,
-      //     save: save,
-      //   },
-      // );
-      // console.log(resultPayment);
-      // if (resultPayment.data) {
-
-      const resultPostAds = await api.post(
-        "https://citygel-backend.onrender.com/api/v1/ads",
+      const resultPayment = await api.post(
+        "http://localhost:5000/api/v1/payment",
         {
+          membershipType: membership.membershipName,
+          amount: membership.price,
           email: user?.email,
-          ...ads,
+          token: token,
+          save: save,
         },
       );
-      console.log(resultPostAds);
-      if (resultPostAds.data) {
-        message.success("You Ads Post SuccessFully");
+      console.log(resultPayment);
+      if (resultPayment.data) {
+        const resultPostAds = await api.post(
+          "http://localhost:5000/api/v1/ads",
+          {
+            email: user?.email,
+            ...ads,
+          },
+        );
+        console.log(resultPostAds);
+        if (resultPostAds.data) {
+          message.success("You Ads Post SuccessFully");
+          setLoading(false);
+          setSuccess(true);
+          // }
+        }
         setLoading(false);
-        setSuccess(true);
-        // }
+        toast.success("Your Product is Pending");
       }
-      setLoading(false);
-      toast.success("Your Product is Added");
     } catch (err) {
       console.log("error: ", err);
       setFormErrorMessage(err.message ?? "Something went wrong");
