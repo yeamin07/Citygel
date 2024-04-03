@@ -96,7 +96,7 @@ const ProductCart = ({ item }) => {
             </div>
           </div>
         </div>
-        <div className="z-[1] box-border flex max-w-full cursor-pointer flex-row items-center justify-center self-stretch whitespace-nowrap rounded-[9px] py-[17px] px-[130px] text-5xl shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] mq1050:px-[120px] mq800:py-[10px] mq750:w-[100%] mq750:px-[90px] mq500:py-[8px] mq450:box-border mq450:py-[6px] mq450:pl-5 mq450:pr-5 mq350:py-[5px]">
+        <div className="z-[1] box-border flex max-w-full cursor-pointer flex-row items-center justify-center self-stretch whitespace-nowrap rounded-[9px] py-[17px] px-[130px] text-5xl shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] mq1050:px-[120px] mq800:py-[10px] mq750:w-[100%] mq750:px-[40px] mq500:py-[8px] mq450:box-border mq450:py-[6px] mq450:pl-5 mq450:pr-5 mq350:py-[5px]">
           <div
             className="relative flex  hidden h-[70px] w-[100%] max-w-full items-center justify-center rounded-[10px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)]
           [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] mq500:h-[55px] mq350:h-[40px]"

@@ -148,7 +148,7 @@ const Products = () => {
           <p className="pt-[12%] text-xl">AD</p>
         </div>
 
-        <div className="flex w-[100%] flex-row justify-between gap-5 mq800:flex-col">
+        <div className="flex w-[100%] justify-between gap-5 lg:flex-row flex-col">
           <div className="xl:w-[100%] mx-auto lg:w-[100%] mq800:w-[100%] ">
             <div className="mt-16 flex w-auto flex-row">
               <DropdownButton text="Sort Default" />
@@ -284,7 +284,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="mx-auto mt-20 flex h-[1200] items-center justify-center bg-gray-200 sm:h-[110px] sm:w-[100%] md:w-[100%] lg:h-screen  lg:w-[10%]">
+          <div className="mx-auto mt-20 flex  items-center justify-center bg-gray-200 h-[110px] w-[100%]  lg:h-screen  lg:w-[20%]">
             AD
           </div>
         </div>

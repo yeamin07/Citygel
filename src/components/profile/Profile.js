@@ -62,15 +62,15 @@ const Profile = () => {
                 </div>
                 {/*~~~~~~~~~~~~~~~~~~~~~Phone input full-width problem ~~~~~~~~~~~~~~~~~~*/}
                 <div className="w-full">
-                  <label className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px] 2xl:text-[19.5px] text-gray-500">Phone Number</label>
-                  <div className="relative mt-[5px] block w-full gap-[25px] md:flex ">
+                  {/* <label className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px] 2xl:text-[19.5px] text-gray-500">Phone Number</label>
+                  <div className="relative mt-[5px] block w-full gap-[25px] md:flex "> */}
                     {/* <Controller/> */}
 
-                    <PhoneInput
+                    {/* <PhoneInput
                       country={"us"}
                       placeholder="Phone Number"
                       className="h-[6rem] w-full"
-                    />
+                    /> */}
 
 
                     {/* {errors.phoneNumber?.message && (
@@ -84,7 +84,7 @@ const Profile = () => {
                         <>Please enter valid phone number</>
                       </Text>
                     )} */}
-                  </div>
+                  {/* </div> */}
                 </div>
                 <div className="flex justify-center md:justify-end flex-row items-center gap-[20px] md:gap-[14px] lg:gap-[10px]">
                   <button className="rounded-[10px] bg-current shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] border-2 md:border-2  border-solid border-cyan-500 text-[17px] 2xl:text-[20px] md:text-[18px] lg:text-[19px] py-[13px] px-[50px] 2xl:py-[17px] 2xl:px-[70px] lg:py-[14px] lg:px-[60px] text-black">Edit</button>

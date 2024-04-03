@@ -4,8 +4,8 @@ import { trash } from "assets/Allimages";
 
 export default function UserDatas({tit, picture,Name, Email,Phone_number,Action, index }) {
     return (
-        <tr className="bg-white border-b  hover:bg-gray-50 flex text-gray-500 justify-between mb-2 h-auto no-scrollbar">
-            <td className="px-6  font-medium text-gray-900 flex items-center w-[20rem]">
+        <tr className="bg-white border-b text-[12px] sm:text-[15px] lg:text-[17px] hover:bg-gray-50 flex text-gray-500 justify-between mb-2 h-auto no-scrollbar">
+            <td className="px-6  font-medium text-gray-900 flex items-center w-[20rem] overflow-auto">
                 <input type="checkbox"  className="w-[16px] h-[16px] border-[1px] border-solid border-black-900_87 rounded-[5px] mr-6"/>
                 <div className="flex justify-start  items-center gap-[2.5px] text-gray-500"><img src={picture} alt="userAvator" className='h-7 w-7 lg:h-9 lg:w-9 rounded-full' />{tit}</div>
             </td>

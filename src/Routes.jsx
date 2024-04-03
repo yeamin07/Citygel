@@ -20,6 +20,12 @@ import Description from "components/profile/Description";
 import PageTitle from "components/Dashboard/PageTitle";
 import ECommerce from "pages/Dashboard";
 import Dashboard from "pages/Dashboard";
+import AddCategory from "pages/Dashboard/AddCategory";
+import SubCategory from "pages/Dashboard/SubCategory";
+import Country from "pages/Dashboard/Country";
+import Test from "components/Test/Test";
+import State from './pages/Dashboard/AddState';
+import City from './pages/Dashboard/City';
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
@@ -94,6 +100,30 @@ const ProjectRoutes = () => {
     {
       path: "/dashboard",
       element: <Dashboard />,
+    },
+    {
+      path: "/dashboard/addCategory",
+      element: <AddCategory />,
+    },
+    {
+      path: "/dashboard/country",
+      element: <Country/>,
+    },
+    {
+      path: "/dashboard/subCategory",
+      element: <SubCategory />,
+    },
+    {
+      path: "/dashboard/state",
+      element: <State />,
+    },
+    {
+      path: "/dashboard/city",
+      element: <City />,
+    },
+    {
+      path: "/test",
+      element: <Test />,
     },
   ]);
 

@@ -30,7 +30,7 @@ import { trash } from "assets/Allimages";
              <h1 className='ml-11 mt-5 mb-10 text-[26px] sm:text-[28px] lg:text-[30px] font-medium absolute left-4 '>Enquiries</h1>
             <table className="w-full  mx-auto h-auto mt-20  border-solid border-gray-300  shadow-sm rounded-[25px] lg:rounded-[35px] pb-5">
                 <thead  className=" !text-gray-100 ">
-                    <tr className="flex w-full py-[25px] justify-around rounded-t-3xl bg-black-2">
+                    <tr className="flex w-full py-[25px] text-[13px] sm:text-[15px] lg:text-[18px] justify-around rounded-t-3xl bg-black-2">
                             <th className='w-[20rem] flex justify-center font-extralight'>Title</th>
                             <th className='w-[20rem] flex justify-start border-l-[1px] border-solid border-gray-500 pl-1 font-extralight'>Name</th>
                             <th className='w-[16rem] flex justify-start border-l-[1px] border-solid border-gray-500 pl-1 font-extralight'>Email</th>

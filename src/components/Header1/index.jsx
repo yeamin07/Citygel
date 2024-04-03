@@ -3,13 +3,14 @@ import { Drawer, Dropdown, Menu, Space } from "antd";
 import { signOut } from "firebase/auth";
 import { Button, Text, Img } from "./..";
 import React, { useContext, useState } from "react";
-import { location, logo } from "assets/Allimages";
+import { location, logo,man_pic } from "assets/Allimages";
 import AuthContext from "context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { downarrow, menu } from "assets/Allimages";
 import { useAuthState } from "react-firebase-hooks/auth";
 import images from "../../assets/images/Citygel-2 white 1.png";
 import { IoMdClose } from "react-icons/io";
+import { RiArrowDropDownFill } from "react-icons/ri";
 export default function Header1({ bg = true }) {
   const navigate = useNavigate();
   let { logoutUser, tuser } = useContext(AuthContext);
@@ -88,7 +89,7 @@ export default function Header1({ bg = true }) {
   return (
     <header>
       <div
-        className={` relative !z-[10000] hidden pt-5 pb-1 md:block ${bg ? "form-95% to-5% bg-gradient-to-r from-[#003E4C] to-cyan-800" : "bg-transparent"}`}
+        className={` relative !z-[10000] hidden pt-5 pb-3 md:block ${bg ? "form-95% to-5% bg-gradient-to-r from-[#003E4C] to-cyan-800" : "bg-transparent"}`}
       >
         <div className="container mx-auto mb-4 flex  flex-row justify-between px-5">
           <Img
@@ -96,7 +97,15 @@ export default function Header1({ bg = true }) {
             alt="citygel2white"
             className=" xl:w-[165px] xl:h-[50px] h-[45px] w-[145px] shrink-0 object-cover"
           />
-          <div className="xl:w-[50%] flex flex-row  justify-end gap-12">
+          <div className="xl:w-[50%] flex flex-row  justify-end gap-[14px]">
+              {/*~~~~~~~~~~~user man pic ~~~~~~~~~~~~~~~ */}
+              <div className="hidden sm:flex flex-row justify-start gap-[0px] w-[10rem] h-auto">
+                <div className="flex flex-col justify-start gap-[5px]">
+                  <p className="text-[15px] text-white-A700">John smit</p>
+                  <div className="text-[10px] text-cyan-500 flex gap-[2px] h-[12px] w-[6rem]" >My Account <RiArrowDropDownFill className="text-[20px] mt-[-2px]"/></div>
+                </div>
+                <div><img src={man_pic} className="w-[40px] h-[40px] lg:w-[50px] lg:h-[50px] rounded-full"/></div>
+              </div>
             {user?.uid && tuser ? (
               <div onClick={handleSignOut}>
                 <Text
@@ -118,6 +127,7 @@ export default function Header1({ bg = true }) {
                 </Text>
               </div>
             )}
+            {/*Change location section~~~~~~~~~~~ */}
             <div
               className="flex h-[45px]  w-[215px]  cursor-pointer items-center justify-between rounded-3xl
             border border-solid border-white-A700_63  py-4 pr-2 text-white-A700 mq1050:h-[37px]  mq1050:w-[170px] mq1050:px-1"
