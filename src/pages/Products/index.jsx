@@ -157,7 +157,7 @@ const Products = () => {
   };
   return (
     <div>
-      <div>
+     
         <Helmet>
           <title>Citygel</title>
           <meta
@@ -313,9 +313,8 @@ const Products = () => {
               </div>
             </div>
 
-            <div className="mt-20 flex h-[110px]  items-center justify-center bg-gray-200 sm:h-[1200px] lg:w-[20%]  ">
-              AD
-            </div>
+          <div className="mx-auto mt-20 flex  items-center justify-center bg-gray-200 h-[110px] w-[100%]  lg:h-screen  lg:w-[20%]">
+            AD
           </div>
         </div>
       </div>

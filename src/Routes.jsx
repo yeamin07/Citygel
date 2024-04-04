@@ -13,6 +13,12 @@ import Profile from "components/profile/Profile";
 import Confirm from "pages/SignUp/Confirm";
 import Category from "pages/Categories";
 import Dashboard from "pages/Dashboard";
+import AddCategory from "pages/Dashboard/AddCategory";
+import SubCategory from "pages/Dashboard/SubCategory";
+import Country from "pages/Dashboard/Country";
+import Test from "components/Test/Test";
+import State from "./pages/Dashboard/AddState";
+import City from "./pages/Dashboard/City";
 import AllUser from "pages/Dashboard/AllUser";
 import AllAds from "pages/Dashboard/AllAds";
 import AllPayment from "pages/Dashboard/AllPayment";
@@ -20,11 +26,6 @@ import AddPost from "pages/Dashboard/AddPost";
 import AddField from "pages/Dashboard/AddField";
 import NotFound from "pages/NotFound";
 import LoginPage from "pages/Login";
-
-const stripePromise = loadStripe(
-  "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
-);
-
 const ProjectRoutes = () => {
   return (
     <Routes>
