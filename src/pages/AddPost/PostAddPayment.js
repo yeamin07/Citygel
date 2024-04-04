@@ -1,7 +1,9 @@
 import useSelection from "antd/es/table/hooks/useSelection";
 import { Text } from "components";
 import ProductSlider from "pages/Products/ProductCart/ProductSlider";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -17,6 +19,8 @@ import auth from "firebase.init";
 import { message } from "antd";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Loading from "components/Loading/Loading";
+import { firstStep } from "store/slices/adsPostSlice";
 const PostAddPayment = () => {
   const { currentStep, category, subcategory, form, membership } = useSelector(
     (state) => state.post,
@@ -31,6 +35,7 @@ const PostAddPayment = () => {
   const [user] = useAuthState(auth);
   const [save, setSave] = useState(false); // State variable to track checkbox state
   const [success, setSuccess] = useState(false);
+  const dispatch = useDispatch();
   const handleSaveCardChange = (e) => {
     setSave(e.target.checked);
   };
@@ -64,42 +69,47 @@ const PostAddPayment = () => {
     try {
       setLoading(true);
       const token = await generateStripeToken();
-      // const resultPayment = await api.post(
-      //   "https://citygel-backend.onrender.com/api/v1/payment",
-      //   {
-      //     membershipType: membership,
-      //     email: user?.email,
-      //     token: token,
-      //     save: save,
-      //   },
-      // );
-      // console.log(resultPayment);
-      // if (resultPayment.data) {
-
-      const resultPostAds = await api.post(
-        "https://citygel-backend.onrender.com/api/v1/ads",
+      const resultPayment = await api.post(
+        "http://localhost:5000/api/v1/payment",
         {
+          membershipType: membership.membershipName,
+          amount: membership.price,
           email: user?.email,
-          ...ads,
+          token: token,
+          save: save,
         },
       );
-      console.log(resultPostAds);
-      if (resultPostAds.data) {
-        message.success("You Ads Post SuccessFully");
+      console.log(resultPayment);
+      if (resultPayment.data) {
+        const resultPostAds = await api.post(
+          "http://localhost:5000/api/v1/ads",
+          {
+            email: user?.email,
+            ...ads,
+          },
+        );
+        console.log(resultPostAds);
+        if (resultPostAds.data) {
+          message.success("You Ads Post SuccessFully");
+          setLoading(false);
+          setSuccess(true);
+          // }
+        }
         setLoading(false);
-        setSuccess(true);
-        // }
+        dispatch(firstStep());
+        toast.success("Your Product is Pending");
       }
-      setLoading(false);
-      toast.success("Your Product is Added");
     } catch (err) {
       console.log("error: ", err);
       setFormErrorMessage(err.message ?? "Something went wrong");
     }
   };
+  if (loading) {
+    return <Loading />;
+  }
   console.log(category);
   return (
-    <div className="pl-20 mq1050:pt-[34px] mq1050:pl-0">
+    <div>
       <div>
         {/* <div className="absolute top-[580px]  left-[80px] mq1325:relative  mq1325:top-5 mq1325:left-[8px] h-auto flex mq1500:flex-col flex-row space-x-6">
         <div className="mq1325:w-[370px] mq450:w-[350px] mq450:ml-7 w-[400px] h-[540px] flex justify-between flex-col border-[1px] border-red-700 
@@ -121,45 +131,45 @@ const PostAddPayment = () => {
             View All
           </button>
         </div> */}
-        <div className="">
+        <div className="flex flex-col items-center sm:items-start">
           <Text
             as="p"
-            className="text-start z-[1] mt-[70px] w-[100%] text-[44px]  font-medium !text-black-900_03 sm:text-center  sm:text-[28px] mq450:text-center mq450:text-[28px]"
+            className="sm:text-start z-[1] mt-[70px]  text-center  !text-[28px] font-medium !text-black-900_03  sm:text-[44px] "
           >
             Preview & Pay
           </Text>
           <Text
             as="p"
-            className="text-start z-[1] mt-3 w-[100%] text-[20px] leading-[35px] !text-black-900_87 opacity-0.8 sm:text-center sm:text-[14px] mq1500:w-[100%] mq450:text-center mq450:text-[14px]"
+            className="opacity-0.9 z-[1] mt-3 text-center  text-[14px] !text-black-900_87  sm:text-left sm:text-[16px] xl:w-[90%] 2xl:w-[70%] "
           >
             Lorem Ipsum is simply dummy text of the printing and typesetting
             Lorem Ipsum is simply dummy text of the printing and typesetting
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            Lorem Ipsum 
+            Lorem Ipsum
           </Text>
         </div>
-        <div className="flex  flex-row space-x-10  pt-10 mq825:space-x-10 mq750:flex-col mq750:space-x-5  mq450:space-x-2">
-          <div className="bg-white z-[6] box-border flex h-[568.8px] w-[354.4px] max-w-full flex-col items-start justify-start gap-[8.69999999999709px] rounded-mid-5 border-[1.3px] border-solid border-gray-100 px-[7px] pt-[8.80000000000291px] pb-[8.69999999999709px] shadow-[0px_0px_8.75px_rgba(0,_0,_0,_0.15)]">
+        <div className="flex  flex-col items-center pt-10 xl:flex-row  xl:items-start  xl:space-x-10 ">
+          <div className="bg-white z-[6] box-border flex h-[568.8px] w-80 max-w-full flex-col items-start justify-start gap-[8.69999999999709px] rounded-mid-5 border-[1.3px] border-solid border-gray-100 px-[7px] pt-[8.80000000000291px] pb-[8.69999999999709px] shadow-[0px_0px_8.75px_rgba(0,_0,_0,_0.15)] 2xl:w-[354.4px]">
             <div className="relative h-[253.8px] self-stretch">
               <ProductSlider
                 mainImage={form.mainImage}
-                moreImages={form.moreImages || []}
+                moreImages={form.moreImages || [""]}
               />
             </div>
             <div className="box-border flex max-w-full flex-col items-start justify-start gap-[7.80000000000291px] self-stretch px-0 pt-0 pb-[14.10000000000582px]">
               <div className="text-white flex flex-row items-start justify-start gap-[8.5px] text-base-8 mq450:flex-wrap">
-                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-[17.5px] pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)]">
-                  <div className="relative inline-block min-w-[72px]">
+                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-2.5 pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] 2xl:px-[17.5px]">
+                  <div className="relative inline-block text-sm xl:text-base">
                     Premium
                   </div>
                 </div>
-                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-[17.5px] pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)]">
-                  <div className="relative inline-block min-w-[72px]">
+                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-2.5 pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)] 2xl:px-[17.5px]">
+                  <div className="relative inline-block text-sm xl:text-base">
                     Premium
                   </div>
                 </div>
-                <div className="flex flex-row items-start justify-start rounded-[8.75px] px-[17.5px] pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)]">
-                  <div className="relative inline-block min-w-[72px]">
+                <div className="2xlpx-[17.5px] flex flex-row items-start justify-start rounded-[8.75px] px-2.5 pt-[5.30000000000291px] pb-[5.19999999999709px] [background:linear-gradient(90deg,_#fcb100,_#ed893e)]">
+                  <div className="relative inline-block text-sm xl:text-base">
                     Premium
                   </div>
                 </div>
@@ -175,11 +185,11 @@ const PostAddPayment = () => {
                   {form.description}
                 </div>
               </div>
-              <div className="flex max-w-full flex-row items-start justify-start self-stretch">
-                <div className="relative flex-1 shrink-0 font-semibold leading-[35.01px] [debug_commit:612783b] mq450:text-xl mq450:leading-[28px]">
+              <div className="flex max-w-full  items-start justify-start self-stretch">
+                <div className="relative flex-1 shrink-0 font-semibold leading-[35.01px] [debug_commit:612783b] ">
                   AED {form.price}
                 </div>
-                <div className="text-gray-1100 ml-[-113px] flex flex-col items-start justify-start px-0 pt-[4.400000000008731px] pb-0 text-mid-5">
+                <div className="text-gray-1100 flex flex-col items-start justify-start px-0 pt-[4.400000000008731px] pb-0 text-mid-5 xl:ml-[-113px]">
                   <div className="flex shrink-0 flex-row items-start justify-start gap-[8.69999999999709px] [debug_commit:612783b]">
                     <div className="relative">{form.city}</div>
                     <div className="box-border flex h-[23.6px] flex-col items-start justify-start px-0 pt-[2.599999999991269px] pb-0">
@@ -205,15 +215,15 @@ const PostAddPayment = () => {
             <>
               {" "}
               {/*This is pay now section*/}
-              <form>
-                <div className="box-border flex min-h-screen min-w-[686px] max-w-full flex-1 flex-col items-start justify-start px-0 pt-[26px] pb-0 text-xl-4 text-gray-600 mq750:min-w-full">
-                  <div className="flex max-w-full flex-col items-start justify-start gap-[115px] self-stretch mq1050:gap-[57px_115px] mq750:gap-[29px_115px]">
+              <form className="mt-10  w-full xl:mt-0">
+                <div className="box-border flex  w-full max-w-full flex-col items-start justify-start pt-[26px]  text-gray-600  xl:w-[686px]">
+                  <div className="flex max-w-full flex-col items-start justify-start gap-[115px] self-stretch ">
                     <div className="box-border flex max-w-full flex-row items-start justify-start self-stretch py-0 pr-0 pl-[5px] mq750:pl-[0px] mq450:pl-[0px]">
                       <div className="flex max-w-full flex-1 flex-col items-start justify-start gap-[30px]">
-                        <div className="box-border flex w-[550px] max-w-full flex-col items-start justify-start gap-[6px] px-0 pt-0 pb-2.5">
+                        <div className="box-border flex w-full flex-col items-start justify-start gap-[6px] px-0 pt-0 pb-2.5 xl:w-[550px]">
                           <label
                             htmlFor="cardholderName"
-                            className="relative inline-block w-[393.9px] max-w-full uppercase text-black-900_03 mq450:text-base"
+                            className="relative inline-block uppercase  text-black-900_03 xl:w-[393.9px] mq450:text-base"
                           >
                             Card Holder Name
                           </label>
@@ -222,16 +232,14 @@ const PostAddPayment = () => {
                             onChange={(e) => setName(e.target.value)}
                             style={{ borderBottom: "1px solid gray" }}
                             id="cardholderName"
-                            className="
-                 
-                 relative h-[46px]  self-stretch text-9xl-1 text-gray-500 "
+                            className=" relative h-[46px]  w-full self-stretch text-9xl-1 text-gray-500  "
                             defaultValue="Anne Jenny"
                           />
                         </div>
-                        <div className="box-border flex w-[681.4px] max-w-full flex-col items-start justify-start gap-[9.80000000000291px] px-0 pt-0 pb-[10.89999999999418px]">
+                        <div className="box-border flex w-full flex-col items-start justify-start gap-[9.80000000000291px] px-0 pt-0 pb-[10.89999999999418px] xl:w-[681.4px]">
                           <label
                             htmlFor="cardNumber"
-                            className="relative inline-block w-[393.9px] max-w-full uppercase text-black-900_03 mq450:text-base"
+                            className="relative inline-block  uppercase text-black-900_03 mq450:text-base"
                           >
                             Card Number
                           </label>
@@ -242,7 +250,7 @@ const PostAddPayment = () => {
                             className="font-comfortaa relative self-stretch border-b-[1px] border-solid  border-gray-500 text-9xl-1 text-gray-500 "
                           />
                         </div>
-                        <div className="flex max-w-full flex-row items-start justify-start gap-[50px] self-stretch mq1325:flex-col mq1050:flex-wrap mq750:gap-[50px_25px]">
+                        <div className="flex w-full flex-row items-start justify-start gap-[50px] self-stretch ">
                           <ExpDateInput expDate="06/27" />
 
                           <CvvInput cvv="262" />
@@ -272,7 +280,7 @@ const PostAddPayment = () => {
                     </div>
                     <div
                       onClick={handleSubmit}
-                      className="text-white z-[4] flex flex-row items-start justify-start whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-700 px-[76px] pt-[23px] pb-[22px] text-11xl shadow-md mq800:px-[45px] mq800:pt-[13px] mq800:pb-[8px] mq800:text-9xl mq450:box-border mq450:pl-5 mq450:pr-5"
+                      className="text-white z-[4] mx-auto flex flex-row items-center justify-center whitespace-nowrap rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-700 px-[76px] pt-[23px] pb-[22px] text-11xl shadow-md lg:mx-0 lg:items-start lg:justify-start "
                     >
                       <div className="relative cursor-pointer text-white-A700">
                         Pay Now
@@ -283,7 +291,7 @@ const PostAddPayment = () => {
               </form>
             </>
           ) : (
-            <div className="flex w-full flex-col gap-8 p-11 mq825:space-x-10 mq750:flex-col mq750:space-x-5  mq450:space-x-2">
+            <div className="flex w-full flex-col gap-8 ">
               {/*This is pay now section*/}
 
               <h1 className="font-poppins text-[38px] font-medium">
@@ -296,7 +304,7 @@ const PostAddPayment = () => {
               </p>
               <button
                 onClick={() => navigate("/")}
-                className="h-[60px] w-[150px] rounded-2xl bg-gradient-to-br from-cyan-600 to-cyan-400 text-[20px] text-white-A700"
+                className="mx-auto h-[60px] w-[150px] rounded-2xl bg-gradient-to-br from-cyan-600 to-cyan-400 text-[20px] text-white-A700 lg:mx-0"
               >
                 Go To Home
               </button>
@@ -322,10 +330,10 @@ const PostAddPayment = () => {
 
 const ExpDateInput = ({ expDate }) => {
   return (
-    <div className="relative">
+    <div className="relative  flex w-1/2 flex-col">
       <label
         htmlFor="expDate"
-        className="inline-block max-w-full uppercase text-black-900_03 mq450:text-base"
+        className="text-left   uppercase text-black-900_03"
       >
         Exp Date
       </label>
@@ -340,11 +348,8 @@ const ExpDateInput = ({ expDate }) => {
 
 const CvvInput = ({ cvv }) => {
   return (
-    <div className="relative">
-      <label
-        htmlFor="cvv"
-        className="inline-block max-w-full uppercase text-black-900_03 mq450:text-base"
-      >
+    <div className="relative flex w-1/2 flex-col">
+      <label htmlFor="cvv" className="text-left uppercase text-black-900_03 ">
         CVV
       </label>
 

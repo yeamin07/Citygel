@@ -20,6 +20,7 @@ const Products = () => {
   const [checkedSubCategoryValue, setCheckedSubCategoryValue] = useState([]);
   const [checkedCategoryValue, setCheckedCategoryValue] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 50]);
+  const [order, setOrder] = useState("desc");
   const [selectedCity, setSelectedCity] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -94,7 +95,16 @@ const Products = () => {
 
   console.log(checkedSubCategoryValue);
   console.log(checkedCategoryValue);
-  const fetchData = (category, subcategories, priceRange, city) => {
+  const fetchData = (
+    category,
+    subcategories,
+    priceRange,
+    city,
+    sortOrder = "desc",
+    page = 1,
+    limit = 10,
+    sortBy = "updatedAt",
+  ) => {
     // Construct the query parameters
     let queryParams = [];
     if (category) {
@@ -110,6 +120,10 @@ const Products = () => {
     if (city) {
       queryParams.push(`city=${city}`);
     }
+    queryParams.push(`page=${page}`);
+    queryParams.push(`limit=${limit}`);
+    queryParams.push(`sortBy=${sortBy}`);
+    queryParams.push(`sortOrder=${sortOrder}`);
 
     let apiUrl = "https://citygel-backend.onrender.com/api/v1/ads";
     if (queryParams.length > 0) {
@@ -131,54 +145,67 @@ const Products = () => {
   };
 
   console.log(allProduct);
-
+  const handleItemClick = ({ key }) => {
+    setOrder(key);
+    fetchData(
+      checkedCategoryValue.length > 0 ? checkedCategoryValue : null,
+      checkedSubCategoryValue,
+      priceRange,
+      selectedCity,
+      key,
+    );
+  };
   return (
     <div>
-      <Helmet>
-        <title>Citygel</title>
-        <meta
-          name="description"
-          content="Web site created using create-react-app"
-        />
-      </Helmet>
-      <Header1 />
+     
+        <Helmet>
+          <title>Citygel</title>
+          <meta
+            name="description"
+            content="Web site created using create-react-app"
+          />
+        </Helmet>
+        <Header1 />
 
-      <div className="bg-[rgba(250, 250, 250, 1)] container mx-auto min-h-screen">
-        <div className="mx-auto mt-10 flex h-[345px] w-[100%]  justify-center bg-gray-200">
-          <p className="pt-[12%] text-xl">AD</p>
-        </div>
+        <div className="bg-[rgba(250, 250, 250, 1)] container mx-auto min-h-screen px-5">
+          <div className="mx-auto mt-10 flex h-[345px] w-[100%]  justify-center bg-gray-200">
+            <p className="pt-[12%] text-xl">AD</p>
+          </div>
 
-        <div className="flex w-[100%] justify-between gap-5 lg:flex-row flex-col">
-          <div className="xl:w-[100%] mx-auto lg:w-[100%] mq800:w-[100%] ">
-            <div className="mt-16 flex w-auto flex-row">
-              <DropdownButton text="Sort Default" />
-              {/*This is Filter by section */}
-              <div
-                className="flex h-[50px] w-[150px] cursor-pointer  items-center justify-center gap-2 rounded-31xl border-[1px]
+          <div className="flex w-full flex-col gap-5 lg:flex-row">
+            <div className=" lg:w-[76%]  ">
+              <div className="mt-16 flex w-auto flex-row">
+                <DropdownButton
+                  text="Sort Default"
+                  handleItemClick={handleItemClick}
+                />
+                {/*This is Filter by section */}
+                <div
+                  className="flex h-[50px] w-[150px] cursor-pointer  items-center justify-center gap-2 rounded-31xl border-[1px]
               border-solid border-black-900_87 p-4"
-                onClick={() => setFilter(!filter)}
-              >
-                <img src={arrow} className="ml-3 h-[20px] w-[11px]" />
-                <p className="mt-[0.5] font-poppins text-[14px] font-medium text-[#000000df]">
-                  Filter By
-                </p>
-              </div>
-            </div>
-
-            {/*This is Filter Default section*/}
-            {filter && (
-              <div className=" mx-auto mt-5 w-[100%] sm:w-[100%] mq750:w-[100%] ">
-                <div className="mr-4 flex h-[60px] w-[100%] flex-row space-x-2 rounded-t-[27px] border border-b-0 border-solid border-gray-300 pt-3">
-                  <img
-                    src={arrow}
-                    alt=""
-                    className="ml-5 mt-1 h-[20px] w-[11px]"
-                  />
-                  <p className="mt-[2px] w-[80%] text-[15px]">
-                    Filter: Default
+                  onClick={() => setFilter(!filter)}
+                >
+                  <img src={arrow} className="ml-3 h-[20px] w-[11px]" />
+                  <p className="mt-[0.5] font-poppins text-[14px] font-medium text-[#000000df]">
+                    Filter By
                   </p>
                 </div>
-                {/* <div className='w-[65%] h-[70px] border border-solid border-black-900_87 pt-3 mr-4 space relative'>
+              </div>
+
+              {/*This is Filter Default section*/}
+              {filter && (
+                <div className=" smx:w-[100%] mx-auto mt-5 w-[100%] mq750:w-[100%] ">
+                  <div className="mr-4 flex h-[60px] w-[100%] flex-row space-x-2 rounded-t-[27px] border border-b-0 border-solid border-gray-300 pt-3">
+                    <img
+                      src={arrow}
+                      alt=""
+                      className="ml-5 mt-1 h-[20px] w-[11px]"
+                    />
+                    <p className="mt-[2px] w-[80%] text-[15px]">
+                      Filter: Default
+                    </p>
+                  </div>
+                  {/* <div className='w-[65%] h-[70px] border border-solid border-black-900_87 pt-3 mr-4 space relative'>
                             <p>categories</p>
                             <p>price</p>
                         </div>
@@ -186,103 +213,105 @@ const Products = () => {
                             <p>subcategories</p>
                             <p>cities</p>
                         </div> */}
-                <div
-                  className="mr-4 grid h-[150px] max-h-[200px] w-[100%] grid-cols-2 grid-rows-2 rounded-b-[27px] 
+                  <div
+                    className="mr-4 grid h-[150px] max-h-[200px] w-[100%] grid-cols-2 grid-rows-2 rounded-b-[27px] 
                          border border-solid border-gray-300  mq450:h-[200px]"
-                >
-                  <p className="border border-solid border-gray-300 pl-2 font-medium">
-                    Categories
-                    <br />
-                    <div className="space-x-1">
-                      <input
-                        onChange={handleCategoryChange}
-                        id="checkbox1"
-                        type="checkbox"
-                        value={"electric"}
-                        className="h-[13px] w-[13px] rounded border-[1px] border-solid
+                  >
+                    <p className="border border-solid border-gray-300 pl-2 font-medium">
+                      Categories
+                      <br />
+                      <div className="space-x-1">
+                        <input
+                          onChange={handleCategoryChange}
+                          id="checkbox1"
+                          type="checkbox"
+                          value={"electric"}
+                          className="h-[13px] w-[13px] rounded border-[1px] border-solid
                             border-r-black-900_03 bg-white-A700"
-                      />
+                        />
 
-                      <label
-                        htmlFor="checkbox1"
-                        className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
-                      >
-                        Motor
-                      </label>
-                    </div>
-                  </p>
-                  <p className="border border-solid border-gray-300 pl-2 font-medium ">
-                    Price
-                    <br />
-                    <div className="ml-3 w-[70%]">
-                      <Slider
-                        range
-                        defaultValue={[0, 50]}
-                        onChange={handleSliderChange}
-                      />
-                    </div>
-                  </p>
-                  <p className="h-[60%] items-stretch border-t border-r border-solid border-gray-300 pl-2 font-medium">
-                    Subcategories <br />
-                    <div className="mt-1 flex space-x-1">
-                      <input
-                        id="checkbox1"
-                        type="checkbox"
-                        className="h-[13px] w-[13px] rounded border-[1px] border-solid
+                        <label
+                          htmlFor="checkbox1"
+                          className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
+                        >
+                          Motor
+                        </label>
+                      </div>
+                    </p>
+                    <p className="border border-solid border-gray-300 pl-2 font-medium ">
+                      Price
+                      <br />
+                      <div className="ml-3 w-[70%]">
+                        <Slider
+                          range
+                          defaultValue={[0, 50000]}
+                          min={0}
+                          max={100000}
+                          onChange={handleSliderChange}
+                        />
+                      </div>
+                    </p>
+                    <p className="h-[60%] items-stretch border-t border-r border-solid border-gray-300 pl-2 font-medium">
+                      Subcategories <br />
+                      <div className="mt-1 flex space-x-1">
+                        <input
+                          id="checkbox1"
+                          type="checkbox"
+                          className="h-[13px] w-[13px] rounded border-[1px] border-solid
                             border-r-black-900_03 bg-white-A700"
-                        value="computers"
-                        onChange={handleSubCategoryChange}
-                      />
+                          value="computers"
+                          onChange={handleSubCategoryChange}
+                        />
 
-                      <label
-                        htmlFor="checkbox1"
-                        className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
-                      >
-                        Motor
-                      </label>
-                      {/*another one checkbox */}
-                      <input
-                        id="checkbox1"
-                        type="checkbox"
-                        className="h-[13px] w-[13px] rounded border-[1px] border-solid
+                        <label
+                          htmlFor="checkbox1"
+                          className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
+                        >
+                          Motor
+                        </label>
+                        {/*another one checkbox */}
+                        <input
+                          id="checkbox1"
+                          type="checkbox"
+                          className="h-[13px] w-[13px] rounded border-[1px] border-solid
                             border-r-black-900_03 bg-white-A700"
-                        value="computers"
-                        onChange={handleSubCategoryChange}
-                      />
+                          value="computers"
+                          onChange={handleSubCategoryChange}
+                        />
 
-                      <label
-                        htmlFor="checkbox1"
-                        className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
-                      >
-                        Motor 2
-                      </label>
-                    </div>
-                  </p>
-                  <p className="border-l border-t border-solid border-gray-300 pl-2 font-medium  ">
-                    cities
-                    <form>
-                      <select
-                        className="mt-1 h-[40px] w-[80%] rounded-[7px]
+                        <label
+                          htmlFor="checkbox1"
+                          className="relative mt-[-2px] flex-1 shrink-0 text-[14px] font-extralight capitalize"
+                        >
+                          Motor 2
+                        </label>
+                      </div>
+                    </p>
+                    <p className="border-l border-t border-solid border-gray-300 pl-2 font-medium  ">
+                      cities
+                      <form>
+                        <select
+                          className="mt-1 h-[40px] w-[80%] rounded-[7px]
               border border-solid border-gray-400 pl-2 font-poppins text-[15px]"
-                        onChange={handleDropdownChange}
-                      >
-                        <option value="" disabled selected hidden>
-                          --Select--
-                        </option>
-                        <option>Hazaribagh</option>
-                        <option>Dhanmondi</option>
-                      </select>
-                    </form>
-                  </p>
+                          onChange={handleDropdownChange}
+                        >
+                          <option value="" disabled selected hidden>
+                            --Select--
+                          </option>
+                          <option>Hazaribagh</option>
+                          <option>Dhanmondi</option>
+                        </select>
+                      </form>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            <div className="mx-auto mt-16 grid w-[95%] grid-cols-3  flex-wrap gap-3 mq800:w-[100%]  mq750:grid-cols-2 mq450:grid-cols-2">
-              {/* components */}
-              <Product allProduct={allProduct} loading={loading} />
+              <div className="mt-16 grid w-full grid-cols-1 flex-wrap  gap-3 sm:grid-cols-2  lg:w-[95%] xl:grid-cols-3 ">
+                {/* components */}
+                <Product allProduct={allProduct} loading={loading} />
+              </div>
             </div>
-          </div>
 
           <div className="mx-auto mt-20 flex  items-center justify-center bg-gray-200 h-[110px] w-[100%]  lg:h-screen  lg:w-[20%]">
             AD

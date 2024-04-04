@@ -1,11 +1,11 @@
-
 import CardDataStats from 'components/Dashboard/CardDataStats';
 import DefaultLayout from 'components/Dashboard/layout/DefaultLayout';
 import React from 'react';
 
-const AddCategory = () => {
+const AddCountry = () => {
     return (
-        <DefaultLayout>
+   
+                    <DefaultLayout>
         <div className="2xl:gap-7.5 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4">
           <CardDataStats title="Total views" total="$3.456K" rate="0.43%" levelUp>
             <svg
@@ -102,7 +102,8 @@ const AddCategory = () => {
           {/* <ChatCard /> */}
         </div>
       </DefaultLayout>
+   
     );
 };
 
-export default AddCategory;
+export default AddCountry;

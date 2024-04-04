@@ -16,7 +16,7 @@ import AddPostWrapper from "pages/AddPost/AddPostWrapper";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Profile from "components/profile/Profile";
-import Description from "components/profile/Description";
+import Description from "pages/Products/Description";
 import PageTitle from "components/Dashboard/PageTitle";
 import ECommerce from "pages/Dashboard";
 import Dashboard from "pages/Dashboard";
@@ -26,6 +26,11 @@ import Country from "pages/Dashboard/Country";
 import Test from "components/Test/Test";
 import State from './pages/Dashboard/AddState';
 import City from './pages/Dashboard/City';
+import AllUser from "pages/Dashboard/AllUser";
+import AllAds from "pages/Dashboard/AllAds";
+import AllPayment from "pages/Dashboard/AllPayment";
+import AddField from "pages/Dashboard/AddField";
+import AddPost from "pages/Dashboard/AddPost";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
@@ -99,7 +104,67 @@ const ProjectRoutes = () => {
     },
     {
       path: "/dashboard",
-      element: <Dashboard />,
+      element: (
+        <RequiredAuth>
+          <Dashboard />
+        </RequiredAuth>
+      ),
+    },
+    {
+      path: "/dashboard/all-user",
+      element: (
+        <RequiredAuth>
+          <AllUser />
+        </RequiredAuth>
+      ),
+    },
+    {
+      path: "/dashboard/all-ads",
+      element: (
+        <RequiredAuth>
+          <AllAds />
+        </RequiredAuth>
+      ),
+    },
+    {
+      path: "/dashboard/all-payment",
+      element: (
+        <RequiredAuth>
+          <AllPayment />
+        </RequiredAuth>
+      ),
+    },
+    {
+      path: "/dashboard/add-type",
+      element: (
+        <RequiredAuth>
+          <Dashboard />
+        </RequiredAuth>
+      ),
+    },
+    {
+      path: "/dashboard/add-category",
+      element: (
+        <RequiredAuth>
+          <Dashboard />
+        </RequiredAuth>
+      ),
+    },
+    {
+      path: "/dashboard/add-post",
+      element: (
+        <RequiredAuth>
+          <AddPost />
+        </RequiredAuth>
+      ),
+    },
+    {
+      path: "/forms/add-category",
+      element: (
+        <RequiredAuth>
+          <AddField />
+        </RequiredAuth>
+      ),
     },
     {
       path: "/dashboard/addCategory",
