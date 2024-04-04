@@ -276,7 +276,7 @@ const Products = () => {
               </div>
             )}
 
-            <div className="mt-16 grid lg:w-[95%] w-full xl:grid-cols-3  gap-3 flex-wrap  sm:grid-cols-2 grid-cols-1 ">
+            <div className="mt-16 grid lg:w-[95%] w-full xl:grid-cols-3  gap-3 flex-wrap  grid-cols-2  ">
               {/* components */}
               <Product allProduct={allProduct} loading={loading} />
             </div>

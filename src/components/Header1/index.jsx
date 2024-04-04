@@ -112,10 +112,10 @@ export default function Header1({ bg = true }) {
                 </Text>
               </div>
             )}
-            <div className="w-[215px] mq1050:w-[170px]  mq1050:h-[37px]  h-[45px] flex justify-between items-center
-            border border-solid border-white-A700_63  rounded-3xl mq1050:px-1 py-4 pr-2  text-white-A700 cursor-pointer">
+            <div className="w-[215px]   h-[45px] flex justify-between items-center
+            border border-solid border-white-A700_63  rounded-3xl py-4 pr-2  text-white-A700 cursor-pointer ">
 
-              <div className="w-[35px] h-[35px] mq1050:w-[30px] mq1050:h-[30px] mq1050:rounded-full border border-solid border-black-900_87 rounded-xl  ml-1 mq1050:mr-1
+              <div className="w-[35px] h-[35px]  border border-solid border-black-900_87 rounded-xl  ml-1 mq1050:mr-1
               flex justify-center items-center bg-white-A700 mq1050:ml-[-2px] ">
                 <Img
                   src="images/location.png"
@@ -132,15 +132,17 @@ export default function Header1({ bg = true }) {
               >
                 <a onClick={(e) => e.preventDefault()}>
                   <Space>
-                    <Text as="p" className="text-[18px] mq1050:text-[11px] ">
+                    <Text as="p" className="text-[18px] mq1050:text-[11px] !z-[1100] relative">
                       Change Location
                     </Text>
                     <img src={downarrow}
-                      className="w-[10px] h-[7px] mr-1 mq1050:mr-[1px] mq800:mr-[2px]"
+                      className="w-[10px] h-[7px] mr-1 mq1050:mr-[1px] mq800:mr-[2px]  !z-[1100] relative"
                     />
+
                   </Space>
                 </a>
               </Dropdown>
+
             </div>
           </div>
         </div>
@@ -174,10 +176,11 @@ export default function Header1({ bg = true }) {
             color="red_A400_01"
             // size="4xl"
             variant="fill"
-            className="font-aleo font-bold !px-12 py-[22px] rounded-md"
+            className="font-aleo font-bold !px-12 py-[22px] btn rounded-md "
           >
             Post an ad
           </Button>
+
         </div>
 
       </div>

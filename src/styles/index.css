@@ -252,3 +252,17 @@ a {
 body {
   overflow-x: hidden;
 }
+
+.btnz {
+  z-index: -100 !important;
+}
+
+.ant-dropdown-menu {
+  z-index: 1000 !important;
+  position: relative;
+}
+
+.ant-dropdown-menu .ant-dropdown-menu-item {
+  z-index: 1000 !important;
+  position: relative;
+}
