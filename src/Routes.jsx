@@ -1,168 +1,76 @@
 import React from "react";
-import { Route, useRoutes } from "react-router-dom";
-import Home from "pages/Home";
-import NotFound from "pages/NotFound";
-import LoginThree from "pages/Login";
-import SignUpPage from "pages/SignUp";
-import HomePage from "pages/Home";
-import Products from "./pages/Products/index";
-import CategoriesPage from "./pages/Categories/index";
-import PostAd from "pages/AddPost/PostFormAd";
-import PostAd1 from "pages/AddPost/PostMembershipPlan";
-import PostAd2 from "pages/AddPost/PostAddPayment";
-import Confirm from "pages/SignUp/Confirm";
-import RequiredAuth from "hooks/RequiredAuth";
-import AddPostWrapper from "pages/AddPost/AddPostWrapper";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import Profile from "components/profile/Profile";
+import RequiredAuth from "hooks/RequiredAuth";
+
+import HomePage from "pages/Home";
+import SignUpPage from "pages/SignUp";
+import AddPostWrapper from "pages/AddPost/AddPostWrapper";
+import Products from "pages/Products";
 import Description from "pages/Products/Description";
-import PageTitle from "components/Dashboard/PageTitle";
-import ECommerce from "pages/Dashboard";
+import Profile from "components/profile/Profile";
+import Confirm from "pages/SignUp/Confirm";
+import Category from "pages/Categories";
 import Dashboard from "pages/Dashboard";
 import AllUser from "pages/Dashboard/AllUser";
 import AllAds from "pages/Dashboard/AllAds";
 import AllPayment from "pages/Dashboard/AllPayment";
-import AddField from "pages/Dashboard/AddField";
 import AddPost from "pages/Dashboard/AddPost";
+import AddField from "pages/Dashboard/AddField";
+import NotFound from "pages/NotFound";
+import LoginPage from "pages/Login";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
 );
 
 const ProjectRoutes = () => {
-  let element = useRoutes([
-    { path: "/", element: <HomePage /> },
-    { path: "*", element: <NotFound /> },
-    {
-      path: "login",
-      element: <LoginThree />,
-    },
-    {
-      path: "signup",
-      element: <SignUpPage />,
-    },
-    {
-      path: "homenine",
-      element: <HomePage />,
-    },
-    {
-      path: "add-post",
-      element: (
-        <RequiredAuth>
-          <AddPostWrapper />
-        </RequiredAuth>
-      ),
-    },
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="signup" element={<SignUpPage />} />
+      <Route
+        path="add-post"
+        element={
+          <RequiredAuth>
+            <AddPostWrapper />
+          </RequiredAuth>
+        }
+      />
+      <Route path="products" element={<Products />} />
+      <Route path="products/:id" element={<Description />} />
+      <Route path="categories" element={<Category />} />
+      <Route path="description" element={<Description />} />
 
-    {
-      path: "products",
-      element: <Products />,
-    },
-    {
-      path: "products/:id",
-      element: <Description />,
-    },
-    {
-      path: "categories",
-      element: <CategoriesPage />,
-    },
-    {
-      path: "description",
-      element: <Description />,
-    },
-    {
-      path: "postad",
-      element: <PostAd />,
-    },
-    {
-      path: "postad1",
-      element: <PostAd1 />,
-    },
-    {
-      path: "postad2",
-      element: (
-        <Elements stripe={stripePromise}>
-          <PostAd2 />
-        </Elements>
-      ),
-    },
-    {
-      path: "Profile",
-      element: <Profile />,
-    },
-
-    {
-      path: "confirm",
-      element: <Confirm />,
-    },
-    {
-      path: "/dashboard",
-      element: (
-        <RequiredAuth>
-          <Dashboard />
-        </RequiredAuth>
-      ),
-    },
-    {
-      path: "/dashboard/all-user",
-      element: (
-        <RequiredAuth>
-          <AllUser />
-        </RequiredAuth>
-      ),
-    },
-    {
-      path: "/dashboard/all-ads",
-      element: (
-        <RequiredAuth>
-          <AllAds />
-        </RequiredAuth>
-      ),
-    },
-    {
-      path: "/dashboard/all-payment",
-      element: (
-        <RequiredAuth>
-          <AllPayment />
-        </RequiredAuth>
-      ),
-    },
-    {
-      path: "/dashboard/add-type",
-      element: (
-        <RequiredAuth>
-          <Dashboard />
-        </RequiredAuth>
-      ),
-    },
-    {
-      path: "/dashboard/add-category",
-      element: (
-        <RequiredAuth>
-          <Dashboard />
-        </RequiredAuth>
-      ),
-    },
-    {
-      path: "/dashboard/add-post",
-      element: (
-        <RequiredAuth>
-          <AddPost />
-        </RequiredAuth>
-      ),
-    },
-    {
-      path: "/forms/add-category",
-      element: (
-        <RequiredAuth>
-          <AddField />
-        </RequiredAuth>
-      ),
-    },
-  ]);
-
-  return element;
+      <Route path="profile" element={<Profile />} />
+      <Route path="confirm" element={<Confirm />} />
+      <Route path="dashboard/all-user" element={<AllUser />} />
+      <Route
+        path="dashboard"
+        element={
+          <RequiredAuth>
+            <Dashboard />
+          </RequiredAuth>
+        }
+      ></Route>
+      <Route path="dashboard/all-ads" element={<AllAds />} />
+      <Route path="dashboard/all-payment" element={<AllPayment />} />
+      <Route path="dashboard/add-type" element={<Dashboard />} />
+      <Route path="dashboard/add-category" element={<Dashboard />} />
+      <Route path="dashboard/add-post" element={<AddPost />} />
+      <Route
+        path="forms/add-field"
+        element={
+          <RequiredAuth>
+            <AddField />
+          </RequiredAuth>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 };
 
 export default ProjectRoutes;

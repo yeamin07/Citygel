@@ -3,9 +3,9 @@ import useAxios from "config/api/useAxios";
 import auth from "firebase.init";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import AdsData from "./AdsData";
+import AdsData from "./FieldData";
 
-const AllAdsTable = () => {
+const AllField = () => {
   const api = useAxios();
   const [user1] = useAuthState(auth);
   const [ads, seAds] = useState([]);
@@ -78,4 +78,4 @@ const AllAdsTable = () => {
   );
 };
 
-export default AllAdsTable;
+export default AllField;

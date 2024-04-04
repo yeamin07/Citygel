@@ -1,6 +1,10 @@
 import React from "react";
 import CardDataStats from "components/Dashboard/CardDataStats";
 import DefaultLayout from "components/Dashboard/layout/DefaultLayout";
+import ChartOne from "components/Dashboard/Charts/ChartOne";
+import ChartTwo from "components/Dashboard/Charts/ChartTwo";
+import ChartThree from "components/Dashboard/Charts/ChartThree";
+import MapOne from "components/Dashboard/Maps/MapOne";
 
 const Dashboard = () => {
   return (
@@ -27,7 +31,7 @@ const Dashboard = () => {
         </CardDataStats>
         <CardDataStats title="Total Profit" total="$45,2K" rate="4.35%" levelUp>
           <svg
-            className="fill-primary dark:fill-white"
+            className="dark:fill-white fill-primary"
             width="20"
             height="22"
             viewBox="0 0 20 22"
@@ -50,7 +54,7 @@ const Dashboard = () => {
         </CardDataStats>
         <CardDataStats title="Total Product" total="2.450" rate="2.59%" levelUp>
           <svg
-            className="fill-primary dark:fill-white"
+            className="dark:fill-white fill-primary"
             width="22"
             height="22"
             viewBox="0 0 22 22"
@@ -69,7 +73,7 @@ const Dashboard = () => {
         </CardDataStats>
         <CardDataStats title="Total Users" total="3.456" rate="0.95%" levelDown>
           <svg
-            className="fill-primary dark:fill-white"
+            className="dark:fill-white fill-primary"
             width="22"
             height="18"
             viewBox="0 0 22 18"
@@ -93,10 +97,10 @@ const Dashboard = () => {
       </div>
 
       <div className="2xl:mt-7.5 2xl:gap-7.5 mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6">
-        {/* <ChartOne /> */}
-        {/* <ChartTwo /> */}
-        {/* <ChartThree /> */}
-        {/* <MapOne /> */}
+        <ChartOne />
+        <ChartTwo />
+        <ChartThree />
+        <MapOne />
         <div className="col-span-12 xl:col-span-8">{/* <TableOne /> */}</div>
         {/* <ChatCard /> */}
       </div>

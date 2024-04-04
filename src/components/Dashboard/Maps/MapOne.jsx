@@ -1,53 +1,56 @@
-import jsVectorMap from "jsvectormap";
-import "jsvectormap/dist/css/jsvectormap.css";
-import { useEffect } from "react";
-import "../../js/us-aea-en";
+import React, { useEffect, useState } from "react";
+import { csv } from "d3-fetch";
+import { scaleLinear } from "d3-scale";
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Sphere,
+  Graticule,
+} from "react-simple-maps";
 
-const MapOne = () => {
+const geoUrl = "/features.json";
+
+const colorScale = scaleLinear()
+  .domain([0.29, 0.68])
+  .range(["#ffedea", "#ff5233"]);
+
+const MapChart = () => {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
-    const mapOne = new jsVectorMap({
-      selector: "#mapOne",
-      map: "us_aea_en",
-      zoomButtons: true,
-
-      regionStyle: {
-        initial: {
-          fill: "#C8D0D8",
-        },
-        hover: {
-          fillOpacity: 1,
-          fill: "#3056D3",
-        },
-      },
-      regionLabelStyle: {
-        initial: {
-          fontFamily: "Satoshi",
-          fontWeight: "semibold",
-          fill: "#fff",
-        },
-        hover: {
-          cursor: "pointer",
-        },
-      },
-
-      labels: {
-        regions: {
-          render(code) {
-            return code.split("-")[1];
-          },
-        },
-      },
+    csv(`/vulnerability.csv`).then((data) => {
+      setData(data);
     });
-  });
+  }, []);
 
   return (
-    <div className="border-stroke bg-white px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark col-span-12 rounded-sm border py-6 xl:col-span-7">
-      <h4 className="text-black dark:text-white mb-2 text-xl font-semibold">
-        Region labels
-      </h4>
-      <div id="mapOne" className="mapOne map-btn h-90"></div>
-    </div>
+    <ComposableMap
+      projectionConfig={{
+        rotate: [-10, 0, 0],
+        scale: 147,
+      }}
+    >
+      <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
+      <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
+      {data.length > 0 && (
+        <Geographies geography={geoUrl}>
+          {({ geographies }) =>
+            geographies.map((geo) => {
+              const d = data.find((s) => s.ISO3 === geo.id);
+              return (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  fill={d ? colorScale(d["2017"]) : "#F5F4F6"}
+                />
+              );
+            })
+          }
+        </Geographies>
+      )}
+    </ComposableMap>
   );
 };
 
-export default MapOne;
+export default MapChart;
