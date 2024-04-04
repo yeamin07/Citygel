@@ -101,10 +101,10 @@ export default function Header1({ bg = true }) {
               {/*~~~~~~~~~~~user man pic ~~~~~~~~~~~~~~~ */}
               <div className="hidden sm:flex flex-row justify-start gap-[0px] w-[10rem] h-auto">
                 <div className="flex flex-col justify-start gap-[5px]">
-                  <p className="text-[15px] text-white-A700">John smit</p>
+                  <p className=" md:text-[13px] lg:text-[15px] text-white-A700">John smit</p>
                   <div className="text-[10px] text-cyan-500 flex gap-[2px] h-[12px] w-[6rem]" >My Account <RiArrowDropDownFill className="text-[20px] mt-[-2px]"/></div>
                 </div>
-                <div><img src={man_pic} className="w-[40px] h-[40px] lg:w-[50px] lg:h-[50px] rounded-full"/></div>
+                <div><img src={man_pic} className="w-[40px] h-[40px] lg:w-[50px] lg:h-[50px] rounded-full hover:border-[1px] hover:border-solid hover:border-cyan-700"/></div>
               </div>
             {user?.uid && tuser ? (
               <div onClick={handleSignOut}>

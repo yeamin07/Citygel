@@ -48,7 +48,7 @@ const State = () => {
             </button>
             <Modal title="State" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <input type='text' placeholder='Enter State Name' className='w-[18rem] md:w-full h-[45px] focus:rounded-[12px] focus:border-[1px] 
-        focus:border-solid focus:border-cyan-500 text-[13px] md:text-[18px] px-2 bg-cyan-200 rounded-[12px]' />
+        focus:border-solid focus:border-cyan-500 text-[13px] md:text-[18px] px-2 bg-cyan-200 rounded-[12px] mb-3' />
 
                 <div className="flex flex-col justify-start gap-[2px]">
                 <p className='text-[16px] font-medium mb-[3px]'>City:</p> 
