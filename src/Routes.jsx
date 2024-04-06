@@ -25,6 +25,7 @@ import AddField from "pages/Dashboard/AddField";
 import NotFound from "pages/NotFound";
 import LoginPage from "pages/Login";
 import AddPosts from "components/Dashboard/AddPost";
+import Advertise from "pages/Dashboard/Advertisement/Advertise";
 const ProjectRoutes = () => {
   return (
     <Routes>
@@ -55,6 +56,16 @@ const ProjectRoutes = () => {
           </RequiredAuth>
         }
       ></Route>
+      <Route path="dashboard/all-ads" element={<AllAds />} />
+      <Route path="dashboard/all-payment" element={<AllPayment />} />
+      <Route path="dashboard/add-type" element={<Dashboard />} />
+      <Route path="dashboard/add-category" element={<AddCategory />} />
+      <Route path="dashboard/add-subcategory" element={<SubCategory />} />
+      <Route path="dashboard/add-country" element={<AddCountry />} />
+      <Route path="dashboard/add-state" element={<State />} />
+      <Route path="dashboard/add-city" element={<City />} />
+      <Route path="dashboard/add-post" element={<AddPosts />} />
+      <Route path="dashboard/add-advertisement" element={<Advertise />} />
       <Route
         path="dashboard/all-ads"
         element={

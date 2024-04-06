@@ -14,6 +14,7 @@ import profile from "./Profilef.png";
 import postad from "./PostADf.png";
 import trash from "./trash.png";
 import cetagory_logo from "./chart.png";
+import nature from "./NaturalBeauty.jpg"
 
 export {
   laptop,
@@ -31,4 +32,5 @@ export {
   postad,
   trash,
   cetagory_logo,
+  nature
 };
