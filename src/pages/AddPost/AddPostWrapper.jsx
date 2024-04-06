@@ -24,6 +24,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { Dropdown, Space } from "antd";
 import { Img } from "components";
+import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
@@ -59,7 +60,7 @@ const AddPostWrapper = () => {
       ),
     },
   ];
-
+  const navigate = useNavigate();
   return (
     <div className="overflow-hidden">
       <div>
@@ -67,7 +68,12 @@ const AddPostWrapper = () => {
         <header className=" relative z-30 flex h-[100px] w-full justify-between overflow-hidden bg-gradient-to-r from-[rgb(16,56,76)] to-[rgb(21,60,77)] ">
           <div className="container mx-auto flex items-center justify-between px-5">
             <div>
-              <img alt="" src={arrowleft} className="sm:hidden" />
+              <img
+                onClick={() => navigate("/")}
+                alt=""
+                src={arrowleft}
+                className="cursor-pointer sm:hidden"
+              />
             </div>
 
             <Img src={whiteLogo} alt="citygeltwo_one" className=" w-32" />
