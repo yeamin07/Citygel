@@ -28,6 +28,7 @@ import NotFound from "pages/NotFound";
 import LoginPage from "pages/Login";
 import AddCountry from "pages/Dashboard/AddCountry";
 import AddPosts from "components/Dashboard/AddPost";
+import Advertise from "pages/Dashboard/Advertisement/Advertise";
 const ProjectRoutes = () => {
   return (
     <Routes>
@@ -67,6 +68,7 @@ const ProjectRoutes = () => {
       <Route path="dashboard/add-state" element={<State />} />
       <Route path="dashboard/add-city" element={<City />} />
       <Route path="dashboard/add-post" element={<AddPosts />} />
+      <Route path="dashboard/add-advertisement" element={<Advertise />} />
       <Route
         path="forms/add-field"
         element={
