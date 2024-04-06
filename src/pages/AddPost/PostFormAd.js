@@ -81,18 +81,18 @@ const PostFormAd = () => {
 
   console.log(category);
   return (
-    <form >
-      <div className=" pt-20 box-border flex max-w-full  flex-row items-center justify-between lg:pl-10 ">
-        <section className=" text-black flex min-h-screen w-full flex-col items-start justify-start gap-[9px] sm:pl-4 text-left font-poppins text-2xl">
-          <div className="flex w-full flex-col items-start justify-start gap-[50px]">
+    <form>
+      <div className=" box-border flex max-w-full flex-row  items-center justify-between pt-20 lg:pl-3 ">
+        <section className="text-black container mx-auto flex min-h-screen w-[90%] flex-col items-start justify-start gap-[9px] text-left font-poppins text-2xl sm:pl-4 md:mx-0">
+          <div className="  flex flex-col items-start justify-start gap-[50px]">
             <div className="flex flex-col items-start justify-start gap-[20px] ">
-              <h1 className="font-inherit relative z-[4] m-0 font-medium text-inherit md:text-[45px] text-[32px]">
+              <h1 className="font-inherit relative z-[4] m-0 text-[32px] font-medium text-inherit md:text-[45px]">
                 Enter Details
               </h1>
-              <h3 className="font-inherit text-gray-1200 relative z-[4] m-0  sm:text-lg text-sm text-gray-600 font-normal  ">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</h3>
+              <h3 className="font-inherit text-gray-1200 relative z-[4] m-0  text-sm font-normal text-gray-600 sm:text-lg  ">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</h3>
             </div>
             {/* Fomr */}
-            <div className="text-gray-1000 flex w-full flex-col items-start justify-start gap-[20px]  text-base z-[100] relative">
+            <div className="text-gray-1000 relative z-[100] flex w-full flex-col items-start  justify-start gap-[20px] text-base">
               <AdsInput
                 tittle="Type"
                 name="type"
@@ -157,7 +157,7 @@ const PostFormAd = () => {
                 errors={errors}
               />
 
-              <div className="flex  flex-1 flex-col items-start justify-start gap-[9px] w-full ">
+              <div className="flex  w-full flex-1 flex-col items-start justify-start gap-[9px] ">
                 <div className="flex flex-row items-start justify-start py-0 px-1.5">
                   <div className="text-gray-1000 relative text-left font-poppins text-base">
                     Ad Description
@@ -168,13 +168,11 @@ const PostFormAd = () => {
                   name="description"
                   placeholder="Add Description"
                   {...register("description", { required: true })}
-                  className="text-black focus=bg-gainsboro-300 hover=bg-gainsboro-300  flex-1  border-0 bg-gainsboro-300 p-7 font-poppins text-xl w-full"
+                  className="text-black focus=bg-gainsboro-300 hover=bg-gainsboro-300  w-full  flex-1 border-0 bg-gainsboro-300 p-7 font-poppins text-xl"
                 />
                 {errors["description"] &&
                   errors["description"]?.type === "required" && (
-                    <span className="text-red-500">
-                      This field is required
-                    </span>
+                    <span className="text-red-500">This field is required</span>
                   )}
               </div>
 
@@ -209,13 +207,13 @@ const PostFormAd = () => {
                   errors={errors}
                 />
               </div>
-              <div className="flex  flex-col items-start justify-start gap-[9px] w-full ">
+              <div className="flex  w-full flex-col items-start justify-start gap-[9px] ">
                 <div className="flex flex-row items-start justify-start py-0 px-1.5">
                   <div className="relative z-[2] inline-block min-w-[39px]">
                     Enquiry Type
                   </div>
                 </div>
-                <div className="text-black z-[4] box-border flex  flex-row items-start justify-start  rounded-mini bg-gainsboro-300 py-[25px] px-[23px] text-xl w-full">
+                <div className="text-black z-[4] box-border flex  w-full flex-row items-start  justify-start rounded-mini bg-gainsboro-300 py-[25px] px-[23px] text-xl">
                   <Controller
                     name="selectedContact"
                     control={control}
@@ -312,51 +310,45 @@ const PostFormAd = () => {
                 </div>
               </div>
             </div>
-
           </div>
         </section>
-
       </div>
 
-
       <div className="mt-9  w-full">
-        <div className="text-white box-border flex lg:w-[80%] max-w-full flex-row justify-center py-0 px-5  text-11xl sm:w-[100%] sm:flex-col ">
-          <div className="flex w-full max-w-full  flex-row items-center  gap-5 md:justify-between justify-end ">
-
-            {currentStep > 1 &&
+        <div className="text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl sm:w-[100%]  sm:flex-col md:px-0 lg:w-[90%] ">
+          <div className="flex w-full max-w-full  flex-row items-center  justify-end gap-5 md:justify-between ">
+            {currentStep > 1 && (
               <div
                 onClick={handlePrev}
-                className={`z-[2] box-border  flex  md:w-[35%] cursor-pointer  flex-row items-center justify-center whitespace-nowrap md:rounded-xl rounded-md md:pt-[23px] md:pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] bg-black-900_33 py-2 px-16 `}
+                className={`z-[2] box-border  flex  cursor-pointer flex-row  items-center justify-center whitespace-nowrap rounded-md bg-black-900_33 py-2 px-16 pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] md:w-[35%] md:rounded-xl md:pt-[23px] md:pb-[22px] `}
               >
-                <div className="relative z-[3] text-white-A700 text-[14px] ">
+                <div className="relative z-[3] text-[14px] text-white-A700 ">
                   Previous
                 </div>
               </div>
-            }
-
+            )}
 
             <div className="  flex  flex-col items-center justify-start sm:w-[20%] ">
               <div className=" relative z-[2] flex h-[5px] flex-row items-center justify-between gap-[10px]">
-                {
-                  [1, 2, 3, 4, 5]?.map(data => <div
+                {[1, 2, 3, 4, 5]?.map((data) => (
+                  <div
                     className={`h-full  w-3 rounded-21xl sm:w-4  ${currentStep == data ? "bg-[#0C92B2]" : "bg-gainsboro-400"}`}
-                  />)
-                }
+                  />
+                ))}
               </div>
             </div>
 
             <div
               onClick={handleSubmit(onSubmit)}
-              className={`z-[2] box-border  flex  md:w-[35%] cursor-pointer  flex-row items-center justify-center whitespace-nowrap md:rounded-xl rounded-md md:pt-[23px] md:pb-[22px] pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] py-2 px-16 `}
+              className={`z-[2] box-border  flex  cursor-pointer flex-row  items-center justify-center whitespace-nowrap rounded-md py-2 px-16 pr-5 pl-[29px] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] md:w-[35%] md:rounded-xl md:pt-[23px] md:pb-[22px] `}
             >
-              <div className="relative z-[3] text-white-A700 text-[14px] ">
+              <div className="relative z-[3] text-[14px] text-white-A700 ">
                 {currentStep}/5 Next
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </form>
   );
 };

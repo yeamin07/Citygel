@@ -29,15 +29,18 @@ const PostMembershipPlan = () => {
   const dispatch = useDispatch();
   const fetchUser = async () => {
     setLoading(true);
-    const resultPayment = await api.get(`${BASE_URL}/users/${user?.email}`);
-    if (resultPayment.data.membership) {
+    try {
+      const resultPayment = await api.get(`${BASE_URL}/users/${user?.email}/`);
+      if (resultPayment.data.membership) {
+        setLoading(false);
+        dispatch(nextStep());
+      } else {
+        setLoading(false);
+        return;
+      }
+    } catch (error) {
       setLoading(false);
-      dispatch(nextStep());
-    } else {
-      setLoading(false);
-      return;
     }
-    console.log(resultPayment);
   };
   useEffect(() => {
     fetchUser();
@@ -327,7 +330,7 @@ const PostMembershipPlan = () => {
         </main>
 
         <div className="mt-9  w-full">
-          <div className=" text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl  sm:w-[100%] sm:flex-col lg:w-[80%] ">
+          <div className=" text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl sm:w-[100%]  sm:flex-col lg:w-[100%] lg:px-1 ">
             <div className="flex w-full max-w-full  flex-row items-center  justify-end gap-5 md:justify-between ">
               {currentStep > 1 && (
                 <div

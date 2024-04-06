@@ -55,7 +55,7 @@ export default function PostCategories() {
               <div
                 key={data?.index}
                 onClick={() => handleSelect("electric")}
-                className={`flex w-[100%] flex-col items-center justify-start gap-2.5 border  border-solid 2xl:py-5   ${selected == data ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} rounded-[20px] bg-white-A700 shadow-sm`}
+                className={`flex h-[190px] w-[100%] flex-col items-center justify-center gap-2.5 border  border-solid 2xl:py-5   ${selected == data ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} rounded-[20px] bg-white-A700 shadow-sm`}
               >
                 <Img
                   src="images/img_frame_orange_400.svg"
@@ -73,8 +73,8 @@ export default function PostCategories() {
           </div>
         </div>
 
-        <div className="mt-9  w-full">
-          <div className="mq800: text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl  sm:w-[100%] sm:flex-col lg:w-[80%] ">
+        <div className="mt-9  flex w-full justify-end ">
+          <div className="mq800: text-white box-border flex max-w-full flex-row justify-end py-0 px-5 text-11xl  sm:w-[100%] sm:flex-col lg:w-[80%] ">
             <div className="flex w-full max-w-full  flex-row items-center  justify-end gap-5 md:justify-between ">
               {currentStep > 1 && (
                 <div

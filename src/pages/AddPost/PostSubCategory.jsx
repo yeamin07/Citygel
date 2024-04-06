@@ -34,7 +34,7 @@ export default function PostSubCategory() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="relative z-[100] w-full 2xl:pr-10">
+      <div className=" z-100 container relative w-full 2xl:pr-10">
         <div className="flex  flex-col items-start justify-center lg:justify-start">
           <Text
             as="p"
@@ -53,7 +53,7 @@ export default function PostSubCategory() {
           </Text>
 
           {/* Caterory list */}
-          <div className="mt-6 grid w-full grid-cols-2 gap-4 sm:grid-cols-4 ">
+          <div className="mx-auto mt-6 grid w-[90%] grid-cols-2 gap-4 sm:grid-cols-4 md:mx-0">
             {[
               "Cars",
               "Export Cars",
@@ -66,8 +66,8 @@ export default function PostSubCategory() {
             ]?.map((data, index) => (
               <div
                 key={data?.index}
-                onClick={() => handleSelect("computers")}
-                className={`flex w-[100%] flex-col items-center justify-start gap-2.5 border  border-solid 2xl:py-5   ${selected == data ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} rounded-[20px] bg-white-A700 shadow-sm`}
+                onClick={() => handleSelect("electric")}
+                className={`flex h-[190px]  flex-col items-center justify-center gap-2.5 border  border-solid 2xl:py-5   ${selected == data ? "gray_50_02_red_A400_border" : "gray_50_02_red_A400_active"} rounded-[20px] bg-white-A700 shadow-sm`}
               >
                 <Img
                   src="images/img_frame_orange_400.svg"
@@ -86,7 +86,7 @@ export default function PostSubCategory() {
         </div>
 
         <div className="mt-9  w-full">
-          <div className=" text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl  sm:w-[100%] sm:flex-col lg:w-[80%] ">
+          <div className=" text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl sm:w-[100%]  sm:flex-col md:px-0 lg:w-[90%] ">
             <div className="flex w-full max-w-full  flex-row items-center  justify-end gap-5 md:justify-between ">
               {currentStep > 1 && (
                 <div
