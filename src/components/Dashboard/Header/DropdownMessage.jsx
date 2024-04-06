@@ -42,19 +42,19 @@ const DropdownMessage = () => {
           setNotifying(false);
           setDropdownOpen(!dropdownOpen);
         }}
-        className="h-8.5 w-8.5 border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white relative flex items-center justify-center rounded-full border-[0.5px]"
+        className="h-8.5 w-8.5 bg-gray dark:text-white relative flex items-center justify-center rounded-full border-[0.5px] border-stroke hover:text-primary dark:border-strokedark dark:bg-meta-4"
         to="#"
       >
         <span
-          className={`z-1 bg-meta-1 absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full ${
+          className={`z-1 absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-meta-1 ${
             notifying === false ? "hidden" : "inline"
           }`}
         >
-          <span className="-z-1 bg-meta-1 absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+          <span className="-z-1 absolute inline-flex h-full w-full animate-ping rounded-full bg-meta-1 opacity-75"></span>
         </span>
 
         <svg
-          className="fill-current duration-300 ease-in-out"
+          className="fill-main-color duration-300 ease-in-out"
           width="18"
           height="18"
           viewBox="0 0 18 18"
@@ -85,18 +85,18 @@ const DropdownMessage = () => {
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
         onBlur={() => setDropdownOpen(false)}
-        className={`h-90 w-75 border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark absolute -right-16 mt-2.5 flex flex-col rounded-sm border sm:right-0 sm:w-80 ${
+        className={`h-90 w-75 shadow-default absolute -right-16 mt-2.5 flex flex-col rounded-sm border border-stroke bg-blue-300 px-10 dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80 ${
           dropdownOpen === true ? "block" : "hidden"
         }`}
       >
         <div className="px-4.5 py-3">
-          <h5 className="text-bodydark2 text-sm font-medium">Messages</h5>
+          <h5 className="text-sm font-medium text-bodydark2">Messages</h5>
         </div>
 
         <ul className="flex h-auto flex-col overflow-y-auto">
           <li>
             <Link
-              className="gap-4.5 border-stroke px-4.5 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4 flex border-t py-3"
+              className="gap-4.5 px-4.5 flex border-t border-stroke py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
               to="/messages"
             >
               <div className="h-12.5 w-12.5 rounded-full">
@@ -114,7 +114,7 @@ const DropdownMessage = () => {
           </li>
           <li>
             <Link
-              className="gap-4.5 border-stroke px-4.5 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4 flex border-t py-3"
+              className="gap-4.5 px-4.5 flex border-t border-stroke py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
               to="/messages"
             >
               <div className="h-12.5 w-12.5 rounded-full">
@@ -132,7 +132,7 @@ const DropdownMessage = () => {
           </li>
           <li>
             <Link
-              className="gap-4.5 border-stroke px-4.5 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4 flex border-t py-3"
+              className="gap-4.5 px-4.5 flex border-t border-stroke py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
               to="/messages"
             >
               <div className="h-12.5 w-12.5 rounded-full">
@@ -150,7 +150,7 @@ const DropdownMessage = () => {
           </li>
           <li>
             <Link
-              className="gap-4.5 border-stroke px-4.5 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4 flex border-t py-3"
+              className="gap-4.5 px-4.5 flex border-t border-stroke py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
               to="/messages"
             >
               <div className="h-12.5 w-12.5 rounded-full">
@@ -168,7 +168,7 @@ const DropdownMessage = () => {
           </li>
           <li>
             <Link
-              className="gap-4.5 border-stroke px-4.5 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4 flex border-t py-3"
+              className="gap-4.5 px-4.5 flex border-t border-stroke py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
               to="/messages"
             >
               <div className="h-12.5 w-12.5 rounded-full">

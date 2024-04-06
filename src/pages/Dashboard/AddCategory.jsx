@@ -19,9 +19,10 @@ const AddCategory = () => {
   const [user1] = useAuthState(auth);
   const [categoryName, setCategoryName] = useState("");
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+  const [singleCategory, setSingleCategory] = useState({});
   const [categoryNameError, setCategoryNameError] = useState("");
-
-  const handleSubmit = async () => {
+  const [editingCategory, setEditingCategory] = useState(null);
+  const handleSubmit = async (item) => {
     if (!categoryName.trim()) {
       setCategoryNameError("Category name is required");
       return;
@@ -36,10 +37,23 @@ const AddCategory = () => {
       subcategories: selectedSubcategories,
     };
     console.log("Form Data:", formData);
-    const addcategory = await api.post("/category", formData);
-    if (addcategory.data) {
-      toast("category is added");
-      handleOk();
+    if (editingCategory) {
+      const updateCategory = await api.patch(
+        `category/${editingCategory.name}`,
+        formData,
+      );
+      if (updateCategory.data) {
+        toast("Category updated successfully");
+        fetchUser();
+        handleOk();
+      }
+    } else {
+      const addCategory = await api.post("/category", formData);
+      if (addCategory.data) {
+        toast("Category added successfully");
+        fetchUser();
+        handleOk();
+      }
     }
     // Close the modal
   };
@@ -51,23 +65,43 @@ const AddCategory = () => {
     setCategory(getAllcategory.data.data);
     setSubCategory(getAllsubcategory.data.data);
   };
+  const fetchSingleItem = async (name) => {
+    const getSinglecategory = await api.get(`/category/${name}`);
+    setSingleCategory(getSinglecategory.data.data);
+    setSelectedSubcategories(getSinglecategory.data.data.subcategory);
+    setCategoryName(getSinglecategory.data.data.name);
+  };
   useEffect(() => {
     fetchUser();
   }, []);
 
   console.log(category, subcategory);
-  const deleteUser = async (email) => {
-    const verifyresponse = await api.delete(
-      `/users/${email}?newemail=${user1?.email}`,
-    );
+  const deleteItem = async (name) => {
+    const verifyresponse = await api.delete(`/category/${name}/`);
     if (verifyresponse.data) {
       fetchUser();
       message.success("delete Successfully");
     }
   };
-  const editUser = () => {};
+  const editUser = async (name) => {
+    const verifyresponse = await api.delete(`/category/${name}`);
+    if (verifyresponse.data) {
+      fetchUser();
+      message.success("delete Successfully");
+    }
+  };
 
-  const showModal = () => {
+  const showModal = (category) => {
+    if (category) {
+      setEditingCategory(category);
+      setCategoryName(category.name);
+      setSelectedSubcategories(category.subcategories);
+    } else {
+      setEditingCategory(null);
+      setCategoryName("");
+      setSelectedSubcategories([]);
+    }
+
     setIsModalOpen(true);
   };
   const handleOk = () => {
@@ -77,79 +111,6 @@ const AddCategory = () => {
     setIsModalOpen(false);
   };
 
-  const city = [
-    { title: "Motor Cycle", year: 1994 },
-    { title: "Car", year: 1972 },
-    { title: "Rikhshaw", year: 1974 },
-    { title: "Cycle", year: 2008 },
-    { title: "Audi", year: 1957 },
-    { title: "Used Car", year: 1993 },
-    { title: "Non Used car", year: 1994 },
-    { title: "Uni Vehicle", year: 1994 },
-  ];
-
-  {
-    /*~~~~~~~~~~~~~~~~temporary subcategory~~~~~~~~~~~~~~~~~~  */
-  }
-  const addCategory = [
-    {
-      id: 5,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats",
-    },
-    {
-      id: 6,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats,United State of america,Sudan",
-    },
-    {
-      id: 7,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats",
-    },
-    {
-      id: 8,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats",
-    },
-    {
-      id: 9,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats",
-    },
-    {
-      id: 10,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats",
-    },
-    {
-      id: 11,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats",
-    },
-    {
-      id: 12,
-      category: "Vehicle",
-      subcategory: "Motor Cycle,Car",
-      Ad: "Ad Name",
-      State: "United Arab Emirats",
-    },
-  ];
-
   return (
     <DefaultLayout className="flex flex-col justify-start gap-[25px]">
       <p className="ml-3 mb-3 text-[17px] font-medium text-black-900_87 lg:text-[20px]">
@@ -158,7 +119,7 @@ const AddCategory = () => {
       <button
         type="primary"
         className="rounded-2xl bg-gradient-to-r from-cyan-500 to-cyan-700  px-10 py-4 font-serif text-[14px] text-white-A700 lg:text-[18px]"
-        onClick={showModal}
+        onClick={() => showModal()}
       >
         Add Category
       </button>
@@ -217,9 +178,10 @@ const AddCategory = () => {
         HeaderD="Category"
         FirstSec="Category"
         SecondSec="Sub Category"
-        ThirdSec="Ad Name"
+        thirdSec="Ad Name"
+        fourthSec=" Date"
         fifthSec="Action"
-        datafromU={category}
+        {...{ category, deleteItem }}
         popup={showModal}
       />
     </DefaultLayout>

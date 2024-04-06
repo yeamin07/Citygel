@@ -154,9 +154,10 @@ export default function Header1({ bg = true }) {
       >
         <div className="container mx-auto mb-4 flex  flex-row justify-between px-5">
           <Img
+            onClick={() => navigate("/")}
             src={logo}
             alt="citygel2white"
-            className=" h-[45px] w-[145px] shrink-0 object-cover xl:h-[50px] xl:w-[165px]"
+            className=" h-[45px] w-[145px] shrink-0 cursor-pointer object-cover xl:h-[50px] xl:w-[165px]"
           />
           <div className="flex flex-row justify-end  gap-[14px] xl:w-[50%]">
             {/*~~~~~~~~~~~user man pic ~~~~~~~~~~~~~~~ */}

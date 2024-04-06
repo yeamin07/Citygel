@@ -5,14 +5,16 @@ function Dashtable({
   HeaderD,
   FirstSec,
   SecondSec,
-  ThirdSec,
+  thirdSec,
   fourthSec,
   fifthSec,
   datafromU,
   popup,
+  deleteItem,
+  category,
 }) {
   // Dummy Data for user
-
+  console.log(category);
   return (
     <div className="container relative mx-auto mt-5 h-auto w-full overflow-auto rounded-[25px] border-[2px] border-solid border-gray-300 !bg-current px-9 pb-9 shadow-sm  lg:rounded-[35px]">
       <h1 className="absolute left-4 ml-11 mt-5 mb-10 text-[26px] font-medium sm:text-[28px] lg:text-[30px] ">
@@ -28,7 +30,7 @@ function Dashtable({
               {SecondSec}
             </th>
             <th className="flex w-[20rem] justify-start border-l-[1px] border-solid border-gray-500 pl-1 font-extralight">
-              {ThirdSec}
+              {thirdSec}
             </th>
             <th className="flex w-[15rem] justify-start border-l-[1px] border-solid border-gray-500 pl-1 font-extralight">
               {fourthSec}
@@ -39,8 +41,13 @@ function Dashtable({
           </tr>
         </thead>
         <tbody className="overflow-auto">
-          {datafromU?.map((data, i) => (
-            <Dashdata popup={popup} key={data.id} {...data} index={i} />
+          {category?.map((data, i) => (
+            <Dashdata
+              popup={popup}
+              key={data.id}
+              {...{ data, deleteItem }}
+              index={i}
+            />
           ))}
         </tbody>
       </table>

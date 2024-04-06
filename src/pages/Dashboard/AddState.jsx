@@ -1,101 +1,161 @@
 import DefaultLayout from "components/Dashboard/layout/DefaultLayout";
-
-import React from 'react'
+import React from "react";
 import Dashtable from "components/Dashboard/DashTable/Dashtable";
-
+import { useEffect } from "react";
 import { useState } from "react";
-import { Modal } from "antd";
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
-
+import { Modal, message } from "antd";
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
+import Autocomplete from "@mui/material/Autocomplete";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "firebase.init";
+import useAxios from "config/api/useAxios";
+import { toast } from "react-toastify";
 
 const State = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const api = useAxios();
+  const [user1] = useAuthState(auth);
+  const [subCategoryName, setSubCategoryName] = useState("");
+  const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+  const [singleCategory, setSubSingleCategory] = useState({});
+  const [categoryNameError, setSubCategoryNameError] = useState("");
+  const [editingCategory, setEditingSubCategory] = useState(null);
+  const handleSubmit = async (item) => {
+    if (!subCategoryName.trim()) {
+      setSubCategoryNameError("State name is required");
+      return;
+    }
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const showModal = () => {
-        setIsModalOpen(true);
+    // Reset error state
+    setSubCategoryNameError("");
+
+    // Collect all the details here and perform any necessary actions
+    const formData = {
+      name: subCategoryName,
     };
-    const handleOk = () => {
-        setIsModalOpen(false);
-    };
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
+    console.log("Form Data:", formData);
+    if (editingCategory) {
+      const updateCategory = await api.patch(
+        `state/${editingCategory.name}`,
+        formData,
+      );
+      if (updateCategory.data) {
+        toast("state updated successfully");
+        fetchUser();
+        handleOk();
+      }
+    } else {
+      const addCategory = await api.post("/state", formData);
+      if (addCategory.data) {
+        toast("state added successfully");
+        fetchUser();
+        handleOk();
+      }
+    }
+    // Close the modal
+  };
+  const [category, setCategory] = useState([]);
+  const [subcategory, setSubCategory] = useState([]);
+  const fetchUser = async () => {
+    const getAllsubcategory = await api.get("/state");
+    setSubCategory(getAllsubcategory.data.data);
+  };
 
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
-    {/*~~~~~~~~~~~~~~~~temporary subcategory~~~~~~~~~~~~~~~~~~  */ }
-    const SubCategoryData = [
-        { id: 5, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats', },
-        { id: 6, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats,United State of america,Sudan', },
-        { id: 7, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats', },
-        { id: 8, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats', },
-        { id: 9, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats', },
-        { id: 10, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats', },
-        { id: 11, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats', },
-        { id: 12, category: "Adu Dhabi,Dubai", subcategory: "Vehicle", Ad: "Ad Name", State: 'United Arab Emirats', },
-    ];
+  console.log(category, subcategory);
+  const deleteItem = async (name) => {
+    const verifyresponse = await api.delete(`/state/${name}/`);
+    if (verifyresponse.data) {
+      fetchUser();
+      message.success("delete Successfully");
+    }
+  };
+  const editUser = async (name) => {
+    const verifyresponse = await api.delete(`/state/${name}`);
+    if (verifyresponse.data) {
+      fetchUser();
+      message.success("delete Successfully");
+    }
+  };
 
+  const showModal = (category) => {
+    if (category) {
+      setEditingSubCategory(category);
+      setSubCategoryName(category.name);
+      // setSelectedSubcategories(category.subcategories);
+    } else {
+      setEditingSubCategory(null);
+      setSubCategoryName("");
+      // setSelectedSubcategories([]);
+    }
 
+    setIsModalOpen(true);
+  };
+  const showreateModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
+  {
+    /*~~~~~~~~~~~~~~~~temporary subcategory~~~~~~~~~~~~~~~~~~  */
+  }
 
-    return (
-        <DefaultLayout className="flex flex-col justify-start gap-[25px]">
-            <p className="font-medium text-[17px] lg:text-[20px] text-black-900_87 ml-3 mb-3">Add State</p>
-            <button type="primary" className='bg-gradient-to-r from-cyan-500 to-cyan-700 rounded-2xl  px-10 py-4 text-[14px] lg:text-[18px] font-serif text-white-A700' onClick={showModal}>
-                Add State
-            </button>
-            <Modal title="State" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <input type='text' placeholder='Enter State Name' className='w-[18rem] md:w-full h-[45px] focus:rounded-[12px] focus:border-[1px] 
-        focus:border-solid focus:border-cyan-500 text-[13px] md:text-[18px] px-2 bg-cyan-200 rounded-[12px] mb-3' />
+  return (
+    <DefaultLayout className="flex flex-col justify-start gap-[25px]">
+      <p className="ml-3 mb-3 text-[17px] font-medium text-black-900_87 lg:text-[20px]">
+        Add SubCategory
+      </p>
+      <button
+        type="primary"
+        className="rounded-2xl bg-gradient-to-r from-cyan-500 to-cyan-700  px-10 py-4 font-serif text-[14px] text-white-A700 lg:text-[18px]"
+        onClick={() => showModal()}
+      >
+        Add State
+      </button>
+      <Modal
+        title="State"
+        open={isModalOpen}
+        onOk={handleSubmit}
+        onCancel={handleCancel}
+      >
+        <input
+          type="text"
+          placeholder="Enter Category Name"
+          className="mb-3 h-[45px] w-[18rem] rounded-[12px] bg-cyan-200 
+      px-2 text-[13px] focus:rounded-[12px] focus:border-[1px] focus:border-solid focus:border-cyan-500 md:w-full md:text-[18px]"
+          value={subCategoryName}
+          onChange={(e) => {
+            setSubCategoryName(e.target.value);
+            setSubCategoryNameError("");
+          }}
+          required // Add the required attribute
+        />
+        {categoryNameError && (
+          <p className="text-red-500">{categoryNameError}</p>
+        )}
+      </Modal>
+      <Dashtable
+        HeaderD="State"
+        FirstSec="State"
+        SecondSec="Country"
+        thirdSec="Ads"
+        fourthSec="Date"
+        fifthSec="Action"
+        {...{ category: subcategory, deleteItem }}
+        popup={showModal}
+      />
+    </DefaultLayout>
+  );
+};
 
-                <div className="flex flex-col justify-start gap-[2px]">
-                <p className='text-[16px] font-medium mb-[3px]'>City:</p> 
-                <Stack spacing={3} sx={{ width: 500 }} className='w-[6rem] sm:w-[90%] mb-7'>
-                    <Autocomplete
-                        multiple
-                        id="tags-standard"
-                        options={city}
-                        getOptionLabel={(option) => option.title}
-                        defaultValue={[city[5]]}
-                        className="w-[18rem] sm:w-[90%]"
-                        renderInput={(params) => (
-                            <TextField
-                                {...params}
-                                variant="standard"
-                                label="Enter City"
-                                placeholder="Select City"
-                            />
-                        )}
-                    />
-                </Stack>
-                </div>
-
-            </Modal>
-            <Dashtable
-                HeaderD="All State"
-                FirstSec="State"
-                SecondSec="City"
-                ThirdSec="Country"
-                fourthSec="Category"
-                fifthSec="Action"
-                datafromU={SubCategoryData}
-                popup={showModal}
-            />
-        </DefaultLayout>
-    )
-}
-
-export default State
-
-const city = [
-    { title: 'Juha', year: 1994 },
-    { title: 'Abu Nerah', year: 1972 },
-    { title: 'Shertu', year: 1974 },
-    { title: 'Ajmhi', year: 2008 },
-    { title: 'Al gui', year: 1957 },
-    { title: "Ras Al Turak", year: 1993 },
-    { title: 'Tujairah', year: 1994 },
-    { title: 'Tul Al Quwain', year: 1994 },
-]
+export default State;

@@ -11,6 +11,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import EditorToolbar, { modules, formats } from "./EditorToolbar";
 import auth from "firebase.init";
 import AdsInput from "components/Input/AdsInput";
+import DefaultLayout from "../layout/DefaultLayout";
 const AddPosts = () => {
   const [user] = useAuthState(auth);
   const {
@@ -94,7 +95,7 @@ const AddPosts = () => {
       });
   };
   return (
-    <div>
+    <DefaultLayout>
       <div className="mx-auto mb-10 mt-9 max-w-6xl border py-5 shadow-sm ">
         <div className="px-10">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -195,7 +196,7 @@ const AddPosts = () => {
         </div>
       </div>
       <ToastContainer></ToastContainer>
-    </div>
+    </DefaultLayout>
   );
 };
 

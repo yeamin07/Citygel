@@ -1,6 +1,7 @@
 import axios from "config/api/axios";
 
-const base_url = "http://localhost:5000/api/v1";
+// const base_url = "http://localhost:5000/api/v1";
+const base_url = "https://citygel-backend.onrender.com/api/v1";
 export const getAllCategory = () => {
   const request = axios.get(`${base_url}/category`);
   const data = request.data;

@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import Loading from "components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "config/api/axios";
 const AuthContext = createContext();
 
 export default AuthContext;
@@ -19,30 +20,6 @@ export const AuthProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  //   let loginUser = async (e) => {
-  //     e.preventDefault();
-  //     let response = await fetch("http://127.0.0.1:8000/api/token/", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         username: e.target.username.value,
-  //         password: e.target.password.value,
-  //       }),
-  //     });
-  //     let data = await response.json();
-
-  //     if (response.status === 200) {
-  //       setAuthTokens(data);
-  //       setUser(jwt_decode(data.access));
-  //       localStorage.setItem("authTokens", JSON.stringify(data));
-  //       history.push("/");
-  //     } else {
-  //       alert("Something went wrong!");
-  //     }
-  //   };
-
   let logoutUser = () => {
     setAuthToken(null);
     setTUser(null);
@@ -50,52 +27,72 @@ export const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
-  // let updateToken = async ()=> {
-
-  //     let response = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
-  //         method:'POST',
-  //         headers:{
-  //             'Content-Type':'application/json'
-  //         },
-  //         body:JSON.stringify({'refresh':authTokens?.refresh})
-  //     })
-
-  //     let data = await response.json()
-
-  //     if (response.status === 200){
-  //         setAuthTokens(data)
-  //         setUser(jwt_decode(data.access))
-  //         localStorage.setItem('authTokens', JSON.stringify(data))
-  //     }else{
-  //         logoutUser()
-  //     }
-
-  //     if(loading){
-  //         setLoading(false)
-  //     }
-  // }
-
   let contextData = {
     tuser: tuser,
     authToken: authToken,
     setAuthToken: setAuthToken,
     setTUser: setTUser,
-
     logoutUser: logoutUser,
   };
-  console.log(tuser, authToken);
+
   useEffect(() => {
-    if (authToken) {
-      setTUser(jwtDecode(authToken));
-    }
-    setLoading(false);
-  }, [authToken, loading]);
-  //   if (loading) {
-  //     return <Loading />;
-  //   }
+    const checkTokenExpiration = () => {
+      if (!authToken) return;
+
+      const token = jwtDecode(authToken);
+      const expirationTimeInSeconds = token.exp - Date.now() / 1000;
+
+      // Token expired or will expire within 60 seconds
+      if (expirationTimeInSeconds <= 60) {
+        // Regenerate token
+        // Implement your token regeneration logic here
+        // For simplicity, I'm assuming you have an updateToken function
+        updateToken();
+      }
+    };
+
+    const updateToken = async () => {
+      try {
+        setLoading(true);
+
+        const refreshTokenFromCookie = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("refreshToken"))
+          ?.split("=")[1];
+
+        // Send request to refresh token
+        const response = await fetch(`${BASE_URL}/auth/refresh-token/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ refresh: refreshTokenFromCookie }), // Send refresh token from cookie
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setAuthToken(data.accessToken);
+          setTUser(jwtDecode(data.accessToken));
+          localStorage.setItem("authToken", data.accessToken);
+        } else {
+          logoutUser();
+        }
+      } catch (error) {
+        console.error("Error refreshing token:", error);
+        logoutUser();
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkTokenExpiration();
+  }, [authToken]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
-    <AuthContext.Provider value={contextData}>
-      {loading ? <Loading /> : children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
   );
 };
