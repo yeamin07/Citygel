@@ -1,9 +1,22 @@
-import React, { useState, ReactNode } from "react";
+import React, { useState, ReactNode, useContext } from "react";
 import Sidebar from "../Sidebar";
 import Header from "../Header";
+import { useLocation, useNavigate } from "react-router-dom";
+import AuthContext from "context/AuthContext";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "firebase.init";
 
 const DefaultLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
+
+  const [user1] = useAuthState(auth);
+  const from = state?.from?.pathname || "/";
+  if (!(tuser && user1)) {
+    navigate(from, { replace: true });
+  }
 
   return (
     <div className="dark:bg-boxdark-2 dark:text-bodydark">

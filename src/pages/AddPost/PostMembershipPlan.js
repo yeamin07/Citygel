@@ -1,4 +1,5 @@
 import Loading from "components/Loading/Loading";
+import { BASE_URL } from "config/api/axios";
 import useAxios from "config/api/useAxios";
 import auth from "firebase.init";
 import { useEffect, useState } from "react";
@@ -28,9 +29,7 @@ const PostMembershipPlan = () => {
   const dispatch = useDispatch();
   const fetchUser = async () => {
     setLoading(true);
-    const resultPayment = await api.get(
-      `http://localhost:5000/api/v1/users/${user?.email}`,
-    );
+    const resultPayment = await api.get(`${BASE_URL}/users/${user?.email}`);
     if (resultPayment.data.membership) {
       setLoading(false);
       dispatch(nextStep());

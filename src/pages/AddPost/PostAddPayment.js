@@ -21,6 +21,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Loading from "components/Loading/Loading";
 import { firstStep } from "store/slices/adsPostSlice";
+import { BASE_URL } from "config/api/axios";
 const PostAddPayment = () => {
   const { currentStep, category, subcategory, form, membership } = useSelector(
     (state) => state.post,
@@ -69,25 +70,19 @@ const PostAddPayment = () => {
     try {
       setLoading(true);
       const token = await generateStripeToken();
-      const resultPayment = await api.post(
-        "http://localhost:5000/api/v1/payment",
-        {
-          membershipType: membership.membershipName,
-          amount: membership.price,
-          email: user?.email,
-          token: token,
-          save: save,
-        },
-      );
+      const resultPayment = await api.post(`${BASE_URL}/payment`, {
+        membershipType: membership.membershipName,
+        amount: membership.price,
+        email: user?.email,
+        token: token,
+        save: save,
+      });
       console.log(resultPayment);
       if (resultPayment.data) {
-        const resultPostAds = await api.post(
-          "http://localhost:5000/api/v1/ads",
-          {
-            email: user?.email,
-            ...ads,
-          },
-        );
+        const resultPostAds = await api.post(`${BASE_URL}/ads`, {
+          email: user?.email,
+          ...ads,
+        });
         console.log(resultPostAds);
         if (resultPostAds.data) {
           message.success("You Ads Post SuccessFully");

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -21,6 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import CitygelLogo from "components/Footer/CitygelLogo";
+import Loading from "components/Loading/Loading";
 export default function Confirm() {
   const {
     handleSubmit,
@@ -36,7 +37,7 @@ export default function Confirm() {
   });
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -59,7 +60,7 @@ export default function Confirm() {
   const onSubmit = async (e) => {
     console.log(e);
     setValue("email", user?.email);
-
+    setLoading(true);
     try {
       const { email } = getValues();
       if (e) {
@@ -79,6 +80,7 @@ export default function Confirm() {
           setTUser(jwtDecode(response.data.data.accessToken));
           console.log(response.data.data.accessToken);
           localStorage.setItem("authToken", response.data.data.accessToken);
+          setLoading(false);
           toast.success("You Account Created Successfully!", {
             position: "top-right",
           });
@@ -87,6 +89,8 @@ export default function Confirm() {
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
+      navigate("/");
     }
   };
 
@@ -227,205 +231,211 @@ export default function Confirm() {
             </Text>
           </div>
           <div className="mt-[-3px] flex w-full flex-col items-center justify-start">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="mt-2 flex w-full flex-col items-start justify-start">
-                <Text
-                  as="p"
-                  className="mt-7 ml-1.5 !text-black-900_99 opacity-0.7"
-                >
-                  Enter Your Full Name
-                </Text>
-                <div className="relative mt-[15px] h-[80px] w-full rounded-[15px]">
-                  <Input
-                    register={register}
-                    size="lg"
-                    onChange={(e) => {
-                      setValue("fullName", e.target.value);
-                    }}
-                    name="fullName"
-                    placeholder="Please Type Full Name"
-                    className={`w-full border border-solid border-cyan-700_01 ${
-                      errors.fullName?.message
+            {!loading ? (
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="mt-2 flex w-full flex-col items-start justify-start">
+                  <Text
+                    as="p"
+                    className="mt-7 ml-1.5 !text-black-900_99 opacity-0.7"
+                  >
+                    Enter Your Full Name
+                  </Text>
+                  <div className="relative mt-[15px] h-[80px] w-full rounded-[15px]">
+                    <Input
+                      register={register}
+                      size="lg"
+                      onChange={(e) => {
+                        setValue("fullName", e.target.value);
+                      }}
+                      name="fullName"
+                      placeholder="Please Type Full Name"
+                      className={`w-full border border-solid border-cyan-700_01 ${
+                        errors.fullName?.message
+                          ? "border-red-600"
+                          : "border-cyan-700_01"
+                      }`}
+                    />
+                    {errors.fullName?.message && (
+                      <Text
+                        className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                        fontSize="xs"
+                        bottom="-19px"
+                        position="absolute"
+                        color="#E85A2D"
+                      >
+                        <>{errors.fullName?.message}</>
+                      </Text>
+                    )}
+                  </div>
+                  <Text
+                    as="p"
+                    className="mt-8 ml-1.5 !text-black-900_99 opacity-0.7"
+                  >
+                    Enter Your Phone number
+                  </Text>
+                  <div className="relative mt-[5px] block w-full gap-[25px] md:flex ">
+                    <Controller
+                      control={control}
+                      name="phoneNumber"
+                      render={({
+                        field: { onChange, onBlur, value, name, ref },
+                        fieldState: { error },
+                      }) => (
+                        <PhoneInput
+                          country={"us"}
+                          value={value}
+                          className={
+                            value && error === undefined
+                              ? "is-valid w-full "
+                              : error
+                                ? "has-error w-full "
+                                : value && "is-valid w-full "
+                          }
+                          placeholder="Phone Number"
+                          onChange={onChange}
+                        />
+                      )}
+                    />
+
+                    {errors.phoneNumber?.message && (
+                      <Text
+                        className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                        fontSize="xs"
+                        bottom="-19px"
+                        position="absolute"
+                        color="#E85A2D"
+                      >
+                        <>Please enter valid phone number</>
+                      </Text>
+                    )}
+                  </div>
+                  <Text
+                    as="p"
+                    className="mt-[40px] ml-1.5 !text-black-900_99 opacity-0.7"
+                  >
+                    Enter Your Email
+                  </Text>
+                  <div
+                    className={`relative mt-[15px] h-[80px] w-full rounded-[15px] border border-solid ${
+                      errors.email?.message
                         ? "border-red-600"
                         : "border-cyan-700_01"
-                    }`}
-                  />
-                  {errors.fullName?.message && (
-                    <Text
-                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
-                      fontSize="xs"
-                      bottom="-19px"
-                      position="absolute"
-                      color="#E85A2D"
-                    >
-                      <>{errors.fullName?.message}</>
-                    </Text>
-                  )}
-                </div>
-                <Text
-                  as="p"
-                  className="mt-8 ml-1.5 !text-black-900_99 opacity-0.7"
-                >
-                  Enter Your Phone number
-                </Text>
-                <div className="relative mt-[5px] block w-full gap-[25px] md:flex ">
-                  <Controller
-                    control={control}
-                    name="phoneNumber"
-                    render={({
-                      field: { onChange, onBlur, value, name, ref },
-                      fieldState: { error },
-                    }) => (
-                      <PhoneInput
-                        country={"us"}
-                        value={value}
-                        className={
-                          value && error === undefined
-                            ? "is-valid w-full "
-                            : error
-                              ? "has-error w-full "
-                              : value && "is-valid w-full "
-                        }
-                        placeholder="Phone Number"
-                        onChange={onChange}
-                      />
+                    } `}
+                  >
+                    <Input
+                      register={register}
+                      size="2xl"
+                      type="email"
+                      name="email"
+                      onChange={(e) => {
+                        setValue("email", user?.email);
+                      }}
+                      value={user?.email}
+                      placeholder="mail@email.com"
+                      className="absolute left-0 bottom-0 right-0 top-0 m-auto w-full !text-black-900_6f"
+                    />
+
+                    {errors.email?.message && (
+                      <Text
+                        className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                        fontSize="xs"
+                        bottom="-19px"
+                        position="absolute"
+                        color="#E85A2D"
+                      >
+                        <>Please enter valid Email</>
+                      </Text>
                     )}
-                  />
+                  </div>
 
-                  {errors.phoneNumber?.message && (
-                    <Text
-                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
-                      fontSize="xs"
-                      bottom="-19px"
-                      position="absolute"
-                      color="#E85A2D"
-                    >
-                      <>Please enter valid phone number</>
-                    </Text>
-                  )}
-                </div>
-                <Text
-                  as="p"
-                  className="mt-[40px] ml-1.5 !text-black-900_99 opacity-0.7"
-                >
-                  Enter Your Email
-                </Text>
-                <div
-                  className={`relative mt-[15px] h-[80px] w-full rounded-[15px] border border-solid ${
-                    errors.email?.message
-                      ? "border-red-600"
-                      : "border-cyan-700_01"
-                  } `}
-                >
-                  <Input
-                    register={register}
-                    size="2xl"
-                    type="email"
-                    name="email"
-                    onChange={(e) => {
-                      setValue("email", user?.email);
-                    }}
-                    value={user?.email}
-                    placeholder="mail@email.com"
-                    className="absolute left-0 bottom-0 right-0 top-0 m-auto w-full !text-black-900_6f"
-                  />
-
-                  {errors.email?.message && (
-                    <Text
-                      className="xs absolute bottom-[-20px] text-[#ef4c4c] "
-                      fontSize="xs"
-                      bottom="-19px"
-                      position="absolute"
-                      color="#E85A2D"
-                    >
-                      <>Please enter valid Email</>
-                    </Text>
-                  )}
-                </div>
-
-                <div className="mx-auto mt-[20px] flex w-full max-w-full flex-row justify-start">
-                  <div className="flex w-full flex-col items-start justify-start gap-3">
-                    <div className="relative mb-3">
+                  <div className="mx-auto mt-[20px] flex w-full max-w-full flex-row justify-start">
+                    <div className="flex w-full flex-col items-start justify-start gap-3">
+                      <div className="relative mb-3">
+                        <CheckBox
+                          color="blue_gray_100_03"
+                          name="terms"
+                          register={register}
+                          label={
+                            <span>
+                              I am accepting all
+                              <span style={{ color: "#00e4e4" }}> Terms</span>
+                              <span> &amp; </span>
+                              <span style={{ color: "#00e4e4" }}>
+                                Conditions
+                              </span>
+                            </span>
+                          }
+                          className="gap-2.5 rounded-md text-left text-[13px]"
+                        />
+                        {errors.terms?.message && (
+                          <Text
+                            className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                            fontSize="xs"
+                            bottom="-19px"
+                            position="absolute"
+                            color="#E85A2D"
+                          >
+                            <>You need to agree with terms</>
+                          </Text>
+                        )}
+                      </div>
                       <CheckBox
-                        color="blue_gray_100_03"
-                        name="terms"
                         register={register}
-                        label={
-                          <span>
-                            I am accepting all
-                            <span style={{ color: "#00e4e4" }}> Terms</span>
-                            <span> &amp; </span>
-                            <span style={{ color: "#00e4e4" }}>Conditions</span>
-                          </span>
-                        }
+                        color="blue_gray_100_03"
+                        name="marketing"
+                        label="Are you interested to receive marketing communications"
                         className="gap-2.5 rounded-md text-left text-[13px]"
                       />
-                      {errors.terms?.message && (
-                        <Text
-                          className="xs absolute bottom-[-20px] text-[#ef4c4c] "
-                          fontSize="xs"
-                          bottom="-19px"
-                          position="absolute"
-                          color="#E85A2D"
-                        >
-                          <>You need to agree with terms</>
-                        </Text>
-                      )}
                     </div>
-                    <CheckBox
-                      register={register}
-                      color="blue_gray_100_03"
-                      name="marketing"
-                      label="Are you interested to receive marketing communications"
-                      className="gap-2.5 rounded-md text-left text-[13px]"
-                    />
                   </div>
-                </div>
-                <button
-                  type="submit"
-                  style={{ backgroundColor: "#0B90AF" }}
-                  className="mt-7 h-[80px] w-full rounded-[15px] font-poppins text-[24px] font-normal text-white-A700"
-                >
-                  Create Account
-                </button>
-                <div></div>
-                <a href="#" className="mt-8">
-                  <Text />
-                </a>
-                <div className="mt-[31px] flex w-full flex-row justify-start">
-                  <div className="flex w-full flex-col items-center justify-start">
-                    <div className="flex w-full flex-row items-start justify-start gap-[19px]">
-                      <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
+                  <button
+                    type="submit"
+                    style={{ backgroundColor: "#0B90AF" }}
+                    className="mt-7 h-[80px] w-full rounded-[15px] font-poppins text-[24px] font-normal text-white-A700"
+                  >
+                    Create Account
+                  </button>
+                  <div></div>
+                  <a href="#" className="mt-8">
+                    <Text />
+                  </a>
+                  <div className="mt-[31px] flex w-full flex-row justify-start">
+                    <div className="flex w-full flex-col items-center justify-start">
+                      <div className="flex w-full flex-row items-start justify-start gap-[19px]">
+                        <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
+                        <Text
+                          size="2xl"
+                          as="p"
+                          className="text-center !text-black-900_75 opacity-0.3"
+                        >
+                          or
+                        </Text>
+                        <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
+                      </div>
+                      <SocialLogin />
                       <Text
                         size="2xl"
                         as="p"
-                        className="text-center !text-black-900_75 opacity-0.3"
+                        className="mt-[35px] text-center !text-red-500"
                       >
-                        or
+                        <span className="text-gray_500">
+                          Already have an account?
+                        </span>
+                        <span className="text-red-500"></span>
+                        <span
+                          className="ml-2 cursor-pointer text-cyan-700_01"
+                          onClick={() => navigate("/login")}
+                        >
+                          Sign in
+                        </span>
                       </Text>
-                      <div className="mt-[13px] h-[2px] w-[46%] bg-black-900_75 opacity-0.3" />
                     </div>
-                    <SocialLogin />
-                    <Text
-                      size="2xl"
-                      as="p"
-                      className="mt-[35px] text-center !text-red-500"
-                    >
-                      <span className="text-gray_500">
-                        Already have an account?
-                      </span>
-                      <span className="text-red-500"></span>
-                      <span
-                        className="ml-2 cursor-pointer text-cyan-700_01"
-                        onClick={() => navigate("/login")}
-                      >
-                        Sign in
-                      </span>
-                    </Text>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
         <CitygelLogo />

@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import RequiredAuth from "hooks/RequiredAuth";
 
 import HomePage from "pages/Home";
@@ -26,7 +24,6 @@ import AddPost from "pages/Dashboard/AddPost";
 import AddField from "pages/Dashboard/AddField";
 import NotFound from "pages/NotFound";
 import LoginPage from "pages/Login";
-import AddCountry from "pages/Dashboard/AddCountry";
 import AddPosts from "components/Dashboard/AddPost";
 import Advertise from "pages/Dashboard/Advertisement/Advertise";
 const ProjectRoutes = () => {
@@ -59,6 +56,7 @@ const ProjectRoutes = () => {
           </RequiredAuth>
         }
       ></Route>
+<<<<<<< HEAD
       <Route path="dashboard/all-ads" element={<AllAds />} />
       <Route path="dashboard/all-payment" element={<AllPayment />} />
       <Route path="dashboard/add-type" element={<Dashboard />} />
@@ -69,6 +67,80 @@ const ProjectRoutes = () => {
       <Route path="dashboard/add-city" element={<City />} />
       <Route path="dashboard/add-post" element={<AddPosts />} />
       <Route path="dashboard/add-advertisement" element={<Advertise />} />
+=======
+      <Route
+        path="dashboard/all-ads"
+        element={
+          <RequiredAuth>
+            <AllAds />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/all-payment"
+        element={
+          <RequiredAuth>
+            <AllPayment />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/add-type"
+        element={
+          <RequiredAuth>
+            <Dashboard />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/add-category"
+        element={
+          <RequiredAuth>
+            <AddCategory />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/add-subcategory"
+        element={
+          <RequiredAuth>
+            <SubCategory />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/add-country"
+        element={
+          <RequiredAuth>
+            <Country />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/add-state"
+        element={
+          <RequiredAuth>
+            <State />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/add-city"
+        element={
+          <RequiredAuth>
+            <City />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="dashboard/add-post"
+        element={
+          <RequiredAuth>
+            <AddPosts />
+          </RequiredAuth>
+        }
+      />
+>>>>>>> 25a74100f320db1aa869d7dcb94ebf8eda7281f9
       <Route
         path="forms/add-field"
         element={

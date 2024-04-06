@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import { logo, cetagory_logo } from "assets/Allimages";
+import { cetagory_logo } from "assets/Allimages";
+import logo from "assets/Allimages/logo.png";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
@@ -60,11 +61,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="py-5.5 lg:py-6.5 flex items-center justify-between gap-2 px-6">
         <NavLink to="/">
-          <img
-            src={"images/img_citygel_2_white.png"}
-            className="w-48"
-            alt="Logo"
-          />
+          <img src={logo} className="w-48" alt="Logo" />
         </NavLink>
 
         <button
@@ -600,6 +597,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li>
               {/* <!-- Menu Item Settings --> */}
+<<<<<<< HEAD
               <li>
                 <NavLink
                   to="/dashboard/add-subcategory"
@@ -674,6 +672,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   Advertisement
                 </NavLink>
               </li> 
+=======
+>>>>>>> 25a74100f320db1aa869d7dcb94ebf8eda7281f9
 
               {/* <!-- Menu Item Settings --> */}
             </ul>
