@@ -56,7 +56,6 @@ const ProjectRoutes = () => {
           </RequiredAuth>
         }
       ></Route>
-<<<<<<< HEAD
       <Route path="dashboard/all-ads" element={<AllAds />} />
       <Route path="dashboard/all-payment" element={<AllPayment />} />
       <Route path="dashboard/add-type" element={<Dashboard />} />
@@ -67,7 +66,6 @@ const ProjectRoutes = () => {
       <Route path="dashboard/add-city" element={<City />} />
       <Route path="dashboard/add-post" element={<AddPosts />} />
       <Route path="dashboard/add-advertisement" element={<Advertise />} />
-=======
       <Route
         path="dashboard/all-ads"
         element={
@@ -140,7 +138,6 @@ const ProjectRoutes = () => {
           </RequiredAuth>
         }
       />
->>>>>>> 25a74100f320db1aa869d7dcb94ebf8eda7281f9
       <Route
         path="forms/add-field"
         element={
