@@ -2,9 +2,9 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="text-center py-56">
+    <div className="py-56 text-center">
       <svg
-        className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-[#FE4A55]"
+        className="mr-2 inline h-8 w-8 animate-spin fill-[#0B90AF] text-gray-200 dark:text-gray-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -21,6 +21,7 @@ import auth from "firebase.init";
 import { password } from "config/password";
 import CitygelLogo from "components/Footer/CitygelLogo";
 import { message } from "antd";
+import { BASE_URL } from "config/api/axios";
 export default function LoginPage() {
   const {
     handleSubmit,
@@ -91,19 +92,18 @@ export default function LoginPage() {
     const { email } = getValues();
     try {
       if (email) {
-        const response = await axios.post(
-          `https://citygel-backend.onrender.com/api/v1/auth/send-code`,
-          {
-            email: email,
-          },
-        );
+        const response = await axios.post(`${BASE_URL}/auth/login-send-code`, {
+          email: email,
+        });
         if (response.data) {
           toast.success("Otp code sent into your email");
         }
       } else {
         toast.error("please enter your email");
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error("please signup first");
+    }
   };
   return (
     <>

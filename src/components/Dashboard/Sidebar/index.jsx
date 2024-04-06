@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import { logo,cetagory_logo } from "assets/Allimages";
+import { logo, cetagory_logo } from "assets/Allimages";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
@@ -410,13 +410,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li> */}
               {/* <!-- Menu Item Tables --> */}
-              
+
               {/* <!--Category items --> */}
               <li>
                 <NavLink
-                  to="/dashboard/addCategory"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("addCategory") && "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/add-category"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("add-category") &&
+                    "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -448,13 +449,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li>
               {/*<!--addCategory section--> */}
-                 
-                 {/*~~~~~~~Country~~~~~~~~ */}
-                 <li>
+
+              {/*~~~~~~~Country~~~~~~~~ */}
+              <li>
                 <NavLink
-                  to="/dashboard/country"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("addCategory") && "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/add-country"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("add-country") &&
+                    "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -489,9 +491,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/*~~~~~~SubCategory~~~~~~~ */}
               <li>
                 <NavLink
-                  to="/dashboard/subCategory"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("addCategory") && "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/add-subcategory"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("add-subcategory") &&
+                    "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -523,13 +526,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 </NavLink>
               </li>
 
-
-
               <li>
                 <NavLink
-                  to="/dashboard/state"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("addCategory") && "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/add-state"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("add-state") &&
+                    "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -560,14 +562,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   State
                 </NavLink>
               </li>
-                  
-
 
               <li>
                 <NavLink
-                  to="/dashboard/city"
-                  className={`text-bodydark1 hover:bg-graydark dark:hover:bg-meta-4 group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium duration-300 ease-in-out ${
-                    pathname.includes("addCategory") && "bg-graydark dark:bg-meta-4"
+                  to="/dashboard/add-city"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes("add-city") &&
+                    "bg-graydark dark:bg-meta-4"
                   }`}
                 >
                   <svg
@@ -601,9 +602,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Settings --> */}
               <li>
                 <NavLink
-                  to="/dashboard/subcategory"
+                  to="/dashboard/add-subcategory"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes("subcategory") &&
+                    pathname.includes("add-subcategory") &&
                     "bg-graydark dark:bg-meta-4"
                   }`}
                 >

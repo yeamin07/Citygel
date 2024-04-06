@@ -3,19 +3,21 @@ import { Drawer, Dropdown, Menu, Space } from "antd";
 import { signOut } from "firebase/auth";
 import { Button, Text, Img } from "./..";
 import React, { useContext, useState } from "react";
-import { location, logo,man_pic } from "assets/Allimages";
+import { man_pic } from "assets/Allimages";
+import location from "../../assets/Allimages/location.png";
 import AuthContext from "context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { downarrow, menu } from "assets/Allimages";
 import { useAuthState } from "react-firebase-hooks/auth";
 import images from "../../assets/images/Citygel-2 white 1.png";
+import logo from "../../assets/Allimages/logo.png";
 import { IoMdClose } from "react-icons/io";
 import { RiArrowDropDownFill } from "react-icons/ri";
 export default function Header1({ bg = true }) {
   const navigate = useNavigate();
   let { logoutUser, tuser } = useContext(AuthContext);
   const [user] = useAuthState(auth);
-
+  const [activeItem, setActiveItem] = useState(null);
   // SignOut
   const handleSignOut = async () => {
     try {
@@ -33,7 +35,7 @@ export default function Header1({ bg = true }) {
     {
       key: "1",
       label: (
-        <div className="flex flex-row items-center justify-center gap-1">
+        <div className="z-[1000] flex flex-row items-center justify-center gap-1">
           <img
             className="w-5 rounded-lg"
             src="https://flagsapi.com/AE/shiny/64.png"
@@ -86,36 +88,121 @@ export default function Header1({ bg = true }) {
   const onClose = () => {
     setVisible(false);
   };
+
+  const navbar = [
+    {
+      item: "Real Estate",
+      link: "#",
+      value: "real-estate",
+    },
+    {
+      item: "Vehacle",
+      link: "#",
+      value: "vehacle2",
+    },
+    {
+      item: "Car",
+      link: "#",
+      value: "veh3acle",
+    },
+    {
+      item: "Watch",
+      link: "#",
+      value: "ve4hacle",
+    },
+    {
+      item: "Mobile",
+      link: "#",
+      value: "veha1cle",
+    },
+  ];
+  const profile = [
+    {
+      label: "Profile",
+      link: "/profile",
+      value: "profile",
+    },
+    {
+      label: "Dashboard",
+      link: "/dashboard",
+      value: "dashboard",
+    },
+  ];
+
+  const handleMenuClick = (e) => {
+    console.log("Clicked on item:", e.key);
+    // You can add your logic here for handling menu item clicks
+  };
+
+  const menuNav = (
+    <Menu onClick={handleMenuClick}>
+      {profile.map((item) => (
+        <Menu.Item
+          className="cursor-pointer"
+          key={item.value}
+          onClick={() => navigate(item.link)}
+        >
+          {item.label}
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
   return (
     <header>
       <div
-        className={` relative !z-[10000] hidden pt-5 pb-3 md:block ${bg ? "form-95% to-5% bg-gradient-to-r from-[#003E4C] to-cyan-800" : "bg-transparent"}`}
+        className={` relative !z-[1000] hidden pt-5 pb-3 md:block ${bg ? "form-95% to-5% bg-gradient-to-r from-[#003E4C] to-cyan-800" : "bg-transparent"}`}
       >
         <div className="container mx-auto mb-4 flex  flex-row justify-between px-5">
           <Img
-            src="images/img_citygel_2_white.png"
+            src={logo}
             alt="citygel2white"
             className=" h-[45px] w-[145px] shrink-0 object-cover xl:h-[50px] xl:w-[165px]"
           />
-          <div className="xl:w-[50%] flex flex-row  justify-end gap-[14px]">
-              {/*~~~~~~~~~~~user man pic ~~~~~~~~~~~~~~~ */}
-              <div className="hidden sm:flex flex-row justify-start gap-[0px] w-[10rem] h-auto">
-                <div className="flex flex-col justify-start gap-[5px]">
-                  <p className=" md:text-[13px] lg:text-[15px] text-white-A700">John smit</p>
-                  <div className="text-[10px] text-cyan-500 flex gap-[2px] h-[12px] w-[6rem]" >My Account <RiArrowDropDownFill className="text-[20px] mt-[-2px]"/></div>
-                </div>
-                <div><img src={man_pic} className="w-[40px] h-[40px] lg:w-[50px] lg:h-[50px] rounded-full hover:border-[1px] hover:border-solid hover:border-cyan-700"/></div>
-              </div>
+          <div className="flex flex-row justify-end  gap-[14px] xl:w-[50%]">
+            {/*~~~~~~~~~~~user man pic ~~~~~~~~~~~~~~~ */}
+
             {user?.uid && tuser ? (
-              <div onClick={handleSignOut}>
-                <Text
-                  size="2xl"
-                  as="p"
-                  className=" mt-2 cursor-pointer text-center font-poppins !text-[15px] !text-gray-50 xl:!text-[18px]"
-                >
-                  Sign Out
-                </Text>
-              </div>
+              <>
+                <div className="hidden h-auto w-[10rem] flex-row justify-start gap-[0px] sm:flex">
+                  <div className="flex flex-col  justify-start gap-[2px]">
+                    <p className=" text-white-A700 md:text-[13px] lg:text-[15px]">
+                      {user.displayName}
+                    </p>
+                    <Dropdown
+                      className="mt-[-10px]"
+                      overlay={menuNav}
+                      trigger={["click"]}
+                    >
+                      <a
+                        className=" cursor-pointer"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <Space className="z-50">
+                          <div className="mt-[-5px] flex h-[12px] w-[6rem] gap-[2px] text-[10px] text-cyan-500">
+                            My Account{" "}
+                            <RiArrowDropDownFill className="mt-[-2px] text-[20px]" />
+                          </div>
+                        </Space>
+                      </a>
+                    </Dropdown>
+                  </div>
+                  <div>
+                    <img
+                      src={man_pic}
+                      className="ml-[-10px] h-[40px] w-[40px] rounded-full hover:border-[1px] hover:border-solid hover:border-cyan-700 lg:h-[50px] lg:w-[50px]"
+                    />
+                  </div>
+                </div>
+                <div onClick={handleSignOut}>
+                  <Text
+                    size="2xl"
+                    as="p"
+                    className=" mt-2 cursor-pointer text-center font-poppins !text-[15px] !text-gray-50 xl:!text-[18px]"
+                  >
+                    Sign Out
+                  </Text>
+                </div>
+              </>
             ) : (
               <div onClick={() => navigate("/login")}>
                 <Text
@@ -137,7 +224,7 @@ export default function Header1({ bg = true }) {
               mq1050:mr-1 mq1050:ml-[-2px] mq1050:h-[30px] mq1050:w-[30px] mq1050:rounded-full "
               >
                 <Img
-                  src="images/location.png"
+                  src={location}
                   alt="arrowdown_one"
                   className="h-[20px] mq1050:h-[17px] "
                 />
@@ -169,42 +256,17 @@ export default function Header1({ bg = true }) {
         {/*2nd foot part alvi */}
         <div className="container mx-auto hidden   flex-row justify-between px-5 md:flex">
           <div className="flex shrink items-center justify-between gap-4 lg:gap-5 xl:gap-7 2xl:gap-9  ">
-            <a href="#">
-              <Text
-                size="2xl"
-                as="p"
-                className="!text-[15px] font-thin xl:!text-[18px]"
-              >
-                Real Estate
-              </Text>
-            </a>
-            <a href="#">
-              <Text
-                size="2xl"
-                as="p"
-                className="!text-[15px] font-thin xl:!text-[18px]"
-              >
-                Vehicle
-              </Text>
-            </a>
-            <a href="#">
-              <Text
-                size="2xl"
-                as="p"
-                className="!text-[15px] font-thin xl:!text-[18px]"
-              >
-                Job
-              </Text>
-            </a>
-            <a href="#">
-              <Text
-                size="2xl"
-                as="p"
-                className="!text-[15px] font-thin xl:!text-[18px]"
-              >
-                classyfied(General catagory)
-              </Text>
-            </a>
+            {navbar.map((item) => (
+              <a href={item.link}>
+                <Text
+                  size="2xl"
+                  as="p"
+                  className="!text-[15px] font-thin xl:!text-[18px]"
+                >
+                  {item.item}
+                </Text>
+              </a>
+            ))}
           </div>
           <Button
             onClick={() => navigate("/add-post")}
@@ -232,16 +294,17 @@ export default function Header1({ bg = true }) {
               <img src={menu} className="mt-3 h-[20px] w-[20px]" alt="Menu" />
             </Button>
             <Drawer
-              // className="bg-[#044558]"
+              style={{ backgroundColor: "#044558" }}
+              className="bg-[#044558]"
               title={
-                <div>
+                <div className="">
                   <div className="flex flex-wrap items-center justify-between ">
-                    <img
-                      src={"images/img_citygel_2_white.png"}
-                      className="w-24"
-                      alt=""
-                    />
-                    <Button type="text" onClick={onClose}>
+                    <img src={logo} className="w-24" alt="" />
+                    <Button
+                      type="text"
+                      className="text-white-A700"
+                      onClick={onClose}
+                    >
                       <IoMdClose />
                     </Button>
                   </div>
@@ -251,16 +314,17 @@ export default function Header1({ bg = true }) {
               closable={false}
               onClose={onClose}
               visible={visible}
-              width={"20%"}
+              width={"70%"}
               maskClosable={true} // Allow closing when clicking outside the Drawer
             >
-              <Menu mode="vertical">
-                <Menu.Item key="mail">
-                  <a href="">Signin</a>
-                </Menu.Item>
-                <Menu.Item key="app">
-                  <a href="">Signup</a>
-                </Menu.Item>
+              <Menu mode="vertical" className="bg-[#044558]">
+                {navbar.map((item) => (
+                  <Menu.Item key={item.value} className="text-white-A700">
+                    <a className="text-white-A700 " href={item.link}>
+                      {item.item}
+                    </a>
+                  </Menu.Item>
+                ))}
               </Menu>
             </Drawer>
           </div>

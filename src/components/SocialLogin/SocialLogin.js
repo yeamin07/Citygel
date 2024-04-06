@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import { message } from "antd";
+import { BASE_URL } from "config/api/axios";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, gloading, error] = useSignInWithGoogle(auth);
@@ -35,17 +36,12 @@ const SocialLogin = () => {
       const { uid, displayName, email } = result.user;
 
       // Check if the user's email already exists
-      const response = await axios.get(
-        `https://citygel-backend.onrender.com/api/v1/users/${email}`,
-      );
+      const response = await axios.get(`${BASE_URL}/users/${email}`);
       setLoading(false);
       if (response.data) {
-        const response = await axios.post(
-          `https://citygel-backend.onrender.com/api/v1/auth/google-auth`,
-          {
-            email: email,
-          },
-        );
+        const response = await axios.post(`${BASE_URL}/auth/google-auth`, {
+          email: email,
+        });
         if (response.data) {
           setLoading(false);
 

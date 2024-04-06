@@ -35,36 +35,44 @@ const Category = () => {
           src={bluecurve}
           className="left-0 top-0 sm:h-[540px] h-[450px] w-5/6 flex-grow-0 "
         />
-        <img
-          src={sittingman}
-          className=" absolute 2xl:right-32 sm:right-14 right-[20vw]  xl:top-48 top-32  xl:h-[660px] sm:h-[420px] h-[320px] xl:w-[720px] sm:w-[520px] "
-        />
+
       </div>
 
-      <div className="container mx-auto relative  lg:-mt-[30%] mt-10 px-5 text-center lg:text-left">
-        <div className=" font-bold ">
-          <p className="lg:w-[60%] md:text-[70px] text-[35px] sm:text-[55px] ">
-            Find Anything
-            <br />
-            Around You
-          </p>
+      <div className="container mx-auto relative  lg:-mt-[35%] sm:-mt-[30%] -mt-[50%] px-5 text-center lg:text-left">
+        <div className="lg:flex-row flex-col-reverse flex items-center ">
+          <div className=" lg:w-[62%] lg:pr-20">
+            <div className=" font-bold ">
+              <p className=" md:text-[70px] text-[35px] sm:text-[55px] ">
+                Find Anything
+                <br />
+                Around You
+              </p>
+            </div>
+            <div className=" font-poppins text-[15px] font-normal opacity-70 xl:w-[70%] ">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy.
+              </p>
+            </div>
+            <div className=" mt-8  grid sm:grid-cols-4 gap-y-5 gap-x-5 grid-cols-2 ">
+              <Categorycart image={properties} text="Properties" />
+              <Categorycart image={motor} text="Motor" />
+              <Categorycart image={electronics} text="Electronics" />
+              <Categorycart image={furniture} text="Furniture" />
+              <Categorycart image={services} text="Services" />
+              <Categorycart image={jobs} text="Jobs" />
+              <Categorycart image={services} text="Category 7" />
+              <Categorycart image={services} text="Category 8" />
+            </div>
+          </div>
+          <div className="lg:w-[37%]">
+            <img
+              src={sittingman}
+              className=" w-full sm:scale-110"
+            />
+          </div>
         </div>
-        <div className=" xl:w-[35%] lg:w-[45%] font-poppins text-[15px] font-normal opacity-70 ">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy.
-          </p>
-        </div>
-        <div className=" mt-8  2xl:w-[40%] xl:w-[50%] lg:w-[70%] grid sm:grid-cols-4 gap-y-5 gap-x-5 grid-cols-2 ">
-          <Categorycart image={properties} text="Properties" />
-          <Categorycart image={motor} text="Motor" />
-          <Categorycart image={electronics} text="Electronics" />
-          <Categorycart image={furniture} text="Furniture" />
-          <Categorycart image={services} text="Services" />
-          <Categorycart image={jobs} text="Jobs" />
-          <Categorycart image={services} text="Category 7" />
-          <Categorycart image={services} text="Category 8" />
-        </div>
+
         <div className=" sm:mt-11 my-16 text-center sm:text-left">
           <p className="font-poppins sm:text-[39px] text-[25px] ">
             Browse By SubCategories:

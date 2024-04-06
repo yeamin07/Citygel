@@ -3,16 +3,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "context/AuthContext";
 import ProjectRoutes from "Routes";
-
-// import { useEffect } from "react";
-// import {
-//   Route,
-//   useNavigationType,
-//   useLocation,
-// } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { RiHome5Line } from "react-icons/ri";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { FiPlusCircle } from "react-icons/fi";
 
 function App() {
-  // const action = useNavigationType();
   // const location = useLocation();
   // const pathname = location.pathname;
 
@@ -46,13 +42,13 @@ function App() {
   //     }
   //   }
   // }, [pathname]);
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const { pathname } = location;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname } = location;
   return (
     <AuthProvider>
       {/*~~~~~~~~~~~~~~~~~~~~~~~New Footer ~~~~~~~~~~~~~~~~~~~~~~~~~~*/}
-      {/* <div className="h-auto">
+      <div className="h-auto">
         <div
           className="fixed bottom-0  z-[1000] hidden  h-[80px] w-full items-center justify-center border-t-[2px]
       border-solid border-gray-200 bg-[#FFFFFF] p-4 pt-[9px] mq500:flex"
@@ -107,9 +103,9 @@ function App() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
       <ProjectRoutes />
-      {/* <DashboardRoutes /> */}
+
       <ToastContainer />
     </AuthProvider>
   );
