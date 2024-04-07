@@ -29,9 +29,10 @@ const Description = () => {
   const getSingleProduct = async () => {
     setLoading(true);
     try {
-      const product = await api.get(
+      const product = await axios.get(
         `https://citygel-backend.onrender.com/api/v1/ads/${id}/`,
       );
+      console.log(product);
       if (product.data) {
         setLoading(false);
         console.log(product.data);
@@ -59,7 +60,7 @@ const Description = () => {
   useEffect(() => {
     getSingleProduct();
     getAllProduct();
-  }, [id]);
+  }, []);
   console.log(singleProduct);
   return (
     <div>

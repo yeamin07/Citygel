@@ -44,13 +44,17 @@ export default function Header1({ bg = true }) {
     }
   };
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const getSingleUser = await axios(`${BASE_URL}/users/${user?.email}/`);
-        setSingleUser(getSingleUser.data.data);
-      } catch (error) {}
-    };
-    fetchUser();
+    if (user?.email) {
+      const fetchUser = async () => {
+        try {
+          const getSingleUser = await axios(
+            `${BASE_URL}/users/${user?.email}/`,
+          );
+          setSingleUser(getSingleUser.data.data);
+        } catch (error) {}
+      };
+      fetchUser();
+    }
   }, [user]);
   // Country
 
