@@ -28,7 +28,6 @@ import AddPosts from "components/Dashboard/AddPost";
 import Advertise from "pages/Dashboard/Advertisement/Advertise";
 import Thankyou from "components/profile/ThankYou";
 const ProjectRoutes = () => {
-
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -58,16 +57,15 @@ const ProjectRoutes = () => {
           </RequiredAuth>
         }
       ></Route>
-      <Route path="dashboard/all-ads" element={<AllAds />} />
-      <Route path="dashboard/all-payment" element={<AllPayment />} />
-      <Route path="dashboard/add-type" element={<Dashboard />} />
-      <Route path="dashboard/add-category" element={<AddCategory />} />
-      <Route path="dashboard/add-subcategory" element={<SubCategory />} />
-      <Route path="dashboard/add-country" element={<Country />} />
-      <Route path="dashboard/add-state" element={<State />} />
-      <Route path="dashboard/add-city" element={<City />} />
-      <Route path="dashboard/add-post" element={<AddPosts />} />
-      <Route path="dashboard/add-advertisement" element={<Advertise />} />
+
+      <Route
+        path="dashboard/add-advertisement"
+        element={
+          <RequiredAuth>
+            <Advertise />
+          </RequiredAuth>
+        }
+      />
       <Route
         path="dashboard/all-ads"
         element={
@@ -149,7 +147,7 @@ const ProjectRoutes = () => {
         }
       />
       <Route path="*" element={<NotFound />} />
-      <Route path="thankyou " element={<Thankyou/>}/>
+      <Route path="thankyou " element={<Thankyou />} />
     </Routes>
   );
 };

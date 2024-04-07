@@ -42,7 +42,7 @@ const Country = () => {
     console.log("Form Data:", formData);
     if (editingCountry) {
       const updateCountry = await api.patch(
-        `country/${editingCountry.name}`,
+        `country/${editingCountry.name}/`,
         formData,
       );
       if (updateCountry.data) {
@@ -81,18 +81,19 @@ const Country = () => {
     }
   };
   const editUser = async (name) => {
-    const verifyresponse = await api.delete(`/country/${name}`);
+    const verifyresponse = await api.patch(`/country/${name}/`);
     if (verifyresponse.data) {
       fetchUser();
-      message.success("delete Successfully");
+      message.success("edit Successfully");
     }
   };
 
   const showModal = (Country) => {
     if (Country) {
+      console.log(Country);
       setEditingCountry(Country);
-      setCountryName(Country.name);
-      setSelectedSubcategories(Country.subcategories);
+      setSelectedCountry(Country.name);
+      setState(Country.state);
     } else {
       setEditingCountry(null);
       setCountryName("");

@@ -9,6 +9,7 @@ import {
   sittingman,
   menu,
   location,
+  downarrow,
 } from "assets/Allimages";
 import { Drawer, Dropdown, Menu, Space } from "antd";
 import { IoMdClose } from "react-icons/io";
@@ -24,22 +25,64 @@ import PostMembershipPlan from "./PostMembershipPlan";
 import PostAddPayment from "./PostAddPayment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { Img } from "components";
+// import { Img } from "components";
+// import { Dropdown, Menu, Space } from "antd";
+import { Img, Text } from "components";
+import { useNavigate } from "react-router-dom";
+import { RiArrowDropDownFill } from "react-icons/ri";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
 );
+const profile = [
+  {
+    label: "Profile",
+    link: "/profile",
+    value: "profile",
+  },
+  {
+    label: "Dashboard",
+    link: "/dashboard",
+    value: "dashboard",
+  },
+];
 const AddPostWrapper = () => {
   const dispatch = useDispatch();
   const { currentStep, categories, subcategory } = useSelector(
     (state) => state.post,
   );
+  const handleMenuClick = (e) => {
+    console.log("Clicked on item:", e.key);
+    // You can add your logic here for handling menu item clicks
+  };
+  const menuNav = (
+    <Menu onClick={handleMenuClick}>
+      {profile.map((item) => (
+        <Menu.Item
+          className="cursor-pointer"
+          key={item.value}
+          onClick={() => navigate(item.link)}
+        >
+          {item.label}
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
+  const navigate = useNavigate();
   const items = [
     {
       key: "1",
       label: (
-        <div className="flex flex-row items-center justify-center gap-1">
-          Profile
+        <div className="z-[1000] flex flex-row items-center justify-center gap-1">
+          <img
+            className="w-5 rounded-lg"
+            src="https://flagsapi.com/AE/shiny/64.png"
+            alt=""
+          />
+
+          <a target="_blank" rel="noopener noreferrer" href="#">
+            UAE
+          </a>
         </div>
       ),
     },
@@ -47,7 +90,15 @@ const AddPostWrapper = () => {
       key: "2",
       label: (
         <div className="flex flex-row items-center justify-center gap-1">
-          Profile
+          <img
+            className="w-5 rounded-lg"
+            src="https://flagsapi.com/US/shiny/64.png"
+            alt=""
+          />
+
+          <a target="_blank" rel="noopener noreferrer" href="#">
+            USA
+          </a>
         </div>
       ),
     },
@@ -55,7 +106,15 @@ const AddPostWrapper = () => {
       key: "3",
       label: (
         <div className="flex flex-row items-center justify-center gap-1">
-          Profile
+          <img
+            className="w-5 rounded-lg"
+            src="https://flagsapi.com/BD/shiny/64.png"
+            alt=""
+          />
+
+          <a target="_blank" rel="noopener noreferrer" href="#">
+            BD
+          </a>
         </div>
       ),
     },
@@ -181,18 +240,21 @@ const AddPostWrapper = () => {
                 </h4>
 
                 <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  placement="bottomRight"
-                  arrow={{
-                    pointAtCenter: false,
-                  }}
+                  className="mt-[-10px]"
+                  overlay={menuNav}
+                  trigger={["click"]}
                 >
-                  <p className="cursor-pointer text-[13px] text-teal-400">
-                    {" "}
-                    My Account <FaCaretDown />{" "}
-                  </p>
+                  <a
+                    className=" cursor-pointer"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <Space className="z-50">
+                      <div className="mt-[-5px] flex h-[12px] w-[6rem] gap-[2px] text-[10px] text-cyan-500">
+                        My Account{" "}
+                        <RiArrowDropDownFill className="mt-[-2px] text-[20px]" />
+                      </div>
+                    </Space>
+                  </a>
                 </Dropdown>
               </div>
               <div className="block mq800:hidden">
@@ -210,18 +272,21 @@ const AddPostWrapper = () => {
                   <img src={location} className="h-[21px] w-[20px]" />
                 </div>
                 <Dropdown
+                  className=""
                   menu={{
                     items,
                   }}
                   trigger={["click"]}
                 >
                   <a onClick={(e) => e.preventDefault()}>
-                    <Space>
-                      <div>
-                        <p className="cursor-pointer text-[10px] font-extralight text-white-A700">
-                          Change Location <FaAngleDown />
-                        </p>
-                      </div>
+                    <Space className="z-50">
+                      <Text as="p" className="text-[18px] mq1050:text-[11px] ">
+                        Change Location
+                      </Text>
+                      <img
+                        src={downarrow}
+                        className="mr-1 h-[7px] w-[10px] mq1050:mr-[1px] mq800:mr-[2px]"
+                      />
                     </Space>
                   </a>
                 </Dropdown>
@@ -256,25 +321,25 @@ const AddPostWrapper = () => {
           <img
             src={yellowcurve}
             alt=""
-            className=" absolute left-0 top-0 z-10 mq825:h-[800px] mq825:w-[60%]  h-[400px] w-full sm:h-[1067px] sm:w-2/6 mq500:relative mq500:z-[1] mq500:top-0 mq500:w-[20%] mq500:h-[350px]"
+            className=" absolute left-0 top-0 z-10 h-[400px] w-full  sm:h-[1067px] sm:w-2/6 mq825:h-[800px] mq825:w-[60%] mq500:relative mq500:top-0 mq500:z-[1] mq500:h-[350px] mq500:w-[20%]"
           />
           <img
             src={greycurve}
             alt=""
-            className="absolute left-0 top-0 z-0  mq825:h-[800px] mq825:w-[60%] h-[450px] sm:h-[1070px] sm:w-2/6 mq500:hidden mq500:z-[0]"
+            className="absolute left-0 top-0 z-0  h-[450px] sm:h-[1070px] sm:w-2/6 mq825:h-[800px] mq825:w-[60%] mq500:z-[0] mq500:hidden"
           />
           <img
             src={bluecurve}
             alt=""
             className="absolute right-0 top-0   h-[400px] w-[89%] sm:h-[780px] mq825:h-[600px] mq800:w-[89%]
-          mq500:h-[350px] mq500:w-[150%] mq500:z-[5] "
+          mq500:z-[5] mq500:h-[350px] mq500:w-[150%] "
           />
         </div>
       </div>
 
       {/* Body */}
 
-      <div className="mq1050:mt-28 container relative z-50 mx-auto  mt-10 px-5 text-center mq500:mt-[-340px] lg:text-left mq825:mt-[-10px]">
+      <div className="container relative z-50 mx-auto mt-10  px-5 text-center lg:text-left mq1050:mt-28 mq825:mt-[-10px] mq500:mt-[-340px]">
         {/* {children} */}
         <div className="flex flex-col-reverse  items-center lg:flex-row lg:items-start ">
           <div className=" xl:w-[65%] 2xl:w-[60%]">

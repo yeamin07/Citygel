@@ -29,15 +29,18 @@ const PostMembershipPlan = () => {
   const dispatch = useDispatch();
   const fetchUser = async () => {
     setLoading(true);
-    const resultPayment = await api.get(`${BASE_URL}/users/${user?.email}`);
-    if (resultPayment.data.membership) {
+    try {
+      const resultPayment = await api.get(`${BASE_URL}/users/${user?.email}/`);
+      if (resultPayment.data.membership) {
+        setLoading(false);
+        dispatch(nextStep());
+      } else {
+        setLoading(false);
+        return;
+      }
+    } catch (error) {
       setLoading(false);
-      dispatch(nextStep());
-    } else {
-      setLoading(false);
-      return;
     }
-    console.log(resultPayment);
   };
   useEffect(() => {
     fetchUser();
@@ -66,14 +69,14 @@ const PostMembershipPlan = () => {
     <div className="">
       <div className="  pt-20 ">
         <main className=" text-black flex w-full max-w-full flex-col items-start justify-start gap-[35px] text-left font-poppins text-25xl ">
-          <div className="box-border flex w-full max-w-full flex-row items-start justify-center px-5 pt-0   ">
+          <div className="md-5 box-border flex w-full max-w-full flex-row items-start justify-center pt-0 md:px-0 lg:ml-[-10px] lg:px-0  ">
             <div className="flex  w-full max-w-full flex-col items-center justify-center gap-[20px] text-center sm:items-start sm:justify-start sm:text-left">
               <h1 className=" relative z-[4] m-0 inline-block !text-[27px]  font-medium sm:text-[45px] ">{`Pricing & Plans`}</h1>
               <div className="text-gray-1200 relative z-[4]  text-sm text-gray-600 sm:pr-20 sm:text-lg sm:leading-[35px]">{`Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem `}</div>
             </div>
           </div>
 
-          <section className=" box-border  max-w-full px-5 pt-0 pb-[8px] text-left font-poppins text-22xl-5 text-main-color ">
+          <section className=" box-border  max-w-full px-5 pt-0 pb-[8px] text-left font-poppins text-22xl-5 text-main-color md:px-0 ">
             <div className=" flex w-full max-w-full flex-col items-start justify-center gap-12 sm:justify-start lg:gap-5 xl:flex-row">
               <div className="flex w-full flex-col items-start justify-start gap-[61.90000000000009px]  rounded-xl !bg-[#ffffff] p-5 shadow-sm shadow-gray-100  mq750:flex-1 mq450:gap-[31px_61.90000000000009px]">
                 <div className="flex flex-col items-start justify-start gap-[23.049999999999955px] self-stretch">
@@ -327,7 +330,7 @@ const PostMembershipPlan = () => {
         </main>
 
         <div className="mt-9  w-full">
-          <div className=" text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl  sm:w-[100%] sm:flex-col lg:w-[80%] ">
+          <div className=" text-white box-border flex max-w-full flex-row justify-center py-0 px-5 text-11xl sm:w-[100%]  sm:flex-col lg:w-[100%] lg:px-1 ">
             <div className="flex w-full max-w-full  flex-row items-center  justify-end gap-5 md:justify-between ">
               {currentStep > 1 && (
                 <div

@@ -2,7 +2,7 @@ import auth from "firebase.init";
 import { Drawer, Dropdown, Menu, Space } from "antd";
 import { signOut } from "firebase/auth";
 import { Button, Text, Img } from "./..";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { man_pic } from "assets/Allimages";
 import location from "../../assets/Allimages/location.png";
 import AuthContext from "context/AuthContext";
@@ -13,12 +13,26 @@ import images from "../../assets/images/Citygel-2 white 1.png";
 import logo from "../../assets/Allimages/logo.png";
 import { IoMdClose } from "react-icons/io";
 import { RiArrowDropDownFill } from "react-icons/ri";
+import axios, { BASE_URL } from "config/api/axios";
+const profile = [
+  {
+    label: "Profile",
+    link: "/profile",
+    value: "profile",
+  },
+  {
+    label: "Dashboard",
+    link: "/dashboard",
+    value: "dashboard",
+  },
+];
 export default function Header1({ bg = true }) {
   const navigate = useNavigate();
   let { logoutUser, tuser } = useContext(AuthContext);
   const [user] = useAuthState(auth);
   const [activeItem, setActiveItem] = useState(null);
-  // SignOut
+  const [singleUser, setSingleUser] = useState({});
+  console.log(user?.email);
   const handleSignOut = async () => {
     try {
       logoutUser();
@@ -29,8 +43,21 @@ export default function Header1({ bg = true }) {
       console.error("Error signing out:", error.message);
     }
   };
-
+  useEffect(() => {
+    if (user?.email) {
+      const fetchUser = async () => {
+        try {
+          const getSingleUser = await axios(
+            `${BASE_URL}/users/${user?.email}/`,
+          );
+          setSingleUser(getSingleUser.data.data);
+        } catch (error) {}
+      };
+      fetchUser();
+    }
+  }, [user]);
   // Country
+
   const items = [
     {
       key: "1",
@@ -116,18 +143,6 @@ export default function Header1({ bg = true }) {
       value: "veha1cle",
     },
   ];
-  const profile = [
-    {
-      label: "Profile",
-      link: "/profile",
-      value: "profile",
-    },
-    {
-      label: "Dashboard",
-      link: "/dashboard",
-      value: "dashboard",
-    },
-  ];
 
   const handleMenuClick = (e) => {
     console.log("Clicked on item:", e.key);
@@ -166,7 +181,7 @@ export default function Header1({ bg = true }) {
                 <div className="hidden h-auto w-[10rem] flex-row justify-start gap-[0px] sm:flex">
                   <div className="flex flex-col  justify-start gap-[2px]">
                     <p className=" text-white-A700 md:text-[13px] lg:text-[15px]">
-                      {user.displayName}
+                      {singleUser?.fullName}
                     </p>
                     <Dropdown
                       className="mt-[-10px]"
