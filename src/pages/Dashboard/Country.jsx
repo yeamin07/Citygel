@@ -81,18 +81,18 @@ const Country = () => {
     }
   };
   const editUser = async (name) => {
-    const verifyresponse = await api.delete(`/country/${name}`);
+    const verifyresponse = await api.patch(`/country/${name}/`);
     if (verifyresponse.data) {
       fetchUser();
-      message.success("delete Successfully");
+      message.success("edit Successfully");
     }
   };
 
   const showModal = (Country) => {
     if (Country) {
       setEditingCountry(Country);
-      setCountryName(Country.name);
-      setSelectedSubcategories(Country.subcategories);
+      setSelectedCountry(Country.name);
+      setState(Country.states);
     } else {
       setEditingCountry(null);
       setCountryName("");

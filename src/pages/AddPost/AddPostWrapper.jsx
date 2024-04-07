@@ -67,7 +67,7 @@ const AddPostWrapper = () => {
         {/* For Navbar  */}
         <header className=" relative z-30 flex h-[100px] w-full justify-between overflow-hidden bg-gradient-to-r from-[rgb(16,56,76)] to-[rgb(21,60,77)] ">
           <div className="container mx-auto flex items-center justify-between px-5">
-            <div>
+            <div className="sm:hidden">
               <img
                 onClick={() => navigate("/")}
                 alt=""
