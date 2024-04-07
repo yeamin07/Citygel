@@ -42,7 +42,7 @@ const Country = () => {
     console.log("Form Data:", formData);
     if (editingCountry) {
       const updateCountry = await api.patch(
-        `country/${editingCountry.name}`,
+        `country/${editingCountry.name}/`,
         formData,
       );
       if (updateCountry.data) {
@@ -90,9 +90,10 @@ const Country = () => {
 
   const showModal = (Country) => {
     if (Country) {
+      console.log(Country);
       setEditingCountry(Country);
       setSelectedCountry(Country.name);
-      setState(Country.states);
+      setState(Country.state);
     } else {
       setEditingCountry(null);
       setCountryName("");

@@ -29,11 +29,11 @@ const Category = () => {
       <div className="mt-[-90px] flex h-auto overflow-hidden">
         <img
           src={yellowcurve}
-          className="relative top-[90px]  w-1/5 flex-grow "
+          className="relative top-[90px]  w-1/5 flex-grow z-[0]"
         />
         <img
           src={bluecurve}
-          className="left-0 top-0 sm:h-[540px] h-[450px] w-5/6 flex-grow-0 "
+          className="left-0 top-0 sm:h-[540px] h-[450px] w-5/6 flex-grow-0 mq500:w-[120%] mq500:mt-[20px] z-[2]"
         />
 
       </div>
@@ -65,10 +65,10 @@ const Category = () => {
               <Categorycart image={services} text="Category 8" />
             </div>
           </div>
-          <div className="lg:w-[37%]">
+          <div className=" lg:w-[37%] mq500:mt-[-120px] z-[30]">
             <img
               src={sittingman}
-              className=" w-full sm:scale-110"
+              className=" w-[85%] sm:scale-110"
             />
           </div>
         </div>

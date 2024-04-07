@@ -26,6 +26,7 @@ import NotFound from "pages/NotFound";
 import LoginPage from "pages/Login";
 import AddPosts from "components/Dashboard/AddPost";
 import Advertise from "pages/Dashboard/Advertisement/Advertise";
+import Thankyou from "components/profile/ThankYou";
 const ProjectRoutes = () => {
   return (
     <Routes>
@@ -146,6 +147,7 @@ const ProjectRoutes = () => {
         }
       />
       <Route path="*" element={<NotFound />} />
+      <Route path="thankyou " element={<Thankyou />} />
     </Routes>
   );
 };

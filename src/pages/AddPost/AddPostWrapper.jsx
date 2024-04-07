@@ -141,25 +141,25 @@ const AddPostWrapper = () => {
           <img
             src={yellowcurve}
             alt=""
-            className=" absolute left-0 top-0 z-10 h-[400px] w-full sm:h-[1067px] sm:w-2/6"
+            className=" absolute left-0 top-0 z-10 mq825:h-[800px] mq825:w-[60%]  h-[400px] w-full sm:h-[1067px] sm:w-2/6 mq500:relative mq500:z-[1] mq500:top-0 mq500:w-[20%] mq500:h-[350px]"
           />
           <img
             src={greycurve}
             alt=""
-            className="absolute left-0 top-0 z-0 h-[450px] sm:h-[1070px] sm:w-2/6 "
+            className="absolute left-0 top-0 z-0  mq825:h-[800px] mq825:w-[60%] h-[450px] sm:h-[1070px] sm:w-2/6 mq500:hidden mq500:z-[0]"
           />
           <img
             src={bluecurve}
             alt=""
-            className="absolute right-0 top-0   h-[400px] w-[89%] sm:h-[780px] mq800:h-[390px] mq800:w-[120%]
-          mq450:h-[350px] mq450:w-[130%]"
+            className="absolute right-0 top-0   h-[400px] w-[89%] sm:h-[780px] mq825:h-[600px] mq800:w-[89%]
+          mq500:h-[350px] mq500:w-[150%] mq500:z-[5] "
           />
         </div>
       </div>
 
       {/* Body */}
 
-      <div className="container relative z-50 mx-auto  mt-10 px-5 text-center lg:text-left ">
+      <div className="mq1050:mt-28 container relative z-50 mx-auto  mt-10 px-5 text-center mq500:mt-[-340px] lg:text-left mq825:mt-[-10px]">
         {/* {children} */}
         <div className="flex flex-col-reverse  items-center lg:flex-row lg:items-start ">
           <div className=" xl:w-[65%] 2xl:w-[60%]">
@@ -178,7 +178,7 @@ const AddPostWrapper = () => {
             <img
               src={sittingman}
               alt=""
-              className="  h-[320px] sm:h-[420px] sm:w-[520px] lg:h-[650px] lg:w-[550px] 2xl:h-[660px] 2xl:w-[720px] "
+              className="  h-[320px] sm:h-[490px] sm:w-[520px] md:h-[620px] md:w-[650px] lg:h-[650px] lg:w-[550px] 2xl:h-[660px] 2xl:w-[720px] "
             />
           </div>
         </div>

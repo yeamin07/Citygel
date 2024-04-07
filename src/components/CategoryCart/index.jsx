@@ -33,7 +33,7 @@ export const SmallCart = (props) => {
   return (
     <div className="solid mb-2  flex bg-[#ffffff] py-6 place-content-between items-center rounded-md border-2 border-slate-100  px-4 ">
       <p className="sm:text-xl opacity-70">{props.text}</p>
-      <img src={props.image} alt="" />
+      <img src={props.image} alt="" className="hidden sm:block "/>
     </div>
   );
 };
@@ -48,7 +48,8 @@ export const SmallCartMobile = (props) => {
 
 export const Buttons = () => {
   return (
-    <button
+    <div className="flex justify-center items-center">
+      <button
       className="border-1 flex  h-[80px]  w-full items-center justify-center rounded-[15px]  
             text-lg text-white-A700 mq1050:h-[80px]
             mq1050:w-[220px] mq800:h-[60px] mq800:w-[180px] mq450:h-[45px] mq450:w-[160px]"
@@ -59,6 +60,7 @@ export const Buttons = () => {
     >
       View All
     </button>
+    </div>
   );
 };
 
