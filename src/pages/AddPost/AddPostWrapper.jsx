@@ -23,19 +23,48 @@ import PostMembershipPlan from "./PostMembershipPlan";
 import PostAddPayment from "./PostAddPayment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { Dropdown, Space } from "antd";
+import { Dropdown, Menu, Space } from "antd";
 import { Img, Text } from "components";
 import { useNavigate } from "react-router-dom";
+import { RiArrowDropDownFill } from "react-icons/ri";
 
 const stripePromise = loadStripe(
   "pk_test_51Ov1cySAeHvI9y2yJ0rfiQdS8DRrkSp9KIhsATonDEL2Yv1w1qKxtuP8NbRxYAUayN3GFilUu6ZRWXXuUp7LdZ2700PaqkmH4c",
 );
+const profile = [
+  {
+    label: "Profile",
+    link: "/profile",
+    value: "profile",
+  },
+  {
+    label: "Dashboard",
+    link: "/dashboard",
+    value: "dashboard",
+  },
+];
 const AddPostWrapper = () => {
   const dispatch = useDispatch();
   const { currentStep, categories, subcategory } = useSelector(
     (state) => state.post,
   );
-
+  const handleMenuClick = (e) => {
+    console.log("Clicked on item:", e.key);
+    // You can add your logic here for handling menu item clicks
+  };
+  const menuNav = (
+    <Menu onClick={handleMenuClick}>
+      {profile.map((item) => (
+        <Menu.Item
+          className="cursor-pointer"
+          key={item.value}
+          onClick={() => navigate(item.link)}
+        >
+          {item.label}
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
   const navigate = useNavigate();
   const items = [
     {
@@ -113,18 +142,21 @@ const AddPostWrapper = () => {
                 </h4>
 
                 <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  placement="bottomRight"
-                  arrow={{
-                    pointAtCenter: false,
-                  }}
+                  className="mt-[-10px]"
+                  overlay={menuNav}
+                  trigger={["click"]}
                 >
-                  <p className="cursor-pointer text-[13px] text-teal-400">
-                    {" "}
-                    My Account <FaCaretDown />{" "}
-                  </p>
+                  <a
+                    className=" cursor-pointer"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <Space className="z-50">
+                      <div className="mt-[-5px] flex h-[12px] w-[6rem] gap-[2px] text-[10px] text-cyan-500">
+                        My Account{" "}
+                        <RiArrowDropDownFill className="mt-[-2px] text-[20px]" />
+                      </div>
+                    </Space>
+                  </a>
                 </Dropdown>
               </div>
               <div className="block mq800:hidden">

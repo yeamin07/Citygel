@@ -14,6 +14,18 @@ import logo from "../../assets/Allimages/logo.png";
 import { IoMdClose } from "react-icons/io";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import axios, { BASE_URL } from "config/api/axios";
+const profile = [
+  {
+    label: "Profile",
+    link: "/profile",
+    value: "profile",
+  },
+  {
+    label: "Dashboard",
+    link: "/dashboard",
+    value: "dashboard",
+  },
+];
 export default function Header1({ bg = true }) {
   const navigate = useNavigate();
   let { logoutUser, tuser } = useContext(AuthContext);
@@ -125,18 +137,6 @@ export default function Header1({ bg = true }) {
       item: "Mobile",
       link: "#",
       value: "veha1cle",
-    },
-  ];
-  const profile = [
-    {
-      label: "Profile",
-      link: "/profile",
-      value: "profile",
-    },
-    {
-      label: "Dashboard",
-      link: "/dashboard",
-      value: "dashboard",
     },
   ];
 
