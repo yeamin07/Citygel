@@ -41,7 +41,7 @@ export default function Header1({ bg = true }) {
     fetchUser();
   }, [user]);
   // Country
-  console.log(singleUser);
+
   const items = [
     {
       key: "1",

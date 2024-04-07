@@ -29,20 +29,19 @@ const Category = () => {
       <div className="mt-[-90px] flex h-auto overflow-hidden">
         <img
           src={yellowcurve}
-          className="relative top-[90px]  w-1/5 flex-grow z-[0]"
+          className="relative top-[90px]  z-[0] w-1/5 flex-grow"
         />
         <img
           src={bluecurve}
-          className="left-0 top-0 sm:h-[540px] h-[450px] w-5/6 flex-grow-0 mq500:w-[120%] mq500:mt-[20px] z-[2]"
+          className="left-0 top-0 z-[2] h-[450px] w-5/6 flex-grow-0 sm:h-[540px] mq500:mt-[20px] mq500:w-[120%]"
         />
-
       </div>
 
-      <div className="container mx-auto relative  lg:-mt-[35%] sm:-mt-[30%] -mt-[50%] px-5 text-center lg:text-left">
-        <div className="lg:flex-row flex-col-reverse flex items-center ">
+      <div className="container relative mx-auto  -mt-[50%] px-5 text-center sm:-mt-[30%] lg:-mt-[35%] lg:text-left">
+        <div className="flex flex-col-reverse items-center lg:flex-row ">
           <div className=" lg:w-[62%] lg:pr-20">
             <div className=" font-bold ">
-              <p className=" md:text-[70px] text-[35px] sm:text-[55px] ">
+              <p className=" text-[35px] sm:text-[55px] md:text-[70px] ">
                 Find Anything
                 <br />
                 Around You
@@ -54,7 +53,7 @@ const Category = () => {
                 industry. Lorem Ipsum has been the industry's standard dummy.
               </p>
             </div>
-            <div className=" mt-8  grid sm:grid-cols-4 gap-y-5 gap-x-5 grid-cols-2 ">
+            <div className=" mt-8  grid grid-cols-2 gap-y-5 gap-x-5 sm:grid-cols-4 ">
               <Categorycart image={properties} text="Properties" />
               <Categorycart image={motor} text="Motor" />
               <Categorycart image={electronics} text="Electronics" />
@@ -65,22 +64,19 @@ const Category = () => {
               <Categorycart image={services} text="Category 8" />
             </div>
           </div>
-          <div className=" lg:w-[37%] mq500:mt-[-120px] z-[30]">
-            <img
-              src={sittingman}
-              className=" w-[85%] sm:scale-110"
-            />
+          <div className=" z-[30] lg:w-[37%] mq500:mt-[-120px]">
+            <img src={sittingman} className=" w-[85%] sm:scale-110" />
           </div>
         </div>
 
-        <div className=" sm:mt-11 my-16 text-center sm:text-left">
-          <p className="font-poppins sm:text-[39px] text-[25px] ">
+        <div className=" my-16 text-center sm:mt-11 sm:text-left">
+          <p className="font-poppins text-[25px] sm:text-[39px] ">
             Browse By SubCategories:
           </p>
         </div>
 
         <div className="mx-auto flex  items-center justify-center">
-          <div className=" grid w-full xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-12 gap-y-12  ">
+          <div className=" grid w-full grid-cols-2 gap-12 gap-y-12 lg:grid-cols-3 xl:grid-cols-4  ">
             <div>
               <BigCart text="Properties" image={properties} />
               <SmallCart image={five} text="Apartment" />
@@ -145,28 +141,36 @@ const Category = () => {
         {/* End category */}
 
         <div className="mt-24 flex w-full  flex-col items-center justify-center">
-          <p className=" font-poppins sm:text-[60px] text-[40px] font-bold ">
+          <p className=" font-poppins text-[40px] font-bold sm:text-[60px] ">
             How it Works
           </p>
-          <p className="font-poppins font-medium sm:text-[32px] text-[20px]">
+          <p className="font-poppins text-[20px] font-medium sm:text-[32px]">
             Can help you make smart choice
           </p>
-          <p className="mt-3 text-center font-poppins sm:text-[18px] opacity-50 lg:w-[43%] mx-auto">
+          <p className="mx-auto mt-3 text-center font-poppins opacity-50 sm:text-[18px] lg:w-[43%]">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy.
           </p>
         </div>
-        <div className="relative my-10  flex lg:flex-row flex-col items-center justify-center xl:gap-7 lg:gap-3 gap-7 2xl:px-20">
+        <div className="relative my-10  flex flex-col items-center justify-center gap-7 lg:flex-row lg:gap-3 xl:gap-7 2xl:px-20">
           <Cart4
             h="Search for services"
             p="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
           />
-          <img src="images/line.png" className="xl:w-auto w-16 lg:block hidden" alt="" />
+          <img
+            src="images/line.png"
+            className="hidden w-16 lg:block xl:w-auto"
+            alt=""
+          />
           <Cart4
             h="Get your deal"
             p="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
           />
-          <img src="images/line.png" className="xl:w-auto w-16 lg:block hidden" alt="" />
+          <img
+            src="images/line.png"
+            className="hidden w-16 lg:block xl:w-auto"
+            alt=""
+          />
           <Cart4
             h="Enjoy the service"
             p="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
@@ -174,25 +178,25 @@ const Category = () => {
         </div>
       </div>
 
-      <div className=" w-full relative bg-[#fff] py-5 mt-16">
-        <img src={blueimg2} className="lg:h-[93%] w-full lg:w-auto absolute top-0 right-0 z-[2]" />
-        <div className="container mx-auto px-5 z-[5] relative py-6">
+      <div className=" relative mt-16 w-full bg-[#fff] py-5">
+        <img
+          src={blueimg2}
+          className="absolute top-0 right-0 z-[2] w-full lg:h-[93%] lg:w-auto"
+        />
+        <div className="container relative z-[5] mx-auto px-5 py-6">
           <div className="flex  justify-center lg:hidden">
-            <img
-              src={sittingman}
-              className=" sm:h-96 h-72"
-            />
+            <img src={sittingman} className=" h-72 sm:h-96" />
           </div>
 
-          <div className=" 2xl:w-1/2 lg:w-[65%] w-full text-center lg:text-left">
-            <p className=" sm:text-[44px] text-[32px] font-semibold lg:pr-20 sm:leading-[3.5rem]">
+          <div className=" w-full text-center lg:w-[65%] lg:text-left 2xl:w-1/2">
+            <p className=" text-[32px] font-semibold sm:text-[44px] sm:leading-[3.5rem] lg:pr-20 mq450:font-medium">
               Lorem ispum is simply dummy text
             </p>
-            <p className=" py-[2%] font-poppins sm:text-[22px] text-sm font-normal opacity-50 mb-5">
+            <p className=" mb-5 py-[2%] font-poppins text-sm font-normal opacity-50 sm:text-[22px]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy.
             </p>
-            <div className="w-60 mx-auto lg:mx-0">
+            <div className="mx-auto w-60 lg:mx-0">
               <Buttons />
             </div>
           </div>
@@ -202,8 +206,6 @@ const Category = () => {
       <div className="mt-36 ">
         <CitygelLogo />{" "}
       </div>
-
-
     </div>
   );
 };
