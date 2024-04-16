@@ -80,13 +80,6 @@ const Country = () => {
       message.success("delete Successfully");
     }
   };
-  const editUser = async (name) => {
-    const verifyresponse = await api.patch(`/country/${name}/`);
-    if (verifyresponse.data) {
-      fetchUser();
-      message.success("edit Successfully");
-    }
-  };
 
   const showModal = (Country) => {
     if (Country) {

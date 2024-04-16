@@ -4,8 +4,8 @@ import dayjs from "dayjs";
 import { useContext } from "react";
 import AuthContext from "context/AuthContext";
 
-const baseURL = "http://localhost:5000/api/v1/";
-// const baseURL = "https://citygel-backend.onrender.com/api/v1/";
+// const baseURL = "http://localhost:5000/api/v1/";
+const baseURL = "https://citygel-backend.onrender.com/api/v1/";
 
 const useAxios = () => {
   const { authToken, setTUser, setAuthToken } = useContext(AuthContext);

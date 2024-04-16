@@ -12,10 +12,10 @@ const AllAdsTable = () => {
   const [allow, setAllow] = useState("");
   const handleOption = async (value, id) => {
     setAllow(value);
-    const verifyresponse = await api.patch(`/ads/${id}`, { status: allow });
+    const verifyresponse = await api.patch(`/ads/${id}`, { status: value });
     if (verifyresponse.data) {
       fetchads();
-      message.success("delete Successfully");
+      message.success("Updated Successfully");
     }
   };
   const fetchads = async () => {
@@ -26,10 +26,14 @@ const AllAdsTable = () => {
     fetchads();
   }, []);
   const deleteAds = async (id) => {
-    const verifyresponse = await api.delete(`/ads/${id}`);
-    if (verifyresponse.data) {
-      fetchads();
-      message.success("delete Successfully");
+    try {
+      const verifyresponse = await api.delete(`/ads/${id}`);
+      if (verifyresponse.data) {
+        fetchads();
+        message.success("delete Successfully");
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
   const editads = () => {};
@@ -38,7 +42,7 @@ const AllAdsTable = () => {
   return (
     <div className="no-scrollbar mt-5 overflow-x-auto rounded-lg shadow">
       <table className="w-full min-w-[500px] text-left rtl:text-right">
-        <thead className="bg-[#20C5F2]">
+        <thead className="bg-[#000000]">
           <tr className="flex w-full justify-between gap-2">
             {[
               "#",
@@ -54,7 +58,7 @@ const AllAdsTable = () => {
               <th
                 key={i}
                 scope="col"
-                className={`flex items-center justify-center py-3 font-medium w-${i === 0 ? "14" : i === 1 ? "28" : i === 2 ? "32" : i === 3 ? "48" : i === 4 ? "52" : i === 5 ? "40" : "32"}`}
+                className={`flex items-center justify-center  rounded-t-xl py-6 font-medium text-white-A700 w-${i === 0 ? "20" : i === 1 ? "28" : i === 2 ? "48" : i === 3 ? "48" : i === 4 ? "52" : i === 5 ? "40" : "32"}`}
               >
                 {title}
               </th>

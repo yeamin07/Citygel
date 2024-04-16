@@ -83,13 +83,6 @@ const AddCategory = () => {
       message.success("delete Successfully");
     }
   };
-  const editUser = async (name) => {
-    const verifyresponse = await api.delete(`/category/${name}`);
-    if (verifyresponse.data) {
-      fetchUser();
-      message.success("delete Successfully");
-    }
-  };
 
   const showModal = (category) => {
     if (category) {

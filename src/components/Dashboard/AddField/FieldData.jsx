@@ -21,7 +21,7 @@ export default function FieldData({
 
   return (
     <tr className="bg-white flex  justify-between gap-2 border-b hover:bg-gray-50">
-      <td className="flex  w-56 items-center px-6 font-medium text-gray-900">
+      <td className="flex  w-10 items-center px-6 font-medium text-gray-900">
         {index + 1}
       </td>
 
