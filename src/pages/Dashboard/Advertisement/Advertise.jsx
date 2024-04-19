@@ -50,7 +50,7 @@ const Advertise = () => {
               Or
             </div>
             {/*~~~~~~~~~~~~~~~~~~Advertisement Section~~~~~~~~~~~~~ */}
-            <div className="w-full sm:w-[48%] h-[400px]  rounded-[0px] overflow-auto cursor-pointer">
+            <div className="w-full sm:w-[48%] h-[400px]  rounded-[0px] overflow-auto ">
              <Snippet
              />
             </div>
