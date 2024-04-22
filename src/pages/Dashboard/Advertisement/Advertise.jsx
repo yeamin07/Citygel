@@ -1,20 +1,41 @@
-import { useState } from "react";
+
 import DefaultLayout from "components/Dashboard/layout/DefaultLayout";
 import { cetagory_logo } from "assets/Allimages";
 import { nature } from "assets/Allimages";
-import { CopyBlock, dracula } from "react-code-blocks";
-import config from "./config";
+// import { CopyBlock, dracula } from "react-code-blocks";
+// import config from "./config";
+
+
+import { useState, useRef } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import Snippet from "./Snippet";
+
 const Advertise = () => {
+
+  const textareaRef = useRef(null);
+
+  // const [code, setCode] = useState(`
+  //   const fib = (n) => {
+  //     if (n <= 1) {
+  //       return n;
+  //     }
+  //     return fib(n - 1) + fib(n - 2);
+  //   };
+  // `);
+
+  const code= '(num) => num + 1';
+
   // logVersionInfo();
   // const [language, changeLanguage] = useState("jsx");
   // const [languageDemo, changeDemo] = useState(sample["jsx"]);
   // const [lineNumbers, toggleLineNumbers] = useState(true);
   return (
     <DefaultLayout classname="container mx-auto mb-6">
-      <div className="banner-parent-1">
+      <div className="banner-parent-1 mb-16">
         {/*~~~~~~~~~~~~~Each component~~~~~~~~~~~ */}
         <div className="flex h-auto w-full flex-col justify-start rounded-[15px] border-[1px] border-solid border-gray-200 p-2 shadow-xl">
-          <h2 className="h-[10%] w-full text-center text-[20px] lg:text-[24px]">
+          <h2 className="h-[14%] w-full text-center text-[20px] lg:text-[24px]">
             Banner 1
           </h2>
           <div className=" flex h-[90%] w-full flex-col justify-start gap-[4px] sm:flex-row">
@@ -29,28 +50,11 @@ const Advertise = () => {
               Or
             </div>
             {/*~~~~~~~~~~~~~~~~~~Advertisement Section~~~~~~~~~~~~~ */}
-            <div className="w-full sm:w-[48%]">
-              <CopyBlock
-                language="go"
-                text={`class HelloMessage extends React.Component {
-                 handlePress = () => {
-                  alert('Hello')
-                   }
-             render() {
-                 return (
-                  <div>
-                  <p>Hello {this.props.name}</p>
-                    <button onClick={this.handlePress}>Say Hello</button>
-                  </div>
-                    );
-                  }
-                    }
-                  );`}
-                codeBlock
-                theme={dracula}
-                showLineNumbers={false}
-              />
+            <div className="w-full sm:w-[48%] h-[400px]  rounded-[0px] overflow-auto ">
+             <Snippet
+             />
             </div>
+
           </div>
         </div>
       </div>
