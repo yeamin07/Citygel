@@ -9,7 +9,6 @@ import SocialLogin from "components/SocialLogin/SocialLogin";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import Loading from "components/Loading/Loading";
@@ -73,17 +72,17 @@ export default function LoginPage() {
             setTUser(jwtDecode(response.data.data.accessToken));
             localStorage.setItem("authToken", response.data.data.accessToken);
             message.success("Login Successfully");
-          } else toast.error("Your account is created using google");
+          } else message.error("Your account is created using google");
         } catch (error) {
           setLoading(false);
-          toast.error("Firebase sign-in error: " + error);
+          message.error("Firebase sign-in error: " + error);
         }
       } else {
-        toast.error("please create your account first");
+        message.error("please create your account first");
       }
     } catch (error) {
       setLoading(false);
-      toast.error("Please Enter Correct Code");
+      message.error("Please Enter Correct Code");
       console.log(error);
     }
   };
@@ -96,13 +95,13 @@ export default function LoginPage() {
           email: email,
         });
         if (response.data) {
-          toast.success("Otp code sent into your email");
+          message.success("Otp code sent into your email");
         }
       } else {
-        toast.error("please enter your email");
+        message.error("please enter your email");
       }
     } catch (error) {
-      toast.error("please signup first");
+      message.error("please signup first");
     }
   };
   return (
@@ -125,7 +124,7 @@ export default function LoginPage() {
               className=" mx-auto  justify-center "
             />
           </div>
-          <div className="flex w-full flex-col  items-center justify-start gap-[31px] lg:w-[85%] ">
+          <div className="flex w-full flex-col  items-center justify-start gap-[31px] lg:w-[94.5%] ">
             <div className="flex w-full flex-col items-center justify-start ">
               <div className="flex w-full max-w-full flex-col items-center justify-start ">
                 <div className="w-full ">
@@ -152,14 +151,14 @@ export default function LoginPage() {
                       Enter Your Email
                     </Text>
                   </div>
-                  <div className="relative h-[65px]  w-full ">
+                  <div className="relative h-[80px]  w-full ">
                     <Input
                       register={register}
                       size="lg"
                       name="email"
                       onChange={(e) => setValue("email", e.target.value)}
                       placeholder="name@mail.com"
-                      className={`left-0 bottom-0 right-0 top-0 m-auto h-full w-full !text-[16px] text-gray-900 ${
+                      className={`left-0 bottom-0 right-0 top-0 m-auto  h-full w-full !text-[16px] text-gray-900 ${
                         errors.email?.message
                           ? "border-red-800 "
                           : "border-cyan-700_01"
@@ -182,7 +181,7 @@ export default function LoginPage() {
                         {errors.email?.message}
                       </p>
                     ) : (
-                      <p className=" !my-[10px] font-poppins text-[17px] font-normal text-red-500 opacity-[40%]">
+                      <p className=" !my-[10px] ml-1 font-poppins text-[17px] font-normal text-red-500 opacity-[40%]">
                         Please enter your credential Details.
                       </p>
                     )}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -18,12 +18,13 @@ import auth from "firebase.init";
 import { password } from "config/password";
 import axios from "axios";
 import Loading from "components/Loading/Loading";
-import { toast } from "react-toastify";
 import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import CitygelLogo from "components/Footer/CitygelLogo";
-import { message } from "antd";
+import { Dropdown, Select, Space, message } from "antd";
 import { BASE_URL } from "config/api/axios";
+import { FaAngleDown } from "react-icons/fa6";
+import { DownOutlined } from "@ant-design/icons";
 
 export default function SignUpPage() {
   const {
@@ -40,10 +41,26 @@ export default function SignUpPage() {
   });
 
   const [user] = useAuthState(auth);
-
+  const [countryCode, setCountryCode] = useState("+971");
+  const [countryFlag, setCountryFlag] = useState("https://flagcdn.com/ae.svg");
+  const [country, setCountry] = useState([]);
   let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   const location = useLocation();
   const [loading, setLoading] = useState(false);
+  const fetchCountry = async () => {
+    try {
+      const response = await axios.get(`https://restcountries.com/v3.1/all`);
+      if (response.data) {
+        console.log(response.data);
+        setCountry(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchCountry();
+  }, []);
 
   const [createUserWithEmailAndPassword, cuser, gloading, hookerror] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: false });
@@ -59,7 +76,11 @@ export default function SignUpPage() {
   const onSubmit = async (e) => {
     console.log(e);
     const email = e.email;
-
+    console.log({
+      fullName: e.fullName,
+      email: e.email,
+      phoneNumber: countryCode + e.phoneNumber,
+    });
     try {
       setLoading(true);
       const Verifyresponse = await axios.post(`${BASE_URL}/auth/verify-code`, {
@@ -70,7 +91,7 @@ export default function SignUpPage() {
         const response = await axios.post(`${BASE_URL}/users/create-user`, {
           fullName: e.fullName,
           email: e.email,
-          phoneNumber: e.phoneNumber,
+          phoneNumber: e.phoneNumber + countryCode,
         });
         const createUser = await createUserWithEmailAndPassword(
           e.email,
@@ -83,23 +104,23 @@ export default function SignUpPage() {
           console.log(response.data.data.accessToken);
           localStorage.setItem("authToken", response.data.data.accessToken);
           message.success("Login Successfully");
-          // toast.success("Login Successfully");
+          // message.success("Login Successfully");
         }
         setLoading(false);
         console.log(response.data);
       } else {
-        toast.error("Wrong Code Entered");
+        message.error("Wrong Code Entered");
       }
     } catch (error) {
       setLoading(false);
       console.log(error);
       if (error.response.data.message == "Your Account is already Created") {
-        toast.error("Your Account is already Created");
-      } else toast.error("Something Wrong");
+        message.error("Your Account is already Created");
+      } else message.error("Something Wrong");
     }
   };
 
-  const { email } = getValues();
+  // const { email } = getValues();
   const handleSendCode = async () => {
     setLoading(true);
     console.log(emailVeri);
@@ -110,16 +131,22 @@ export default function SignUpPage() {
         });
         setLoading(false);
         if (response.data) {
-          toast.success("Otp code sent into your email");
+          message.success("Otp code sent into your email");
         }
       } else {
         setLoading(false);
-        toast.error("please enter your email");
+        message.error("please enter your email");
       }
     } catch (error) {
       setLoading(false);
-      toast.error("your account already signup please sign in");
+      message.error("your account already signup please sign in");
     }
+  };
+  const handleSelect = (item) => {
+    console.log(item);
+    const suffiexes = item?.idd?.root + item?.idd?.suffixes[0];
+    setCountryFlag(item?.flags?.svg);
+    setCountryCode(suffiexes);
   };
   return (
     <>
@@ -157,7 +184,7 @@ export default function SignUpPage() {
                 Please enter your credential Details.
               </Text>
             </div>
-            <div className="mt-[-3px] flex w-full flex-col items-center justify-start lg:w-[70%]">
+            <div className="mt-[-3px] flex w-full flex-col items-center justify-start lg:w-[88%]">
               {loading || gloading ? (
                 <Loading />
               ) : (
@@ -202,7 +229,7 @@ export default function SignUpPage() {
                     >
                       Enter Your Phone number
                     </Text>
-                    <div className="relative mt-[5px] block w-full gap-[25px] md:flex ">
+                    {/* <div className="relative mt-[5px] block w-full gap-[25px] md:flex ">
                       <Controller
                         control={control}
                         name="phoneNumber"
@@ -237,10 +264,76 @@ export default function SignUpPage() {
                           <>Please enter valid phone number</>
                         </Text>
                       )}
+                    </div> */}
+                    <div className=" relative mt-[6px] flex h-[70px] w-full flex-row space-x-1 rounded-[15px]">
+                      <div className="flex flex-row items-center justify-center space-x-1 rounded-[15px] bg-[#d9d9d950] p-3">
+                        <Dropdown
+                          menu={{
+                            items: country.map((item, index) => ({
+                              label: (
+                                <div className="flex flex-row items-center justify-center space-x-2">
+                                  <img
+                                    src={item.flags.svg} // Replace with the actual image source from your API response
+                                    className="h-10 w-10 rounded-full"
+                                    alt=""
+                                  />
+                                  <p className="font-semibold">
+                                    {item.idd.root}
+                                    {item?.idd?.suffixes &&
+                                      item?.idd?.suffixes[0]}
+                                  </p>
+                                </div>
+                              ),
+                              key: index.toString(),
+                              onClick: () => handleSelect(item),
+                            })),
+                          }}
+                          trigger={["click"]}
+                        >
+                          <a onClick={(e) => e.preventDefault()}>
+                            <Space>
+                              <img
+                                src={countryFlag}
+                                className="h-10 w-10 rounded-full"
+                                alt=""
+                              />
+                              <p className="">{countryCode}</p>
+                              <FaAngleDown className="text-gray-700" />
+                            </Space>
+                          </a>
+                        </Dropdown>
+                      </div>
+                      <div className="flex flex-1 items-center rounded-[15px] bg-[#d9d9d950] px-4">
+                        <Controller
+                          name="phoneNumber"
+                          control={control}
+                          rules={{ required: "Please enter a phone number" }}
+                          render={({ field }) => (
+                            <input
+                              {...field}
+                              className=""
+                              type="text"
+                              placeholder="(00) 123 456 7890"
+                            />
+                          )}
+                        />
+                      </div>
+                      {errors.phoneNumber?.message && (
+                        <Text
+                          className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                          fontSize="xs"
+                          bottom="-19px"
+                          position="absolute"
+                          color="#E85A2D"
+                        >
+                          <>Please enter valid phone number</>
+                        </Text>
+                      )}
                     </div>
+
                     <Text
                       as="p"
-                      className="mt-[40px] ml-1.5 !text-black-900_99 opacity-0.7"
+                      className="mt-[30px] ml-1.5 !text-black-900_99 opacity-0.7"
                     >
                       Enter Your Email
                     </Text>
@@ -287,7 +380,7 @@ export default function SignUpPage() {
                       )}
                     </div>
 
-                    <div className="relative mt-9">
+                    <div className="relative mt-9 flex w-full items-center justify-center">
                       <Controller
                         name="code"
                         control={control}

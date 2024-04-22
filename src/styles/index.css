@@ -186,8 +186,8 @@ button {
 } */
 .pincode-input-text {
 
-  width: 65px !important;
-  height: 65px !important;
+  width: 80px !important;
+  height: 80px !important;
 }
 
 .pincode-input-container {
@@ -231,11 +231,14 @@ a {
 
   .pincode-input-text {
 
-    width: 70px !important;
-    height: 70px !important;
+    width: 80px !important;
+    height: 80px !important;
   }
 }
-
+.ant-dropdown-menu {
+    max-height: 250px;
+    overflow: auto;
+}
 @media screen and (max-device-width:450px) {
   .react-tel-input .form-control {
     width: 100%;
@@ -263,8 +266,8 @@ a {
   }
 
   .pincode-input-text {
-    width: 60px !important;
-    height: 60px !important;
+    width: 70px !important;
+    height: 70px !important;
   }
 }
 
