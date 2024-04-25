@@ -1,20 +1,66 @@
-import Background from "./Background";
+//import Background from "./Background";
 import Header1 from "components/Header1";
 import CitygelLogo from "../Footer/CitygelLogo";
 import { Text, Img } from "components";
 import { Controller } from "react-hook-form";
-import PhoneInput from "react-phone-input-2";
-import { useState } from "react";
+//import PhoneInput from "react-phone-input-2";
+import { useState,useEffect } from "react";
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Tablef from "./Table/Tablef";
 
 import Tables from "./Table2/Tables";
+import { Dropdown, Select, Space, message } from "antd";
+import { FaAngleDown } from "react-icons/fa6";
+import axios from "axios";
+//import { Controller, useForm } from "react-hook-form";
+
 
 const Profile = () => {
 
   let [tabIndex, setTabIndex] = useState(0);
+
+  {/*~~~~~~~~~~~~~~~~~~~~~~~~~~This is for fetch mobile number input field~~~~~~~~~~~~~~~~~~~~~~~ */}
+  const [country, setCountry] = useState([]);
+  const [countryCode, setCountryCode] = useState("+971");
+  const [countryFlag, setCountryFlag] = useState("https://flagcdn.com/ae.svg");
+
+  const fetchCountry = async () => {
+    try {
+      const response = await axios.get(`https://restcountries.com/v3.1/all`);
+      if (response.data) {
+        console.log(response.data);
+        setCountry(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchCountry();
+  }, []);
+  
+
+  const handleSelect = (item) => {
+    console.log(item);
+    const suffiexes = item?.idd?.root + item?.idd?.suffixes[0];
+    setCountryFlag(item?.flags?.svg);
+    setCountryCode(suffiexes);
+  };
+
+
+
+  // const {
+  //   formState: { errors },
+  //   control,
+  // } = useForm({
+  //   resolver: yupResolver(SignUpFormValidationSchemas),
+  //   mode: "onChange",
+  // })
+
+  {/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/}
+
 
   return (
     <div>
@@ -61,31 +107,77 @@ const Profile = () => {
                   <input className="w-full h-[41px] !px-3 sm:h-[42px] lg:h-[50px] !bg-gray-100 focus:border-[1px] focus:border-solid focus:border-cyan-400 sm:focus:rounded-[18px] focus:rounded-[10px] sm:px-6  2xl:px-6 2xl:h-[60px] !rounded-[10px] sm:rounded-[18px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] 2xl:text-[21px] border" type="email" />
                 </div>
                 {/*~~~~~~~~~~~~~~~~~~~~~Phone input full-width problem ~~~~~~~~~~~~~~~~~~*/}
+
                 <div className="w-full">
-                  {/* <label className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[17px] xl:text-[18px] 2xl:text-[19.5px] text-gray-500">Phone Number</label>
-                  <div className="relative mt-[5px] block w-full gap-[25px] md:flex "> */}
-                    {/* <Controller/> */}
+                <div className=" relative mt-[6px] flex h-[70px] w-full flex-row space-x-1 rounded-[15px]">
+                      <div className="flex flex-row items-center justify-center space-x-1 rounded-[15px] bg-[#d9d9d950] p-3">
+                        <Dropdown
+                          menu={{
+                            items: country.map((item, index) => ({
+                              label: (
+                                <div className="flex flex-row items-center justify-center space-x-2">
+                                  <img
+                                    src={item.flags.svg} // Replace with the actual image source from your API response
+                                    className="h-10 w-10 rounded-full"
+                                    alt=""
+                                  />
+                                  <p className="font-semibold">
+                                    {item.idd.root}
+                                    {item?.idd?.suffixes &&
+                                      item?.idd?.suffixes[0]}
+                                  </p>
+                                </div>
+                              ),
+                              key: index.toString(),
+                              onClick: () => handleSelect(item),
+                            })),
+                          }}
+                          trigger={["click"]}
+                        >
+                          <a onClick={(e) => e.preventDefault()}>
+                            <Space>
+                              <img
+                                src={countryFlag}
+                                className="h-10 w-10 rounded-full"
+                                alt=""
+                              />
+                              <p className="">{countryCode}</p>
+                              <FaAngleDown className="text-gray-700" />
+                            </Space>
+                          </a>
+                        </Dropdown>
+                      </div>
+                      <div className="flex flex-1 items-center rounded-[15px] bg-[#d9d9d950] px-4">
+                        <Controller
+                          name="phoneNumber"
+                          //control={control}
+                          rules={{ required: "Please enter a phone number" }}
+                          render={({ field }) => (
+                            <input
+                              {...field}
+                              className=""
+                              type="number"
+                              placeholder="(00) 123 456 7890"
+                            />
+                          )}
+                        />
+                      </div>
+                      {/* {errors.phoneNumber?.message && (
+                        <Text
+                          className="xs absolute bottom-[-20px] text-[#ef4c4c] "
+                          fontSize="xs"
+                          bottom="-19px"
+                          position="absolute"
+                          color="#E85A2D"
+                        >
+                          <>Please enter valid phone number</>
+                        </Text>
+                      )} */}
+                    </div>
 
-                    {/* <PhoneInput
-                      country={"us"}
-                      placeholder="Phone Number"
-                      className="h-[6rem] w-full"
-                    /> */}
-
-
-                    {/* {errors.phoneNumber?.message && (
-                      <Text
-                        className="xs absolute bottom-[-20px] text-[#ef4c4c] "
-                        fontSize="xs"
-                        bottom="-19px"
-                        position="absolute"
-                        color="#E85A2D"
-                      >
-                        <>Please enter valid phone number</>
-                      </Text>
-                    )} */}
-                  {/* </div> */}
                 </div>
+
+
                 <div className="flex justify-center md:justify-end flex-row items-center gap-[20px] md:gap-[14px] lg:gap-[10px]">
                   <button className="rounded-[10px] bg-current shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] border-2 md:border-2  border-solid border-cyan-500 text-[17px] 2xl:text-[20px] md:text-[18px] lg:text-[19px] py-[13px] px-[50px] 2xl:py-[17px] 2xl:px-[70px] lg:py-[14px] lg:px-[60px] text-black">Edit</button>
                   <button className="rounded-[10px] [background:linear-gradient(94.43deg,_#0b90af,_#20c5f2)] shadow-[0px_0px_3px_rgba(0,_0,_0,_0.1)] text-[17px] 2xl:text-[20px] md:text-[18px] lg:text-[19px] py-[13px] px-[50px] 2xl:py-[17px] 2xl:px-[70px] lg:py-[14px] lg:px-[60px] text-white-A700">Save</button>

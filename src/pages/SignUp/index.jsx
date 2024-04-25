@@ -47,6 +47,7 @@ export default function SignUpPage() {
   let { setAuthToken, setTUser, tuser } = useContext(AuthContext);
   const location = useLocation();
   const [loading, setLoading] = useState(false);
+  
   const fetchCountry = async () => {
     try {
       const response = await axios.get(`https://restcountries.com/v3.1/all`);
@@ -312,7 +313,7 @@ export default function SignUpPage() {
                             <input
                               {...field}
                               className=""
-                              type="text"
+                              type="number"
                               placeholder="(00) 123 456 7890"
                             />
                           )}
