@@ -22,6 +22,7 @@ import AuthContext from "context/AuthContext";
 import { jwtDecode } from "jwt-decode";
 import CitygelLogo from "components/Footer/CitygelLogo";
 import Loading from "components/Loading/Loading";
+import { BASE_URL } from "config/api/axios";
 export default function Confirm() {
   const {
     handleSubmit,
@@ -43,9 +44,7 @@ export default function Confirm() {
   let from = location.state?.from?.pathname || "/";
   const fetchUser = async () => {
     try {
-      const response = await axios.get(
-        `https://citygel-backend.onrender.com/api/v1/users/${user?.email}`,
-      );
+      const response = await axios.get(`${BASE_URL}/users/${user?.email}`);
       if (response.data) {
         console.log(response.data);
         navigate(from);
@@ -65,7 +64,7 @@ export default function Confirm() {
       const { email } = getValues();
       if (e) {
         const response = await axios.post(
-          "https://citygel-backend.onrender.com/api/v1/users/create-user-confirm",
+          `${BASE_URL}/users/create-user-confirm`,
           {
             email,
             phoneNumber: e.phoneNumber,

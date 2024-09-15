@@ -17,6 +17,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
 import ProductSlider from "./ProductCart/ProductSlider";
 import ProductDetailsSlider from "./ProductDetailsSlider";
+import { BASE_URL } from "config/api/axios";
 
 const Description = () => {
   const [loading, setLoading] = useState(false);
@@ -29,9 +30,7 @@ const Description = () => {
   const getSingleProduct = async () => {
     setLoading(true);
     try {
-      const product = await axios.get(
-        `https://citygel-backend.onrender.com/api/v1/ads/${id}/`,
-      );
+      const product = await axios.get(`${BASE_URL}/ads/${id}/`);
       console.log(product);
       if (product.data) {
         setLoading(false);
@@ -46,9 +45,7 @@ const Description = () => {
   const getAllProduct = async () => {
     setLoading(true);
     try {
-      const product = await axios.get(
-        "https://citygel-backend.onrender.com/api/v1/ads",
-      );
+      const product = await axios.get(`${BASE_URL}/ads`);
       if (product.data) {
         setLoading(false);
         setAllProduct(product.data.data);

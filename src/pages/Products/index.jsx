@@ -12,6 +12,7 @@ import { Slider } from "antd";
 import Loading from "components/Loading/Loading";
 import CitygelLogo from "components/Footer/CitygelLogo";
 import Product from "./Product";
+import { BASE_URL } from "config/api/axios";
 
 const Products = () => {
   const api = useAxios();
@@ -26,9 +27,7 @@ const Products = () => {
 
   const getAllProduct = async () => {
     setLoading(true);
-    const product = await axios.get(
-      "https://citygel-backend.onrender.com/api/v1/ads",
-    );
+    const product = await axios.get(`${BASE_URL}/ads`);
     if (product.data) {
       setLoading(false);
       setAllProduct(product.data.data);
@@ -125,7 +124,7 @@ const Products = () => {
     queryParams.push(`sortBy=${sortBy}`);
     queryParams.push(`sortOrder=${sortOrder}`);
 
-    let apiUrl = "https://citygel-backend.onrender.com/api/v1/ads";
+    let apiUrl = `${BASE_URL}/ads`;
     if (queryParams.length > 0) {
       apiUrl += "?" + queryParams.join("&");
     }

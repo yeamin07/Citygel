@@ -55,13 +55,10 @@ export default function LoginPage() {
   const onSubmit = async (e) => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        `https://citygel-backend.onrender.com/api/v1/auth/login`,
-        {
-          email: e.email,
-          code: e.code,
-        },
-      );
+      const response = await axios.post(`${BASE_URL}/auth/login`, {
+        email: e.email,
+        code: e.code,
+      });
       if (response.data) {
         try {
           const firebase = await signInWithEmailAndPassword(e.email, password);

@@ -3,9 +3,10 @@ import { jwtDecode } from "jwt-decode";
 import dayjs from "dayjs";
 import { useContext } from "react";
 import AuthContext from "context/AuthContext";
+import { BASE_URL } from "./axios";
 
 // const baseURL = "http://localhost:5000/api/v1/";
-const baseURL = "https://citygel-backend.onrender.com/api/v1/";
+const baseURL = `${BASE_URL}`;
 
 const useAxios = () => {
   const { authToken, setTUser, setAuthToken } = useContext(AuthContext);
